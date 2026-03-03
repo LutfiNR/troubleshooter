@@ -5,12 +5,11 @@ extends Node2D
 @export var interaction_area: Area2D
 @export var sprite: Sprite2D 
 @export var action_popup: VBoxContainer
-@export var network_scene: PackedScene
+@onready var physical_scene: PackedScene
 
 var player_in_range: bool = false
-var _machine_state: bool = false
+var _power_state: DeviceState.Power = DeviceState.Power.OFF
 var _opacity_tween: Tween
-
 
 # ========================
 # Public API
@@ -37,19 +36,21 @@ func _update_visual_state() -> void:
 
 
 func _get_frame_for_state() -> int:
+	var is_on := _power_state == DeviceState.Power.ON
+	
 	if player_in_range:
-		return 3 if _machine_state else 1
+		return 3 if is_on else 1
 	else:
-		return 2 if _machine_state else 0
+		return 2 if is_on else 0
 
 
 func turn_on_device() -> void:
-	_machine_state = true
+	_power_state = DeviceState.Power.ON
 	_update_visual_state()
 	
 
 func turn_off_device() -> void:
-	_machine_state = false
+	_power_state = DeviceState.Power.OFF
 	_update_visual_state()
 
 
@@ -125,5 +126,5 @@ func _on_desktop_button_pressed() -> void:
 
 
 func _on_network_button_pressed() -> void:
-	var network_instance = network_scene.instantiate()
-	add_child(network_instance)
+	if physical_scene:
+		OverlayManager.open_overlay(physical_scene, self)

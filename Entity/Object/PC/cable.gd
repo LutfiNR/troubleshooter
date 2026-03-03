@@ -6,12 +6,12 @@ signal plug_state_changed(is_plugged: bool)
 @onready var sprite: Sprite2D = $Cable
 
 var initial_position: Vector2
-var port_position: Vector2 = Vector2.ZERO
+var port_position: Vector2 = Vector2(self.global_position.x, self.global_position.y - 80) 
 var drag_offset: Vector2 = Vector2.ZERO
 
 var is_dragging: bool = false
 var is_inside_port: bool = false
-var is_plugged: bool = false
+var is_plugged: DeviceState.NetworkConnection
 
 
 func _ready() -> void:
@@ -55,15 +55,15 @@ func _stop_drag() -> void:
 # ----------------------------
 func plug_in() -> void:
 	global_position = port_position
-	_set_plug_state(true)
+	_set_plug_state(DeviceState.NetworkConnection.PLUGGED_IN)
 
 
 func unplug() -> void:
 	global_position = initial_position
-	_set_plug_state(false)
+	_set_plug_state(DeviceState.NetworkConnection.UNPLUGGED)
 
 
-func _set_plug_state(value: bool) -> void:
+func _set_plug_state(value: DeviceState.NetworkConnection) -> void:
 	if is_plugged == value:
 		return
 		
@@ -74,13 +74,11 @@ func _set_plug_state(value: bool) -> void:
 # ----------------------------
 # PORT DETECTION
 # ----------------------------
-func _on_area_2d_area_entered(area: Area2D) -> void:
+func _on_area_2d_area_entered(_area: Area2D) -> void:
 	is_inside_port = true
-	port_position = area.global_position
 	sprite.frame = 1
 
 
 func _on_area_2d_area_exited(_area: Area2D) -> void:
 	is_inside_port = false
-	port_position = Vector2.ZERO
 	sprite.frame = 0

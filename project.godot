@@ -18,6 +18,11 @@ config/name="Troubleshooter"
 run/main_scene="uid://bugh26efkqh8h"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+OverlayManager="*uid://b7os4mgl0hqg"
+DeviceState="*uid://hp5l0vvp40kr"
+
 [display]
 
 window/size/viewport_width=480

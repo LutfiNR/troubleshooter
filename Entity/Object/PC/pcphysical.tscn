@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dapnw1t1gccf6"]
 
-[ext_resource type="Script" uid="uid://d0tl34p5xfty" path="res://Entity/Object/PC/physical.gd" id="1_8diwb"]
+[ext_resource type="Script" uid="uid://d0tl34p5xfty" path="res://Entity/Object/PC/pcphysical.gd" id="1_8diwb"]
 [ext_resource type="Texture2D" uid="uid://x600qhqg5pav" path="res://Assets/PC/physicaldesktop.png" id="2_k7o6b"]
 [ext_resource type="Script" uid="uid://bnrjhn1dtobax" path="res://Entity/Object/PC/port.gd" id="3_hou5r"]
 [ext_resource type="Texture2D" uid="uid://doi21fnyxy8in" path="res://Assets/LAN/LAN_port.png" id="4_hou5r"]
@@ -18,12 +18,12 @@ size = Vector2(12, 11.000002)
 script = ExtResource("1_8diwb")
 
 [node name="PC" type="Sprite2D" parent="." unique_id=347222615]
-position = Vector2(207, -1)
-scale = Vector2(8.5, 8.5)
+position = Vector2(1, -121)
+scale = Vector2(8, 8)
 texture = ExtResource("2_k7o6b")
 
 [node name="Port" type="Node2D" parent="." unique_id=1852713100]
-position = Vector2(111, 175.00002)
+position = Vector2(-131, 40)
 scale = Vector2(3, 3)
 script = ExtResource("3_hou5r")
 
@@ -39,7 +39,7 @@ position = Vector2(0, -0.5000038)
 shape = SubResource("RectangleShape2D_hou5r")
 
 [node name="Cable" type="Node2D" parent="." unique_id=1531718200]
-position = Vector2(111, 254)
+position = Vector2(-131, 120)
 scale = Vector2(3, 3)
 script = ExtResource("4_k7o6b")
 
@@ -57,17 +57,14 @@ shape = SubResource("RectangleShape2D_k7o6b")
 
 [node name="Control" type="Control" parent="." unique_id=1678598309]
 layout_mode = 3
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -66.0
-offset_top = -1.0
-offset_right = 414.0
-offset_bottom = 22.0
-grow_horizontal = 0
-grow_vertical = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = -131.0
+offset_right = 238.0
+offset_bottom = -108.0
+grow_horizontal = 2
 size_flags_horizontal = 8
 
 [node name="TextureButton" type="TextureButton" parent="Control" unique_id=1631170607]
@@ -81,7 +78,6 @@ action_mode = 0
 texture_normal = ExtResource("7_05k8h")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1061241836]
-position = Vector2(240, 133)
 
 [connection signal="area_entered" from="Cable/Area2D" to="Cable" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cable/Area2D" to="Cable" method="_on_area_2d_area_exited"]
