@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://bxv8go4i7jv3h"]
+
+[ext_resource type="Texture2D" uid="uid://dgli4o6dgdy11" path="res://Assets/building.png" id="1_fs4to"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eidgh"]
+resource_name = "interior"
+texture = ExtResource("1_fs4to")
+0:0/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_eidgh")

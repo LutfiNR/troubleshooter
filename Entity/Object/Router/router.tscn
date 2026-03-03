@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://c8vwetgo71irg"]
+
+[ext_resource type="PackedScene" uid="uid://dtoyqbvg4rpwv" path="res://Entity/Object/device.tscn" id="1_blvai"]
+[ext_resource type="Script" uid="uid://c0f5x45bf3y1a" path="res://Entity/Object/Router/router.gd" id="2_obbad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obbad"]
+size = Vector2(12, 4)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xcdyt"]
+load_path = "res://.godot/imported/router.png-710d7995bb945797cc1f9fcbf7668200.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mciwm"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33ssl"]
+size = Vector2(24, 18)
+
+[node name="Router" unique_id=1828844198 instance=ExtResource("1_blvai")]
+script = ExtResource("2_obbad")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1370478908]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_obbad")
+
+[node name="Sprite2D" parent="." index="1" unique_id=513757821]
+texture = SubResource("CompressedTexture2D_xcdyt")
+offset = Vector2(0, -7)
+
+[node name="InteractCollision" parent="InteractArea" parent_id_path=PackedInt32Array(933597792) index="0" unique_id=1056943401]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_mciwm")
+
+[node name="DetectCollision" parent="DetectArea" parent_id_path=PackedInt32Array(1200528632) index="0" unique_id=58360557]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_33ssl")

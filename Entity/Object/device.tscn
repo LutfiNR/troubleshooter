@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://dtoyqbvg4rpwv"]
+
+[ext_resource type="Script" uid="uid://b23rtumtbken" path="res://Entity/Object/device.gd" id="1_q43xq"]
+[ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://Assets/Popup Action Device/popupobject_0001.png" id="2_63b38"]
+[ext_resource type="Script" uid="uid://c0w6fgaexaxfk" path="res://Entity/Object/action_popup.gd" id="2_omasi"]
+[ext_resource type="Texture2D" uid="uid://o0a73wefbihk" path="res://Assets/Popup Action Device/popupobject_0002.png" id="3_omasi"]
+[ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://Assets/Popup Action Device/popupobject_0003.png" id="4_6f28v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ltiqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2t2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4yjf"]
+
+[sub_resource type="Animation" id="Animation_yhewp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fngvb"]
+_data = {
+&"RESET": SubResource("Animation_yhewp")
+}
+
+[node name="Device" type="StaticBody2D" unique_id=492556794 node_paths=PackedStringArray("detection_area", "interaction_area", "sprite", "action_popup")]
+y_sort_enabled = true
+script = ExtResource("1_q43xq")
+detection_area = NodePath("DetectArea")
+interaction_area = NodePath("InteractArea")
+sprite = NodePath("Sprite2D")
+action_popup = NodePath("ActionContainer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
+shape = SubResource("RectangleShape2D_ltiqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=513757821]
+hframes = 4
+
+[node name="InteractArea" type="Area2D" parent="." unique_id=933597792]
+
+[node name="InteractCollision" type="CollisionShape2D" parent="InteractArea" unique_id=1056943401]
+shape = SubResource("RectangleShape2D_d2t2x")
+
+[node name="DetectArea" type="Area2D" parent="." unique_id=1200528632]
+
+[node name="DetectCollision" type="CollisionShape2D" parent="DetectArea" unique_id=58360557]
+shape = SubResource("RectangleShape2D_h4yjf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1429517089]
+libraries/ = SubResource("AnimationLibrary_fngvb")
+
+[node name="ActionContainer" type="VBoxContainer" parent="." unique_id=7478003]
+visible = false
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -28.0
+offset_right = 30.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 28)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("2_omasi")
+metadata/_edit_use_anchors_ = true
+
+[node name="PowerButton" type="TextureButton" parent="ActionContainer" unique_id=1394131975]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("2_63b38")
+
+[node name="DesktopButton" type="TextureButton" parent="ActionContainer" unique_id=1934060128]
+layout_mode = 2
+texture_normal = ExtResource("3_omasi")
+
+[node name="NetworkButton" type="TextureButton" parent="ActionContainer" unique_id=1535277635]
+layout_mode = 2
+texture_normal = ExtResource("4_6f28v")
+
+[connection signal="input_event" from="InteractArea" to="." method="_on_interact_area_input_event"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="toggled" from="ActionContainer/PowerButton" to="." method="_on_power_button_toggled"]
+[connection signal="pressed" from="ActionContainer/DesktopButton" to="." method="_on_desktop_button_pressed"]
+[connection signal="pressed" from="ActionContainer/NetworkButton" to="." method="_on_network_button_pressed"]

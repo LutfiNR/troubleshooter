@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://tuwvtg40j5ob"]
+
+[ext_resource type="PackedScene" uid="uid://dtoyqbvg4rpwv" path="res://Entity/Object/device.tscn" id="1_dvy83"]
+[ext_resource type="Script" uid="uid://by3l0n370h42f" path="res://Entity/Object/PC/pc.gd" id="2_7ljkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ljkk"]
+size = Vector2(20, 5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dvy83"]
+load_path = "res://.godot/imported/pc.png-eae8794e6327d341f30a919f5049adb0.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fc0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amcxr"]
+size = Vector2(40, 27)
+
+[node name="PC" unique_id=1713763221 instance=ExtResource("1_dvy83")]
+script = ExtResource("2_7ljkk")
+
+[node name="CollisionShape2D" parent="." index="0" unique_id=1370478908]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_7ljkk")
+
+[node name="Sprite2D" parent="." index="1" unique_id=513757821]
+texture = SubResource("CompressedTexture2D_dvy83")
+offset = Vector2(0, -9)
+
+[node name="InteractCollision" parent="InteractArea" parent_id_path=PackedInt32Array(933597792) index="0" unique_id=1056943401]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_0fc0o")
+
+[node name="DetectCollision" parent="DetectArea" parent_id_path=PackedInt32Array(1200528632) index="0" unique_id=58360557]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_amcxr")
+
+[node name="ActionContainer" parent="." index="5" unique_id=7478003]
+offset_left = 21.0
+offset_right = 37.0
