@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bm8nwuyx3mv01"]
+
+[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="1_mqvkg"]
+
+[resource]
+texture = ExtResource("1_mqvkg")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
