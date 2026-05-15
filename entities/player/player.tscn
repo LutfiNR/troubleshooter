@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/riki.png" id="2_qb0yx"]
 [ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
 [ext_resource type="PackedScene" uid="uid://bs3dponpjv0og" path="res://entities/item/item.tscn" id="5_fkugw"]
+[ext_resource type="Resource" uid="uid://d3ky2gwuq37wf" path="res://resources/items/item_cable.tres" id="6_8fjmc"]
+[ext_resource type="Resource" uid="uid://8e5mtqhubka1" path="res://resources/items/item_computer.tres" id="6_26q78"]
+[ext_resource type="Resource" uid="uid://4qrjblirclql" path="res://resources/items/item_server.tres" id="7_7thud"]
+[ext_resource type="Resource" uid="uid://csu70siw1yxa1" path="res://resources/items/item_delete.tres" id="7_qiwj3"]
+[ext_resource type="Resource" uid="uid://ctreqitqifpg8" path="res://resources/items/item_router.tres" id="8_a1qjk"]
+[ext_resource type="Resource" uid="uid://chj4x1rlh2bls" path="res://resources/items/item_switch.tres" id="9_j3ovn"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
@@ -196,24 +202,28 @@ offset_right = 336.0
 offset_bottom = 632.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 5
-
-[node name="CableItem" parent="CanvasLayer/Grid" unique_id=1864929566 instance=ExtResource("5_fkugw")]
-layout_mode = 2
-item_name = "cable_item"
+columns = 6
 
 [node name="ComputerItem" parent="CanvasLayer/Grid" unique_id=664964371 instance=ExtResource("5_fkugw")]
 layout_mode = 2
-item_name = "computer_item"
+item_data = ExtResource("6_26q78")
 
-[node name="ServerItem" parent="CanvasLayer/Grid" unique_id=1352125935 instance=ExtResource("5_fkugw")]
+[node name="ServerItem" parent="CanvasLayer/Grid" unique_id=401743298 instance=ExtResource("5_fkugw")]
 layout_mode = 2
-item_name = "server_item"
+item_data = ExtResource("7_7thud")
 
-[node name="RouterItem" parent="CanvasLayer/Grid" unique_id=87416384 instance=ExtResource("5_fkugw")]
+[node name="RouterItem" parent="CanvasLayer/Grid" unique_id=996045501 instance=ExtResource("5_fkugw")]
 layout_mode = 2
-item_name = "router_item"
+item_data = ExtResource("8_a1qjk")
 
-[node name="SwitchItem" parent="CanvasLayer/Grid" unique_id=1950442245 instance=ExtResource("5_fkugw")]
+[node name="SwitchItem" parent="CanvasLayer/Grid" unique_id=2070825566 instance=ExtResource("5_fkugw")]
 layout_mode = 2
-item_name = "switch_item"
+item_data = ExtResource("9_j3ovn")
+
+[node name="CableItem" parent="CanvasLayer/Grid" unique_id=1864929566 instance=ExtResource("5_fkugw")]
+layout_mode = 2
+item_data = ExtResource("6_8fjmc")
+
+[node name="DeleteItem" parent="CanvasLayer/Grid" unique_id=469931595 instance=ExtResource("5_fkugw")]
+layout_mode = 2
+item_data = ExtResource("7_qiwj3")

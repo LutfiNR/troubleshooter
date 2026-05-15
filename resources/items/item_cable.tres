@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://d3ky2gwuq37wf"]
+
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/setting_icon.png" id="1_wqexk"]
+[ext_resource type="Script" uid="uid://bnpao1ca63lpx" path="res://components/item/item_data.gd" id="2_y487r"]
+
+[resource]
+script = ExtResource("2_y487r")
+name = "cable_item"
+icon = ExtResource("1_wqexk")
+cursor_image = ExtResource("1_wqexk")
+metadata/_custom_type_script = "uid://bnpao1ca63lpx"
