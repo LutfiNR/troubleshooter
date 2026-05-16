@@ -27,9 +27,10 @@ func initialize_device() -> void:
 	if not selected_item:
 		return
 	device = selected_item.scene.instantiate()
+	device.modulate.a = 0.5
 	computer_container.add_child(device)
 	
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("click_left"):
 		place_device()
 
@@ -37,6 +38,7 @@ func place_device() -> void:
 	if not selected_item or not device:
 		return
 	is_placed = true
+	device.modulate.a = 1
 	assign_device_data()
 	InventoryManager.item_selected.emit(null)
 

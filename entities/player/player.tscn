@@ -195,35 +195,42 @@ script = ExtResource("4_viyt1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1394941799]
 
-[node name="Grid" type="GridContainer" parent="CanvasLayer" unique_id=1256493510]
+[node name="ItemContainer" type="GridContainer" parent="CanvasLayer" unique_id=1256493510]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = 16.0
-offset_top = 568.0
-offset_right = 336.0
-offset_bottom = 632.0
+offset_top = -64.0
+offset_right = 344.0
+offset_bottom = -16.0
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 0
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 0
 columns = 6
 
-[node name="ComputerItem" parent="CanvasLayer/Grid" unique_id=664964371 instance=ExtResource("5_fkugw")]
+[node name="ComputerItem" parent="CanvasLayer/ItemContainer" unique_id=664964371 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("6_26q78")
 
-[node name="ServerItem" parent="CanvasLayer/Grid" unique_id=401743298 instance=ExtResource("5_fkugw")]
+[node name="ServerItem" parent="CanvasLayer/ItemContainer" unique_id=401743298 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("7_7thud")
 
-[node name="RouterItem" parent="CanvasLayer/Grid" unique_id=996045501 instance=ExtResource("5_fkugw")]
+[node name="RouterItem" parent="CanvasLayer/ItemContainer" unique_id=996045501 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("8_a1qjk")
 
-[node name="SwitchItem" parent="CanvasLayer/Grid" unique_id=2070825566 instance=ExtResource("5_fkugw")]
+[node name="SwitchItem" parent="CanvasLayer/ItemContainer" unique_id=2070825566 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("9_j3ovn")
 
-[node name="CableItem" parent="CanvasLayer/Grid" unique_id=1864929566 instance=ExtResource("5_fkugw")]
+[node name="CableItem" parent="CanvasLayer/ItemContainer" unique_id=1864929566 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("6_8fjmc")
 
-[node name="DeleteItem" parent="CanvasLayer/Grid" unique_id=469931595 instance=ExtResource("5_fkugw")]
+[node name="DeleteItem" parent="CanvasLayer/ItemContainer" unique_id=469931595 instance=ExtResource("5_fkugw")]
 layout_mode = 2
 item_data = ExtResource("7_qiwj3")

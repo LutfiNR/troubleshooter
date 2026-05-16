@@ -12,15 +12,17 @@ func initialize() -> void:
 	InventoryManager.item_selected.connect(_on_item_selected)
 
 func _on_item_selected(item: ItemData) -> void:
-	if item != item_data and button_pressed:
+	if item != item_data:
 		set_pressed_no_signal(false)
 		change_cursor_mouse(null)
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
+		print("[ITEM] ",self.name , " clicked")
 		InventoryManager.item_selected.emit(item_data)
 		change_cursor_mouse(item_data.cursor_image)
 	else:
+		print("[ITEM] ",self.name , " unclicked")
 		InventoryManager.item_selected.emit(null)
 		change_cursor_mouse(null)
 

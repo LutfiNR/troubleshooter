@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://noeheffbrarg"]
 
 [ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://assets/PopupActionDevice/popupobject_0001.png" id="2_7tldx"]
-[ext_resource type="Script" uid="uid://c0f5x45bf3y1a" path="res://entities/device/router/router.gd" id="2_obbad"]
-[ext_resource type="PackedScene" uid="uid://dvock2443pide" path="res://entities/device/router/physical/router_physical.tscn" id="2_u2xbe"]
 [ext_resource type="Texture2D" uid="uid://dg7uebr3q32ic" path="res://assets/Router/router.png" id="2_vbwme"]
-[ext_resource type="Script" uid="uid://c1r6vmhrnysag" path="res://entities/device/utils/action_popup.gd" id="3_dcdsp"]
-[ext_resource type="PackedScene" uid="uid://kbe3xcqc12xo" path="res://entities/device/router/desktop/router_desktop.tscn" id="3_pndaw"]
 [ext_resource type="Texture2D" uid="uid://o0a73wefbihk" path="res://assets/PopupActionDevice/popupobject_0002.png" id="3_y0sel"]
 [ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://assets/PopupActionDevice/popupobject_0003.png" id="4_41528"]
 
@@ -38,13 +34,8 @@ _data = {
 &"RESET": SubResource("Animation_yhewp")
 }
 
-[node name="Router" type="StaticBody2D" unique_id=1828844198 node_paths=PackedStringArray("sprite", "action_popup")]
+[node name="Router" type="StaticBody2D" unique_id=1828844198]
 y_sort_enabled = true
-script = ExtResource("2_obbad")
-sprite = NodePath("Sprite2D")
-action_popup = NodePath("ActionContainer")
-physical_scene = ExtResource("2_u2xbe")
-desktop_scene = ExtResource("3_pndaw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
 position = Vector2(0, -3)
@@ -87,7 +78,6 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 28)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("3_dcdsp")
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerButton" type="TextureButton" parent="ActionContainer" unique_id=1394131975]

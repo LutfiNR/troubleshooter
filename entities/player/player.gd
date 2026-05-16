@@ -9,12 +9,15 @@ const IDLE_RIGHT_FRAME : int = 8
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
+@onready var item_container: GridContainer = $CanvasLayer/ItemContainer
 @export var camera_limit: Dictionary
 
 func _ready():
 	movement.started_moving.connect(_on_movement_started)
 	movement.stopped.connect(_on_movement_stopped)
 	_on_tilemap_changed()
+	if NetworkManager.play_mode == NetworkManager.PlayMode.EXPLORATION:
+		item_container.visible = true
 
 func _on_tilemap_changed():
 	camera.change_limit_camera(camera_limit)

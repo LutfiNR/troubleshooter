@@ -9,3 +9,7 @@ func _ready() -> void:
 
 func _on_item_selected(item: ItemData = null) -> void:
 	selected_item = item
+	if selected_item==null:
+		print("[INVENTORY MANAGER] none item selected")
+	else:
+		print("[INVENTORY MANAGER] ", selected_item.name, " selected")
