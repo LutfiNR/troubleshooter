@@ -12,22 +12,22 @@ enum PowerState{
 
 func verify_configuration(correct_config: NetworkDevice)-> bool:
 	var is_correct = false
-	is_correct = verify_id(correct_config.id)
-	is_correct = verify_hostname(correct_config.hostname)
-	is_correct = verify_power(correct_config.power)
+	is_correct = _verify_id(correct_config.id)
+	is_correct = _verify_hostname(correct_config.hostname)
+	is_correct = _verify_power(correct_config.power)
 	return is_correct
 	
-func verify_id(correct_id)-> bool:
+func _verify_id(correct_id)-> bool:
 	if id != correct_id:
 		return false
 	return true
 
-func verify_hostname(correct_hostname)-> bool:
+func _verify_hostname(correct_hostname)-> bool:
 	if id != correct_hostname:
 		return false
 	return true
 
-func verify_power(correct_power)-> bool:
+func _verify_power(correct_power)-> bool:
 	if id != correct_power:
 		return false
 	return true

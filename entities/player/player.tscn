@@ -196,6 +196,7 @@ script = ExtResource("4_viyt1")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1394941799]
 
 [node name="ItemContainer" type="GridContainer" parent="CanvasLayer" unique_id=1256493510]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0

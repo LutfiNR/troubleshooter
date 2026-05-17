@@ -39,17 +39,6 @@ func setup_ip_address() -> void:
 		)
 		ip_address = null
 
-func set_ip_address(ip: String, subnet: String) -> bool:
-	if is_layer2():
-		return false
-	var new_ip := IPAddress.new(ip, subnet)
-	if not new_ip.valid:
-		return false
-	export_ip_address = ip
-	export_subnet_mask = subnet
-	ip_address = new_ip
-	return true
-
 func clear_ip_address() -> void:
 	export_ip_address = ""
 	export_subnet_mask = ""
@@ -66,3 +55,34 @@ func is_layer3() -> bool:
 
 func is_up() -> bool:
 	return state == InterfaceState.UP
+
+func verify_configuration(correct_configuration: NetworkInterface)-> bool:
+	var is_correct: bool = true
+	is_correct = is_correct and _verify_id(correct_configuration.id)
+	is_correct = is_correct and _verify_state(correct_configuration.state)
+	is_correct = is_correct and _verify_mac_address(correct_configuration.mac_address)
+	is_correct = is_correct and _verify_layer(correct_configuration.layer)
+	if is_layer3():
+		is_correct = is_correct and ip_address.verify_configuration(correct_configuration.ip_address)
+	return is_correct
+
+func _verify_id(correct_id)-> bool:
+	if id != correct_id:
+		return false
+	return true
+
+func _verify_state(correct_state: InterfaceState) -> bool:
+	if state != correct_state:
+		return false
+	return true
+
+func _verify_mac_address(correct_mac_address: String) -> bool:
+	if mac_address != correct_mac_address:
+		return false
+	return true
+
+func _verify_layer(correct_layer: InterfaceLayer) -> bool:
+	if layer != correct_layer:
+		return false
+	return true
+
