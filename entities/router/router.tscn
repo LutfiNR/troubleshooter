@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://noeheffbrarg"]
 
 [ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://assets/PopupActionDevice/popupobject_0001.png" id="2_7tldx"]
+[ext_resource type="Script" uid="uid://cjpyyc2213" path="res://entities/utils/action_popup_device.gd" id="2_12yem"]
 [ext_resource type="Texture2D" uid="uid://dg7uebr3q32ic" path="res://assets/Router/router.png" id="2_vbwme"]
 [ext_resource type="Texture2D" uid="uid://o0a73wefbihk" path="res://assets/PopupActionDevice/popupobject_0002.png" id="3_y0sel"]
 [ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://assets/PopupActionDevice/popupobject_0003.png" id="4_41528"]
@@ -78,6 +79,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 28)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("2_12yem")
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerButton" type="TextureButton" parent="ActionContainer" unique_id=1394131975]

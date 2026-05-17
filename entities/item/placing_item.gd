@@ -41,6 +41,7 @@ func place_device() -> void:
 	is_placed = true
 	device.modulate.a = 1
 	NetworkManager.setup_device(selected_item.type)
+	device.load_device_data()
 	InventoryManager.item_selected.emit(null)
 	
 func grab_to_mouse_position() -> void:

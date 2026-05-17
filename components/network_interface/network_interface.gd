@@ -19,33 +19,33 @@ enum InterfaceState {
 @export var export_ip_address: String = ""
 @export var export_subnet_mask: String = ""
 
-var ip_address: IPAddress = null
+var ip: IPAddress = null
 
-func _init() -> void:
+func _init(_id: String) -> void:
+	id = _id
 	setup_ip_address()
 
 func setup_ip_address() -> void:
 	# Layer 2 interfaces do not use IP
 	if is_layer2():
-		ip_address = null
+		ip = null
 		return
-	ip_address = IPAddress.new(
+	ip = IPAddress.new(
 		export_ip_address,
 		export_subnet_mask
 	)
-	if not ip_address.valid:
-		push_error(
-			"Invalid IP configuration on interface '%s'" % id
-		)
-		ip_address = null
+	if not ip.valid:
+		if ip.address != "":
+			push_error( "Invalid IP configuration on interface '%s'" % id)
+		ip = null
 
 func clear_ip_address() -> void:
 	export_ip_address = ""
 	export_subnet_mask = ""
-	ip_address = null
+	ip = null
 
 func has_ip_address() -> bool:
-	return ip_address != null
+	return ip != null
 
 func is_layer2() -> bool:
 	return layer == InterfaceLayer.SECONDLAYER
@@ -63,7 +63,7 @@ func verify_configuration(correct_configuration: NetworkInterface)-> bool:
 	is_correct = is_correct and _verify_mac_address(correct_configuration.mac_address)
 	is_correct = is_correct and _verify_layer(correct_configuration.layer)
 	if is_layer3():
-		is_correct = is_correct and ip_address.verify_configuration(correct_configuration.ip_address)
+		is_correct = is_correct and ip.verify_configuration(correct_configuration.ip)
 	return is_correct
 
 func _verify_id(correct_id)-> bool:

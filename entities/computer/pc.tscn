@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://tuwvtg40j5ob"]
 
+[ext_resource type="Script" uid="uid://2he67g44tjx0" path="res://entities/computer/computer.gd" id="1_ywltm"]
+[ext_resource type="Script" uid="uid://cjpyyc2213" path="res://entities/utils/action_popup_device.gd" id="2_ac1i5"]
 [ext_resource type="Texture2D" uid="uid://c3jkuuoqft25o" path="res://assets/PC/pc.png" id="2_v4cfa"]
 [ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://assets/PopupActionDevice/popupobject_0001.png" id="4_v4cfa"]
 [ext_resource type="Texture2D" uid="uid://o0a73wefbihk" path="res://assets/PopupActionDevice/popupobject_0002.png" id="5_rpx5f"]
@@ -33,8 +35,11 @@ _data = {
 &"RESET": SubResource("Animation_yhewp")
 }
 
-[node name="PC" type="StaticBody2D" unique_id=1713763221]
+[node name="PC" type="StaticBody2D" unique_id=1713763221 node_paths=PackedStringArray("sprite", "action_popup")]
 y_sort_enabled = true
+script = ExtResource("1_ywltm")
+sprite = NodePath("Sprite2D")
+action_popup = NodePath("ActionContainer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
 position = Vector2(0, -1.5)
@@ -77,6 +82,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 28)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("2_ac1i5")
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerButton" type="TextureButton" parent="ActionContainer" unique_id=1394131975]
@@ -98,6 +104,6 @@ texture_pressed = ExtResource("6_3p2c5")
 [connection signal="input_event" from="InteractArea" to="." method="_on_interact_area_input_event"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
-[connection signal="toggled" from="ActionContainer/PowerButton" to="." method="_on_power_button_toggled"]
+[connection signal="pressed" from="ActionContainer/PowerButton" to="." method="_on_power_button_pressed"]
 [connection signal="pressed" from="ActionContainer/DesktopButton" to="." method="_on_desktop_button_pressed"]
 [connection signal="pressed" from="ActionContainer/PhysicalButton" to="." method="_on_physical_button_pressed"]

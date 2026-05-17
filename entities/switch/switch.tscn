@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://bhbp4y5qe6gvk"]
 
-[ext_resource type="Script" uid="uid://c1r6vmhrnysag" path="res://entities/device/utils/action_popup.gd" id="2_jgo17"]
+[ext_resource type="Script" uid="uid://cjpyyc2213" path="res://entities/utils/action_popup_device.gd" id="2_8opld"]
 [ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://assets/PopupActionDevice/popupobject_0001.png" id="2_jgohr"]
 [ext_resource type="Texture2D" uid="uid://ce274dsb13ua5" path="res://assets/Switch/switch.png" id="2_onevj"]
-[ext_resource type="PackedScene" uid="uid://ltpg38702vte" path="res://entities/device/switch/physical/switch_physical.tscn" id="2_tsfvs"]
-[ext_resource type="Script" uid="uid://bpkewho0tjmf" path="res://entities/device/switch/switch.gd" id="2_uk7y1"]
 [ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://assets/PopupActionDevice/popupobject_0003.png" id="4_uoypf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk7y1"]
@@ -36,12 +34,8 @@ _data = {
 &"RESET": SubResource("Animation_yhewp")
 }
 
-[node name="Switch" type="StaticBody2D" unique_id=1625809566 node_paths=PackedStringArray("sprite", "action_popup")]
+[node name="Switch" type="StaticBody2D" unique_id=1625809566]
 y_sort_enabled = true
-script = ExtResource("2_uk7y1")
-sprite = NodePath("Sprite2D")
-action_popup = NodePath("ActionContainer")
-physical_scene = ExtResource("2_tsfvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
 position = Vector2(0, 1)
@@ -83,7 +77,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, 28)
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource("2_jgo17")
+script = ExtResource("2_8opld")
 metadata/_edit_use_anchors_ = true
 
 [node name="PowerButton" type="TextureButton" parent="ActionContainer" unique_id=1394131975]

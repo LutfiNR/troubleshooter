@@ -7,13 +7,13 @@
 
 [node name="Main" type="Node2D" parent="." unique_id=984053639]
 
-[node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("1_g7j5j")]
-
 [node name="PlaceItemSystem" type="Node2D" parent="Main" unique_id=1033355978 node_paths=PackedStringArray("computer_container")]
 script = ExtResource("2_bku14")
 computer_container = NodePath("../Computers")
 metadata/_custom_type_script = "uid://b7cdmlu8ed4q7"
 
 [node name="Computers" type="Node2D" parent="Main" unique_id=536433220]
+
+[node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("1_g7j5j")]
 
 [node name="Overlay" type="Node2D" parent="." unique_id=261510194]

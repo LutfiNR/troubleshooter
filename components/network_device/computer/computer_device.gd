@@ -9,3 +9,8 @@ enum IPAllocationType{
 @export var ip_allocation_type: IPAllocationType = IPAllocationType.STATIC
 @export var default_gateway: String = ""
 @export var dns_server: String = ""
+@export var interface: NetworkInterface
+
+func _init(_id: String) -> void:
+	id = _id
+	interface = NetworkInterface.new("eth0")

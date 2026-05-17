@@ -182,7 +182,7 @@ shape = SubResource("RectangleShape2D_qb0yx")
 
 [node name="PlayerMovementComponent" type="Node" parent="." unique_id=725124542 node_paths=PackedStringArray("character")]
 script = ExtResource("10_ve7px")
-speed = 50.0
+speed = 100.0
 character = NodePath("..")
 metadata/_custom_type_script = "uid://co3y8tt6qsgiv"
 

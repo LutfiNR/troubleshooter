@@ -10,8 +10,11 @@ enum PowerState{
 @export var hostname: String = ""
 @export var power: PowerState = PowerState.OFF
 
-func _init(_id: String) -> void:
-	id = _id
+func set_hostname(_hostname)-> void:
+	hostname = _hostname
+	
+func set_power(_power: PowerState)-> void:
+	power = _power
 
 func verify_configuration(correct_config: NetworkDevice)-> bool:
 	var is_correct = false
