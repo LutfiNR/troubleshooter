@@ -7,6 +7,7 @@ var selected_item: PlaceableItem = null
 var is_placed: bool = false
 var device: StaticBody2D = null
 
+
 func _ready() -> void:
 	InventoryManager.item_selected.connect(_on_item_selected)
 
@@ -39,24 +40,8 @@ func place_device() -> void:
 		return
 	is_placed = true
 	device.modulate.a = 1
-	assign_device_data()
+	NetworkManager.setup_device(selected_item.type)
 	InventoryManager.item_selected.emit(null)
-
-func assign_device_data()-> void:
-	var device_data: NetworkDevice
-	if selected_item.type == PlaceableItem.Type.COMPUTER:
-		device_data = NetworkDevice.new()
-		device_data.id = "computer_" + str(NetworkManager.get_devices_size())
-	if selected_item.type == PlaceableItem.Type.SERVER:
-		device_data = NetworkDevice.new()
-		device_data.id = "server_" + str(NetworkManager.get_devices_size())
-	if selected_item.type == PlaceableItem.Type.ROUTER:
-		device_data = NetworkDevice.new()
-		device_data.id = "router_" + str(NetworkManager.get_devices_size())
-	if selected_item.type == PlaceableItem.Type.SWITCH:
-		device_data = NetworkDevice.new()
-		device_data.id = "switch_" + str(NetworkManager.get_devices_size())
-	NetworkManager.setup_device(device_data)
 	
 func grab_to_mouse_position() -> void:
 	device.global_position = get_global_mouse_position()

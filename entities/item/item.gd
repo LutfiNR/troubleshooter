@@ -18,11 +18,9 @@ func _on_item_selected(item: ItemData) -> void:
 
 func _on_toggled(toggled_on: bool) -> void:
 	if toggled_on:
-		print("[ITEM] ",self.name , " clicked")
 		InventoryManager.item_selected.emit(item_data)
 		change_cursor_mouse(item_data.cursor_image)
 	else:
-		print("[ITEM] ",self.name , " unclicked")
 		InventoryManager.item_selected.emit(null)
 		change_cursor_mouse(null)
 

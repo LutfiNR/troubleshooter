@@ -85,4 +85,3 @@ func _verify_layer(correct_layer: InterfaceLayer) -> bool:
 	if layer != correct_layer:
 		return false
 	return true
-
