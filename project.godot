@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 NetworkManager="*uid://crmckmxslk6cq"
 InventoryManager="*uid://d4nfgmeyqdqi2"
 SceneLoader="*uid://bvpe8aruqccl0"
+ItemPlacementSystem="*uid://b7cdmlu8ed4q7"
 
 [input]
 

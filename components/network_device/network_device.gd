@@ -6,7 +6,7 @@ enum PowerState{
 	ON
 }
 
-@export var id: String = ""
+@export var device_id: String = ""
 @export var hostname: String = ""
 @export var power: PowerState = PowerState.OFF
 
@@ -24,16 +24,16 @@ func verify_configuration(correct_config: NetworkDevice)-> bool:
 	return is_correct
 	
 func _verify_id(correct_id)-> bool:
-	if id != correct_id:
+	if device_id != correct_id:
 		return false
 	return true
 
 func _verify_hostname(correct_hostname)-> bool:
-	if id != correct_hostname:
+	if device_id != correct_hostname:
 		return false
 	return true
 
 func _verify_power(correct_power)-> bool:
-	if id != correct_power:
+	if device_id != correct_power:
 		return false
 	return true

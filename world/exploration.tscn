@@ -1,16 +1,10 @@
 [gd_scene format=3 uid="uid://ctlnuar8hevem"]
 
 [ext_resource type="PackedScene" uid="uid://6a7sqd5akwlp" path="res://entities/player/player.tscn" id="1_g7j5j"]
-[ext_resource type="Script" uid="uid://b7cdmlu8ed4q7" path="res://entities/item/placing_item.gd" id="2_bku14"]
 
 [node name="Exploration" type="Node2D" unique_id=1719882476]
 
 [node name="Main" type="Node2D" parent="." unique_id=984053639]
-
-[node name="PlaceItemSystem" type="Node2D" parent="Main" unique_id=1033355978 node_paths=PackedStringArray("computer_container")]
-script = ExtResource("2_bku14")
-computer_container = NodePath("../Computers")
-metadata/_custom_type_script = "uid://b7cdmlu8ed4q7"
 
 [node name="Computers" type="Node2D" parent="Main" unique_id=536433220]
 

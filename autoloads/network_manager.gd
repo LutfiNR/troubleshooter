@@ -1,6 +1,6 @@
 extends Node
 class_name Networkmanager
-signal device_updated(id: String)
+signal device_updated(device_id: String)
 
 enum PlayMode{
 	MISSION,
@@ -8,47 +8,30 @@ enum PlayMode{
 }
 
 var play_mode: PlayMode
-# temp var for generating id's device
-var computer_number_id: int = 0
-var server_number_id: int = 0
-var router_number_id: int = 0
-var switch_number_id: int = 0
 var computer_devices: Dictionary[String,ComputerDevice]
 #var computer_devices: Dictionary[String,ServerDevice]
 #var computer_devices: Dictionary[String,RouterDevice]
 #var computer_devices: Dictionary[String,SwitchDevice]
 
-func _generate_id(type: PlaceableItem.Type)-> String:
-	var id: String
-	if type == PlaceableItem.Type.COMPUTER:
-		id = "computer_" + str(computer_number_id)
-		computer_number_id += 1
-	#if type == PlaceableItem.Type.SERVER:
-		#id = "server_" + str(server_number_id)
-		#server_number_id += 1
-	#if type == PlaceableItem.Type.ROUTER:
-		#id = "router_" + str(router_number_id)
-		#router_number_id += 1
-	#if type == PlaceableItem.Type.SWITCH:
-		#id = "switch_" + str(switch_number_id)
-		#switch_number_id += 1
-	return id
-func setup_device(device_type)-> void:
-	var device
-	if device_type == PlaceableItem.Type.COMPUTER:
-		device = ComputerDevice.new(_generate_id(device_type))
-		computer_devices[device.id] = device
-		print("[NETWORK MANAGER] Total Device: " + str(computer_devices.size()))
-	if device:
-		print("[NETWORK MANAGER] Setup Device " + device.id)
+func setup_device_data(_device)-> void:
+	if _device is ComputerDevice:
+		computer_devices[_device.device_id] = _device
+		print("[NETWORK MANAGER] Total Computer Device: " + str(computer_devices.size()))
+	print("[NETWORK MANAGER] "  + _device.device_id + " Device Added")
 
-func get_device(id: String):
-	if computer_devices.get(id):
-		return computer_devices.get(id)
+func remove_device_data(device_id: String)-> void:
+	if computer_devices.get(device_id):
+		computer_devices.erase(device_id)
+		print("[NETWORK MANAGER] Total Device: " + str(computer_devices.size()))
+	print("[NETWORK MANAGER] "  + device_id + " Device Removed")
+	
+func get_device(device_id: String):
+	if computer_devices.get(device_id):
+		return computer_devices.get(device_id)
 	return null
 
-func set_device_power(id: String)-> void:
-	var dev = get_device(id)
+func set_device_power(device_id: String)-> void:
+	var dev = get_device(device_id)
 	if dev == null:
 		return
 	if dev.power == NetworkDevice.PowerState.ON:
@@ -56,4 +39,4 @@ func set_device_power(id: String)-> void:
 	else:
 		dev.set_power(NetworkDevice.PowerState.ON)
 	print("[NetworkManager] ", dev.id, "'s Power State change to ", dev.power)
-	device_updated.emit(id)
+	device_updated.emit(device_id)

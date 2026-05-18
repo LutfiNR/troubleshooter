@@ -11,6 +11,6 @@ enum IPAllocationType{
 @export var dns_server: String = ""
 @export var interface: NetworkInterface
 
-func _init(_id: String) -> void:
-	id = _id
+func _init(_device_id: String) -> void:
+	device_id = _device_id
 	interface = NetworkInterface.new("eth0")
