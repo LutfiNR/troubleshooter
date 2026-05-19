@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dhehcwu5jxx6g"]
+
+[ext_resource type="Script" uid="uid://crmckmxslk6cq" path="res://autoloads/network_device_manager/network_device_manager.gd" id="1_heres"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer/computer_device.gd" id="2_i3vhn"]
+[ext_resource type="Resource" uid="uid://1j2ydnnt3umk" path="res://resources/computers/computer_0.tres" id="3_0chu4"]
+[ext_resource type="Resource" uid="uid://bi64y8i08wbgk" path="res://resources/computers/computer_1.tres" id="4_pyl4x"]
+
+[node name="NetworkDeviceManager" type="Node2D" unique_id=489487826]
+script = ExtResource("1_heres")
+export_computer_devices = Array[ExtResource("2_i3vhn")]([ExtResource("3_0chu4"), ExtResource("4_pyl4x")])

@@ -16,7 +16,7 @@ func _ready():
 	movement.started_moving.connect(_on_movement_started)
 	movement.stopped.connect(_on_movement_stopped)
 	_on_tilemap_changed()
-	if NetworkManager.play_mode == NetworkManager.PlayMode.EXPLORATION:
+	if GameManager.play_mode == GameManager.PlayMode.EXPLORATION:
 		item_container.visible = true
 
 func _on_tilemap_changed():

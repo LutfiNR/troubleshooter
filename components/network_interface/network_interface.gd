@@ -21,8 +21,7 @@ enum InterfaceState {
 
 var ip: IPAddress = null
 
-func _init(_id: String) -> void:
-	id = _id
+func _init() -> void:
 	setup_ip_address()
 
 func setup_ip_address() -> void:
