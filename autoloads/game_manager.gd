@@ -5,4 +5,4 @@ enum PlayMode{
 	EXPLORATION
 }
 
-var play_mode: PlayMode = PlayMode.EXPLORATION
+var play_mode: PlayMode = PlayMode.MISSION

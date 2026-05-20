@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="NetworkDevice" format=3 uid="uid://c0nki12e2ut1t"]
-
-[ext_resource type="Script" uid="uid://b8yi1fxa8b2nk" path="res://components/network_device/network_device.gd" id="1_jbhqa"]
-
-[resource]
-script = ExtResource("1_jbhqa")
-metadata/_custom_type_script = "uid://b8yi1fxa8b2nk"

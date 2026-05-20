@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://bfdg2lao8fnfl"]
-
-[ext_resource type="Texture2D" uid="uid://c3jkuuoqft25o" path="res://assets/PC/pc.png" id="1_bg5r7"]
-[ext_resource type="Script" uid="uid://bix41nhqahu6n" path="res://entities/item/preview.gd" id="1_jan7o"]
-
-[node name="Preview" type="Sprite2D" unique_id=227950141]
-texture = ExtResource("1_bg5r7")
-hframes = 4
-script = ExtResource("1_jan7o")

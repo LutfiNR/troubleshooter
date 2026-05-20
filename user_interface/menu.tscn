@@ -11,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bu8x4")
 exploration_scene = &"uid://ctlnuar8hevem"
+office_scene = &"uid://efh4iyv58tmo"
 
 [node name="Panel" type="Panel" parent="." unique_id=590558565]
 layout_mode = 1
@@ -43,4 +44,5 @@ text = "Mission
 layout_mode = 2
 text = "Exploration Mode"
 
+[connection signal="pressed" from="Panel/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

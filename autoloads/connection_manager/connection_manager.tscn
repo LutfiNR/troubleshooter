@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://3lq111hqbhxx"]
+
+[ext_resource type="Script" uid="uid://b1nme3511h1s8" path="res://autoloads/connection_manager/connection_manager.gd" id="1_g8h5h"]
+[ext_resource type="Script" uid="uid://doexrma0vb1qs" path="res://components/network_connection/network_connection.gd" id="2_86otk"]
+[ext_resource type="Resource" uid="uid://lg3s02r30tog" path="res://resources/correct_configuration/connections/con1.tres" id="3_lvqps"]
+
+[node name="ConnectionManager" type="Node2D" unique_id=759440004]
+script = ExtResource("1_g8h5h")
+export_connections = Array[ExtResource("2_86otk")]([ExtResource("3_lvqps")])
