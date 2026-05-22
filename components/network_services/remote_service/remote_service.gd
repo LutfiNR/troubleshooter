@@ -4,30 +4,31 @@ class_name RemoteService
 
 enum ServiceState { OFF, ON }
 
-
-class RemoteUser extends Resource:
-	@export var username: String = ""
-	@export var password: String = ""
-
-
-	func verify_configuration(correct_user: RemoteUser) -> Dictionary:
-		if not correct_user:
-			return { "status": false, "error": "Invalid Remote user" }
-		var user_match = username == correct_user.username
-		var pass_match = password == correct_user.password
-		return {
-			"status": user_match and pass_match,
-			"username": { "status": user_match },
-			"password": { "status": pass_match },
-		}
-
-
 @export var telnet_state: ServiceState = ServiceState.OFF
 @export var ssh_state: ServiceState = ServiceState.OFF
 @export var ssh_port: int = 22
 @export var permit_root_login: bool = true
 @export var users: Array[RemoteUser] = []
 
+func authenticate_ssh(username_input: String, password_input: String) -> bool:
+	if ssh_state == ServiceState.OFF: return false
+	
+	# Proteksi root login
+	if username_input == "root" and not permit_root_login:
+		return false
+		
+	for user in users:
+		if user != null and user.username == username_input and user.password == password_input:
+			return true
+	return false
+
+func authenticate_telnet(username_input: String, password_input: String) -> bool:
+	if telnet_state == ServiceState.OFF: return false
+	
+	for user in users:
+		if user != null and user.username == username_input and user.password == password_input:
+			return true
+	return false
 
 func verify_configuration(correct_remote: RemoteService) -> Dictionary:
 	if not correct_remote:

@@ -4,24 +4,6 @@ class_name MailService
 
 enum ServiceState { OFF, ON }
 
-
-class MailUser extends Resource:
-	@export var username: String = ""
-	@export var password: String = ""
-
-
-	func verify_configuration(correct_user: MailUser) -> Dictionary:
-		if not correct_user:
-			return { "status": false, "error": "Invalid Mail user" }
-		var user_match = username == correct_user.username
-		var pass_match = password == correct_user.password
-		return {
-			"status": user_match and pass_match,
-			"username": { "status": user_match },
-			"password": { "status": pass_match },
-		}
-
-
 @export var service_state: ServiceState = ServiceState.OFF
 @export var domain_name: String = "smk.com"
 @export var mailbox_format: String = "Maildir"
@@ -30,6 +12,13 @@ class MailUser extends Resource:
 @export var key_file_path: String = ""
 @export var users: Array[MailUser] = []
 
+func authenticate(username_input: String, password_input: String) -> bool:
+	if service_state == ServiceState.OFF: return false
+	
+	for user in users:
+		if user != null and user.username == username_input and user.password == password_input:
+			return true
+	return false
 
 func verify_configuration(correct_mail: MailService) -> Dictionary:
 	if not correct_mail:

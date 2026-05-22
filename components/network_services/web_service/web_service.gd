@@ -4,47 +4,35 @@ class_name WebService
 
 enum ServiceState { OFF, ON }
 
-
-class WebContent extends Resource:
-	@export_multiline var content: String = ""
-
-
-class WebVirtualHost extends Resource:
-	enum Protocol { HTTP, HTTPS }
-
-	@export var name: String = "www.example.com"
-	@export var protocol: Protocol = Protocol.HTTP
-	@export var server_name: String = "www.example.com"
-	@export var document_root: String = "/var/www"
-	@export var content: WebContent
-
-
-	func verify_configuration(correct_vhost: WebVirtualHost) -> Dictionary:
-		if not correct_vhost:
-			return { "status": false, "error": "Invalid vhost" }
-
-		var checks = {
-			"protocol": protocol == correct_vhost.protocol,
-			"server_name": server_name == correct_vhost.server_name,
-			"document_root": document_root == correct_vhost.document_root,
-		}
-
-		var is_correct = true
-		var result = { "status": false }
-		for key in checks:
-			if not checks[key]:
-				is_correct = false
-			result[key] = { "status": checks[key] }
-
-		result.status = is_correct
-		return result
-
-
 @export var http_state: ServiceState = ServiceState.OFF
 @export var https_state: ServiceState = ServiceState.OFF
 @export var virtual_hosts: Array[WebVirtualHost] = []
 
+func handle_request(request_url: String, is_https: bool) -> WebContent:
+	# Cek apakah layanan aktif berdasarkan protokol
+	if is_https and https_state == ServiceState.OFF: return null
+	if not is_https and http_state == ServiceState.OFF: return null
 
+	var expected_protocol = WebVirtualHost.Protocol.HTTPS if is_https else WebVirtualHost.Protocol.HTTP
+	var is_ip_request = _is_valid_ip(request_url)
+
+	for vhost in virtual_hosts:
+		if vhost == null: continue
+		if vhost.protocol != expected_protocol: continue
+		
+		# Jika request menggunakan IP murni atau URL cocok dengan server_name
+		if is_ip_request or vhost.server_name == request_url:
+			return vhost.content
+			
+	return null
+
+func _is_valid_ip(text: String) -> bool:
+	var parts = text.split(".")
+	if parts.size() != 4: return false
+	for p in parts:
+		if not p.is_valid_int(): return false
+	return true
+	
 func verify_configuration(correct_web: WebService) -> Dictionary:
 	if not correct_web:
 		return { "status": false, "error": "Invalid Web config" }

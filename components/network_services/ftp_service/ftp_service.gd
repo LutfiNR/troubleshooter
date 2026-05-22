@@ -4,35 +4,29 @@ class_name FTPService
 
 enum ServiceState { OFF, ON }
 
-
-class FTPUser extends Resource:
-	@export var username: String = ""
-	@export var password: String = ""
-	@export var home_directory: String = "/home/user"
-
-
-	func verify_configuration(correct_user: FTPUser) -> Dictionary:
-		if not correct_user:
-			return { "status": false, "error": "Invalid FTP user" }
-
-		var user_match = username == correct_user.username
-		var pass_match = password == correct_user.password
-		var dir_match = home_directory == correct_user.home_directory
-
-		return {
-			"status": user_match and pass_match and dir_match,
-			"username": { "status": user_match },
-			"password": { "status": pass_match },
-			"home_directory": { "status": dir_match },
-		}
-
-
 @export var ftps_state: ServiceState = ServiceState.OFF
 @export var local_enable: bool = false
 @export var anonymous_enable: bool = false
 @export var write_enable: bool = false
 @export var users: Array[FTPUser] = []
 
+func authenticate(username_input: String, password_input: String) -> FTPUser:
+	# Cek login anonymous
+	if anonymous_enable and username_input == "anonymous":
+		var anon_user = FTPUser.new()
+		anon_user.username = "anonymous"
+		anon_user.home_directory = "/srv/ftp" # Folder default anonymous
+		return anon_user
+		
+	# Cek login user lokal
+	if not local_enable: 
+		return null
+		
+	for user in users:
+		if user != null and user.username == username_input and user.password == password_input:
+			return user
+			
+	return null
 
 func verify_configuration(correct_ftp: FTPService) -> Dictionary:
 	if not correct_ftp:
