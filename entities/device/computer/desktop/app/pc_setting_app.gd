@@ -32,7 +32,7 @@ func _populate_ui() -> void:
 	gateway_input.text = device.default_gateway
 	primary_dns_input.text = device.dns_server
 	
-	var main_iface = device.get_main_interface()
+	var main_iface = device.get_interface()
 	if main_iface:
 		ip_address_input.text = main_iface.export_ip_address
 		subnet_mask_input.text = main_iface.export_subnet_mask

@@ -1,7 +1,8 @@
 extends TabBar
 
 @export var interface_list: ItemList
-
+@export var neighbor_device_label: Label
+@export var neighbor_interface_label: Label
 @export var interface_status: Label
 @export var mac_address: LineEdit
 @export var ip_address: LineEdit
@@ -46,8 +47,12 @@ func _refresh_interface_list(device: NetworkDevice) -> void:
 func _on_interface_list_item_selected(index: int) -> void:
 	current_selected_index = index
 	var selected_iface: NetworkInterface = interface_list.get_item_metadata(index)
+	var device: RouterDevice = NetworkDeviceManager.get_device_data(target_device_id)
+	var neighbor_device: NetworkDevice = NetworkDeviceManager.get_device_data(device.get_neighbor(selected_iface.id).device_b_id)
 	
 	if selected_iface:
+		neighbor_device_label.text = neighbor_device.hostname
+		neighbor_interface_label.text = device.get_neighbor(selected_iface.id).interface_b_id
 		interface_status.text = "Plugged" if selected_iface.is_up() else "Unplugged"
 		
 		if selected_iface.is_up():

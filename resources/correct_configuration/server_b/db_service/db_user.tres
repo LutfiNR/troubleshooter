@@ -7,6 +7,6 @@ script = ExtResource("1_xpa0q")
 username = "kirin"
 password = "kirin123"
 privileges = {
-0: "ALL_PRIVILEGES"
+"kirin": ["ALL PRIVILEGES"]
 }
 metadata/_custom_type_script = "uid://yo2ch62adk5w"
