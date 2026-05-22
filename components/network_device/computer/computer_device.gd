@@ -76,8 +76,8 @@ func remove_interface(interface_id: String) -> void:
 
 
 # Get interface by id
-func get_interface(interface_id: String) -> NetworkInterface:
-	return interfaces.get(interface_id)
+func get_interface() -> NetworkInterface:
+	return interfaces.values()[0]
 
 
 # Get all interfaces
@@ -107,8 +107,8 @@ func remove_neighbor(interface_id: String) -> void:
 
 
 # Get neighbors
-func get_neighbors() -> Array[NeighborhoodData]:
-	return neighbors
+func get_neighbors() -> NeighborhoodData:
+	return neighbors[0]
 
 
 # Verify full computer configuration

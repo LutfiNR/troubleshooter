@@ -8,6 +8,7 @@ class DHCPRelay:
 
 
 @export var interfaces: Dictionary[String, NetworkInterface] = { }
+@export var neighbors: Array[NeighborhoodData] = []
 
 var dhcp_relays: Dictionary[String, DHCPRelay] = { }
 
@@ -20,9 +21,13 @@ func _init() -> void:
 
 			iface.id = "fa0/%d" % i
 			iface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
-
+			
+			# Restore connection state from neighbors
+			for neighbor: NeighborhoodData in neighbors:
+				if neighbor.interface == iface.id:
+					iface.has_connection = true
+					break
 			interfaces[iface.id] = iface
-
 
 # Set interface
 func set_interface(
@@ -49,6 +54,29 @@ func has_interface(interface_id: String) -> bool:
 # Get all interfaces
 func get_interfaces() -> Dictionary[String, NetworkInterface]:
 	return interfaces
+
+# Add neighbor
+func add_neighbor(neighbor: NeighborhoodData) -> void:
+	if not neighbor:
+		return
+
+	neighbors.append(neighbor)
+
+
+# Remove neighbor by interface
+func remove_neighbor(interface_id: String) -> void:
+	for i: int in range(neighbors.size()):
+		if neighbors[i].interface == interface_id:
+			neighbors.remove_at(i)
+			return
+
+
+# Get neighbors
+func get_neighbor(interface_id: String) -> NeighborhoodData:
+	for neighbor in neighbors:
+		if neighbor.interface == interface_id:
+			return neighbor
+	return null
 
 
 # Add DHCP relay
