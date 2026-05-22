@@ -73,6 +73,13 @@ func set_device_power(device_id: String) -> void:
 	print("[NetworkDeviceManager] ", device.device_id, "'s Power State changed to ", device.power)
 	device_updated.emit(device_id)
 
+func set_interface_state(device_id: String, interface_id: String, is_up: bool) -> void:
+	var device = get_device_data(device_id)
+	if device and device.has_interface(interface_id):
+		var iface = device.get_interface(interface_id)
+		iface.state = NetworkInterface.InterfaceState.UP if is_up else NetworkInterface.InterfaceState.DOWN
+		device_updated.emit(device_id)
+		print("[NetworkDeviceManager] %s pada %s diubah menjadi %s" % [interface_id, device_id, "UP" if is_up else "DOWN"])
 
 func update_device(device_id: String, device_data: NetworkDevice) -> void:
 	if not device_data:
