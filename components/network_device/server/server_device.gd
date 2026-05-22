@@ -11,6 +11,9 @@ enum ServiceState {
 @export var default_gateway: String
 @export var dns_server: String
 
+# Tambahan: Manajemen Interface Jaringan
+@export var interfaces: Dictionary[String, NetworkInterface] = { }
+
 @export_category("Software Management")
 @export var installed_packages: Array[String]
 
@@ -45,6 +48,46 @@ enum ServiceState {
 @export_category("Mail Configuration")
 @export var mail_service: ServiceState = ServiceState.OFF
 @export var mail_configuration: Array[MailService] = []
+
+
+func _init() -> void:
+	# Default interface untuk Server (eth0)
+	if interfaces.is_empty():
+		var iface: NetworkInterface = NetworkInterface.new()
+		iface.id = "eth0"
+		iface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
+		interfaces[iface.id] = iface
+
+# ==========================================
+# MANAJEMEN INTERFACE FUNGSI
+# ==========================================
+
+
+func add_interface(interface_data: NetworkInterface) -> void:
+	if not interface_data:
+		return
+	interfaces[interface_data.id] = interface_data
+
+
+func remove_interface(interface_id: String) -> void:
+	if interfaces.has(interface_id):
+		interfaces.erase(interface_id)
+
+
+func get_interface(interface_id: String) -> NetworkInterface:
+	return interfaces.get(interface_id)
+
+
+func has_interface(interface_id: String) -> bool:
+	return interfaces.has(interface_id)
+
+
+func get_interfaces() -> Dictionary[String, NetworkInterface]:
+	return interfaces
+
+
+func get_main_interface() -> NetworkInterface:
+	return get_interface("eth0")
 
 # ==========================================
 # HANDLING REQUESTS (SIMULASI LAYANAN)
@@ -94,13 +137,12 @@ func handle_dns_request(domain: String) -> String:
 	return ""
 
 
-# Memanggil inner class WebContent dan WebVirtualHost dari WebService
-func handle_web_request(_requested_ip: String, _request_url: String, is_https: bool) -> WebService.WebContent:
+func handle_web_request(_requested_ip: String, _request_url: String, is_https: bool) -> WebContent:
 	if web_service == ServiceState.OFF:
 		return null
 
 	var is_ip_request = _is_valid_ip(_request_url)
-	var expected_protocol = WebService.WebVirtualHost.Protocol.HTTPS if is_https else WebService.WebVirtualHost.Protocol.HTTP
+	var expected_protocol = WebVirtualHost.Protocol.HTTPS if is_https else WebVirtualHost.Protocol.HTTP
 
 	for config in web_configuration:
 		if config == null:
@@ -151,10 +193,6 @@ func handle_mail_request() -> MailService:
 		return null
 	return mail_configuration[0]
 
-
-func get_main_interface() -> NetworkInterface:
-	return get_interface("eth0")
-
 # ==========================================
 # VERIFIKASI KONFIGURASI (SISTEM PENILAIAN)
 # ==========================================
@@ -184,7 +222,13 @@ func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
 		is_correct = false
 	result["packages"] = pkg_result
 
-	# 2. Evaluasi menggunakan helper function agar modular
+	# 2. Interface Verification (IP Address & Subnet Mask Server)
+	var interface_result = _verify_interfaces(correct_server.interfaces)
+	if not interface_result.status:
+		is_correct = false
+	result["interfaces"] = interface_result
+
+	# 3. Evaluasi Layanan Jaringan
 	result["dhcp_service"] = _verify_service_array(dhcp_service, correct_server.dhcp_service, dhcp_configuration, correct_server.dhcp_configuration)
 	result["dns_service"] = _verify_service_array(dns_service, correct_server.dns_service, dns_configuration, correct_server.dns_configuration)
 	result["web_service"] = _verify_service_array(web_service, correct_server.web_service, web_configuration, correct_server.web_configuration)
@@ -194,7 +238,7 @@ func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
 	result["mariadb_service"] = _verify_service_array(mariadb_service, correct_server.mariadb_service, mariadb_configuration, correct_server.mariadb_configuration)
 	result["mail_service"] = _verify_service_array(mail_service, correct_server.mail_service, mail_configuration, correct_server.mail_configuration)
 
-	# Jika ada satu saja layanan yang gagal verifikasi, set server ke false
+	# Jika ada satu saja layanan yang gagal verifikasi, set status server ke false
 	var services = ["dhcp_service", "dns_service", "web_service", "ftp_service", "remote_service", "samba_service", "mariadb_service", "mail_service"]
 	for srv in services:
 		if not result[srv].status:
@@ -203,10 +247,42 @@ func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
 	result["status"] = is_correct
 	return result
 
+# ==========================================
+# HELPER FUNGSI GRADING
+# ==========================================
 
-# ==========================================
-# HELPER FUNGSI GRADING (MODULAR & SCALABLE)
-# ==========================================
+
+func _verify_interfaces(correct_interfaces: Dictionary) -> Dictionary:
+	if interfaces.size() != correct_interfaces.size():
+		return {
+			"status": false,
+			"error": "Interface count mismatch",
+		}
+
+	var results: Dictionary = { }
+	var is_correct: bool = true
+
+	for interface_id in correct_interfaces:
+		if not interfaces.has(interface_id):
+			results[interface_id] = {
+				"status": false,
+				"error": "Missing interface",
+			}
+			is_correct = false
+			continue
+
+		var verify_result: Dictionary = interfaces[interface_id].verify_configuration(correct_interfaces[interface_id])
+		results[interface_id] = verify_result
+
+		if not verify_result.status:
+			is_correct = false
+
+	return {
+		"status": is_correct,
+		"results": results,
+	}
+
+
 func _verify_service_array(p_state: ServiceState, c_state: ServiceState, p_configs: Array, c_configs: Array) -> Dictionary:
 	var eval = {
 		"status": true,
@@ -218,7 +294,6 @@ func _verify_service_array(p_state: ServiceState, c_state: ServiceState, p_confi
 		eval.status = false
 		return eval
 
-	# Jika ujian mengharuskan layanan ON, periksa isinya
 	if c_state == ServiceState.ON:
 		if p_configs.size() < c_configs.size():
 			eval.status = false
@@ -234,9 +309,8 @@ func _verify_service_array(p_state: ServiceState, c_state: ServiceState, p_confi
 				if p_conf == null:
 					continue
 
-				# Panggil verify_configuration dari masing-masing resource layanan
 				var v = p_conf.verify_configuration(c_conf)
-				best_eval = v # Simpan referensi evaluasi terakhir
+				best_eval = v
 
 				if v.status:
 					found_match = true
@@ -248,6 +322,6 @@ func _verify_service_array(p_state: ServiceState, c_state: ServiceState, p_confi
 				if best_eval:
 					eval.details.append(best_eval)
 				else:
-					eval.details.append({ "status": false, "error": "Konfigurasi tidak ditemukan atau sangat tidak relevan" })
+					eval.details.append({ "status": false, "error": "Konfigurasi tidak ditemukan atau tidak cocok" })
 
 	return eval
