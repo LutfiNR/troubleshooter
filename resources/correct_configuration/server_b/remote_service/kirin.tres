@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RemoteUser" format=3 uid="uid://dggvpw8jlsleg"]
+
+[ext_resource type="Script" uid="uid://btora1j7tt2cm" path="res://components/network_services/remote_service/remote_user.gd" id="1_qrfio"]
+
+[resource]
+script = ExtResource("1_qrfio")
+username = "kirin"
+password = "kirin123"
+metadata/_custom_type_script = "uid://btora1j7tt2cm"

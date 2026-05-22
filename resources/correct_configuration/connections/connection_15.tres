@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="NetworkConnection" format=3 uid="uid://oh1x50tmcwo0"]
+
+[ext_resource type="Script" uid="uid://doexrma0vb1qs" path="res://components/network_connection/network_connection.gd" id="1_wxxja"]
+
+[resource]
+script = ExtResource("1_wxxja")
+connection_id = "connection_15"
+device_a_id = "computer_9"
+interface_a_id = "eth0"
+device_b_id = "switch_3"
+interface_b_id = "fa0/1"
+metadata/_custom_type_script = "uid://doexrma0vb1qs"

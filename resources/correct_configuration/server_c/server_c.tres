@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ServerDevice" format=3 uid="uid://qj5r7jso6gef"]
+
+[ext_resource type="Script" uid="uid://d32u4rnmebwff" path="res://components/network_services/dhcp_service.gd" id="1_p52ie"]
+[ext_resource type="Script" uid="uid://do6yw21m3d5ak" path="res://components/network_services/dns_service/dns_service.gd" id="2_05wna"]
+[ext_resource type="Script" uid="uid://dd6yhu00lubch" path="res://components/network_services/ftp_service/ftp_service.gd" id="3_dnow3"]
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="4_16tcr"]
+[ext_resource type="Resource" uid="uid://dhd6m2cyiie7s" path="res://resources/correct_configuration/server_c/ftp_service/ftp_service.tres" id="4_et7yg"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_services/mail_service/mail_service.gd" id="5_et7yg"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_services/database_service/mariadb_service.gd" id="6_18nn7"]
+[ext_resource type="Resource" uid="uid://7pe8seurutwr" path="res://resources/correct_configuration/server_c/eth0.tres" id="6_no6w1"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_services/remote_service/remote_service.gd" id="7_no6w1"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_services/file_service/samba_service.gd" id="8_m22pb"]
+[ext_resource type="Resource" uid="uid://dvegi5gkc2dia" path="res://resources/correct_configuration/server_c/file_service/samba_service.tres" id="9_05wna"]
+[ext_resource type="Script" uid="uid://d27u2rul5ujwv" path="res://components/network_device/server/server_device.gd" id="9_lco2x"]
+[ext_resource type="Script" uid="uid://be0sebhd42mrr" path="res://components/network_services/web_service/web_service.gd" id="10_y823g"]
+
+[resource]
+script = ExtResource("9_lco2x")
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+interfaces = Dictionary[String, ExtResource("4_16tcr")]({
+"eth0": ExtResource("6_no6w1")
+})
+installed_packages = Array[String](["samba", "vsftpd"])
+ftp_service = 1
+ftp_configuration = Array[ExtResource("3_dnow3")]([ExtResource("4_et7yg")])
+samba_service = 1
+samba_configuration = Array[ExtResource("8_m22pb")]([ExtResource("9_05wna")])
+device_id = "server_2"
+hostname = "Server C"
+power = 1
+metadata/_custom_type_script = "uid://d27u2rul5ujwv"

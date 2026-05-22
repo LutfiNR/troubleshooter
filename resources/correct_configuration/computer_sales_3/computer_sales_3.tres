@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ComputerDevice" format=3 uid="uid://c4mpjbv4g8g3l"]
+
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="1_cb5ac"]
+[ext_resource type="Resource" uid="uid://bru4s6i5gaum5" path="res://resources/correct_configuration/computer_sales_3/eth0.tres" id="2_mvaul"]
+[ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="3_i5070"]
+[ext_resource type="Resource" uid="uid://bkkmdydevk4ky" path="res://resources/correct_configuration/computer_sales_3/neighbor_switch_sales.tres" id="4_i4ro4"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer/computer_device.gd" id="5_nwywg"]
+
+[resource]
+script = ExtResource("5_nwywg")
+ip_allocation_type = 1
+default_gateway = "192.168.4.1"
+dns_server = "192.168.1.254"
+interfaces = Dictionary[String, ExtResource("1_cb5ac")]({
+"eth0": ExtResource("2_mvaul")
+})
+neighbors = Array[ExtResource("3_i5070")]([ExtResource("4_i4ro4")])
+device_id = "computer_7"
+hostname = "Computer Sales 3"
+power = 1
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

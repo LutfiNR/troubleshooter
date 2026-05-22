@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ComputerDevice" format=3 uid="uid://fthahbgay7os"]
+
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="1_ieghl"]
+[ext_resource type="Resource" uid="uid://d0nmi51sjvhkv" path="res://resources/correct_configuration/computer_accounting_4/eth0.tres" id="2_l4pvc"]
+[ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="3_uxr85"]
+[ext_resource type="Resource" uid="uid://c4w8bxeefbu2o" path="res://resources/correct_configuration/computer_accounting_4/neighbor_switch_acc.tres" id="4_p2kdk"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer/computer_device.gd" id="5_ic5x0"]
+
+[resource]
+script = ExtResource("5_ic5x0")
+ip_allocation_type = 1
+default_gateway = "192.168.2.1"
+dns_server = "192.168.1.254"
+interfaces = Dictionary[String, ExtResource("1_ieghl")]({
+"eth0": ExtResource("2_l4pvc")
+})
+neighbors = Array[ExtResource("3_uxr85")]([ExtResource("4_p2kdk")])
+device_id = "computer_4"
+hostname = "Computer Accounting 4"
+power = 1
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

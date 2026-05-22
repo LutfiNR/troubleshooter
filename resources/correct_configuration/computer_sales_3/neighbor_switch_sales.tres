@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NeighborhoodData" format=3 uid="uid://bkkmdydevk4ky"]
+
+[ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="1_ww4nk"]
+
+[resource]
+script = ExtResource("1_ww4nk")
+interface = "eth0"
+device_b_id = "switch_3"
+interface_b_id = "fa0/3"
+metadata/_custom_type_script = "uid://cc0e76v5yg2wt"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MariaDBService" format=3 uid="uid://chnq5vvol4qvb"]
+
+[ext_resource type="Script" uid="uid://cduenld6bakjc" path="res://components/network_services/database_service/db.gd" id="1_5gl3j"]
+[ext_resource type="Resource" uid="uid://bgtartqlr2jgw" path="res://resources/correct_configuration/server_b/db_service/db.tres" id="2_8ktw5"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_services/database_service/mariadb_service.gd" id="2_spjv1"]
+[ext_resource type="Script" uid="uid://yo2ch62adk5w" path="res://components/network_services/database_service/db_user.gd" id="3_8ktw5"]
+[ext_resource type="Resource" uid="uid://c6dnj42huqs5o" path="res://resources/correct_configuration/server_b/db_service/db_user.tres" id="5_p86dj"]
+
+[resource]
+script = ExtResource("2_spjv1")
+service_state = 1
+root_password = "kirin123"
+databases = Array[ExtResource("1_5gl3j")]([ExtResource("2_8ktw5")])
+users = Array[ExtResource("3_8ktw5")]([ExtResource("5_p86dj")])
+metadata/_custom_type_script = "uid://v4wpr3xnvwy3"

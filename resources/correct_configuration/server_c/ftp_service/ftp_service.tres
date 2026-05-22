@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FTPService" format=3 uid="uid://dhd6m2cyiie7s"]
+
+[ext_resource type="Script" uid="uid://dd6yhu00lubch" path="res://components/network_services/ftp_service/ftp_service.gd" id="1_1a2j0"]
+[ext_resource type="Script" uid="uid://c71448uh2adke" path="res://components/network_services/ftp_service/ftp_user.gd" id="2_04iwk"]
+[ext_resource type="Resource" uid="uid://0hyabay6u2kw" path="res://resources/correct_configuration/server_c/ftp_service/user.tres" id="3_04iwk"]
+
+[resource]
+script = ExtResource("1_1a2j0")
+ftps_state = 1
+local_enable = true
+write_enable = true
+users = Array[ExtResource("2_04iwk")]([ExtResource("3_04iwk")])
+metadata/_custom_type_script = "uid://dd6yhu00lubch"

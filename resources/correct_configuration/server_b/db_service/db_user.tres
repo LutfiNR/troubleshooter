@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MariaDBUser" format=3 uid="uid://c6dnj42huqs5o"]
+
+[ext_resource type="Script" uid="uid://yo2ch62adk5w" path="res://components/network_services/database_service/db_user.gd" id="1_xpa0q"]
+
+[resource]
+script = ExtResource("1_xpa0q")
+username = "kirin"
+password = "kirin123"
+privileges = {
+0: "ALL_PRIVILEGES"
+}
+metadata/_custom_type_script = "uid://yo2ch62adk5w"

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="RouterDevice" format=3 uid="uid://b8q014mskqnfk"]
+
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="1_8u8i8"]
+[ext_resource type="Resource" uid="uid://cumbk1wb31g2g" path="res://resources/correct_configuration/router/fa0-0.tres" id="2_3edgs"]
+[ext_resource type="Script" uid="uid://b0an7h2vytnoi" path="res://components/network_device/router/router_device.gd" id="2_mlxqh"]
+[ext_resource type="Resource" uid="uid://cumbk1wb31g2g" path="res://resources/correct_configuration/router/fa0-1.tres" id="3_q3027"]
+[ext_resource type="Resource" uid="uid://dkul76ecwgi6s" path="res://resources/correct_configuration/router/fa0-2.tres" id="4_ofqkw"]
+[ext_resource type="Resource" uid="uid://bkn13d7wmxfon" path="res://resources/correct_configuration/router/fa0-3.tres" id="5_mvod7"]
+
+[resource]
+script = ExtResource("2_mlxqh")
+interfaces = Dictionary[String, ExtResource("1_8u8i8")]({
+"fa0/0": ExtResource("2_3edgs"),
+"fa0/1": ExtResource("3_q3027"),
+"fa0/2": ExtResource("4_ofqkw"),
+"fa0/3": ExtResource("5_mvod7")
+})
+device_id = "router_0"
+hostname = "Router Main"
+power = 1
+metadata/_custom_type_script = "uid://b0an7h2vytnoi"

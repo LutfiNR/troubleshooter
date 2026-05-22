@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WebContent" format=3 uid="uid://ccwgkt4h43e0x"]
+
+[ext_resource type="Script" uid="uid://bbsvee2y22upq" path="res://components/network_services/web_service/web_content.gd" id="1_nwpn2"]
+
+[resource]
+script = ExtResource("1_nwpn2")
+content = "kirin web page"
+metadata/_custom_type_script = "uid://bbsvee2y22upq"
