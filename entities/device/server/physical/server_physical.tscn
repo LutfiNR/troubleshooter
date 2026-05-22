@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bldeysmb1ivpj"]
+
+[ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_8fk5w"]
+[ext_resource type="Script" uid="uid://b6kvbwgtewbe0" path="res://entities/device/utils/physical.gd" id="1_unqpu"]
+[ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_chpgs"]
+[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="3_8ova8"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_unqpu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uk0qv"]
+texture = ExtResource("3_8ova8")
+
+[node name="ServerPhysical" type="Node2D" unique_id=1024417330 node_paths=PackedStringArray("ports", "cables")]
+script = ExtResource("1_unqpu")
+ports = [NodePath("Port")]
+cables = [NodePath("CableNode")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=758700171]
+
+[node name="Port" parent="." unique_id=379434902 instance=ExtResource("1_8fk5w")]
+
+[node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("2_chpgs")]
+visible = false
+position = Vector2(0, 53)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2021142833]
+
+[node name="ExitButton" type="Button" parent="." unique_id=1299322673]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 252.0
+offset_top = -153.0
+offset_right = 296.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_uk0qv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uk0qv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uk0qv")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=1238522991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_unqpu")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

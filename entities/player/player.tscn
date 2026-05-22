@@ -1,0 +1,217 @@
+[gd_scene format=3 uid="uid://6a7sqd5akwlp"]
+
+[ext_resource type="Script" uid="uid://dgvstrri8nt3b" path="res://entities/player/player.gd" id="1_k7rle"]
+[ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/riki.png" id="2_qb0yx"]
+[ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="5_fkugw"]
+[ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
+size = Vector2(10, 14)
+
+[sub_resource type="Animation" id="Animation_rawpq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_qb0yx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_k7rle"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_qb0yx"), ExtResource("2_qb0yx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ve7px"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_qb0yx"), ExtResource("2_qb0yx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 5, 4]
+}
+
+[sub_resource type="Animation" id="Animation_7skvd"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_qb0yx"), ExtResource("2_qb0yx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [11, 10, 9, 8]
+}
+
+[sub_resource type="Animation" id="Animation_qb0yx"]
+resource_name = "walk_down"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_qb0yx"), ExtResource("2_qb0yx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [15, 14, 13, 12]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ve7px"]
+_data = {
+&"RESET": SubResource("Animation_rawpq"),
+&"walk_down": SubResource("Animation_k7rle"),
+&"walk_left": SubResource("Animation_ve7px"),
+&"walk_right": SubResource("Animation_7skvd"),
+&"walk_up": SubResource("Animation_qb0yx")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=196673383]
+y_sort_enabled = true
+script = ExtResource("1_k7rle")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2000051842]
+texture = ExtResource("2_qb0yx")
+offset = Vector2(0, -8)
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1792354195]
+shape = SubResource("RectangleShape2D_qb0yx")
+
+[node name="PlayerMovementComponent" type="Node" parent="." unique_id=725124542]
+script = ExtResource("10_ve7px")
+metadata/_custom_type_script = "uid://co3y8tt6qsgiv"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=983337053]
+libraries/ = SubResource("AnimationLibrary_ve7px")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=474593265]
+zoom = Vector2(2, 2)
+script = ExtResource("4_viyt1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1246463517]
+
+[node name="CableTool" type="Button" parent="CanvasLayer" unique_id=647156024]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -36.0
+offset_right = -14.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+
+[node name="TextureButton" type="TextureRect" parent="CanvasLayer/CableTool" unique_id=322184923]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_fkugw")
+
+[connection signal="toggled" from="CanvasLayer/CableTool" to="." method="_on_cable_tool_toggled"]

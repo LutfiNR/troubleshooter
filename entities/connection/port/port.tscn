@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bqgjoogblxqj2"]
+
+[ext_resource type="Script" uid="uid://12x4eixq1rog" path="res://entities/connection/port/port.gd" id="1_6b1gj"]
+[ext_resource type="Texture2D" uid="uid://dt4lfaiudjkkb" path="res://assets/LAN/port_LAN.png" id="2_o1wn8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffoos"]
+size = Vector2(14, 14)
+
+[node name="Port" type="Node2D" unique_id=379434902]
+scale = Vector2(2, 2)
+script = ExtResource("1_6b1gj")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=984279426]
+texture = ExtResource("2_o1wn8")
+hframes = 2
+
+[node name="Area" type="Area2D" parent="." unique_id=1686951439]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=553527081]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_ffoos")

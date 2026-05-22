@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="FileExplorerItem" format=3 uid="uid://x83mjnlbh8hy"]
+
+[ext_resource type="Script" uid="uid://d0cf54ilvpbfp" path="res://entities/device/computer/desktop/app/file_explorer/file_explorer_item.gd" id="1_m8ubh"]
+
+[resource]
+script = ExtResource("1_m8ubh")
+file_or_folder_name = "data"
+metadata/_custom_type_script = "uid://d0cf54ilvpbfp"

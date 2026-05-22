@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b2yr5qmqc7qdd"]
+
+[ext_resource type="Script" uid="uid://byd3exo3sr4vl" path="res://entities/connection/cable/cable_node.gd" id="1_qxv2u"]
+[ext_resource type="Texture2D" uid="uid://tgk47h630hs3" path="res://assets/LAN/cable_LAN.png" id="2_xydib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chxab"]
+size = Vector2(12, 14)
+
+[node name="CableNode" type="Node2D" unique_id=2075118448]
+scale = Vector2(2, 2)
+script = ExtResource("1_qxv2u")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=218923294]
+texture = ExtResource("2_xydib")
+hframes = 2
+
+[node name="Area" type="Area2D" parent="." unique_id=1830805592]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area" unique_id=2018600781]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_chxab")
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area" to="." method="_on_area_input_event"]

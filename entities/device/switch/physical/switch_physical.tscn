@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://ltpg38702vte"]
+
+[ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_0dwx3"]
+[ext_resource type="Script" uid="uid://b6kvbwgtewbe0" path="res://entities/device/utils/physical.gd" id="1_r8qhb"]
+[ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_gp1cw"]
+[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="4_wwrw3"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="5_1dg0h"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xf0pk"]
+texture = ExtResource("4_wwrw3")
+
+[node name="SwitchPhysical" type="Node2D" unique_id=380462692 node_paths=PackedStringArray("ports", "cables")]
+script = ExtResource("1_r8qhb")
+ports = [NodePath("Port"), NodePath("Port2"), NodePath("Port3"), NodePath("Port4"), NodePath("Port5"), NodePath("Port6")]
+cables = [NodePath("CableNode"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4"), NodePath("CableNode5"), NodePath("CableNode6")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=936506732]
+
+[node name="Port" parent="." unique_id=379434902 instance=ExtResource("1_0dwx3")]
+
+[node name="Port2" parent="." unique_id=325934683 instance=ExtResource("1_0dwx3")]
+position = Vector2(40, 0)
+
+[node name="Port3" parent="." unique_id=540968788 instance=ExtResource("1_0dwx3")]
+position = Vector2(80, 0)
+
+[node name="Port4" parent="." unique_id=1210369928 instance=ExtResource("1_0dwx3")]
+position = Vector2(120, 0)
+
+[node name="Port5" parent="." unique_id=1293136280 instance=ExtResource("1_0dwx3")]
+position = Vector2(160, 0)
+
+[node name="Port6" parent="." unique_id=356152078 instance=ExtResource("1_0dwx3")]
+position = Vector2(200, 0)
+
+[node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(0, 40)
+
+[node name="CableNode2" parent="." unique_id=1654324406 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(40, 40)
+
+[node name="CableNode3" parent="." unique_id=2032405165 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(80, 40)
+
+[node name="CableNode4" parent="." unique_id=1639282668 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(120, 40)
+
+[node name="CableNode5" parent="." unique_id=1590622893 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(160, 40)
+
+[node name="CableNode6" parent="." unique_id=1421986016 instance=ExtResource("2_gp1cw")]
+visible = false
+position = Vector2(200, 40)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1254363290]
+
+[node name="ExitButton" type="Button" parent="." unique_id=1572715930]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 252.0
+offset_top = -153.0
+offset_right = 296.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_xf0pk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xf0pk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xf0pk")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=401288022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_1dg0h")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

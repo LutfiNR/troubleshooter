@@ -1,0 +1,2641 @@
+[gd_scene format=3 uid="uid://rmwieffb0mql"]
+
+[ext_resource type="Script" uid="uid://bhg8xs1x3dkbt" path="res://entities/device/server/desktop/server_desktop.gd" id="1_7vsty"]
+[ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_xx8oc"]
+[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="2_7vsty"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="3_ldhip"]
+[ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="3_xpotj"]
+[ext_resource type="Script" uid="uid://blvqcuvra0i2c" path="res://entities/device/server/desktop/app/server_app.gd" id="4_2p471"]
+[ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="5_0d2s3"]
+[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://font/rainyhearts.ttf" id="6_fqsl8"]
+[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="7_2p471"]
+[ext_resource type="Script" uid="uid://bc7pw1yrw22ls" path="res://entities/device/server/desktop/app/dhcp.gd" id="7_xx8oc"]
+[ext_resource type="Script" uid="uid://cvim00ug7ugmq" path="res://entities/device/server/desktop/app/software.gd" id="9_q3fwd"]
+[ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="10_srt4w"]
+[ext_resource type="Script" uid="uid://bm441bap7idbf" path="res://entities/device/server/desktop/app/server_setting_app.gd" id="11_0d2s3"]
+[ext_resource type="Script" uid="uid://bgsykipk5ul5g" path="res://entities/device/server/desktop/app/dns.gd" id="11_03joq"]
+[ext_resource type="Script" uid="uid://djpse1ca4yalt" path="res://entities/device/server/desktop/app/web.gd" id="11_d3xln"]
+[ext_resource type="Texture2D" uid="uid://cn01rhb4d7fl5" path="res://assets/UI/Button/button_0001.png" id="12_fqsl8"]
+[ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="13_fqsl8"]
+[ext_resource type="Script" uid="uid://c1kt5ky8pi61r" path="res://entities/device/server/desktop/app/ftp.gd" id="14_fw4op"]
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/setting_icon.png" id="14_srt4w"]
+[ext_resource type="Script" uid="uid://b5xuara4wlo8h" path="res://entities/device/server/desktop/app/remote.gd" id="15_tvplv"]
+[ext_resource type="Script" uid="uid://bwbx6068fjn1u" path="res://entities/device/server/desktop/app/file.gd" id="16_mu7cj"]
+[ext_resource type="Script" uid="uid://bt8apbn1rgj7o" path="res://entities/device/server/desktop/app/database.gd" id="17_q0s5r"]
+[ext_resource type="Script" uid="uid://da47v1ki651hi" path="res://entities/device/server/desktop/app/mail.gd" id="18_6m616"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3fwd"]
+texture = ExtResource("2_7vsty")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldhip"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 0.5803922)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvplv"]
+texture = ExtResource("3_ldhip")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5yui"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p471"]
+bg_color = Color(0.4509804, 0.4509804, 0.4509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx8oc"]
+content_margin_left = 9.0
+content_margin_right = 6.0
+bg_color = Color(0.4519397, 0.45193976, 0.45193958, 1)
+border_width_right = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vsty"]
+content_margin_left = 6.0
+content_margin_right = 6.0
+bg_color = Color(0.082426794, 0.19966432, 0.26179636, 1)
+border_width_right = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ieel"]
+texture = ExtResource("3_ldhip")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgk24"]
+texture = ExtResource("7_2p471")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2re7"]
+texture = ExtResource("7_2p471")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbrwe"]
+texture = ExtResource("12_fqsl8")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="ServerDesktop" type="Node2D" unique_id=140513608 node_paths=PackedStringArray("service_app", "setting_app")]
+script = ExtResource("1_7vsty")
+sprite_on = ExtResource("1_xx8oc")
+sprite_off = ExtResource("3_xpotj")
+service_app = NodePath("UIContainer/AppContainer/ServiceApp")
+setting_app = NodePath("UIContainer/AppContainer/SettingApp")
+
+[node name="Desktop" type="Sprite2D" parent="." unique_id=679797629]
+texture = ExtResource("1_xx8oc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1530814101]
+
+[node name="UIContainer" type="Control" parent="." unique_id=571055037]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+
+[node name="ExitButton" type="Button" parent="UIContainer" unique_id=769336909]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -49.0
+offset_top = 17.0
+offset_right = -17.0
+offset_bottom = 49.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_q3fwd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_q3fwd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_q3fwd")
+
+[node name="TextureRect" type="TextureRect" parent="UIContainer/ExitButton" unique_id=588157638]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -9.0
+offset_right = 8.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ldhip")
+
+[node name="AppContainer" type="Panel" parent="UIContainer" unique_id=1839547412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldhip")
+
+[node name="ServiceApp" type="Control" parent="UIContainer/AppContainer" unique_id=173335494 node_paths=PackedStringArray("tabs", "tab_container")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_2p471")
+tabs = [NodePath("TabContainer/Software"), NodePath("TabContainer/DHCP"), NodePath("TabContainer/WEB"), NodePath("TabContainer/DNS"), NodePath("TabContainer/FTP"), NodePath("TabContainer/REMOTE"), NodePath("TabContainer/FILE"), NodePath("TabContainer/DATABASE"), NodePath("TabContainer/MAIL")]
+tab_container = NodePath("TabContainer")
+
+[node name="Window" type="NinePatchRect" parent="UIContainer/AppContainer/ServiceApp" unique_id=125546571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0d2s3")
+patch_margin_left = 10
+patch_margin_top = 26
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Title" type="Label" parent="UIContainer/AppContainer/ServiceApp" unique_id=703839462]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 31.0
+offset_top = 3.0
+offset_right = -39.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_fqsl8")
+theme_override_font_sizes/font_size = 16
+text = "Service"
+horizontal_alignment = 1
+
+[node name="ServiceExitButton" type="Button" parent="UIContainer/AppContainer/ServiceApp" unique_id=780981621]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -29.0
+offset_top = 3.0
+offset_right = -11.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_tvplv")
+
+[node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp" unique_id=441633658]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 26.0
+offset_right = -11.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="Software" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1187330273 node_paths=PackedStringArray("package_list", "status_label", "install_button", "uninstall_button")]
+layout_mode = 2
+script = ExtResource("9_q3fwd")
+package_list = NodePath("ListPool/ItemList")
+status_label = NodePath("EditorContainer/Label")
+install_button = NodePath("EditorContainer/HBoxContainer7/InstallButton")
+uninstall_button = NodePath("EditorContainer/HBoxContainer7/UninstallButton")
+available_packages = Array[String](["isc-dhcp-server", "apache2", "bind9", "vsftpd", "openssh-server", "samba", "mariadb-server", "postfix"])
+metadata/_tab_index = 0
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software" unique_id=1523508492]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -4.5
+offset_bottom = -6.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=467956050]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Software List"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=1336932212]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+item_count = 3
+item_0/text = "isc-dhcp-server"
+item_1/text = "apache2"
+item_2/text = "bind9"
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software" unique_id=30648202]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -281.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer" unique_id=1400795435]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Installed"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer" unique_id=435490424]
+layout_mode = 2
+
+[node name="UninstallButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7" unique_id=858834633]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Uninstall"
+
+[node name="InstallButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7" unique_id=1385162377]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Install"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software" unique_id=235883862]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DHCP" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1066882217 node_paths=PackedStringArray("pool_list", "dhcp_service_state", "pool_name", "default_gateway", "dns_server", "start_ip_address", "subnet_mask", "pool_size")]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+script = ExtResource("7_xx8oc")
+pool_list = NodePath("ListPool/ItemList")
+dhcp_service_state = NodePath("ListPool/HBoxContainer8/CheckButton")
+pool_name = NodePath("EditorContainer/HBoxContainer/PoolName")
+default_gateway = NodePath("EditorContainer/HBoxContainer2/DefaultGateway")
+dns_server = NodePath("EditorContainer/HBoxContainer3/DNSServer")
+start_ip_address = NodePath("EditorContainer/HBoxContainer4/StartIP")
+subnet_mask = NodePath("EditorContainer/HBoxContainer5/Subnet")
+pool_size = NodePath("EditorContainer/HBoxContainer6/Size")
+metadata/_tab_index = 1
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" unique_id=41273135]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -4.5
+offset_bottom = -6.0
+grow_vertical = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool" unique_id=2080402832]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool/HBoxContainer8" unique_id=656106322]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DHCP Service [67]"
+
+[node name="CheckButton" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool/HBoxContainer8" unique_id=1765687903]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool" unique_id=2043394935]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool" unique_id=1787072110]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DHCP Configuration"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool" unique_id=14377961]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" unique_id=700846966]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = 5.5
+offset_right = -6.0
+offset_bottom = -6.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=694446560]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer" unique_id=32912520]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Pool Name"
+
+[node name="PoolName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer" unique_id=1922974643]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=617865083]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer2" unique_id=502963820]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Default Gateway"
+
+[node name="DefaultGateway" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer2" unique_id=127824067]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=451264764]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer3" unique_id=996718458]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DNS Server"
+
+[node name="DNSServer" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer3" unique_id=224880241]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=864305788]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer4" unique_id=1115449730]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Start IP Address"
+
+[node name="StartIP" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer4" unique_id=176692022]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=1146340202]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer5" unique_id=376657333]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Subnet Mask"
+
+[node name="Subnet" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer5" unique_id=634824225]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=1658111748]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer6" unique_id=518836796]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Pool Size"
+
+[node name="Size" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer6" unique_id=1182261485]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer" unique_id=877867897]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7" unique_id=707252920]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7" unique_id=183034124]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7" unique_id=727736054]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" unique_id=791827412]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WEB" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1793119344 node_paths=PackedStringArray("name_server_list", "web_service", "http_service_state", "https_service_state", "name_server", "protocol", "server_name", "document_root", "web_content")]
+visible = false
+layout_mode = 2
+script = ExtResource("11_d3xln")
+name_server_list = NodePath("ListPool/ItemList")
+web_service = NodePath("ListPool/HBoxContainer9/WebService")
+http_service_state = NodePath("ListPool/HBoxContainer8/HTTPCheck")
+https_service_state = NodePath("ListPool/HBoxContainer8/HTTPSCheck")
+name_server = NodePath("EditorContainer/HBoxContainer/ServerName")
+protocol = NodePath("EditorContainer/HBoxContainer2/Protocol")
+server_name = NodePath("EditorContainer/HBoxContainer3/Servername")
+document_root = NodePath("EditorContainer/HBoxContainer4/DocumentRoot")
+web_content = NodePath("EditorContainer/HBoxContainer5/WebContent")
+metadata/_tab_index = 2
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" unique_id=1965500823]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -5.5
+offset_bottom = -6.0
+grow_vertical = 2
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=126119296]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer9" unique_id=2013574260]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Web Service"
+
+[node name="WebService" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer9" unique_id=1177922159]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=486522537]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8" unique_id=1557058500]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "HTTP [80]"
+
+[node name="HTTPCheck" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8" unique_id=170341293]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8" unique_id=913255425]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "HTTPS [443]"
+
+[node name="HTTPSCheck" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8" unique_id=98138385]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=797619132]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=279263207]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "List NameServer"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=83420206]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" unique_id=675473247]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" unique_id=432141888]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=781223733]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer" unique_id=739760456]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Name"
+
+[node name="ServerName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer" unique_id=4575402]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=1938182033]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer2" unique_id=1434741433]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Protocol"
+
+[node name="Protocol" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer2" unique_id=1282221716]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+popup/item_0/text = "HTTP"
+popup/item_0/id = 0
+popup/item_1/text = "HTTPS"
+popup/item_1/id = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=229707210]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer3" unique_id=304050494]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Server Name"
+
+[node name="Servername" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer3" unique_id=934801483]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=1438293098]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer4" unique_id=589338682]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Document Root"
+
+[node name="DocumentRoot" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer4" unique_id=2014656527]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer5" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=1134461506]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer5" unique_id=1086271250]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Web Content"
+
+[node name="WebContent" type="TextEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer5" unique_id=1487971821]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer" unique_id=430856784]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7" unique_id=2036159501]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7" unique_id=1409764797]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7" unique_id=1543435013]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="DNS" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=93393539 node_paths=PackedStringArray("record_list", "dns_service", "domain_name", "type", "target_ip_or_ns")]
+visible = false
+layout_mode = 2
+script = ExtResource("11_03joq")
+record_list = NodePath("ListPool/ItemList")
+dns_service = NodePath("ListPool/HBoxContainer8/DNSCheck")
+domain_name = NodePath("EditorContainer/HBoxContainer/DomainName")
+type = NodePath("EditorContainer/HBoxContainer2/Type")
+target_ip_or_ns = NodePath("EditorContainer/HBoxContainer3/Target")
+metadata/_tab_index = 3
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" unique_id=1204850040]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = -5.5
+offset_bottom = -6.0
+grow_vertical = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool" unique_id=878967154]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool/HBoxContainer8" unique_id=588116306]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DNS Service [53]"
+
+[node name="DNSCheck" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool/HBoxContainer8" unique_id=27907021]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool" unique_id=1293553617]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool" unique_id=919973031]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "List Virtual Host"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool" unique_id=1071208517]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" unique_id=532652251]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -279.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer" unique_id=640624848]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer" unique_id=331816458]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Domain"
+
+[node name="DomainName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer" unique_id=1146411105]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer" unique_id=276102705]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer2" unique_id=1644295298]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Type"
+
+[node name="Type" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer2" unique_id=644733368]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 3
+popup/item_0/text = "A Record"
+popup/item_0/id = 0
+popup/item_1/text = "CName"
+popup/item_1/id = 1
+popup/item_2/text = "MX Record"
+popup/item_2/id = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer" unique_id=121949200]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer3" unique_id=296406742]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Target IP or NS"
+
+[node name="Target" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer3" unique_id=1629529966]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer" unique_id=1607311594]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7" unique_id=1151040582]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7" unique_id=1279146292]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7" unique_id=1947125905]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" unique_id=933297657]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FTP" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=954235004 node_paths=PackedStringArray("ftp_service", "ssl_enable", "local_enable", "anonymous_enable", "write_enable", "user_list", "username", "password", "home_dir")]
+visible = false
+layout_mode = 2
+script = ExtResource("14_fw4op")
+ftp_service = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer8/FTP")
+ssl_enable = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer8/FTPS")
+local_enable = NodePath("TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer/Local")
+anonymous_enable = NodePath("TabContainer2/GlobalConfig/VBox/VBoxContainer2/HBoxContainer2/Anon")
+write_enable = NodePath("TabContainer2/GlobalConfig/VBox/VBoxContainer3/HBoxContainer3/Write")
+user_list = NodePath("TabContainer2/User/VBoxContainer/ItemList")
+username = NodePath("TabContainer2/User/VBoxContainer2/HBoxContainer3/Username")
+password = NodePath("TabContainer2/User/VBoxContainer2/HBoxContainer4/Password")
+home_dir = NodePath("TabContainer2/User/VBoxContainer2/HBoxContainer5/HomeDir")
+metadata/_tab_index = 4
+
+[node name="TabContainer2" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" unique_id=1048008227]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="GlobalConfig" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2" unique_id=26043357]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig" unique_id=1039786485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 6.0
+offset_right = -293.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox" unique_id=1169264024]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8" unique_id=1362185393]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "FTP Service [21]"
+
+[node name="FTP" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8" unique_id=361432369]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8" unique_id=1324532927]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "SSL Enable"
+
+[node name="FTPS" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8" unique_id=2063869424]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox" unique_id=674941151]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox" unique_id=1893015533]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer" unique_id=1536286584]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(2.4065375e-06, 0.5889325, 0.24625331, 1)
+text = "[allow local users to log in] "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer" unique_id=571034046]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer" unique_id=1217824269]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "local_enable"
+
+[node name="Local" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer" unique_id=1779205427]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox" unique_id=1015989693]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer2" unique_id=1702665096]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(2.4065375e-06, 0.5889325, 0.24625331, 1)
+text = "[allow anonymous  users to log in]"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer2" unique_id=402157384]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer2/HBoxContainer2" unique_id=1148727130]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "anonymous_enable"
+
+[node name="Anon" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer2/HBoxContainer2" unique_id=1760989809]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox" unique_id=1422774214]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer3" unique_id=1125676623]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(2.4065375e-06, 0.5889325, 0.24625331, 1)
+text = "[enable any form of FTP write command] "
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer3" unique_id=1167045164]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer3/HBoxContainer3" unique_id=1684617752]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "write_enable"
+
+[node name="Write" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer3/HBoxContainer3" unique_id=1112475118]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="User" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2" unique_id=1147454085]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User" unique_id=497507247]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = -8.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer" unique_id=1259143564]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "user list"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer" unique_id=689929601]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User" unique_id=515501721]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2" unique_id=1700545908]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer3" unique_id=160302285]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer3" unique_id=719735871]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2" unique_id=58929117]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer4" unique_id=722526917]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer4" unique_id=2141125444]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2" unique_id=1409373314]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer5" unique_id=807240069]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Home Directory"
+
+[node name="HomeDir" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer5" unique_id=570535574]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2" unique_id=659607046]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=13515201]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=1181519231]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=752458515]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User" unique_id=1836955005]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="REMOTE" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=609039206 node_paths=PackedStringArray("remote_service", "telnet_enable", "ssh_enable", "ssh_port", "permit_root_login", "user_list", "username", "password")]
+visible = false
+layout_mode = 2
+script = ExtResource("15_tvplv")
+remote_service = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer/Remote")
+telnet_enable = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer3/Telnet")
+ssh_enable = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer2/SSH")
+ssh_port = NodePath("TabContainer2/GlobalConfig/VBox/HBoxContainer2/SSHPort")
+permit_root_login = NodePath("TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer/Root")
+user_list = NodePath("TabContainer2/User/VBoxContainer/ItemList")
+username = NodePath("TabContainer2/User/VBoxContainer2/HBoxContainer3/Username")
+password = NodePath("TabContainer2/User/VBoxContainer2/HBoxContainer4/Password")
+metadata/_tab_index = 5
+
+[node name="TabContainer2" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" unique_id=512748043]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="GlobalConfig" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2" unique_id=290651866]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBox" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig" unique_id=1099434653]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 6.0
+offset_right = -289.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox" unique_id=1041336252]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer" unique_id=160925083]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Remote Service"
+
+[node name="Remote" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer" unique_id=1936431919]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox" unique_id=517245707]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer3" unique_id=475338356]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Telnet Service [23]"
+
+[node name="Telnet" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer3" unique_id=1025354456]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox" unique_id=249071746]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer2" unique_id=545659316]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "SSH Service"
+
+[node name="SSH" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer2" unique_id=715464851]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="Label4" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer2" unique_id=1094429019]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Port"
+
+[node name="SSHPort" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer2" unique_id=837423545]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox" unique_id=2119528400]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox" unique_id=106479482]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/VBoxContainer" unique_id=25384029]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(2.4065375e-06, 0.5889325, 0.24625331, 1)
+text = "[allow root user to log in over] "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/VBoxContainer" unique_id=1813271177]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer" unique_id=386395080]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "permit_root_login"
+
+[node name="Root" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer" unique_id=1211969993]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="User" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2" unique_id=1116233716]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User" unique_id=1674413503]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = -8.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer" unique_id=418658438]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "user list"
+
+[node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer" unique_id=675493317]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User" unique_id=59530777]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2" unique_id=1309542075]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer3" unique_id=973374080]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer3" unique_id=1630656803]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2" unique_id=957651534]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer4" unique_id=1212704664]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer4" unique_id=463115159]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2" unique_id=1609968152]
+layout_mode = 2
+
+[node name="AddButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=1508431955]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=1445547236]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7" unique_id=1077507546]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User" unique_id=42857171]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FILE" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1281294120 node_paths=PackedStringArray("file_service", "share_folder_list", "share_name", "folder_path", "valid_users", "security", "writeable", "guest_ok", "user_list", "username", "password")]
+visible = false
+layout_mode = 2
+script = ExtResource("16_mu7cj")
+file_service = NodePath("TabContainer/GlobalConfig/ListPool/HBoxContainer8/FileService")
+share_folder_list = NodePath("TabContainer/GlobalConfig/ListPool/ShareFolderList")
+share_name = NodePath("TabContainer/GlobalConfig/EditorContainer/HBoxContainer/ShareName")
+folder_path = NodePath("TabContainer/GlobalConfig/EditorContainer/HBoxContainer3/FolderPath")
+valid_users = NodePath("TabContainer/GlobalConfig/EditorContainer/VBoxContainer6/ValidUserList")
+security = NodePath("TabContainer/GlobalConfig/EditorContainer/HBoxContainer4/Security")
+writeable = NodePath("TabContainer/GlobalConfig/EditorContainer/HBoxContainer4/Writeable")
+guest_ok = NodePath("TabContainer/GlobalConfig/EditorContainer/HBoxContainer4/GuestOK")
+user_list = NodePath("TabContainer/User/VBoxContainer/UserList")
+username = NodePath("TabContainer/User/VBoxContainer2/HBoxContainer3/Username")
+password = NodePath("TabContainer/User/VBoxContainer2/HBoxContainer4/Password")
+metadata/_tab_index = 6
+
+[node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" unique_id=1254148095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="GlobalConfig" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer" unique_id=390732558]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig" unique_id=1595532928]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = -96.5
+offset_bottom = -3.0
+grow_vertical = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool" unique_id=1596009276]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool/HBoxContainer8" unique_id=2002817794]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "File Service"
+
+[node name="FileService" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool/HBoxContainer8" unique_id=1918074613]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool" unique_id=1070727643]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool" unique_id=495821369]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Share Folder List"
+
+[node name="ShareFolderList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool" unique_id=431619803]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+max_columns = 2
+same_column_width = true
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig" unique_id=1897798096]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -365.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer" unique_id=1042625441]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer" unique_id=2142712607]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "name"
+
+[node name="ShareName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer" unique_id=1107212978]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer" unique_id=113368948]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer3" unique_id=1490327782]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "folder path"
+
+[node name="FolderPath" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer3" unique_id=947996265]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer" unique_id=904453428]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=1911485135]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "security"
+
+[node name="Security" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=490167353]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "none"
+popup/item_0/id = 0
+popup/item_1/text = "security"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=974500469]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "writeable"
+
+[node name="Writeable" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=1375639506]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=626555773]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "guest_ok"
+
+[node name="GuestOK" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer4" unique_id=889988984]
+layout_mode = 2
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer" unique_id=1970020867]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/VBoxContainer6" unique_id=355946329]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "valid users"
+
+[node name="ValidUserList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/VBoxContainer6" unique_id=1953502508]
+layout_mode = 2
+size_flags_vertical = 3
+select_mode = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer" unique_id=718348702]
+layout_mode = 2
+
+[node name="AddShareFolderButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7" unique_id=1567974175]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveShareFolderButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7" unique_id=738876697]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveShareFolderButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7" unique_id=946005834]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig" unique_id=1331089976]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -91.5
+offset_top = 1.0
+offset_right = -87.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="User" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer" unique_id=69954442]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User" unique_id=163400155]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = -8.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer" unique_id=1540400949]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "user list"
+
+[node name="UserList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer" unique_id=466630031]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User" unique_id=323007877]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2" unique_id=1070900497]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer3" unique_id=1748837482]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer3" unique_id=1468218146]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2" unique_id=425437471]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer4" unique_id=1264391697]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer4" unique_id=1170232876]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2" unique_id=1191273373]
+layout_mode = 2
+
+[node name="AddUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7" unique_id=2011751844]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7" unique_id=435663364]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7" unique_id=769345957]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User" unique_id=749811192]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DATABASE" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1272260750 node_paths=PackedStringArray("db_service", "root_password_input", "db_list", "db_name", "user_list", "username", "password", "user_options", "db_options", "grant_list")]
+visible = false
+layout_mode = 2
+script = ExtResource("17_q0s5r")
+db_service = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer8/DBService")
+root_password_input = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer9/RootPW")
+db_list = NodePath("TabContainer/General Config/ListPool/DBList")
+db_name = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer/DBName")
+user_list = NodePath("TabContainer/Users/VBoxContainer/UserList")
+username = NodePath("TabContainer/Users/VBoxContainer2/HBoxContainer4/Username")
+password = NodePath("TabContainer/Users/VBoxContainer2/HBoxContainer5/Password")
+user_options = NodePath("TabContainer/Privileges/VBoxContainer/HBoxContainer3/UserOption")
+db_options = NodePath("TabContainer/Privileges/VBoxContainer/HBoxContainer3/DBOption")
+grant_list = NodePath("TabContainer/Privileges/VBoxContainer2/GrantList")
+metadata/_tab_index = 7
+
+[node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" unique_id=707527404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="General Config" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer" unique_id=483977562]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config" unique_id=1800612065]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = -57.5
+offset_bottom = -3.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/ListPool" unique_id=1227953225]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DB List"
+
+[node name="DBList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/ListPool" unique_id=787905244]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+max_columns = 2
+same_column_width = true
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config" unique_id=1388819376]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer" unique_id=399860963]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer8" unique_id=1345956184]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DB Service"
+
+[node name="DBService" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer8" unique_id=1549856878]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer" unique_id=323158433]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer9" unique_id=1757526801]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Root Password"
+
+[node name="RootPW" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer9" unique_id=1798014162]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer" unique_id=769343121]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer" unique_id=1255123526]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer" unique_id=1571790962]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DB Name"
+
+[node name="DBName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer" unique_id=1670520198]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer" unique_id=1249729590]
+layout_mode = 2
+
+[node name="AddDBButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7" unique_id=483272172]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveDBButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7" unique_id=92428347]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveDBButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7" unique_id=2074445058]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config" unique_id=411808717]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -53.5
+offset_top = 1.0
+offset_right = -49.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Users" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer" unique_id=1619464706]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users" unique_id=1669207532]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = -8.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer" unique_id=2037405695]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "User List"
+
+[node name="UserList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer" unique_id=489726469]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users" unique_id=2106177643]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2" unique_id=389680012]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer4" unique_id=393385005]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer4" unique_id=669315504]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2" unique_id=456548294]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer5" unique_id=1806030614]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer5" unique_id=1423697544]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2" unique_id=1929052307]
+layout_mode = 2
+
+[node name="AddUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=1870207981]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=1706581667]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=553368910]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users" unique_id=914623138]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Privileges" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer" unique_id=508899819]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges" unique_id=1174686893]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = 7.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer" unique_id=1903658662]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Grant Privileges"
+
+[node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer" unique_id=975051938]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer" unique_id=1479283469]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3" unique_id=55316244]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "User"
+
+[node name="UserOption" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3" unique_id=1191119586]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3" unique_id=1431510632]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "to"
+
+[node name="Label3" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3" unique_id=1421389401]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DB"
+
+[node name="DBOption" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3" unique_id=226266076]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer" unique_id=1163159744]
+layout_mode = 2
+alignment = 2
+
+[node name="SaveGrantButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer7" unique_id=1592318555]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Save"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges" unique_id=1931519228]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 20.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer2" unique_id=808474793]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Privileges List"
+
+[node name="GrantList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer2" unique_id=1511491078]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges" unique_id=1909875573]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 10.5
+offset_top = 1.0
+offset_right = 14.5
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MAIL" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=934054009 node_paths=PackedStringArray("mail_service", "domain_name", "mailbox_format", "use_ssl_tls", "cert_file_path", "key_file_path", "user_list", "username", "password")]
+visible = false
+layout_mode = 2
+script = ExtResource("18_6m616")
+mail_service = NodePath("TabContainer/General Config/ListPool/HBoxContainer8/MailService")
+domain_name = NodePath("TabContainer/General Config/ListPool/HBoxContainer9/DomainName")
+mailbox_format = NodePath("TabContainer/General Config/ListPool/HBoxContainer10/MailBox")
+use_ssl_tls = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer12/SSL")
+cert_file_path = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer10/CertPath")
+key_file_path = NodePath("TabContainer/General Config/EditorContainer/HBoxContainer11/KeyParh")
+user_list = NodePath("TabContainer/Users/VBoxContainer/UserList")
+username = NodePath("TabContainer/Users/VBoxContainer2/HBoxContainer4/Username")
+password = NodePath("TabContainer/Users/VBoxContainer2/HBoxContainer5/Password")
+metadata/_tab_index = 8
+
+[node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" unique_id=941834412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/side_margin = 0
+theme_override_constants/outline_size = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
+current_tab = 0
+
+[node name="General Config" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer" unique_id=313126406]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config" unique_id=848620592]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = -6.5
+offset_bottom = -3.0
+grow_vertical = 2
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool" unique_id=1640732495]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer8" unique_id=1067823390]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Mail Service"
+
+[node name="MailService" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer8" unique_id=146974758]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool" unique_id=722782624]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer9" unique_id=218578355]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Domain Name"
+
+[node name="DomainName" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer9" unique_id=845990037]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool" unique_id=1770858700]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer10" unique_id=885768999]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Mail Box"
+
+[node name="MailBox" type="OptionButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer10" unique_id=268504360]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "MBox"
+popup/item_0/id = 0
+popup/item_1/text = "Maildir"
+popup/item_1/id = 1
+
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config" unique_id=1120353115]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = 6.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer" unique_id=374625845]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer12" unique_id=838739075]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Use SSL TLS"
+
+[node name="SSL" type="CheckButton" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer12" unique_id=1996403913]
+layout_mode = 2
+theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer" unique_id=1993386452]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer10" unique_id=1170034516]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Cert File Path"
+
+[node name="CertPath" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer10" unique_id=734675620]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer" unique_id=255997155]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer11" unique_id=519859626]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Key File Path"
+
+[node name="KeyParh" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer11" unique_id=874295883]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config" unique_id=1923976745]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_top = 1.0
+offset_right = 2.5
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Users" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer" unique_id=353458645]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users" unique_id=778794559]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -281.5
+offset_top = 8.0
+offset_right = -8.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer" unique_id=92522918]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "User List"
+
+[node name="UserList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer" unique_id=982569743]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users" unique_id=1322577942]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 7.5
+offset_top = 8.0
+offset_right = 281.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2" unique_id=547703493]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer4" unique_id=641364639]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username"
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer4" unique_id=692095631]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2" unique_id=1624521094]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer5" unique_id=1691861646]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password"
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer5" unique_id=2062451435]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("10_srt4w")
+caret_blink = true
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2" unique_id=159152448]
+layout_mode = 2
+
+[node name="AddUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=909843734]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New"
+
+[node name="RemoveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=2098751223]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remove"
+
+[node name="SaveUserButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7" unique_id=1043745291]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users" unique_id=1222314643]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SettingApp" type="Control" parent="UIContainer/AppContainer" unique_id=193963640 node_paths=PackedStringArray("host_name_input", "network_status_label", "ip_address_input", "subnet_mask_input", "gateway_input", "primary_dns_input")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_0d2s3")
+host_name_input = NodePath("GridContainer/Hostname")
+network_status_label = NodePath("NetworkStatus")
+ip_address_input = NodePath("GridContainer2/IpAddress")
+subnet_mask_input = NodePath("GridContainer2/SubnetMask")
+gateway_input = NodePath("GridContainer3/Gateway")
+primary_dns_input = NodePath("GridContainer3/DNS1")
+
+[node name="Window" type="NinePatchRect" parent="UIContainer/AppContainer/SettingApp" unique_id=1934266262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0d2s3")
+patch_margin_left = 10
+patch_margin_top = 26
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Title" type="Label" parent="UIContainer/AppContainer/SettingApp" unique_id=1327041837]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 31.0
+offset_top = 3.0
+offset_right = -39.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("6_fqsl8")
+theme_override_font_sizes/font_size = 16
+text = "Setting"
+horizontal_alignment = 1
+
+[node name="SettingExitButton" type="Button" parent="UIContainer/AppContainer/SettingApp" unique_id=851034041]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -29.0
+offset_top = 3.0
+offset_right = -11.0
+offset_bottom = 21.0
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_5ieel")
+
+[node name="GridContainer" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=113878089]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 36.0
+offset_right = -20.0
+offset_bottom = 61.0
+grow_horizontal = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="HostnameLabel" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer" unique_id=1117188007]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_font_sizes/font_size = 16
+text = "Host Name :"
+
+[node name="Hostname" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer" unique_id=187791178]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_cgk24")
+editable = false
+caret_blink = true
+
+[node name="NetworkStatusLabel" type="Label" parent="UIContainer/AppContainer/SettingApp" unique_id=1107629072]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 78.0
+offset_right = 149.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Network Status :"
+
+[node name="NetworkStatus" type="Label" parent="UIContainer/AppContainer/SettingApp" unique_id=8458005]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 78.0
+offset_right = 321.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+
+[node name="GridContainer2" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=360811996]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 20.0
+offset_top = 96.0
+offset_right = -306.0
+offset_bottom = 184.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=704833652]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "IP Address :"
+
+[node name="IpAddress" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1897180536]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
+caret_blink = true
+
+[node name="Label2" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1274585415]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Subnetmask :"
+
+[node name="SubnetMask" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1844117312]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
+caret_blink = true
+
+[node name="GridContainer3" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=2132896861]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 305.0
+offset_top = 96.0
+offset_right = -21.0
+offset_bottom = 184.0
+grow_horizontal = 2
+
+[node name="Label3" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=1153010801]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Gateway :"
+
+[node name="Gateway" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=790692012]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
+caret_blink = true
+
+[node name="Label4" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=1630853137]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "DNS:"
+
+[node name="DNS1" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=832361819]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
+caret_blink = true
+
+[node name="SaveButton" type="Button" parent="UIContainer/AppContainer/SettingApp" unique_id=1865119945]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -45.0
+offset_right = -20.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_nbrwe")
+text = "Simpan"
+
+[node name="PanelDesktop" type="HBoxContainer" parent="UIContainer" unique_id=244127346]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -36.0
+offset_right = 18.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ServiceButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=118266169]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("13_fqsl8")
+texture_pressed = ExtResource("13_fqsl8")
+texture_hover = ExtResource("13_fqsl8")
+
+[node name="SettingButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=658631799]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("14_srt4w")
+texture_pressed = ExtResource("14_srt4w")
+texture_hover = ExtResource("14_srt4w")
+
+[connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/ServiceExitButton" to="." method="_on_app_exit_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/Software" method="_on_package_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7/UninstallButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/Software" method="_on_uninstall_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7/InstallButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/Software" method="_on_install_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" method="_on_pool_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7/AddButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7/RemoveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" method="_on_remove_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" method="_on_save_pool_button_pressed"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer9/WebService" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_web_service_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8/HTTPCheck" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_http_service_state_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/HBoxContainer8/HTTPSCheck" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_https_service_state_toggled"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_name_server_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7/AddButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7/RemoveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_remove_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" method="_on_save_vhost_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" method="_on_record_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7/AddButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7/RemoveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" method="_on_remove_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" method="_on_save_record_button_pressed"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8/FTP" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_ftp_service_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/HBoxContainer8/FTPS" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_ssl_enable_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer/Local" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_local_enable_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer2/HBoxContainer2/Anon" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_anonymous_enable_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/GlobalConfig/VBox/VBoxContainer3/HBoxContainer3/Write" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_write_enable_toggled"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_user_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7/AddButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7/RemoveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_remove_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer2/HBoxContainer7/SaveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FTP" method="_on_save_button_pressed"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer/Remote" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_remote_service_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer3/Telnet" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_telnet_enable_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/HBoxContainer2/SSH" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_ssh_enable_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/GlobalConfig/VBox/VBoxContainer/HBoxContainer/Root" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_permit_root_login_toggled"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer/ItemList" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_user_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7/AddButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_add_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7/RemoveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_remove_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User/VBoxContainer2/HBoxContainer7/SaveButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE" method="_on_save_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/ListPool/ShareFolderList" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_share_folder_list_item_selected"]
+[connection signal="multi_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/VBoxContainer6/ValidUserList" to="." method="_on_valid_user_list_multi_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7/AddShareFolderButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_add_share_folder_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7/RemoveShareFolderButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_remove_share_folder_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig/EditorContainer/HBoxContainer7/SaveShareFolderButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_save_share_folder_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer/UserList" to="." method="_on_user_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7/AddUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_add_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7/RemoveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_remove_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User/VBoxContainer2/HBoxContainer7/SaveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/FILE" method="_on_save_user_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/ListPool/DBList" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_db_list_item_selected"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer8/DBService" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_db_service_toggled"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7/AddDBButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_add_db_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7/RemoveDBButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_remove_db_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config/EditorContainer/HBoxContainer7/SaveDBButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_save_db_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer/UserList" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_user_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7/AddUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_add_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7/RemoveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_remove_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users/VBoxContainer2/HBoxContainer7/SaveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_save_user_button_pressed"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3/UserOption" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_user_option_item_selected"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer3/DBOption" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_db_option_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer/HBoxContainer7/SaveGrantButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_save_grant_button_pressed"]
+[connection signal="multi_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges/VBoxContainer2/GrantList" to="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE" method="_on_grant_list_multi_selected"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/ListPool/HBoxContainer8/MailService" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_mail_service_toggled"]
+[connection signal="toggled" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config/EditorContainer/HBoxContainer12/SSL" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_use_ssl_tls_toggled"]
+[connection signal="item_selected" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer/UserList" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_user_list_item_selected"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/AddUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_add_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/RemoveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_remove_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/SaveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_save_user_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/SettingApp/SettingExitButton" to="." method="_on_app_exit_button_pressed"]
+[connection signal="pressed" from="UIContainer/AppContainer/SettingApp/SaveButton" to="UIContainer/AppContainer/SettingApp" method="_on_save_button_pressed"]
+[connection signal="pressed" from="UIContainer/PanelDesktop/ServiceButton" to="." method="_on_service_button_pressed"]
+[connection signal="pressed" from="UIContainer/PanelDesktop/SettingButton" to="." method="_on_setting_button_pressed"]

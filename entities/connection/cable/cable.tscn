@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bwrfir7thv4wt"]
+
+[ext_resource type="Script" uid="uid://d288a3t3qmw2" path="res://entities/connection/cable/cable.gd" id="1_yx5e5"]
+
+[node name="Cable" type="Line2D" unique_id=247182996]
+width = 1.0
+default_color = Color(1, 1, 0.07058824, 1)
+script = ExtResource("1_yx5e5")

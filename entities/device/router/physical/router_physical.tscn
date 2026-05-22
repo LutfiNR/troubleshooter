@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dvock2443pide"]
+
+[ext_resource type="Script" uid="uid://b6kvbwgtewbe0" path="res://entities/device/utils/physical.gd" id="1_2bmjf"]
+[ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_nviyo"]
+[ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_go5gm"]
+[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="3_bqta6"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_2bmjf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ixqxy"]
+texture = ExtResource("3_bqta6")
+
+[node name="RouterPhysical" type="Node2D" unique_id=1924626497 node_paths=PackedStringArray("ports", "cables")]
+script = ExtResource("1_2bmjf")
+ports = [NodePath("Port"), NodePath("Port2"), NodePath("Port3"), NodePath("Port4")]
+cables = [NodePath("CableNode"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=319776639]
+
+[node name="Port" parent="." unique_id=379434902 instance=ExtResource("1_nviyo")]
+
+[node name="Port2" parent="." unique_id=1444687987 instance=ExtResource("1_nviyo")]
+position = Vector2(40, 0)
+
+[node name="Port3" parent="." unique_id=788557083 instance=ExtResource("1_nviyo")]
+position = Vector2(80, 0)
+
+[node name="Port4" parent="." unique_id=168240486 instance=ExtResource("1_nviyo")]
+position = Vector2(120, 0)
+
+[node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("2_go5gm")]
+visible = false
+position = Vector2(0, 45)
+
+[node name="CableNode2" parent="." unique_id=1393722409 instance=ExtResource("2_go5gm")]
+visible = false
+position = Vector2(40, 45)
+
+[node name="CableNode3" parent="." unique_id=779560814 instance=ExtResource("2_go5gm")]
+visible = false
+position = Vector2(80, 45)
+
+[node name="CableNode4" parent="." unique_id=225228576 instance=ExtResource("2_go5gm")]
+visible = false
+position = Vector2(120, 45)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1292139415]
+
+[node name="ExitButton" type="Button" parent="." unique_id=1650029225]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 252.0
+offset_top = -153.0
+offset_right = 296.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_ixqxy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ixqxy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ixqxy")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=1397048670]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2bmjf")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

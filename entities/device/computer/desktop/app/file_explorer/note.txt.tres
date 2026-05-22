@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="FileExplorerItem" format=3 uid="uid://wq0w5wsppkke"]
+
+[ext_resource type="Script" uid="uid://d0cf54ilvpbfp" path="res://entities/device/computer/desktop/app/file_explorer/file_explorer_item.gd" id="1_piwgv"]
+
+[resource]
+script = ExtResource("1_piwgv")
+type = 1
+file_or_folder_name = "note.txt"
+metadata/_custom_type_script = "uid://d0cf54ilvpbfp"
