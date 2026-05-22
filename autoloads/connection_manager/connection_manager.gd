@@ -1,12 +1,13 @@
 extends Node
+signal cable_tool_toggled(toggled: bool)
 
+var connections_node: Node2D
 var connections: Dictionary[String, NetworkConnection] = { }
 
-
 func _ready() -> void:
+	cable_tool_toggled.connect(_on_cable_tool_toggled)
 	# Dikosongkan agar MissionManager yang menyuntikkan data saat misi dimuat
 	pass
-
 
 func setup_connection_data(connection_data: NetworkConnection) -> void:
 	if not connection_data or connection_data.connection_id.is_empty():
@@ -43,3 +44,7 @@ func are_devices_connected(device_a: String, interface_a: String, device_b: Stri
 				(conn.device_a_id == device_b and conn.interface_a_id == interface_b and conn.device_b_id == device_a and conn.interface_b_id == interface_a):
 			return true
 	return false
+
+func _on_cable_tool_toggled(toggled_on: bool)-> void:
+	connections_node = get_tree().current_scene.find_child("Connections")
+	connections_node.visible = toggled_on
