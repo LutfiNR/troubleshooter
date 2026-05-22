@@ -25,6 +25,7 @@ SceneLoader="*uid://bvpe8aruqccl0"
 OverlaySystem="*uid://cyar1th2ot5ul"
 ConnectionManager="*uid://3lq111hqbhxx"
 MissionManager="*uid://bkmj6ny6l4st6"
+NetworkServiceManager="*uid://cts4vwi51y354"
 
 [display]
 
@@ -32,7 +33,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/window_width_override=1920
 window/size/window_height_override=1080
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [input]
 
