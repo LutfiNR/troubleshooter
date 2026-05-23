@@ -1,7 +1,9 @@
-class_name MariaDBUser extends Resource
+class_name MariaDBUser
+extends Resource
 @export var username: String = ""
 @export var password: String = ""
-@export var privileges: Dictionary = { }
+@export var privileges: Dictionary[String, Array] = { }
+
 
 func verify_configuration(correct_user: MariaDBUser) -> Dictionary:
 	if not correct_user:
