@@ -15,8 +15,7 @@ enum IPAllocationType {
 @export var neighbors: Array[NeighborhoodData] = []
 
 
-func _init() -> void:
-	# Default interface
+func setup_device() -> void:
 	if interfaces.is_empty():
 		var iface: NetworkInterface = NetworkInterface.new()
 
@@ -29,6 +28,9 @@ func _init() -> void:
 				break
 
 		interfaces[iface.id] = iface
+
+	for iface_id in interfaces:
+		interfaces[iface_id].setup_ip()
 
 
 # Set IP allocation type
@@ -142,6 +144,7 @@ func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
 
 	var interface_result: Dictionary = _verify_interfaces(
 		correct_computer.interfaces,
+		correct_computer.ip_allocation_type,
 	)
 
 	var is_correct: bool = (
@@ -151,7 +154,6 @@ func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
 			and dns_result.status
 			and interface_result.status
 	)
-
 	var result: Dictionary = base_result.duplicate()
 
 	result.merge(
@@ -212,7 +214,21 @@ func _verify_dns(correct_dns: String) -> Dictionary:
 # Verify interfaces
 func _verify_interfaces(
 		correct_interfaces: Dictionary[String, NetworkInterface],
+		correct_ip_allocation_type: IPAllocationType,
 ) -> Dictionary:
+	if correct_ip_allocation_type == IPAllocationType.DHCP:
+		# For DHCP, we only check if interfaces are present, not their configuration
+		for interface_id in correct_interfaces.keys():
+			if not interfaces.has(interface_id):
+				return {
+					"status": false,
+					"error": "Missing interface '%s'" % interface_id,
+				}
+
+		return {
+			"status": true,
+		}
+
 	if interfaces.size() != correct_interfaces.size():
 		return {
 			"status": false,

@@ -8,8 +8,7 @@ class_name SwitchDevice
 @export var interfaces: Dictionary[String, NetworkInterface] = { }
 
 
-func _init() -> void:
-	# Create default switch ports
+func setup_device() -> void:
 	if interfaces.is_empty():
 		for i: int in range(total_ports):
 			var iface: NetworkInterface = NetworkInterface.new()
@@ -18,6 +17,9 @@ func _init() -> void:
 			iface.layer = NetworkInterface.InterfaceLayer.SECONDLAYER
 
 			interfaces[iface.id] = iface
+
+	for iface_id in interfaces:
+		interfaces[iface_id].setup_ip()
 
 
 # Add interface

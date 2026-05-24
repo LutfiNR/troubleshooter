@@ -21,22 +21,16 @@ enum InterfaceState {
 @export var export_subnet_mask: String = ""
 
 var has_connection: bool = false
-var ip: IPAddress = null
+var ip: IPAddress
 
 
-func _init() -> void:
-	setup_ip_address()
-
-
-func setup_ip_address() -> void:
+func setup_ip() -> void:
 	# Layer 2 interfaces do not use IP
 	if is_layer2():
 		ip = null
 		return
-	ip = IPAddress.new(
-		export_ip_address,
-		export_subnet_mask,
-	)
+	ip = IPAddress.new()
+	ip.setup_ip_address(export_ip_address, export_subnet_mask)
 	if not ip.valid:
 		if ip.address != "":
 			push_error("Invalid IP configuration on interface '%s'" % id)
@@ -74,14 +68,19 @@ func verify_configuration(correct_configuration: NetworkInterface) -> Dictionary
 	var ip_result := {
 		"status": true,
 	}
-
-	# Verify IP only for layer 3
+	var ip_correct = IPAddress.new()
+	ip_correct.setup_ip_address(correct_configuration.export_ip_address, correct_configuration.export_subnet_mask)
 	if is_layer3():
-		if ip and correct_configuration.ip:
-			ip_result = ip.verify_configuration(correct_configuration.ip)
+		if ip and ip_correct:
+			ip_result = ip.verify_configuration(ip_correct)
 		else:
 			ip_result = {
 				"status": false,
+				"id": id_result,
+				"state": state_result,
+				"mac_address": mac_result,
+				"layer": layer_result,
+				"ip": ip_result,
 				"error": "Missing IP configuration",
 			}
 

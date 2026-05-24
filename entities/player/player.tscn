@@ -238,8 +238,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-column_titles_visible = true
 hide_root = true
+scroll_horizontal_enabled = false
 script = ExtResource("6_qiwj3")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1818687123]

@@ -33,7 +33,6 @@ tile_map_data = PackedByteArray("AAAPAAYAAAAAAAAAAAAPAAcAAAAAAAEAAAAPAAgAAAAAAAI
 tile_set = ExtResource("3_g3noi")
 
 [node name="Connections" type="Node2D" parent="Main" unique_id=759012094]
-visible = false
 z_index = 1
 position = Vector2(606, -78)
 

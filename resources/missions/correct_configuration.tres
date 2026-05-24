@@ -5,15 +5,15 @@
 [ext_resource type="Resource" uid="uid://l2ws6d25a5l5" path="res://resources/correct_configuration/computer_accounting_1/computer_acc_1.tres" id="2_qc0t1"]
 [ext_resource type="Resource" uid="uid://mgdhjs5fybqp" path="res://resources/correct_configuration/computer_it/computer_it.tres" id="2_xvlsx"]
 [ext_resource type="Script" uid="uid://b0an7h2vytnoi" path="res://components/network_device/router/router_device.gd" id="3_qc0t1"]
+[ext_resource type="Resource" path="res://resources/correct_configuration/computer_accounting_2/computer_acc_2.tres" id="4_83rnp"]
 [ext_resource type="Resource" uid="uid://bhu0xpbkh45f8" path="res://resources/correct_configuration/computer_sales_2/computer_sales_2.tres" id="4_ayhse"]
 [ext_resource type="Script" uid="uid://xftgwibuutmc" path="res://components/mission/mission_data.gd" id="4_te0pm"]
 [ext_resource type="Script" uid="uid://d27u2rul5ujwv" path="res://components/network_device/server/server_device.gd" id="5_2lmhe"]
+[ext_resource type="Resource" path="res://resources/correct_configuration/computer_accounting_3/computer_acc_3.tres" id="5_4hjp4"]
 [ext_resource type="Resource" uid="uid://c4mpjbv4g8g3l" path="res://resources/correct_configuration/computer_sales_3/computer_sales_3.tres" id="5_xuprk"]
+[ext_resource type="Resource" path="res://resources/correct_configuration/computer_accounting_4/computer_acc_4.tres" id="6_cu13l"]
 [ext_resource type="Script" uid="uid://bfbosgxgoqlrw" path="res://components/network_device/switch/switch_device.gd" id="6_jqf01"]
 [ext_resource type="Resource" uid="uid://cyx4g1nrpsoey" path="res://resources/correct_configuration/computer_sales_4/computer_sales_4.tres" id="6_ox3wl"]
-[ext_resource type="Resource" uid="uid://ypbnd8f4v8fr" path="res://resources/correct_configuration/computer_accounting_2/computer_acc_1.tres" id="7_owwe3"]
-[ext_resource type="Resource" uid="uid://brm2iaqx6bpx3" path="res://resources/correct_configuration/computer_accounting_3/computer_acc_1.tres" id="8_8jljq"]
-[ext_resource type="Resource" uid="uid://fthahbgay7os" path="res://resources/correct_configuration/computer_accounting_4/computer_acc_1.tres" id="9_plkgk"]
 [ext_resource type="Resource" uid="uid://d3kdasmujftgv" path="res://resources/correct_configuration/computer_media_1/computer_media_1.tres" id="10_1rlxk"]
 [ext_resource type="Resource" uid="uid://dayckybajjh2u" path="res://resources/correct_configuration/computer_media_2/computer_media_2.tres" id="11_6wr4u"]
 [ext_resource type="Resource" uid="uid://c87hakb3j2a6w" path="res://resources/correct_configuration/computer_media_3/computer_media_3.tres" id="12_b0w5q"]
@@ -56,17 +56,17 @@ description = "Correct Configuration"
 computer_devices = Dictionary[String, ExtResource("1_3apqg")]({
 "computer_0": ExtResource("2_xvlsx"),
 "computer_1": ExtResource("2_qc0t1"),
-"computer_10": ExtResource("4_ayhse"),
-"computer_11": ExtResource("5_xuprk"),
-"computer_12": ExtResource("6_ox3wl"),
-"computer_2": ExtResource("7_owwe3"),
-"computer_3": ExtResource("8_8jljq"),
-"computer_4": ExtResource("9_plkgk"),
-"computer_5": ExtResource("10_1rlxk"),
-"computer_6": ExtResource("11_6wr4u"),
-"computer_7": ExtResource("12_b0w5q"),
-"computer_8": ExtResource("13_1ysoq"),
-"computer_9": ExtResource("14_01g23")
+"computer_10": ExtResource("11_6wr4u"),
+"computer_11": ExtResource("12_b0w5q"),
+"computer_12": ExtResource("13_1ysoq"),
+"computer_2": ExtResource("4_83rnp"),
+"computer_3": ExtResource("5_4hjp4"),
+"computer_4": ExtResource("6_cu13l"),
+"computer_5": ExtResource("14_01g23"),
+"computer_6": ExtResource("4_ayhse"),
+"computer_7": ExtResource("5_xuprk"),
+"computer_8": ExtResource("6_ox3wl"),
+"computer_9": ExtResource("10_1rlxk")
 })
 router_devices = Dictionary[String, ExtResource("3_qc0t1")]({
 "router_0": ExtResource("17_6wr4u")

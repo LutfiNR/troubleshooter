@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dd6yhu00lubch" path="res://components/network_services/ftp_service/ftp_service.gd" id="3_gnvud"]
 [ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="4_tft7b"]
 [ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_services/mail_service/mail_service.gd" id="5_afrkp"]
+[ext_resource type="Resource" uid="uid://dqwd7t4tcvvrb" path="res://resources/correct_configuration/server_b/eth0.tres" id="5_cbjob"]
 [ext_resource type="Resource" uid="uid://bm6ojpwpcs1lh" path="res://resources/correct_configuration/server_b/mail_service/mail_service.tres" id="6_afrkp"]
 [ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_services/database_service/mariadb_service.gd" id="6_cbjob"]
 [ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_services/remote_service/remote_service.gd" id="7_85hx7"]
@@ -19,6 +20,9 @@
 script = ExtResource("9_n5mxg")
 default_gateway = "192.168.1.1"
 dns_server = "192.168.1.254"
+interfaces = Dictionary[String, ExtResource("4_tft7b")]({
+"eth0": ExtResource("5_cbjob")
+})
 installed_packages = Array[String](["mariadb-server", "postfix", "openssh-server", "apache2"])
 web_service = 1
 web_configuration = Array[ExtResource("10_vpuq0")]([ExtResource("14_70vi8")])

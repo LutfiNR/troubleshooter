@@ -13,21 +13,23 @@ class DHCPRelay:
 var dhcp_relays: Dictionary[String, DHCPRelay] = { }
 
 
-func _init() -> void:
-	# Default router interface
+func setup_device() -> void:
 	if interfaces.is_empty():
 		for i: int in range(4):
 			var iface: NetworkInterface = NetworkInterface.new()
 
 			iface.id = "fa0/%d" % i
 			iface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
-			
+
 			# Restore connection state from neighbors
 			for neighbor: NeighborhoodData in neighbors:
 				if neighbor.interface == iface.id:
 					iface.has_connection = true
 					break
 			interfaces[iface.id] = iface
+	for iface_id in interfaces:
+		interfaces[iface_id].setup_ip()
+
 
 # Set interface
 func set_interface(
@@ -54,6 +56,7 @@ func has_interface(interface_id: String) -> bool:
 # Get all interfaces
 func get_interfaces() -> Dictionary[String, NetworkInterface]:
 	return interfaces
+
 
 # Add neighbor
 func add_neighbor(neighbor: NeighborhoodData) -> void:

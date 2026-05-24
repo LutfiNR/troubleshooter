@@ -11,7 +11,7 @@ var prefix_length: int = 32
 var valid: bool = false
 
 
-func _init(ip: String = "", mask: String = "255.255.255.0") -> void:
+func setup_ip_address(ip: String = "", mask: String = "255.255.255.0") -> void:
 	address = ip
 	subnet_mask = mask
 	valid = is_host_address_valid(ip, mask)
@@ -137,19 +137,19 @@ static func subnet_mask_to_prefix(mask: String) -> int:
 
 # Verify IP configuration
 func verify_configuration(correct_configuration: IPAddress) -> Dictionary:
-	if not correct_configuration:
-		return {
-			"status": false,
-			"error": "Invalid comparison IP",
-		}
-
 	var address_result := _verify_address(correct_configuration.address)
 	var subnet_result := _verify_subnet_mask(correct_configuration.subnet_mask)
-
 	var is_correct: bool = (
 			address_result.status
 			and subnet_result.status
 	)
+	if not correct_configuration:
+		return {
+			"status": false,
+			"address": address_result,
+			"subnet_mask": subnet_result,
+			"error": "Invalid comparison IP",
+		}
 
 	return {
 		"address": address_result,

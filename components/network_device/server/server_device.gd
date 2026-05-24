@@ -50,23 +50,21 @@ enum ServiceState {
 @export var mail_configuration: Array[MailService] = []
 
 
-func _init() -> void:
-	# Default interface untuk Server (eth0)
+func setup_device() -> void:
 	if interfaces.is_empty():
 		var iface: NetworkInterface = NetworkInterface.new()
 		iface.id = "eth0"
 		iface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
 		interfaces[iface.id] = iface
-
-# ==========================================
-# MANAJEMEN INTERFACE FUNGSI
-# ==========================================
+	for iface_id in interfaces:
+		interfaces[iface_id].setup_ip()
 
 
 func add_interface(interface_data: NetworkInterface) -> void:
 	if not interface_data:
 		return
 	interfaces[interface_data.id] = interface_data
+	interfaces[interface_data.id].setup_ip()
 
 
 func remove_interface(interface_id: String) -> void:
