@@ -25,7 +25,6 @@ var ip: IPAddress
 
 
 func setup_ip() -> void:
-	# Layer 2 interfaces do not use IP
 	if is_layer2():
 		ip = null
 		return
@@ -59,87 +58,95 @@ func is_up() -> bool:
 	return state == InterfaceState.UP
 
 
-func verify_configuration(correct_configuration: NetworkInterface) -> Dictionary:
-	var id_result := _verify_id(correct_configuration.id)
-	var state_result := _verify_state(correct_configuration.state)
-	var mac_result := _verify_mac_address(correct_configuration.mac_address)
-	var layer_result := _verify_layer(correct_configuration.layer)
+func verify_configuration(
+		runtime_interface: NetworkInterface,
+		allocation_type_dhcp: bool = false,
+		runtime_allocation_type_dhcp: bool = false
+) -> Dictionary:
+	var state_result := _verify_state(runtime_interface.state)
+	var mac_result := _verify_mac_address(runtime_interface.mac_address)
 
 	var ip_result := {
 		"status": true,
 	}
-	var ip_correct = IPAddress.new()
-	ip_correct.setup_ip_address(correct_configuration.export_ip_address, correct_configuration.export_subnet_mask)
 	if is_layer3():
-		if ip and ip_correct:
-			ip_result = ip.verify_configuration(ip_correct)
+		if allocation_type_dhcp:
+			if runtime_allocation_type_dhcp:
+				ip_result = {
+					"status": true,
+					"address": {
+						"value": "",
+						"correct": "[DHCP]",
+						"status": true,
+					},
+					"subnet_mask": {
+						"value": "",
+						"correct": "[DHCP]",
+						"status": true,
+					},
+				}
+			else:
+				ip_result = {
+					"status": false,
+					"address": {
+						"value": "",
+						"correct": "[DHCP]",
+						"status": false,
+					},
+					"subnet_mask": {
+						"value": "",
+						"correct": "[DHCP]",
+						"status": false,
+					},
+				}
+		elif ip and runtime_interface.ip:
+			ip_result = ip.verify_configuration(runtime_interface.ip)
 		else:
 			ip_result = {
-				"status": false,
-				"id": id_result,
-				"state": state_result,
-				"mac_address": mac_result,
-				"layer": layer_result,
-				"ip": ip_result,
-				"error": "Missing IP configuration",
+			"status": false,
+			"address": {
+					"value": "",
+					"correct": ip.address,
+					"status": false,
+				},
+			"subnet_mask": {
+					"value": "",
+					"correct": ip.subnet_mask,
+					"status": false,
+				},
+			"error": "Missing IP configuration",
 			}
 
 	var is_correct: bool = (
-			id_result.status
-			and state_result.status
+			state_result.status
 			and mac_result.status
-			and layer_result.status
 			and ip_result.status
 	)
 
 	return {
-		"id": id_result,
 		"state": state_result,
 		"mac_address": mac_result,
-		"layer": layer_result,
 		"ip": ip_result,
 		"status": is_correct,
 	}
 
 
-# Verify interface id
-func _verify_id(correct_id: String) -> Dictionary:
-	var result := id == correct_id
-
-	return {
-		"value": id,
-		"correct": correct_id,
-		"status": result,
-	}
-
-
 # Verify interface state
-func _verify_state(correct_state: InterfaceState) -> Dictionary:
-	var result := state == correct_state
-
+func _verify_state(runtime_interface_state: InterfaceState) -> Dictionary:
+	var result := state == runtime_interface_state
 	return {
-		"value": state,
-		"correct": correct_state,
+		"correct": InterfaceState.keys()[state],
+		"value": InterfaceState.keys()[runtime_interface_state],
 		"status": result,
 	}
 
 
 # Verify MAC address
-func _verify_mac_address(correct_mac_address: String) -> Dictionary:
-	var result := mac_address == correct_mac_address
+func _verify_mac_address(runtime_interface_mac: String) -> Dictionary:
+	var result := mac_address == runtime_interface_mac
 
 	return {
-		"value": mac_address,
-		"correct": correct_mac_address,
-		"status": result,
-	}
-
-
-# Verify interface layer
-func _verify_layer(correct_layer: InterfaceLayer) -> Dictionary:
-	var result := layer == correct_layer
-	return {
-		"value": layer,
-		"correct": correct_layer,
+		"correct": mac_address,
+		"value": runtime_interface_mac,
 		"status": result,
 	}

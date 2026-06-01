@@ -7,5 +7,4 @@ script = ExtResource("1_vmobl")
 id = "fa0/5"
 mac_address = "79:36:7b:24:96:27"
 layer = 0
-state = 1
 metadata/_custom_type_script = "uid://8a1egdjtlndj"

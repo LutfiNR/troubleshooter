@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://ddnpcv1gr0jwg"]
+
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer/computer_device.gd" id="1_73hmi"]
+[ext_resource type="Resource" uid="uid://5nbersdunesm" path="res://resources/correct_configuration_copy/computer_it/computer_it.tres" id="2_73hmi"]
+[ext_resource type="Resource" uid="uid://dylvg1vwjfgr0" path="res://resources/correct_configuration_copy/computer_accounting_1/computer_acc_1.tres" id="3_ndssr"]
+[ext_resource type="Resource" uid="uid://dlaow4kjay65a" path="res://resources/correct_configuration_copy/computer_media_2/computer_media_2.tres" id="4_jw84n"]
+[ext_resource type="Resource" uid="uid://csgjaf8qkpayw" path="res://resources/correct_configuration_copy/computer_media_3/computer_media_3.tres" id="5_tfyoj"]
+[ext_resource type="Resource" uid="uid://bgkct77de5cc7" path="res://resources/correct_configuration_copy/computer_media_4/computer_media_4.tres" id="6_f12iw"]
+[ext_resource type="Resource" uid="uid://crdf4ae60ea21" path="res://resources/correct_configuration_copy/computer_accounting_2/computer_acc_2.tres" id="7_dsnd3"]
+[ext_resource type="Resource" uid="uid://v8qnqqhp2l4b" path="res://resources/correct_configuration_copy/computer_accounting_3/computer_acc_3.tres" id="8_agxaf"]
+[ext_resource type="Resource" uid="uid://fgr4jfmbtnop" path="res://resources/correct_configuration_copy/computer_accounting_4/computer_acc_4.tres" id="9_8mvm4"]
+[ext_resource type="Resource" uid="uid://bf7ddskrqdqpb" path="res://resources/correct_configuration_copy/computer_sales_1/computer_sales_1.tres" id="10_66dvo"]
+[ext_resource type="Resource" uid="uid://x0e6cnhm16ue" path="res://resources/correct_configuration_copy/computer_sales_2/computer_sales_2.tres" id="11_fm2h6"]
+[ext_resource type="Resource" uid="uid://cnknxtft71jat" path="res://resources/correct_configuration_copy/computer_sales_3/computer_sales_3.tres" id="12_37l06"]
+[ext_resource type="Resource" uid="uid://cwkqxi3yn0yv8" path="res://resources/correct_configuration_copy/computer_sales_4/computer_sales_4.tres" id="13_ivfre"]
+[ext_resource type="Resource" uid="uid://c4ys8vju8nxcq" path="res://resources/correct_configuration_copy/computer_media_1/computer_media_1.tres" id="14_4g7di"]
+[ext_resource type="Script" uid="uid://doexrma0vb1qs" path="res://components/network_connection/network_connection.gd" id="15_sml32"]
+[ext_resource type="Resource" uid="uid://dvv43oddcfyfr" path="res://resources/correct_configuration/connections/connection_0.tres" id="16_olu2x"]
+[ext_resource type="Resource" uid="uid://nrxqkf437pte" path="res://resources/correct_configuration/connections/connection_1.tres" id="17_f8j7k"]
+[ext_resource type="Resource" uid="uid://b67muw4jyg0j4" path="res://resources/correct_configuration/connections/connection_10.tres" id="18_4myiy"]
+[ext_resource type="Resource" uid="uid://krgn51wsg43m" path="res://resources/correct_configuration/connections/connection_11.tres" id="19_msw3o"]
+[ext_resource type="Resource" uid="uid://xwydgjgwhngo" path="res://resources/correct_configuration/connections/connection_12.tres" id="20_615mk"]
+[ext_resource type="Resource" uid="uid://b7vypl23mlt7" path="res://resources/correct_configuration/connections/connection_13.tres" id="21_yd062"]
+[ext_resource type="Resource" uid="uid://qso1plj02ns8" path="res://resources/correct_configuration/connections/connection_14.tres" id="22_lrli2"]
+[ext_resource type="Resource" uid="uid://oh1x50tmcwo0" path="res://resources/correct_configuration/connections/connection_15.tres" id="23_uj7mb"]
+[ext_resource type="Resource" uid="uid://diyso4m1o36cn" path="res://resources/correct_configuration/connections/connection_16.tres" id="24_hjqre"]
+[ext_resource type="Resource" uid="uid://bqmgtcj8iwicc" path="res://resources/correct_configuration/connections/connection_17.tres" id="25_1ba62"]
+[ext_resource type="Resource" uid="uid://bkepce5owtm2" path="res://resources/correct_configuration/connections/connection_18.tres" id="26_gbfn8"]
+[ext_resource type="Resource" uid="uid://brhk57repsabr" path="res://resources/correct_configuration/connections/connection_19.tres" id="27_2sdcs"]
+[ext_resource type="Resource" uid="uid://dm1v1pda4inkb" path="res://resources/correct_configuration/connections/connection_2.tres" id="28_oapk4"]
+[ext_resource type="Resource" uid="uid://bb0e0622awkri" path="res://resources/correct_configuration/connections/connection_3.tres" id="29_e0oyc"]
+[ext_resource type="Resource" uid="uid://btxjxo6namb11" path="res://resources/correct_configuration/connections/connection_4.tres" id="30_o3miq"]
+[ext_resource type="Resource" uid="uid://c35mdapohksv4" path="res://resources/correct_configuration/connections/connection_5.tres" id="31_10f2r"]
+[ext_resource type="Resource" uid="uid://cx7ln08b5fv3n" path="res://resources/correct_configuration/connections/connection_6.tres" id="32_o04ha"]
+[ext_resource type="Resource" uid="uid://cwvhe5evoit1k" path="res://resources/correct_configuration/connections/connection_7.tres" id="33_bkykw"]
+[ext_resource type="Resource" uid="uid://f07g37o3en2l" path="res://resources/correct_configuration/connections/connection_8.tres" id="34_004yd"]
+[ext_resource type="Resource" uid="uid://m0hjvxuxfqen" path="res://resources/correct_configuration/connections/connection_9.tres" id="35_o8pkx"]
+[ext_resource type="Script" uid="uid://b0an7h2vytnoi" path="res://components/network_device/router/router_device.gd" id="36_dn2oi"]
+[ext_resource type="Resource" uid="uid://di8drx610yewr" path="res://resources/correct_configuration_copy/router/router.tres" id="37_7l3ow"]
+[ext_resource type="Script" uid="uid://xftgwibuutmc" path="res://components/mission/mission_data.gd" id="38_8ij1s"]
+[ext_resource type="Script" uid="uid://d27u2rul5ujwv" path="res://components/network_device/server/server_device.gd" id="39_x1acv"]
+[ext_resource type="Resource" uid="uid://m3s2h68xdjel" path="res://resources/correct_configuration_copy/server_a/server_a.tres" id="40_sml32"]
+[ext_resource type="Resource" uid="uid://bb3k8uvmr8gkx" path="res://resources/correct_configuration_copy/server_b/server_b.tres" id="41_olu2x"]
+[ext_resource type="Resource" uid="uid://c4s7jruml5qbn" path="res://resources/correct_configuration_copy/server_c/server_c.tres" id="42_f8j7k"]
+[ext_resource type="Script" uid="uid://bfbosgxgoqlrw" path="res://components/network_device/switch/switch_device.gd" id="43_qj02b"]
+[ext_resource type="Resource" uid="uid://c8ldptcxvpcea" path="res://resources/correct_configuration_copy/switch_it/switch_it.tres" id="44_4myiy"]
+[ext_resource type="Resource" uid="uid://bcnm635xkmsrs" path="res://resources/correct_configuration_copy/switch_accounting/switch_accounting.tres" id="45_msw3o"]
+[ext_resource type="Resource" uid="uid://1dtnaiqo5wv6" path="res://resources/correct_configuration_copy/switch_media/switch_media.tres" id="46_615mk"]
+[ext_resource type="Resource" uid="uid://buq2jc8hg1pi0" path="res://resources/correct_configuration_copy/switch_sales/switch_sales.tres" id="47_yd062"]
+
+[resource]
+script = ExtResource("38_8ij1s")
+id = "correct_configuration_copy"
+title = "Correct Configuration"
+description = "Correct Configuration Copy"
+computer_devices = Dictionary[String, ExtResource("1_73hmi")]({
+"computer_0": ExtResource("2_73hmi"),
+"computer_1": ExtResource("3_ndssr"),
+"computer_10": ExtResource("4_jw84n"),
+"computer_11": ExtResource("5_tfyoj"),
+"computer_12": ExtResource("6_f12iw"),
+"computer_2": ExtResource("7_dsnd3"),
+"computer_3": ExtResource("8_agxaf"),
+"computer_4": ExtResource("9_8mvm4"),
+"computer_5": ExtResource("10_66dvo"),
+"computer_6": ExtResource("11_fm2h6"),
+"computer_7": ExtResource("12_37l06"),
+"computer_8": ExtResource("13_ivfre"),
+"computer_9": ExtResource("14_4g7di")
+})
+router_devices = Dictionary[String, ExtResource("36_dn2oi")]({
+"router_0": ExtResource("37_7l3ow")
+})
+switch_devices = Dictionary[String, ExtResource("43_qj02b")]({
+"switch_0": ExtResource("44_4myiy"),
+"switch_1": ExtResource("45_msw3o"),
+"switch_2": ExtResource("46_615mk"),
+"switch_3": ExtResource("47_yd062")
+})
+server_devices = Dictionary[String, ExtResource("39_x1acv")]({
+"server_0": ExtResource("40_sml32"),
+"server_1": ExtResource("41_olu2x"),
+"server_2": ExtResource("42_f8j7k")
+})
+connections = Dictionary[String, ExtResource("15_sml32")]({
+"connection_0": ExtResource("16_olu2x"),
+"connection_1": ExtResource("17_f8j7k"),
+"connection_10": ExtResource("18_4myiy"),
+"connection_11": ExtResource("19_msw3o"),
+"connection_12": ExtResource("20_615mk"),
+"connection_13": ExtResource("21_yd062"),
+"connection_14": ExtResource("22_lrli2"),
+"connection_15": ExtResource("23_uj7mb"),
+"connection_16": ExtResource("24_hjqre"),
+"connection_17": ExtResource("25_1ba62"),
+"connection_18": ExtResource("26_gbfn8"),
+"connection_19": ExtResource("27_2sdcs"),
+"connection_2": ExtResource("28_oapk4"),
+"connection_3": ExtResource("29_e0oyc"),
+"connection_4": ExtResource("30_o3miq"),
+"connection_5": ExtResource("31_10f2r"),
+"connection_6": ExtResource("32_o04ha"),
+"connection_7": ExtResource("33_bkykw"),
+"connection_8": ExtResource("34_004yd"),
+"connection_9": ExtResource("35_o8pkx")
+})
+metadata/_custom_type_script = "uid://xftgwibuutmc"

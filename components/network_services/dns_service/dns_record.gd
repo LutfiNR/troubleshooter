@@ -1,4 +1,5 @@
 extends Resource
+
 class_name DNSRecord
 
 enum RecordType { A_RECORD, CNAME, MX_RECORD }
@@ -7,17 +8,34 @@ enum RecordType { A_RECORD, CNAME, MX_RECORD }
 @export var type: RecordType = RecordType.A_RECORD
 @export var target_ip_or_name: String = ""
 
-func verify_configuration(correct_record: DNSRecord) -> Dictionary:
-	if not correct_record:
-		return { "status": false, "error": "Invalid record" }
-	var is_correct = (
-			domain_name == correct_record.domain_name and
-			type == correct_record.type and
-			target_ip_or_name == correct_record.target_ip_or_name
-	)
+
+func verify_configuration(runtime_record: DNSRecord = null) -> Dictionary:
+	var runtime_domain_name: Variant = null
+	var runtime_type: Variant = null
+	var runtime_target: Variant = null
+
+	if runtime_record:
+		runtime_domain_name = runtime_record.domain_name
+		runtime_type = RecordType.keys()[runtime_record.type]
+		runtime_target = runtime_record.target_ip_or_name
+
+	var res_domain_name = _verify(domain_name,runtime_domain_name)
+	var res_type = _verify(RecordType.keys()[type],runtime_type)
+	var res_target = _verify(target_ip_or_name,runtime_target)
+	var status: bool = (res_domain_name.status and res_type.status and res_target.status)
+
 	return {
-		"status": is_correct,
-		"domain_name": { "value": domain_name, "correct": correct_record.domain_name },
-		"type": { "value": type, "correct": correct_record.type },
-		"target": { "value": target_ip_or_name, "correct": correct_record.target_ip_or_name },
+		"status": status,
+		"domain_name": res_domain_name,
+		"type": res_type,
+		"target": res_target,
+	}
+
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
 	}

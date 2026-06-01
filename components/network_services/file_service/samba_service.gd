@@ -21,48 +21,31 @@ func get_share(requested_share_name: String) -> SambaShare:
 			return share
 	return null
 	
-func verify_configuration(correct_samba: SambaService) -> Dictionary:
-	if not correct_samba:
-		return { "status": false, "error": "Invalid Samba config" }
+func verify_configuration(runtime_samba: SambaService = null) -> Dictionary:
+	var runtime_users: Dictionary = {}
+	var runtime_shares: Dictionary = {}
 
-	var is_correct = true
-	var result = {
-		"status": false,
-		"users": { "status": true, "details": { } },
-		"shares": { "status": true, "details": { } },
+	if runtime_samba:
+		for runtime_user in runtime_samba.users:
+			runtime_users[runtime_user.username] = runtime_user
+		for runtime_share in runtime_samba.shares:
+			runtime_shares[runtime_share.share_name] = runtime_share
+
+	var status := true
+	var res_users := {}
+	for user in users:
+		var verification = user.verify_configuration(runtime_users.get(user.username))
+		res_users[user.username] = verification
+		status = status and verification.status
+
+	var res_shares := {}
+	for share in shares:
+		var verification = share.verify_configuration(runtime_shares.get(share.share_name))
+		res_shares[share.share_name] = verification
+		status = status and verification.status
+
+	return {
+		"status": status,
+		"users": res_users,
+		"shares": res_shares,
 	}
-
-	# Verify Users
-	for c_user in correct_samba.users:
-		var found = false
-		for p_user in users:
-			if p_user.username == c_user.username:
-				found = true
-				var v = p_user.verify_configuration(c_user)
-				result.users.details[c_user.username] = v
-				if not v.status:
-					result.users.status = false
-				break
-		if not found:
-			result.users.details[c_user.username] = { "status": false, "error": "Missing User" }
-			result.users.status = false
-
-	# Verify Shares
-	for c_share in correct_samba.shares:
-		var found = false
-		for p_share in shares:
-			if p_share.share_name == c_share.share_name:
-				found = true
-				var v = p_share.verify_configuration(c_share)
-				result.shares.details[c_share.share_name] = v
-				if not v.status:
-					result.shares.status = false
-				break
-		if not found:
-			result.shares.details[c_share.share_name] = { "status": false, "error": "Missing Share" }
-			result.shares.status = false
-
-	if not result.users.status or not result.shares.status:
-		is_correct = false
-	result.status = is_correct
-	return result

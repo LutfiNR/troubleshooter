@@ -30,38 +30,55 @@ func authenticate_telnet(username_input: String, password_input: String) -> bool
 			return true
 	return false
 
-func verify_configuration(correct_remote: RemoteService) -> Dictionary:
-	if not correct_remote:
-		return { "status": false, "error": "Invalid Remote config" }
+func verify_configuration(runtime_remote_service: RemoteService = null) -> Dictionary:
+	var runtime_ssh_port: Variant = null
+	var runtime_permit_root_login: Variant = null
+	var runtime_users: Dictionary = {}
 
-	var is_correct = true
-	var result = {
-		"status": false,
-		"telnet_state": { "status": telnet_state == correct_remote.telnet_state },
-		"ssh_state": { "status": ssh_state == correct_remote.ssh_state },
-		"ssh_port": { "status": ssh_port == correct_remote.ssh_port },
-		"permit_root_login": { "status": permit_root_login == correct_remote.permit_root_login },
-		"users": { "status": true, "details": { } },
+	if runtime_remote_service:
+		runtime_ssh_port = runtime_remote_service.ssh_port
+		runtime_permit_root_login = runtime_remote_service.permit_root_login
+		for runtime_user in runtime_remote_service.users:
+			runtime_users[runtime_user.username] = runtime_user
+
+	var res_telnet_state = _verify(
+		ServiceState.keys()[telnet_state],
+		ServiceState.keys()[runtime_remote_service.telnet_state] if runtime_remote_service else null
+	)
+
+	var res_ssh_state = _verify(
+		ServiceState.keys()[ssh_state],
+		ServiceState.keys()[runtime_remote_service.ssh_state] if runtime_remote_service else null
+	)
+	var res_ssh_port = _verify(ssh_port,runtime_ssh_port)
+	var res_permit_root_login = _verify(permit_root_login,runtime_permit_root_login)
+
+	var status: bool = (
+		res_telnet_state.status
+		and res_telnet_state.status
+		and res_ssh_port.status
+		and res_permit_root_login.status
+	)
+
+	var res_users := {}
+	for user in users:
+		var verification = user.verify_configuration(runtime_users.get(user.username))
+		res_users[user.username] = verification
+		status = status and verification.status
+
+	return {
+		"status": status,
+		"telnet_state": res_telnet_state,
+		"ssh_state": res_ssh_state,
+		"ssh_port": res_ssh_port,
+		"permit_root_login": res_permit_root_login,
+		"users": res_users,
 	}
 
-	if not result.telnet_state.status or not result.ssh_state.status or not result.ssh_port.status or not result.permit_root_login.status:
-		is_correct = false
-
-	for c_user in correct_remote.users:
-		var found = false
-		for p_user in users:
-			if p_user.username == c_user.username:
-				found = true
-				var v = p_user.verify_configuration(c_user)
-				result.users.details[c_user.username] = v
-				if not v.status:
-					result.users.status = false
-				break
-		if not found:
-			result.users.details[c_user.username] = { "status": false, "error": "Missing Remote User" }
-			result.users.status = false
-
-	if not result.users.status:
-		is_correct = false
-	result.status = is_correct
-	return result
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

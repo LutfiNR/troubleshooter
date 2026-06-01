@@ -5,7 +5,10 @@ extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
-@export var camera_limit: Dictionary[String,int]
+@onready var ui: CanvasLayer = $CanvasLayer
+
+@export var camera_limit: Dictionary[String, int]
+
 
 func _ready():
 	# Connect the signals from the component
@@ -13,10 +16,12 @@ func _ready():
 	movement.stopped.connect(_on_movement_stopped)
 	_on_tilemap_changed()
 
+
 # --- Signal Callbacks ---
 func _on_tilemap_changed():
 	camera.change_limit_camera(camera_limit)
-	
+
+
 func _on_movement_started(direction: Vector2):
 	if direction.x < 0:
 		anim_player.play("walk_left")
@@ -26,6 +31,7 @@ func _on_movement_started(direction: Vector2):
 		anim_player.play("walk_down")
 	elif direction.y < 0:
 		anim_player.play("walk_up")
+
 
 func _on_movement_stopped(last_direction: Vector2):
 	anim_player.stop()

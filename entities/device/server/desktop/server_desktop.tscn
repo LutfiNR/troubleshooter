@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="3_xpotj"]
 [ext_resource type="Script" uid="uid://blvqcuvra0i2c" path="res://entities/device/server/desktop/app/server_app.gd" id="4_2p471"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="5_0d2s3"]
-[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://font/rainyhearts.ttf" id="6_fqsl8"]
+[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/font/rainyhearts.ttf" id="6_fqsl8"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="7_2p471"]
 [ext_resource type="Script" uid="uid://bc7pw1yrw22ls" path="res://entities/device/server/desktop/app/dhcp.gd" id="7_xx8oc"]
 [ext_resource type="Script" uid="uid://cvim00ug7ugmq" path="res://entities/device/server/desktop/app/software.gd" id="9_q3fwd"]
@@ -220,9 +220,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
-current_tab = 0
+current_tab = 1
 
 [node name="Software" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1187330273 node_paths=PackedStringArray("package_list", "status_label", "install_button", "uninstall_button")]
+visible = false
 layout_mode = 2
 script = ExtResource("9_q3fwd")
 package_list = NodePath("ListPool/ItemList")
@@ -304,7 +305,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DHCP" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1066882217 node_paths=PackedStringArray("pool_list", "dhcp_service_state", "pool_name", "default_gateway", "dns_server", "start_ip_address", "subnet_mask", "pool_size")]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 script = ExtResource("7_xx8oc")
@@ -508,7 +508,7 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WEB" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1793119344 node_paths=PackedStringArray("name_server_list", "web_service", "http_service_state", "https_service_state", "name_server", "protocol", "server_name", "document_root", "web_content")]
+[node name="WEB" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1793119344 node_paths=PackedStringArray("name_server_list", "web_service", "http_service_state", "https_service_state", "server_name", "document_root", "protocol", "web_content")]
 visible = false
 layout_mode = 2
 script = ExtResource("11_d3xln")
@@ -516,10 +516,9 @@ name_server_list = NodePath("ListPool/ItemList")
 web_service = NodePath("ListPool/HBoxContainer9/WebService")
 http_service_state = NodePath("ListPool/HBoxContainer8/HTTPCheck")
 https_service_state = NodePath("ListPool/HBoxContainer8/HTTPSCheck")
-name_server = NodePath("EditorContainer/HBoxContainer/ServerName")
-protocol = NodePath("EditorContainer/HBoxContainer2/Protocol")
 server_name = NodePath("EditorContainer/HBoxContainer3/Servername")
 document_root = NodePath("EditorContainer/HBoxContainer4/DocumentRoot")
+protocol = NodePath("EditorContainer/HBoxContainer2/Protocol")
 web_content = NodePath("EditorContainer/HBoxContainer5/WebContent")
 metadata/_tab_index = 2
 

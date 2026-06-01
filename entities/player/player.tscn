@@ -5,7 +5,9 @@
 [ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="5_fkugw"]
 [ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="6_8fjmc"]
+[ext_resource type="Script" uid="uid://biwn4p60wadpc" path="res://entities/mission_panel.gd" id="6_bectd"]
 [ext_resource type="Script" uid="uid://jgo4oncy7u13" path="res://entities/tree.gd" id="6_qiwj3"]
+[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="9_wvtmh"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
@@ -163,6 +165,8 @@ _data = {
 &"walk_up": SubResource("Animation_qb0yx")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qiwj3"]
+
 [node name="Player" type="CharacterBody2D" unique_id=196673383]
 y_sort_enabled = true
 script = ExtResource("1_k7rle")
@@ -216,56 +220,59 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_fkugw")
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1763558025]
+[node name="MissionPanel" type="Panel" parent="CanvasLayer" unique_id=1763558025 node_paths=PackedStringArray("mission_tree", "progress_bar")]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 12.0
-offset_top = 10.0
+offset_top = 40.0
 offset_right = 307.0
 offset_bottom = -12.0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qiwj3")
+script = ExtResource("6_bectd")
+mission_tree = NodePath("ScrollContainer/Container/Tree")
+progress_bar = NodePath("../ProgressBar")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel" unique_id=330169765]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MissionPanel" unique_id=330169765]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tree" type="Tree" parent="CanvasLayer/Panel/ScrollContainer" unique_id=2026556902]
+[node name="Container" type="VBoxContainer" parent="CanvasLayer/MissionPanel/ScrollContainer" unique_id=1679850997]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="CanvasLayer/MissionPanel/ScrollContainer/Container" unique_id=2026556902]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/title_button_font_size = 14
 hide_root = true
 scroll_horizontal_enabled = false
 script = ExtResource("6_qiwj3")
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel" unique_id=1818687123]
-layout_mode = 0
-offset_left = 251.0
-offset_top = 4.0
-offset_right = 288.0
-offset_bottom = 24.0
-theme_override_font_sizes/font_size = 14
-text = "100%"
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=145029104]
+offset_left = 41.0
+offset_top = 10.0
+offset_right = 306.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 12
 
-[node name="Label2" type="Label" parent="CanvasLayer/Panel" unique_id=1368941233]
-layout_mode = 0
-offset_left = 186.0
-offset_top = 3.0
-offset_right = 245.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 14
-text = "Progress"
-
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer" unique_id=563762083]
+[node name="MissionButton" type="TextureButton" parent="CanvasLayer" unique_id=563762083]
 offset_left = 12.0
 offset_top = 11.0
 offset_right = 36.0
 offset_bottom = 35.0
+toggle_mode = true
 texture_normal = ExtResource("6_8fjmc")
+texture_pressed = ExtResource("9_wvtmh")
 stretch_mode = 4
 
 [connection signal="toggled" from="CanvasLayer/CableTool" to="." method="_on_cable_tool_toggled"]
+[connection signal="toggled" from="CanvasLayer/MissionButton" to="CanvasLayer/MissionPanel" method="_on_mission_button_toggled"]

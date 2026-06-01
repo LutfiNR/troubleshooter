@@ -5,41 +5,52 @@ extends Resource
 @export var privileges: Dictionary[String, Array] = { }
 
 
-func verify_configuration(correct_user: MariaDBUser) -> Dictionary:
-	if not correct_user:
-		return { "status": false, "error": "Invalid DB user" }
+func verify_configuration(runtime_user: MariaDBUser = null) -> Dictionary:
+	var runtime_username: Variant = null
+	var runtime_password: Variant = null
+	var runtime_privileges: Dictionary = {}
 
-	var is_correct = true
-	var result = {
-		"status": false,
-		"username": { "status": username == correct_user.username },
-		"password": { "status": password == correct_user.password },
-		"privileges": { "status": true, "details": { } },
+	if runtime_user:
+		runtime_username = runtime_user.username
+		runtime_password = runtime_user.password
+		runtime_privileges = runtime_user.privileges
+
+	var res_username = _verify(username, runtime_username)
+	var res_password = _verify(password, runtime_password)
+
+	var status: bool = ( res_username.status and res_password.status )
+	var res_privileges := {}
+	for db_name in privileges:
+		var expected_privs = privileges[db_name]
+		var runtime_privs = runtime_privileges.get(db_name)
+		var priv_status := false
+		if runtime_privs != null:
+			priv_status = true
+			for priv in expected_privs:
+				if not runtime_privs.has(priv):
+					priv_status = false
+					break
+
+		var verification = {
+			"value": runtime_privs,
+			"correct": expected_privs,
+			"status": priv_status,
+		}
+
+		res_privileges[db_name] = verification
+		status = status and verification.status
+
+	return {
+		"status": status,
+		"username": res_username,
+		"password": res_password,
+		"privileges": res_privileges,
 	}
 
-	if not result.username.status or not result.password.status:
-		is_correct = false
-
-	for db_name in correct_user.privileges:
-		if not privileges.has(db_name):
-			result.privileges.details[db_name] = { "status": false, "error": "Missing access to DB" }
-			result.privileges.status = false
-			continue
-
-		var c_privs = correct_user.privileges[db_name]
-		var p_privs = privileges[db_name]
-		var privs_match = true
-
-		for priv in c_privs:
-			if not p_privs.has(priv):
-				privs_match = false
-				break
-
-		result.privileges.details[db_name] = { "status": privs_match }
-		if not privs_match:
-			result.privileges.status = false
-
-	if not result.privileges.status:
-		is_correct = false
-	result.status = is_correct
-	return result
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

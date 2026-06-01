@@ -2,7 +2,6 @@ extends Resource
 
 class_name DHCPService
 
-@export var interface_id: String
 @export var pool_name: String
 @export var default_gateway: String
 @export var dns_server: String
@@ -42,26 +41,54 @@ func _build_config(ip_address: String) -> Dictionary:
 	}
 
 
-func verify_configuration(correct_dhcp: DHCPService) -> Dictionary:
-	if not correct_dhcp:
-		return { "status": false, "error": "Invalid DHCP config" }
+func verify_configuration(runtime_dhcp_service: DHCPService = null) -> Dictionary:
+	var runtime_pool_name: Variant = null
+	var runtime_start_ip_address: Variant = null
+	var runtime_subnet_mask: Variant = null
+	var runtime_default_gateway: Variant = null
+	var runtime_dns_server: Variant = null
+	var runtime_pool_size: Variant = null
 
-	var checks = {
-		"interface_id": interface_id == correct_dhcp.interface_id,
-		"start_ip_address": start_ip_address == correct_dhcp.start_ip_address,
-		"subnet_mask": subnet_mask == correct_dhcp.subnet_mask,
-		"default_gateway": default_gateway == correct_dhcp.default_gateway,
-		"dns_server": dns_server == correct_dhcp.dns_server,
-		"pool_size": pool_size == correct_dhcp.pool_size,
+	if runtime_dhcp_service:
+		runtime_pool_name = runtime_dhcp_service.pool_name
+		runtime_start_ip_address = runtime_dhcp_service.start_ip_address
+		runtime_subnet_mask = runtime_dhcp_service.subnet_mask
+		runtime_default_gateway = runtime_dhcp_service.default_gateway
+		runtime_dns_server = runtime_dhcp_service.dns_server
+		runtime_pool_size = runtime_dhcp_service.pool_size
+
+	var res_pool_name = _verify(pool_name, runtime_pool_name)
+	var res_start_ip_address = _verify(start_ip_address, runtime_start_ip_address)
+	var res_subnet_mask = _verify(subnet_mask, runtime_subnet_mask)
+	var res_default_gateway = _verify(default_gateway, runtime_default_gateway)
+	var res_dns_server = _verify(dns_server, runtime_dns_server)
+	var res_pool_size = _verify(pool_size, runtime_pool_size)
+
+	var status: bool = (
+		res_pool_name.status
+		and res_start_ip_address.status
+		and res_subnet_mask.status
+		and res_default_gateway.status
+		and res_dns_server.status
+		and res_pool_size.status
+	)
+
+	return {
+		pool_name: {
+			"status": status,
+			"pool_name": res_pool_name,
+			"start_ip_address": res_start_ip_address,
+			"subnet_mask": res_subnet_mask,
+			"default_gateway": res_default_gateway,
+			"dns_server": res_dns_server,
+			"pool_size": res_pool_size,
+		}
 	}
 
-	var is_correct = true
-	var result = { "status": false }
-
-	for key in checks:
-		if not checks[key]:
-			is_correct = false
-		result[key] = { "status": checks[key] }
-
-	result.status = is_correct
-	return result
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

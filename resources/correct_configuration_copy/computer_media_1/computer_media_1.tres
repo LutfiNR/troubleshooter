@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ComputerDevice" format=3 uid="uid://c4ys8vju8nxcq"]
+
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="1_v1dkl"]
+[ext_resource type="Resource" uid="uid://b3wn5savcga7u" path="res://resources/correct_configuration_copy/computer_media_1/eth0.tres" id="2_6f5om"]
+[ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="3_ecrnu"]
+[ext_resource type="Resource" uid="uid://b0ikjyox5dejc" path="res://resources/correct_configuration_copy/computer_media_1/neighbor_switch_media.tres" id="4_8f1t3"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer/computer_device.gd" id="5_u4dso"]
+
+[resource]
+script = ExtResource("5_u4dso")
+interfaces = Dictionary[String, ExtResource("1_v1dkl")]({
+"eth0": ExtResource("2_6f5om")
+})
+neighbors = Array[ExtResource("3_ecrnu")]([ExtResource("4_8f1t3")])
+device_id = "computer_9"
+hostname = "Computer Media 1"
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

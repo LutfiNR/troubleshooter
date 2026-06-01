@@ -1,12 +1,17 @@
 [gd_resource type="Resource" script_class="RouterDevice" format=3 uid="uid://b8q014mskqnfk"]
 
 [ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="1_8u8i8"]
+[ext_resource type="Script" uid="uid://dx7f3qd8x6hgo" path="res://components/network_device/router/dhcp_relay.gd" id="1_12kq3"]
+[ext_resource type="Resource" uid="uid://d3wjoyud06cva" path="res://resources/correct_configuration/router/relays/fa0-0.tres" id="2_4q7sx"]
 [ext_resource type="Script" uid="uid://b0an7h2vytnoi" path="res://components/network_device/router/router_device.gd" id="2_mlxqh"]
 [ext_resource type="Resource" uid="uid://dohb0fhahkoqc" path="res://resources/correct_configuration/router/fa0-0.tres" id="2_nunt1"]
+[ext_resource type="Resource" uid="uid://bl3it45yrsvcc" path="res://resources/correct_configuration/router/relays/fa0-1.tres" id="3_clntg"]
 [ext_resource type="Resource" uid="uid://cumbk1wb31g2g" path="res://resources/correct_configuration/router/fa0-1.tres" id="3_q3027"]
+[ext_resource type="Resource" uid="uid://bx2h04sqgf4w1" path="res://resources/correct_configuration/router/relays/fa0-2.tres" id="4_8rl4h"]
 [ext_resource type="Resource" uid="uid://dkul76ecwgi6s" path="res://resources/correct_configuration/router/fa0-2.tres" id="4_ofqkw"]
 [ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="5_embar"]
 [ext_resource type="Resource" uid="uid://bkn13d7wmxfon" path="res://resources/correct_configuration/router/fa0-3.tres" id="5_mvod7"]
+[ext_resource type="Resource" uid="uid://xnkqe0ycmhk" path="res://resources/correct_configuration/router/relays/fa0-3.tres" id="5_otlxw"]
 [ext_resource type="Resource" uid="uid://d0kn726l1opj0" path="res://resources/correct_configuration/router/neighbor/sw_acc.tres" id="6_nunt1"]
 [ext_resource type="Resource" uid="uid://jqayjuj64sl5" path="res://resources/correct_configuration/router/neighbor/sw_it.tres" id="7_12kq3"]
 [ext_resource type="Resource" uid="uid://uoe70lti80t5" path="res://resources/correct_configuration/router/neighbor/sw_media.tres" id="8_y2u2n"]
@@ -21,6 +26,12 @@ interfaces = Dictionary[String, ExtResource("1_8u8i8")]({
 "fa0/3": ExtResource("5_mvod7")
 })
 neighbors = Array[ExtResource("5_embar")]([ExtResource("6_nunt1"), ExtResource("7_12kq3"), ExtResource("8_y2u2n"), ExtResource("9_xj4k6")])
+dhcp_relays = Dictionary[String, ExtResource("1_12kq3")]({
+"fa0/0": ExtResource("2_4q7sx"),
+"fa0/1": ExtResource("3_clntg"),
+"fa0/2": ExtResource("4_8rl4h"),
+"fa0/3": ExtResource("5_otlxw")
+})
 device_id = "router_0"
 hostname = "Router Main"
 power = 1

@@ -10,6 +10,7 @@ enum ServiceState {
 @export_group("Global Configuration")
 @export var default_gateway: String
 @export var dns_server: String
+@export var neighbors: Array[NeighborhoodData] = []
 
 # Tambahan: Manajemen Interface Jaringan
 @export var interfaces: Dictionary[String, NetworkInterface] = { }
@@ -86,11 +87,6 @@ func get_interfaces() -> Dictionary[String, NetworkInterface]:
 
 func get_main_interface() -> NetworkInterface:
 	return get_interface("eth0")
-
-# ==========================================
-# HANDLING REQUESTS (SIMULASI LAYANAN)
-# ==========================================
-
 
 func is_package_installed(package_name: String) -> bool:
 	return installed_packages.has(package_name)
@@ -191,135 +187,157 @@ func handle_mail_request() -> MailService:
 		return null
 	return mail_configuration[0]
 
-# ==========================================
-# VERIFIKASI KONFIGURASI (SISTEM PENILAIAN)
-# ==========================================
 
+func verify_configuration(runtime_device_configuration: NetworkDevice) -> Dictionary:
+	var base_result: Dictionary = super.verify_configuration(runtime_device_configuration)
+	var runtime_server: ServerDevice = runtime_device_configuration as ServerDevice
 
-func verify_configuration(correct_config: NetworkDevice) -> Dictionary:
-	var base_result: Dictionary = super.verify_configuration(correct_config)
-	var correct_server: ServerDevice = correct_config as ServerDevice
+	if not runtime_server:
+		push_error("Runtime device configuration is empty")
+		return base_result
 
-	if not correct_server:
-		return {
-			"device_id": device_id,
-			"status": false,
-			"error": "Invalid comparison device",
-		}
+	var result := base_result.duplicate()
+	var is_correct: bool = base_result.status
 
-	var is_correct = base_result.status
-	var result = base_result.duplicate()
+	# Network verification
+	var dns_result = _verify_dns(runtime_server.dns_server)
+	var gateway_result = _verify_gateway(runtime_server.default_gateway)
+	var interfaces_result = _verify_interfaces(runtime_server.interfaces)
+	result["interfaces"] = interfaces_result
+	result["dns"] = dns_result
+	result["gateway"] = gateway_result
+	is_correct = (
+		is_correct
+		and dns_result.status
+		and gateway_result.status
+		and interfaces_result.status
+	)
 
-	# 1. Package Verification
-	var pkg_result = { "status": true, "missing": [] }
-	for g_pkg in correct_server.installed_packages:
-		if not installed_packages.has(g_pkg):
-			pkg_result.status = false
-			pkg_result.missing.append(g_pkg)
-	if not pkg_result.status:
-		is_correct = false
-	result["packages"] = pkg_result
-
-	# 2. Interface Verification (IP Address & Subnet Mask Server)
-	var interface_result = _verify_interfaces(correct_server.interfaces)
-	if not interface_result.status:
-		is_correct = false
-	result["interfaces"] = interface_result
-
-	# 3. Evaluasi Layanan Jaringan
-	result["dhcp_service"] = _verify_service_array(dhcp_service, correct_server.dhcp_service, dhcp_configuration, correct_server.dhcp_configuration)
-	result["dns_service"] = _verify_service_array(dns_service, correct_server.dns_service, dns_configuration, correct_server.dns_configuration)
-	result["web_service"] = _verify_service_array(web_service, correct_server.web_service, web_configuration, correct_server.web_configuration)
-	result["ftp_service"] = _verify_service_array(ftp_service, correct_server.ftp_service, ftp_configuration, correct_server.ftp_configuration)
-	result["remote_service"] = _verify_service_array(remote_service, correct_server.remote_service, remote_configuration, correct_server.remote_configuration)
-	result["samba_service"] = _verify_service_array(samba_service, correct_server.samba_service, samba_configuration, correct_server.samba_configuration)
-	result["mariadb_service"] = _verify_service_array(mariadb_service, correct_server.mariadb_service, mariadb_configuration, correct_server.mariadb_configuration)
-	result["mail_service"] = _verify_service_array(mail_service, correct_server.mail_service, mail_configuration, correct_server.mail_configuration)
-
-	# Jika ada satu saja layanan yang gagal verifikasi, set status server ke false
-	var services = ["dhcp_service", "dns_service", "web_service", "ftp_service", "remote_service", "samba_service", "mariadb_service", "mail_service"]
-	for srv in services:
-		if not result[srv].status:
-			is_correct = false
-
+	# Service verification
+	var services := {
+		"dhcp_service": [
+			dhcp_service,
+			runtime_server.dhcp_service,
+			dhcp_configuration,
+			runtime_server.dhcp_configuration
+		],
+		"dns_service": [
+			dns_service,
+			runtime_server.dns_service,
+			dns_configuration,
+			runtime_server.dns_configuration
+		],
+		"web_service": [
+			web_service,
+			runtime_server.web_service,
+			web_configuration,
+			runtime_server.web_configuration
+		],
+		"ftp_service": [
+			ftp_service,
+			runtime_server.ftp_service,
+			ftp_configuration,
+			runtime_server.ftp_configuration
+		],
+		"remote_service": [
+			remote_service,
+			runtime_server.remote_service,
+			remote_configuration,
+			runtime_server.remote_configuration
+		],
+		"samba_service": [
+			samba_service,
+			runtime_server.samba_service,
+			samba_configuration,
+			runtime_server.samba_configuration
+		],
+		"mariadb_service": [
+			mariadb_service,
+			runtime_server.mariadb_service,
+			mariadb_configuration,
+			runtime_server.mariadb_configuration
+		],
+		"mail_service": [
+			mail_service,
+			runtime_server.mail_service,
+			mail_configuration,
+			runtime_server.mail_configuration
+		],
+	}
+	for service_name in services:
+		var data = services[service_name]
+		result[service_name] = _verify_service( data[0], data[1], data[2], data[3] )
+		is_correct = is_correct and result[service_name].status
 	result["status"] = is_correct
 	return result
 
-# ==========================================
-# HELPER FUNGSI GRADING
-# ==========================================
+
+# Verify gateway
+func _verify_gateway(runtime_ip_gateway: String) -> Dictionary:
+	var result: bool = (
+			default_gateway == runtime_ip_gateway
+	)
+	return {
+		"correct": default_gateway,
+		"value": runtime_ip_gateway,
+		"status": result,
+	}
 
 
-func _verify_interfaces(correct_interfaces: Dictionary) -> Dictionary:
-	if interfaces.size() != correct_interfaces.size():
-		return {
-			"status": false,
-			"error": "Interface count mismatch",
-		}
+# Verify DNS server
+func _verify_dns(runtime_ip_dns: String) -> Dictionary:
+	var result: bool = (
+			dns_server == runtime_ip_dns
+	)
+	return {
+		"correct": dns_server,
+		"value": runtime_ip_dns,
+		"status": result,
+	}
 
+
+func _verify_interfaces(runtime_interfaces: Dictionary) -> Dictionary:
+	if interfaces.size() != runtime_interfaces.size():
+		push_error("Jumlah interface tidak sesuai")
 	var results: Dictionary = { }
 	var is_correct: bool = true
-
-	for interface_id in correct_interfaces:
-		if not interfaces.has(interface_id):
+	for interface_id in interfaces:
+		if not runtime_interfaces.has(interface_id):
 			results[interface_id] = {
 				"status": false,
 				"error": "Missing interface",
 			}
 			is_correct = false
 			continue
-
-		var verify_result: Dictionary = interfaces[interface_id].verify_configuration(correct_interfaces[interface_id])
+		var verify_result: Dictionary = interfaces[interface_id].verify_configuration(runtime_interfaces[interface_id])
 		results[interface_id] = verify_result
-
 		if not verify_result.status:
 			is_correct = false
-
 	return {
 		"status": is_correct,
 		"results": results,
 	}
 
-
-func _verify_service_array(p_state: ServiceState, c_state: ServiceState, p_configs: Array, c_configs: Array) -> Dictionary:
-	var eval = {
-		"status": true,
-		"service_state": { "status": p_state == c_state, "value": p_state, "correct": c_state },
-		"details": [],
+func _verify_service( c_state: ServiceState, p_state: ServiceState, c_configs: Array, p_configs: Array, ) -> Dictionary:
+	var result := {
+		"status": c_state == p_state,
+		"service_state": {
+			"status": c_state == p_state,
+			"value": ServiceState.keys()[p_state],
+			"correct": ServiceState.keys()[c_state],
+		},
+		"details": {},
 	}
 
-	if not eval.service_state.status:
-		eval.status = false
-		return eval
-
-	if c_state == ServiceState.ON:
-		if p_configs.size() < c_configs.size():
-			eval.status = false
-			eval.error = "Konfigurasi kurang (Diharapkan %d, Ditemukan %d)" % [c_configs.size(), p_configs.size()]
-
-		for c_conf in c_configs:
-			if c_conf == null:
-				continue
-			var found_match = false
-			var best_eval = null
-
-			for p_conf in p_configs:
-				if p_conf == null:
-					continue
-
-				var v = p_conf.verify_configuration(c_conf)
-				best_eval = v
-
-				if v.status:
-					found_match = true
-					eval.details.append(v)
-					break
-
-			if not found_match:
-				eval.status = false
-				if best_eval:
-					eval.details.append(best_eval)
-				else:
-					eval.details.append({ "status": false, "error": "Konfigurasi tidak ditemukan atau tidak cocok" })
-
-	return eval
+	if c_state != ServiceState.ON:
+		return result
+	for c_service in c_configs:
+		var matched_service = p_configs[0] if p_configs.size() > 0 else null
+		var verification = (
+			c_service.verify_configuration(matched_service)
+			if matched_service
+			else c_service.verify_configuration()
+		)
+		result["details"].merge(verification, true)
+		result["status"] = result["status"] and verification["status"]
+	return result

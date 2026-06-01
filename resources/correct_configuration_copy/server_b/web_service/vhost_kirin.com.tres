@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WebVirtualHost" format=3 uid="uid://6sdu0su217u7"]
+
+[ext_resource type="Resource" uid="uid://bk6bxunmf5uy4" path="res://resources/correct_configuration_copy/server_b/web_service/kirin.com.tres" id="1_7kirb"]
+[ext_resource type="Script" uid="uid://b8u6h46cbxh07" path="res://components/network_services/web_service/vhost.gd" id="2_6j0n3"]
+
+[resource]
+script = ExtResource("2_6j0n3")
+name = "kirin.com"
+protocol = 1
+server_name = "kirin.com"
+content = ExtResource("1_7kirb")
+metadata/_custom_type_script = "uid://b8u6h46cbxh07"

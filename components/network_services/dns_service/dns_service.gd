@@ -4,6 +4,9 @@ class_name DNSService
 
 @export var records: Array[DNSRecord] = []
 
+func _ready()-> void:
+	_check_duplicate_record()
+
 func resolve(domain: String) -> String:
 	for record in records:
 		if record != null and record.type == DNSRecord.RecordType.A_RECORD and record.domain_name == domain:
@@ -12,7 +15,6 @@ func resolve(domain: String) -> String:
 		if record != null and record.type == DNSRecord.RecordType.CNAME and record.domain_name == domain:
 			return resolve(record.target_ip_or_name)
 	return ""
-
 
 func resolve_mx(domain: String) -> String:
 	for record in records:
@@ -24,28 +26,32 @@ func resolve_mx(domain: String) -> String:
 				return record.target_ip_or_name
 	return ""
 
+func _check_duplicate_record()-> void:
+	var is_duplicate: bool = false
+	for record in records:
+		for rec in records:
+			if (
+			record.domain_name == rec.domain_name and
+			record.type == rec.type and
+			record.target == rec.target
+			):
+				is_duplicate = true
 
-func verify_configuration(correct_dns: DNSService) -> Dictionary:
-	if not correct_dns:
-		return { "status": false, "error": "Invalid DNS config" }
+	if is_duplicate:
+		push_warning("there is duplicate record")
 
-	var is_correct = true
-	var records_result = { "status": true, "details": { } }
-
-	for c_record in correct_dns.records:
-		var found = false
-		for p_record in records:
-			if p_record.domain_name == c_record.domain_name and p_record.type == c_record.type:
-				found = true
-				var v = p_record.verify_configuration(c_record)
-				records_result.details[c_record.domain_name] = v
-				if not v.status:
-					records_result.status = false
-				break
-		if not found:
-			records_result.details[c_record.domain_name] = { "status": false, "error": "Missing record" }
-			records_result.status = false
-
-	if not records_result.status:
-		is_correct = false
-	return { "status": is_correct, "records": records_result }
+func verify_configuration(runtime_dns_service: DNSService = null) -> Dictionary:
+	var result: Dictionary = {}
+	for record in records:
+		var matched_record: DNSRecord = null
+		if runtime_dns_service:
+			for runtime_record in runtime_dns_service.records:
+				if runtime_record.domain_name == record.domain_name:
+					matched_record = runtime_record
+					break
+		result[record.domain_name] = (
+			record.verify_configuration(matched_record)
+			if matched_record
+			else record.verify_configuration()
+		)
+	return result

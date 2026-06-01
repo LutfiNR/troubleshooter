@@ -20,38 +20,53 @@ func authenticate(username_input: String, password_input: String) -> bool:
 			return true
 	return false
 
-func verify_configuration(correct_mail: MailService) -> Dictionary:
-	if not correct_mail:
-		return { "status": false, "error": "Invalid Mail config" }
+func verify_configuration(runtime_mail: MailService = null) -> Dictionary:
+	var runtime_domain_name: Variant = null
+	var runtime_mailbox_format: Variant = null
+	var runtime_use_ssl_tls: Variant = null
+	var runtime_users: Dictionary = {}
 
-	var is_correct = true
-	var result = {
-		"status": false,
-		"service_state": { "status": service_state == correct_mail.service_state },
-		"domain_name": { "status": domain_name == correct_mail.domain_name },
-		"mailbox_format": { "status": mailbox_format == correct_mail.mailbox_format },
-		"use_ssl_tls": { "status": use_ssl_tls == correct_mail.use_ssl_tls },
-		"users": { "status": true, "details": { } },
+	if runtime_mail:
+		runtime_domain_name = runtime_mail.domain_name
+		runtime_mailbox_format = runtime_mail.mailbox_format
+		runtime_use_ssl_tls = runtime_mail.use_ssl_tls
+		for user in runtime_mail.users:
+			runtime_users[user.username] = user
+
+	var res_service_state = _verify(
+		ServiceState.keys()[service_state],
+		ServiceState.keys()[runtime_mail.service_state] if runtime_mail else null
+	)
+	var res_domain_name = _verify( domain_name, runtime_domain_name )
+	var res_mailbox_format = _verify( mailbox_format, runtime_mailbox_format )
+	var res_use_ssl_tls = _verify( use_ssl_tls, runtime_use_ssl_tls )
+
+	var status: bool = (
+		res_service_state.status
+		and res_domain_name.status
+		and res_mailbox_format.status
+		and res_use_ssl_tls.status
+	)
+
+	var res_users := {}
+	for user in users:
+		var verification = user.verify_configuration(runtime_users.get(user.username))
+		res_users[user.username] = verification
+		status = status and verification.status
+
+	return {
+		"status": status,
+		"service_state": res_service_state,
+		"domain_name": res_domain_name,
+		"mailbox_format": res_mailbox_format,
+		"use_ssl_tls": res_use_ssl_tls,
+		"users": res_users,
 	}
-
-	if not result.service_state.status or not result.domain_name.status or not result.mailbox_format.status or not result.use_ssl_tls.status:
-		is_correct = false
-
-	for c_user in correct_mail.users:
-		var found = false
-		for p_user in users:
-			if p_user.username == c_user.username:
-				found = true
-				var v = p_user.verify_configuration(c_user)
-				result.users.details[c_user.username] = v
-				if not v.status:
-					result.users.status = false
-				break
-		if not found:
-			result.users.details[c_user.username] = { "status": false, "error": "Missing Mail User" }
-			result.users.status = false
-
-	if not result.users.status:
-		is_correct = false
-	result.status = is_correct
-	return result
+	
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

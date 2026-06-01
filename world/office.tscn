@@ -13,6 +13,7 @@
 [node name="Office" type="Node2D" unique_id=2034895024]
 
 [node name="Main" type="Node2D" parent="." unique_id=1084319578]
+y_sort_enabled = true
 
 [node name="BaseTilemapLayer" type="Node2D" parent="Main" unique_id=1805536936]
 z_index = -1
@@ -32,8 +33,110 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAPAAYAAAAAAAAAAAAPAAcAAAAAAAEAAAAPAAgAAAAAAAIAAAAQAAYAAAABAAAAAAAQAAcAAAABAAEAAAAQAAgAAAABAAIAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAEAAAAGAAgAAAAAAAIAAAAHAAYAAAABAAAAAAAHAAcAAAABAAEAAAAHAAgAAAABAAIAAAACAAYAAAAAAAAAAAACAAcAAAAAAAEAAAACAAgAAAAAAAIAAAADAAYAAAABAAAAAAADAAcAAAABAAEAAAADAAgAAAABAAIAAAD9/wYAAAAAAAAAAAD9/wcAAAAAAAEAAAD9/wgAAAAAAAIAAAD+/wYAAAABAAAAAAD+/wcAAAABAAEAAAD+/wgAAAABAAIAAAD5/wYAAAAAAAAAAAD5/wcAAAAAAAEAAAD5/wgAAAAAAAIAAAD6/wYAAAABAAAAAAD6/wcAAAABAAEAAAD6/wgAAAABAAIAAAACAAMAAAAAAAAAAAACAAQAAAAAAAEAAAACAAUAAAAAAAIAAAADAAMAAAABAAAAAAADAAQAAAABAAEAAAADAAUAAAABAAIAAAD9/wMAAAAAAAAAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAIAAAD+/wMAAAABAAAAAAD+/wQAAAABAAEAAAD+/wUAAAABAAIAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAIAAAAHAAMAAAABAAAAAAAHAAQAAAABAAEAAAAHAAUAAAABAAIAAAD5/wMAAAAAAAAAAAD5/wQAAAAAAAEAAAD5/wUAAAAAAAIAAAD6/wMAAAABAAAAAAD6/wQAAAABAAEAAAD6/wUAAAABAAIAAAALAAYAAAAAAAAAAAALAAcAAAAAAAEAAAALAAgAAAAAAAIAAAAMAAYAAAABAAAAAAAMAAcAAAABAAEAAAAMAAgAAAABAAIAAAALAAMAAAAAAAAAAAALAAQAAAAAAAEAAAALAAUAAAAAAAIAAAAMAAMAAAABAAAAAAAMAAQAAAABAAEAAAAMAAUAAAABAAIAAAAPAAMAAAAAAAAAAAAPAAQAAAAAAAEAAAAPAAUAAAAAAAIAAAAQAAMAAAABAAAAAAAQAAQAAAABAAEAAAAQAAUAAAABAAIAAAAQAPP/AAAAAAAAAAAQAPT/AAAAAAEAAAAQAPX/AAAAAAIAAAARAPP/AAABAAAAAAARAPT/AAABAAEAAAARAPX/AAABAAIAAAA=")
 tile_set = ExtResource("3_g3noi")
 
+[node name="Computers" type="Node2D" parent="Main" unique_id=15923234]
+y_sort_enabled = true
+position = Vector2(606, -78)
+
+[node name="PC" parent="Main/Computers" unique_id=1713763221 instance=ExtResource("1_pavic")]
+position = Vector2(-334, -113)
+device_id = "computer_0"
+
+[node name="PC2" parent="Main/Computers" unique_id=721878575 instance=ExtResource("1_pavic")]
+position = Vector2(-414, 143)
+device_id = "computer_4"
+
+[node name="PC3" parent="Main/Computers" unique_id=1258137843 instance=ExtResource("1_pavic")]
+position = Vector2(-350, 191)
+device_id = "computer_2"
+
+[node name="PC4" parent="Main/Computers" unique_id=259920468 instance=ExtResource("1_pavic")]
+position = Vector2(-414, 191)
+device_id = "computer_3"
+
+[node name="PC5" parent="Main/Computers" unique_id=1003000239 instance=ExtResource("1_pavic")]
+position = Vector2(-350, 143)
+device_id = "computer_1"
+
+[node name="PC6" parent="Main/Computers" unique_id=831340165 instance=ExtResource("1_pavic")]
+position = Vector2(-494, 143)
+device_id = "computer_5"
+
+[node name="PC7" parent="Main/Computers" unique_id=322707595 instance=ExtResource("1_pavic")]
+position = Vector2(-494, 191)
+device_id = "computer_6"
+
+[node name="PC8" parent="Main/Computers" unique_id=151853371 instance=ExtResource("1_pavic")]
+position = Vector2(-558, 191)
+device_id = "computer_7"
+
+[node name="PC9" parent="Main/Computers" unique_id=1137097966 instance=ExtResource("1_pavic")]
+position = Vector2(-558, 143)
+device_id = "computer_8"
+
+[node name="PC10" parent="Main/Computers" unique_id=1342800629 instance=ExtResource("1_pavic")]
+position = Vector2(-638, 143)
+device_id = "computer_9"
+
+[node name="PC11" parent="Main/Computers" unique_id=582954635 instance=ExtResource("1_pavic")]
+position = Vector2(-638, 191)
+device_id = "computer_10"
+
+[node name="PC12" parent="Main/Computers" unique_id=2058666369 instance=ExtResource("1_pavic")]
+position = Vector2(-702, 191)
+device_id = "computer_11"
+
+[node name="PC13" parent="Main/Computers" unique_id=1543432668 instance=ExtResource("1_pavic")]
+position = Vector2(-702, 143)
+device_id = "computer_12"
+
+[node name="Routers" type="Node2D" parent="Main" unique_id=875137239]
+y_sort_enabled = true
+position = Vector2(606, -78)
+
+[node name="Router" parent="Main/Routers" unique_id=1828844198 instance=ExtResource("3_6fean")]
+position = Vector2(-398, -114)
+device_id = "router_0"
+
+[node name="Switchs" type="Node2D" parent="Main" unique_id=648328806]
+y_sort_enabled = true
+position = Vector2(606, -78)
+
+[node name="Switch" parent="Main/Switchs" unique_id=1625809566 instance=ExtResource("4_6t50c")]
+position = Vector2(-366, -114)
+device_id = "switch_0"
+
+[node name="Switch2" parent="Main/Switchs" unique_id=1764509224 instance=ExtResource("4_6t50c")]
+position = Vector2(-334, 94)
+device_id = "switch_1"
+
+[node name="Switch3" parent="Main/Switchs" unique_id=2141735671 instance=ExtResource("4_6t50c")]
+position = Vector2(-478, 94)
+device_id = "switch_2"
+
+[node name="Switch4" parent="Main/Switchs" unique_id=850698291 instance=ExtResource("4_6t50c")]
+position = Vector2(-622, 94)
+device_id = "switch_3"
+
+[node name="Servers" type="Node2D" parent="Main" unique_id=371589615]
+y_sort_enabled = true
+position = Vector2(606, -78)
+
+[node name="Server" parent="Main/Servers" unique_id=2022845858 instance=ExtResource("5_1xkqq")]
+position = Vector2(-398, -162)
+device_id = "server_0"
+
+[node name="Server2" parent="Main/Servers" unique_id=357826752 instance=ExtResource("5_1xkqq")]
+position = Vector2(-366, -162)
+device_id = "server_1"
+
+[node name="Server3" parent="Main/Servers" unique_id=1139964216 instance=ExtResource("5_1xkqq")]
+position = Vector2(-334, -162)
+device_id = "server_2"
+
 [node name="Connections" type="Node2D" parent="Main" unique_id=759012094]
-z_index = 1
+visible = false
+z_index = 2
+y_sort_enabled = true
 position = Vector2(606, -78)
 
 [node name="Cable" parent="Main/Connections" unique_id=247182996 instance=ExtResource("1_w3m8c")]
@@ -116,104 +219,8 @@ cable_id = "connection_16"
 points = PackedVector2Array(-638, 142, -622, 94)
 cable_id = "connection_15"
 
-[node name="Computers" type="Node2D" parent="Main" unique_id=15923234]
-position = Vector2(606, -78)
-
-[node name="PC" parent="Main/Computers" unique_id=1713763221 instance=ExtResource("1_pavic")]
-position = Vector2(-334, -114)
-device_id = "computer_0"
-
-[node name="PC2" parent="Main/Computers" unique_id=721878575 instance=ExtResource("1_pavic")]
-position = Vector2(-414, 142)
-device_id = "computer_4"
-
-[node name="PC3" parent="Main/Computers" unique_id=1258137843 instance=ExtResource("1_pavic")]
-position = Vector2(-350, 190)
-device_id = "computer_2"
-
-[node name="PC4" parent="Main/Computers" unique_id=259920468 instance=ExtResource("1_pavic")]
-position = Vector2(-414, 190)
-device_id = "computer_3"
-
-[node name="PC5" parent="Main/Computers" unique_id=1003000239 instance=ExtResource("1_pavic")]
-position = Vector2(-350, 142)
-device_id = "computer_1"
-
-[node name="PC6" parent="Main/Computers" unique_id=831340165 instance=ExtResource("1_pavic")]
-position = Vector2(-494, 142)
-device_id = "computer_5"
-
-[node name="PC7" parent="Main/Computers" unique_id=322707595 instance=ExtResource("1_pavic")]
-position = Vector2(-494, 190)
-device_id = "computer_6"
-
-[node name="PC8" parent="Main/Computers" unique_id=151853371 instance=ExtResource("1_pavic")]
-position = Vector2(-558, 190)
-device_id = "computer_7"
-
-[node name="PC9" parent="Main/Computers" unique_id=1137097966 instance=ExtResource("1_pavic")]
-position = Vector2(-558, 142)
-device_id = "computer_8"
-
-[node name="PC10" parent="Main/Computers" unique_id=1342800629 instance=ExtResource("1_pavic")]
-position = Vector2(-638, 142)
-device_id = "computer_9"
-
-[node name="PC11" parent="Main/Computers" unique_id=582954635 instance=ExtResource("1_pavic")]
-position = Vector2(-638, 190)
-device_id = "computer_10"
-
-[node name="PC12" parent="Main/Computers" unique_id=2058666369 instance=ExtResource("1_pavic")]
-position = Vector2(-702, 190)
-device_id = "computer_11"
-
-[node name="PC13" parent="Main/Computers" unique_id=1543432668 instance=ExtResource("1_pavic")]
-position = Vector2(-702, 142)
-device_id = "computer_12"
-
-[node name="Routers" type="Node2D" parent="Main" unique_id=875137239]
-position = Vector2(606, -78)
-
-[node name="Router" parent="Main/Routers" unique_id=1828844198 instance=ExtResource("3_6fean")]
-position = Vector2(-398, -114)
-device_id = "router_0"
-
-[node name="Switchs" type="Node2D" parent="Main" unique_id=648328806]
-position = Vector2(606, -78)
-
-[node name="Switch" parent="Main/Switchs" unique_id=1625809566 instance=ExtResource("4_6t50c")]
-position = Vector2(-366, -114)
-device_id = "switch_0"
-
-[node name="Switch2" parent="Main/Switchs" unique_id=1764509224 instance=ExtResource("4_6t50c")]
-position = Vector2(-334, 94)
-device_id = "switch_1"
-
-[node name="Switch3" parent="Main/Switchs" unique_id=2141735671 instance=ExtResource("4_6t50c")]
-position = Vector2(-478, 94)
-device_id = "switch_2"
-
-[node name="Switch4" parent="Main/Switchs" unique_id=850698291 instance=ExtResource("4_6t50c")]
-position = Vector2(-622, 94)
-device_id = "switch_3"
-
-[node name="Servers" type="Node2D" parent="Main" unique_id=371589615]
-position = Vector2(606, -78)
-
-[node name="Server" parent="Main/Servers" unique_id=2022845858 instance=ExtResource("5_1xkqq")]
-position = Vector2(-398, -162)
-device_id = "server_0"
-
-[node name="Server2" parent="Main/Servers" unique_id=357826752 instance=ExtResource("5_1xkqq")]
-position = Vector2(-366, -162)
-device_id = "server_1"
-
-[node name="Server3" parent="Main/Servers" unique_id=1139964216 instance=ExtResource("5_1xkqq")]
-position = Vector2(-334, -162)
-device_id = "server_2"
-
 [node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("2_w3m8c")]
-position = Vector2(160, -224)
+position = Vector2(171, -211)
 camera_limit = Dictionary[String, int]({
 "b": 160,
 "l": -144,

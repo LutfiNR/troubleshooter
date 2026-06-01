@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ServerDevice" format=3 uid="uid://qj5r7jso6gef"]
 
 [ext_resource type="Script" uid="uid://d32u4rnmebwff" path="res://components/network_services/dhcp_service.gd" id="1_p52ie"]
-[ext_resource type="Script" uid="uid://do6yw21m3d5ak" path="res://components/network_services/dns_service/dns_service.gd" id="2_05wna"]
+[ext_resource type="Script" uid="uid://cvt74hplowoi6" path="res://components/network_services/dns_service/dns_service.gd" id="2_05wna"]
 [ext_resource type="Script" uid="uid://dd6yhu00lubch" path="res://components/network_services/ftp_service/ftp_service.gd" id="3_dnow3"]
 [ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="4_16tcr"]
 [ext_resource type="Resource" uid="uid://dhd6m2cyiie7s" path="res://resources/correct_configuration/server_c/ftp_service/ftp_service.tres" id="4_et7yg"]

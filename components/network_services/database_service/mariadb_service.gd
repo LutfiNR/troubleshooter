@@ -26,50 +26,49 @@ func authenticate(username_input: String, password_input: String) -> MariaDBUser
 			
 	return null
 
-func verify_configuration(correct_maria: MariaDBService) -> Dictionary:
-	if not correct_maria:
-		return { "status": false, "error": "Invalid MariaDB config" }
+func verify_configuration(runtime_maria: MariaDBService = null) -> Dictionary:
+	var runtime_root_password: Variant = null
+	var runtime_databases: Dictionary = {}
+	var runtime_users: Dictionary = {}
 
-	var is_correct = true
-	var result = {
-		"status": false,
-		"service_state": { "status": service_state == correct_maria.service_state },
-		"root_password": { "status": root_password == correct_maria.root_password },
-		"databases": { "status": true, "details": { } },
-		"users": { "status": true, "details": { } },
+	if runtime_maria:
+		runtime_root_password = runtime_maria.root_password
+		for db in runtime_maria.databases:
+			runtime_databases[db.db_name] = db
+		for user in runtime_maria.users:
+			runtime_users[user.username] = user
+
+	var res_service_state = _verify(
+		ServiceState.keys()[service_state],
+		ServiceState.keys()[runtime_maria.service_state] if runtime_maria else null
+	)
+	var res_root_password = _verify( root_password, runtime_root_password )
+	var status: bool = ( res_service_state.status and res_root_password.status )
+
+	var res_databases := {}
+	for db in databases:
+		var verification = db.verify_configuration( runtime_databases.get(db.db_name) )
+		res_databases[db.db_name] = verification
+		status = status and verification.status
+
+	var res_users := {}
+	for user in users:
+		var verification = user.verify_configuration( runtime_users.get(user.username) )
+		res_users[user.username] = verification
+		status = status and verification.status
+
+	return {
+		"status": status,
+		"service_state": res_service_state,
+		"root_password": res_root_password,
+		"databases": res_databases,
+		"users": res_users,
 	}
 
-	if not result.service_state.status or not result.root_password.status:
-		is_correct = false
-
-	# Verify Databases
-	for c_db in correct_maria.databases:
-		var found = false
-		for p_db in databases:
-			if p_db.db_name == c_db.db_name:
-				found = true
-				result.databases.details[c_db.db_name] = { "status": true }
-				break
-		if not found:
-			result.databases.details[c_db.db_name] = { "status": false, "error": "Missing Database" }
-			result.databases.status = false
-
-	# Verify Users
-	for c_user in correct_maria.users:
-		var found = false
-		for p_user in users:
-			if p_user.username == c_user.username:
-				found = true
-				var v = p_user.verify_configuration(c_user)
-				result.users.details[c_user.username] = v
-				if not v.status:
-					result.users.status = false
-				break
-		if not found:
-			result.users.details[c_user.username] = { "status": false, "error": "Missing DB User" }
-			result.users.status = false
-
-	if not result.databases.status or not result.users.status:
-		is_correct = false
-	result.status = is_correct
-	return result
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

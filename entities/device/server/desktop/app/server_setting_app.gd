@@ -77,7 +77,7 @@ func _on_save_button_pressed() -> void:
 		main_iface.export_ip_address = ip_address_input.text.strip_edges()
 		main_iface.export_subnet_mask = subnet_mask_input.text.strip_edges()
 		# Wajib dipanggil untuk mengkalkulasi ulang objek IPAddress-nya!
-		main_iface.setup_ip_address()
+		main_iface.setup_ip()
 		
 	# 3. Update ke NetworkDeviceManager
 	NetworkDeviceManager.update_device(target_device_id, device)

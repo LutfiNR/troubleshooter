@@ -1,7 +1,7 @@
 extends Node
 
 @onready var correct_configuration: MissionData = preload("uid://dwqknavuvqsr")
-@onready var empty_configuration: MissionData = preload("uid://dwqknavuvqsr")
+@onready var empty_configuration: MissionData = preload("uid://ddnpcv1gr0jwg")
 
 # Dictionary utama yang menampung evaluasi hierarkis untuk Tree UI
 var mission_item: Dictionary = { }
@@ -9,6 +9,14 @@ var mission_item: Dictionary = { }
 
 func _ready() -> void:
 	NetworkDeviceManager.device_updated.connect(_on_device_updated)
+	for device_id in correct_configuration.computer_devices:
+		correct_configuration.computer_devices[device_id].setup_device()
+	for device_id in correct_configuration.server_devices:
+		correct_configuration.server_devices[device_id].setup_device()
+	for device_id in correct_configuration.router_devices:
+		correct_configuration.router_devices[device_id].setup_device()
+	for device_id in correct_configuration.switch_devices:
+		correct_configuration.switch_devices[device_id].setup_device()
 	if empty_configuration:
 		load_mission_configuration(empty_configuration)
 
@@ -50,7 +58,6 @@ func _load_devices_to_manager(devices_dict: Dictionary) -> void:
 
 
 func _on_device_updated(_device_id: String) -> void:
-	# Setiap kali ada yang colok kabel/ubah IP, re-evaluasi
 	evaluate_mission()
 
 
@@ -124,7 +131,7 @@ func _verify_category(runtime_dict: Dictionary, correct_dict: Dictionary, result
 			continue
 
 		var runtime_device = runtime_dict[correct_id]
-		var result = runtime_device.verify_configuration(correct_device)
+		var result = correct_device.verify_configuration(runtime_device)
 
 		# Masukkan hasil tes ke dalam parameter "results_out" sesuai nama alat
 		results_out[correct_id] = result

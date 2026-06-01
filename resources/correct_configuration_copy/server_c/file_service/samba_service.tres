@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SambaService" format=3 uid="uid://bgl1mm25s3m0m"]
+
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_services/file_service/samba_service.gd" id="1_7hyj3"]
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_services/file_service/share_folder.gd" id="2_r8bbj"]
+[ext_resource type="Resource" uid="uid://dk1yedwdqodrs" path="res://resources/correct_configuration_copy/server_c/file_service/public.tres" id="3_e8cr4"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_services/file_service/user.gd" id="4_kgh3i"]
+[ext_resource type="Resource" uid="uid://caaj4onrjb728" path="res://resources/correct_configuration_copy/server_c/file_service/user.tres" id="5_ah2px"]
+
+[resource]
+script = ExtResource("1_7hyj3")
+users = Array[ExtResource("4_kgh3i")]([ExtResource("5_ah2px")])
+shares = Array[ExtResource("2_r8bbj")]([ExtResource("3_e8cr4")])
+metadata/_custom_type_script = "uid://blfdumormqk75"

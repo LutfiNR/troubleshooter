@@ -8,22 +8,42 @@ enum Protocol { HTTP, HTTPS }
 @export var content: WebContent
 
 
-func verify_configuration(correct_vhost: WebVirtualHost) -> Dictionary:
-	if not correct_vhost:
-		return { "status": false, "error": "Invalid vhost" }
+func verify_configuration(runtime_vhost: WebVirtualHost = null) -> Dictionary:
+	var runtime_name = null
+	var runtime_protocol = null
+	var runtime_server_name = null
+	var runtime_document_root = null
 
-	var checks = {
-		"protocol": protocol == correct_vhost.protocol,
-		"server_name": server_name == correct_vhost.server_name,
-		"document_root": document_root == correct_vhost.document_root,
+	if runtime_vhost:
+		runtime_name = runtime_vhost.name
+		runtime_protocol = Protocol.keys()[runtime_vhost.protocol]
+		runtime_server_name = runtime_vhost.server_name
+		runtime_document_root = runtime_vhost.document_root
+
+	var res_name = _verify(name, runtime_name)
+	var res_protocol = _verify(Protocol.keys()[protocol],runtime_protocol)
+	var res_server_name = _verify(server_name,runtime_server_name)
+	var res_document_root = _verify(document_root,runtime_document_root)
+
+	var status = (
+		res_name.status
+		and res_protocol.status
+		and res_server_name.status
+		and res_document_root.status
+	)
+
+	return {
+		"status": status,
+		"name": res_name,
+		"protocol": res_protocol,
+		"server_name": res_server_name,
+		"document_root": res_document_root,
 	}
-
-	var is_correct = true
-	var result = { "status": false }
-	for key in checks:
-		if not checks[key]:
-			is_correct = false
-		result[key] = { "status": checks[key] }
-
-	result.status = is_correct
-	return result
+	
+func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
+	var has_runtime := runtime_config != null
+	return {
+		"value": runtime_config if has_runtime else null,
+		"correct": config,
+		"status": has_runtime and config == runtime_config,
+	}

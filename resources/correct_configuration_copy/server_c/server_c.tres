@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ServerDevice" format=3 uid="uid://c4s7jruml5qbn"]
+
+[ext_resource type="Script" uid="uid://d32u4rnmebwff" path="res://components/network_services/dhcp_service.gd" id="1_ud5q4"]
+[ext_resource type="Script" uid="uid://cvt74hplowoi6" path="res://components/network_services/dns_service/dns_service.gd" id="2_8rlgq"]
+[ext_resource type="Script" uid="uid://dd6yhu00lubch" path="res://components/network_services/ftp_service/ftp_service.gd" id="3_j8060"]
+[ext_resource type="Script" uid="uid://8a1egdjtlndj" path="res://components/network_interface/network_interface.gd" id="5_jr47a"]
+[ext_resource type="Resource" uid="uid://cvvwvyaqyejyv" path="res://resources/correct_configuration_copy/server_c/eth0.tres" id="6_flpu8"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_services/mail_service/mail_service.gd" id="7_787qj"]
+[ext_resource type="Script" uid="uid://cc0e76v5yg2wt" path="res://components/network_connection/neighborhood_data.gd" id="8_3eahs"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_services/database_service/mariadb_service.gd" id="8_k37g5"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_services/remote_service/remote_service.gd" id="9_ik2we"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_services/file_service/samba_service.gd" id="10_1etl5"]
+[ext_resource type="Script" uid="uid://d27u2rul5ujwv" path="res://components/network_device/server/server_device.gd" id="12_rcngf"]
+[ext_resource type="Script" uid="uid://be0sebhd42mrr" path="res://components/network_services/web_service/web_service.gd" id="13_b2h7a"]
+
+[resource]
+script = ExtResource("12_rcngf")
+interfaces = Dictionary[String, ExtResource("5_jr47a")]({
+"eth0": ExtResource("6_flpu8")
+})
+device_id = "server_2"
+hostname = "Server C"
+metadata/_custom_type_script = "uid://d27u2rul5ujwv"
