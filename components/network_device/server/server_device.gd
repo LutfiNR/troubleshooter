@@ -88,6 +88,7 @@ func get_interfaces() -> Dictionary[String, NetworkInterface]:
 func get_main_interface() -> NetworkInterface:
 	return get_interface("eth0")
 
+
 func is_package_installed(package_name: String) -> bool:
 	return installed_packages.has(package_name)
 
@@ -207,10 +208,10 @@ func verify_configuration(runtime_device_configuration: NetworkDevice) -> Dictio
 	result["dns"] = dns_result
 	result["gateway"] = gateway_result
 	is_correct = (
-		is_correct
-		and dns_result.status
-		and gateway_result.status
-		and interfaces_result.status
+			is_correct
+			and dns_result.status
+			and gateway_result.status
+			and interfaces_result.status
 	)
 
 	# Service verification
@@ -219,54 +220,54 @@ func verify_configuration(runtime_device_configuration: NetworkDevice) -> Dictio
 			dhcp_service,
 			runtime_server.dhcp_service,
 			dhcp_configuration,
-			runtime_server.dhcp_configuration
+			runtime_server.dhcp_configuration,
 		],
 		"dns_service": [
 			dns_service,
 			runtime_server.dns_service,
 			dns_configuration,
-			runtime_server.dns_configuration
+			runtime_server.dns_configuration,
 		],
 		"web_service": [
 			web_service,
 			runtime_server.web_service,
 			web_configuration,
-			runtime_server.web_configuration
+			runtime_server.web_configuration,
 		],
 		"ftp_service": [
 			ftp_service,
 			runtime_server.ftp_service,
 			ftp_configuration,
-			runtime_server.ftp_configuration
+			runtime_server.ftp_configuration,
 		],
 		"remote_service": [
 			remote_service,
 			runtime_server.remote_service,
 			remote_configuration,
-			runtime_server.remote_configuration
+			runtime_server.remote_configuration,
 		],
 		"samba_service": [
 			samba_service,
 			runtime_server.samba_service,
 			samba_configuration,
-			runtime_server.samba_configuration
+			runtime_server.samba_configuration,
 		],
 		"mariadb_service": [
 			mariadb_service,
 			runtime_server.mariadb_service,
 			mariadb_configuration,
-			runtime_server.mariadb_configuration
+			runtime_server.mariadb_configuration,
 		],
 		"mail_service": [
 			mail_service,
 			runtime_server.mail_service,
 			mail_configuration,
-			runtime_server.mail_configuration
+			runtime_server.mail_configuration,
 		],
 	}
 	for service_name in services:
 		var data = services[service_name]
-		result[service_name] = _verify_service( data[0], data[1], data[2], data[3] )
+		result[service_name] = _verify_service(data[0], data[1], data[2], data[3])
 		is_correct = is_correct and result[service_name].status
 	result["status"] = is_correct
 	return result
@@ -318,7 +319,8 @@ func _verify_interfaces(runtime_interfaces: Dictionary) -> Dictionary:
 		"results": results,
 	}
 
-func _verify_service( c_state: ServiceState, p_state: ServiceState, c_configs: Array, p_configs: Array, ) -> Dictionary:
+
+func _verify_service(c_state: ServiceState, p_state: ServiceState, c_configs: Array, p_configs: Array) -> Dictionary:
 	var result := {
 		"status": c_state == p_state,
 		"service_state": {
@@ -326,18 +328,32 @@ func _verify_service( c_state: ServiceState, p_state: ServiceState, c_configs: A
 			"value": ServiceState.keys()[p_state],
 			"correct": ServiceState.keys()[c_state],
 		},
-		"details": {},
+		"details": { },
 	}
 
 	if c_state != ServiceState.ON:
 		return result
+
 	for c_service in c_configs:
 		var matched_service = p_configs[0] if p_configs.size() > 0 else null
+		if c_service is DHCPService:
+			for p_config in p_configs:
+				print(c_service.pool_name, p_config.pool_name, c_service.pool_name == p_config.pool_name)
+				if c_service.pool_name == p_config.pool_name:
+					matched_service = p_config
+				else:
+					matched_service = null
+
 		var verification = (
-			c_service.verify_configuration(matched_service)
-			if matched_service
-			else c_service.verify_configuration()
+				c_service.verify_configuration(matched_service)
+				if matched_service
+				else c_service.verify_configuration()
 		)
 		result["details"].merge(verification, true)
-		result["status"] = result["status"] and verification["status"]
+		if c_service is DHCPService or c_service is DNSService:
+			result["status"] = result["status"] and verification[verification.keys()[0]]["status"]
+			if c_service is DHCPService:
+				print(verification[verification.keys()[0]]["pool_name"]["value"], verification[verification.keys()[0]]["status"])
+		else:
+			result["status"] = result["status"] and verification["status"]
 	return result
