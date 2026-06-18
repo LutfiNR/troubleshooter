@@ -28,16 +28,16 @@ func refresh_data() -> void:
 
 
 func _populate_ui() -> void:
-	var raw_device = NetworkDeviceManager.get_device_data(target_device_id)
-	if not raw_device is ComputerDevice:
+	var raw_device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	if not raw_device is ComputerDeviceData:
 		return
-	var device: ComputerDevice = raw_device
+	var device: ComputerDeviceData = raw_device
 
 	host_name_input.text = device.hostname
 	gateway_input.text = device.default_gateway
 	primary_dns_input.text = device.dns_server
-	var is_dhcp = (device.ip_allocation_type == ComputerDevice.IPAllocationType.DHCP)
-	var main_iface = device.get_interface()
+	var is_dhcp = (device.get_interface("").ip_allocation_mode == NetworkInterface.IPAllocationMode.DHCP)
+	var main_iface = device.get_interface("")
 	if main_iface:
 		if is_dhcp:
 			get_ip_from_dhcp()
@@ -71,7 +71,7 @@ func _on_ip_dynamic_button_toggled(toggled: bool) -> void:
 
 
 func _on_save_button_pressed() -> void:
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not device:
 		return
 
@@ -80,35 +80,33 @@ func _on_save_button_pressed() -> void:
 	device.dns_server = primary_dns_input.text.strip_edges()
 
 	if ip_set_mode_input.button_pressed:
-		device.ip_allocation_type = ComputerDevice.IPAllocationType.DHCP
+		device.get_interface("").ip_allocation_mode = NetworkInterface.IPAllocationMode.DHCP
 	else:
-		device.ip_allocation_type = ComputerDevice.IPAllocationType.STATIC
+		device.get_interface("").ip_allocation_mode = NetworkInterface.IPAllocationMode.STATIC
 
-	var main_iface = device.get_interface()
+	var main_iface = device.get_interface("")
 	if main_iface:
 		main_iface.export_ip_address = ip_address_input.text.strip_edges()
 		main_iface.export_subnet_mask = subnet_mask_input.text.strip_edges()
-		main_iface.setup_ip_address()
-
-	print("[Settings] Konfigurasi disimpan untuk ID: ", target_device_id)
-	NetworkDeviceManager.update_device(target_device_id, device)
+		main_iface.initialize_ip_from_export()
+	
+	device.interfaces[0] = main_iface
+	GameManager.update_device_data(target_device_id, device)
 
 
 func get_ip_from_dhcp():
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
-	var main_iface = device.get_interface()
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var main_iface = device.get_interface("")
 
 	if not main_iface.is_up():
 		_dhcp_failed_request()
 		return
 
-	# Cukup gunakan 1 Baris ini untuk memanggil Autoload Service!
-	var response = NetworkServiceManager.request_dhcp(target_device_id, "eth0")
-	print(response)
+	var response = GameManager.request_dhcp(target_device_id, main_iface.id)
 
 	if response.success:
-		ip_address_input.text = device.get_interface().export_ip_address
-		subnet_mask_input.text = device.get_interface().export_subnet_mask
+		ip_address_input.text = device.get_interface("").export_ip_address
+		subnet_mask_input.text = device.get_interface("").export_subnet_mask
 		gateway_input.text = device.default_gateway
 		primary_dns_input.text = device.dns_server
 		network_status_label.text = "DHCP Success"

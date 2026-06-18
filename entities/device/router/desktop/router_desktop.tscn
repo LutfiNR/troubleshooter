@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_7p7ye"]
 [ext_resource type="Script" uid="uid://oy4xrlikc5bd" path="res://entities/device/router/desktop/interfaces.gd" id="4_kbl0u"]
 [ext_resource type="Script" uid="uid://bk70oybies68g" path="res://entities/device/router/desktop/dhcp_relay.gd" id="7_if22v"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/theme.tres" id="7_rmj6y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if22v"]
 bg_color = Color(1, 1, 1, 1)
@@ -37,6 +38,15 @@ texture_margin_bottom = 2.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_44riu"]
+texture = ExtResource("3_kbl0u")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [node name="RouterDesktop" type="Node2D" unique_id=531429823 node_paths=PackedStringArray("ui_container")]
 script = ExtResource("1_04prg")
 ui_container = NodePath("UIContainer")
@@ -46,14 +56,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7p7ye")
-interface_tab = NodePath("TabContainer/Interfaces")
+interface_tab = NodePath("TabContainer/Global Configuration")
 dhcp_relay_tab = NodePath("TabContainer/DHCP Relay")
 
 [node name="Window" type="NinePatchRect" parent="UIContainer" unique_id=768617952]
@@ -103,35 +113,34 @@ theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_44riu")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7ipaw")
 current_tab = 0
 
-[node name="Interfaces" type="TabBar" parent="UIContainer/TabContainer" unique_id=1777122453 node_paths=PackedStringArray("interface_list", "neighbor_device_label", "neighbor_interface_label", "interface_status", "mac_address", "ip_address", "subnet_mask")]
+[node name="Global Configuration" type="TabBar" parent="UIContainer/TabContainer" unique_id=1777122453 node_paths=PackedStringArray("hostname", "interface_list", "interface_status", "mac_address", "ip_address", "subnet_mask")]
 layout_mode = 2
 tab_alignment = 1
 script = ExtResource("4_kbl0u")
+hostname = NodePath("Hostname2")
 interface_list = NodePath("ItemList")
-neighbor_device_label = NodePath("EditorContainer/HBoxContainer5/Neighbor")
-neighbor_interface_label = NodePath("EditorContainer/HBoxContainer5/Interface")
 interface_status = NodePath("EditorContainer/HBoxContainer4/InterfaceStatus")
 mac_address = NodePath("EditorContainer/HBoxContainer/MAC")
 ip_address = NodePath("EditorContainer/HBoxContainer2/IP")
 subnet_mask = NodePath("EditorContainer/HBoxContainer3/Subnet")
 metadata/_tab_index = 0
 
-[node name="ItemList" type="ItemList" parent="UIContainer/TabContainer/Interfaces" unique_id=2041674669]
+[node name="ItemList" type="ItemList" parent="UIContainer/TabContainer/Global Configuration" unique_id=2041674669]
 layout_mode = 0
 offset_left = 6.0
-offset_top = 7.0
-offset_right = 196.0
-offset_bottom = 15.0
+offset_top = 61.0
+offset_right = 617.0
+offset_bottom = 69.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 auto_height = true
 
-[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/TabContainer/Interfaces" unique_id=1781993593]
+[node name="EditorContainer" type="VBoxContainer" parent="UIContainer/TabContainer/Global Configuration" unique_id=1781993593]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -405.0
+offset_left = -622.0
 offset_top = 6.0
 offset_right = -6.0
 offset_bottom = -7.0
@@ -139,62 +148,31 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 6
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=1632054946]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Label" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer5" unique_id=198750683]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "Neighbor"
-
-[node name="Neighbor" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer5" unique_id=1217031931]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer5" unique_id=1524949635]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "Interface"
-
-[node name="Interface" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer5" unique_id=2054840009]
-layout_mode = 2
-size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0, 0.5019608, 0, 1)
-horizontal_alignment = 2
-
-[node name="HSeparator" type="HSeparator" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=2142112119]
-layout_mode = 2
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=542469247]
+[node name="HBoxContainer4" type="HBoxContainer" parent="UIContainer/TabContainer/Global Configuration/EditorContainer" unique_id=542469247]
 layout_mode = 2
 theme_override_constants/separation = 72
 
-[node name="Label" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer4" unique_id=1479409578]
+[node name="Label" type="Label" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer4" unique_id=1479409578]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Status  "
 
-[node name="InterfaceStatus" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer4" unique_id=1143870662]
+[node name="InterfaceStatus" type="Label" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer4" unique_id=1143870662]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Status"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=2005543980]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/TabContainer/Global Configuration/EditorContainer" unique_id=2005543980]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer" unique_id=975275753]
+[node name="Label" type="Label" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer" unique_id=975275753]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "MAC Address"
 
-[node name="MAC" type="LineEdit" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer" unique_id=111938761]
+[node name="MAC" type="LineEdit" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer" unique_id=111938761]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
@@ -203,17 +181,17 @@ theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_rbvdh")
 caret_blink = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=1965056870]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/TabContainer/Global Configuration/EditorContainer" unique_id=1965056870]
 layout_mode = 2
 theme_override_constants/separation = 45
 
-[node name="Label" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer2" unique_id=2123571527]
+[node name="Label" type="Label" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer2" unique_id=2123571527]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "IP Address "
 
-[node name="IP" type="LineEdit" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer2" unique_id=825211844]
+[node name="IP" type="LineEdit" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer2" unique_id=825211844]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
@@ -222,17 +200,17 @@ theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_rbvdh")
 caret_blink = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=758392609]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/TabContainer/Global Configuration/EditorContainer" unique_id=758392609]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer3" unique_id=1616998127]
+[node name="Label" type="Label" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer3" unique_id=1616998127]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Subnet Mask"
 
-[node name="Subnet" type="LineEdit" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer3" unique_id=258139503]
+[node name="Subnet" type="LineEdit" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer3" unique_id=258139503]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
@@ -241,14 +219,37 @@ theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_rbvdh")
 caret_blink = true
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/TabContainer/Interfaces/EditorContainer" unique_id=1738821638]
+[node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/TabContainer/Global Configuration/EditorContainer" unique_id=1738821638]
 layout_mode = 2
 alignment = 2
 
-[node name="SaveButton" type="Button" parent="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer7" unique_id=548131720]
+[node name="SaveButton" type="Button" parent="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer7" unique_id=548131720]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Save"
+
+[node name="HostnameLabel2" type="Label" parent="UIContainer/TabContainer/Global Configuration" unique_id=1184398175]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 148.0
+offset_bottom = 45.0
+theme = ExtResource("7_rmj6y")
+text = "Host Name :"
+
+[node name="Hostname2" type="LineEdit" parent="UIContainer/TabContainer/Global Configuration" unique_id=653016694]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 11.0
+offset_right = 617.0
+offset_bottom = 51.0
+size_flags_horizontal = 3
+theme = ExtResource("7_rmj6y")
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_44riu")
+caret_blink = true
 
 [node name="DHCP Relay" type="TabBar" parent="UIContainer/TabContainer" unique_id=1004905534 node_paths=PackedStringArray("interface_list", "ip_dhcp_server")]
 visible = false
@@ -314,10 +315,10 @@ text = "Save"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 296.0
-offset_top = -176.0
-offset_right = 312.0
-offset_bottom = -160.0
+offset_left = 612.0
+offset_top = -355.0
+offset_right = 628.0
+offset_bottom = -339.0
 grow_horizontal = 0
 texture_normal = ExtResource("4_7p7ye")
 texture_pressed = ExtResource("4_7p7ye")
@@ -325,8 +326,9 @@ texture_hover = ExtResource("4_7p7ye")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761848]
 
-[connection signal="item_selected" from="UIContainer/TabContainer/Interfaces/ItemList" to="UIContainer/TabContainer/Interfaces" method="_on_interface_list_item_selected"]
-[connection signal="pressed" from="UIContainer/TabContainer/Interfaces/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/TabContainer/Interfaces" method="_on_save_button_pressed"]
+[connection signal="item_selected" from="UIContainer/TabContainer/Global Configuration/ItemList" to="UIContainer/TabContainer/Global Configuration" method="_on_interface_list_item_selected"]
+[connection signal="pressed" from="UIContainer/TabContainer/Global Configuration/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/TabContainer/Global Configuration" method="_on_save_button_pressed"]
+[connection signal="focus_exited" from="UIContainer/TabContainer/Global Configuration/Hostname2" to="UIContainer/TabContainer/Global Configuration" method="_on_hostname_focus_exited"]
 [connection signal="item_selected" from="UIContainer/TabContainer/DHCP Relay/ItemList" to="UIContainer/TabContainer/DHCP Relay" method="_on_interface_list_item_selected"]
 [connection signal="pressed" from="UIContainer/TabContainer/DHCP Relay/EditorContainer/HBoxContainer7/SaveButton" to="UIContainer/TabContainer/DHCP Relay" method="_on_save_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

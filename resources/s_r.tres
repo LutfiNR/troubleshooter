@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="ServerDeviceData" format=3 uid="uid://dvk8rtyr6rsd"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_6qjpv"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_1j5or"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="2_d4bbh"]
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="3_oc3ir"]
+[ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="4_hk1y7"]
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="5_1j5or"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="5_dgqhm"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="6_4r72p"]
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="6_ui8is"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="8_jwkc2"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="9_ehb2d"]
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_service/File/share_folder.gd" id="10_dgqhm"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="11_4r72p"]
+
+[sub_resource type="Resource" id="Resource_6qjpv"]
+script = ExtResource("2_1j5or")
+id = "eth0"
+mac_address = "xxx"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[sub_resource type="Resource" id="Resource_jwkc2"]
+script = ExtResource("9_ehb2d")
+metadata/_custom_type_script = "uid://blfdumormqk75"
+
+[sub_resource type="Resource" id="Resource_hk1y7"]
+script = ExtResource("5_1j5or")
+metadata/_custom_type_script = "uid://cu5af7k6mnn4q"
+
+[resource]
+script = ExtResource("4_hk1y7")
+web_configuration = Array[ExtResource("5_1j5or")]([SubResource("Resource_hk1y7")])
+samba_configuration = Array[ExtResource("9_ehb2d")]([SubResource("Resource_jwkc2")])
+device_id = "server_0"
+interfaces = Array[ExtResource("2_1j5or")]([SubResource("Resource_6qjpv")])
+metadata/_custom_type_script = "uid://3wt8jxh6n6th"

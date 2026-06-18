@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://3lq111hqbhxx"]
-
-[ext_resource type="Script" uid="uid://b1nme3511h1s8" path="res://autoloads/connection_manager/connection_manager.gd" id="1_g8h5h"]
-
-[node name="ConnectionManager" type="Node2D" unique_id=759440004]
-script = ExtResource("1_g8h5h")

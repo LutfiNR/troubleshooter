@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://noeheffbrarg"]
 
 [ext_resource type="Texture2D" uid="uid://1o1qxa1r1o2r" path="res://assets/PopupActionDevice/popupobject_0001.png" id="2_7tldx"]
-[ext_resource type="Script" uid="uid://c0f5x45bf3y1a" path="res://entities/device/router/router.gd" id="2_obbad"]
+[ext_resource type="Script" uid="uid://c3x4pv42ywpo" path="res://entities/device/router/router.gd" id="2_obbad"]
 [ext_resource type="PackedScene" uid="uid://dvock2443pide" path="res://entities/device/router/physical/router_physical.tscn" id="2_u2xbe"]
 [ext_resource type="Texture2D" uid="uid://dg7uebr3q32ic" path="res://assets/Router/router.png" id="2_vbwme"]
 [ext_resource type="Script" uid="uid://c1r6vmhrnysag" path="res://entities/device/utils/action_popup.gd" id="3_dcdsp"]
@@ -40,6 +40,7 @@ _data = {
 
 [node name="Router" type="StaticBody2D" unique_id=1828844198 node_paths=PackedStringArray("sprite", "action_popup")]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 script = ExtResource("2_obbad")
 sprite = NodePath("Sprite2D")
 action_popup = NodePath("ActionContainer")

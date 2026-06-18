@@ -27,20 +27,19 @@ func _ready() -> void:
 	if file_app and file_app.has_method("setup"): file_app.setup(device_id)
 	if email_app and email_app.has_method("setup"): email_app.setup(device_id)
 
-	NetworkDeviceManager.device_updated.connect(_on_device_updated)
+	EventManager.device_updated.connect(_on_device_updated)
 	_close_all_apps()
 	_update_visual()
 
-func _on_device_updated(updated_device_id: String) -> void:
+func _on_device_updated(updated_device_id: String, _device_data: DeviceData) -> void:
 	if updated_device_id == device_id:
 		_update_visual()
 
 func _update_visual() -> void:
-	var device: ComputerDevice = NetworkDeviceManager.get_device_data(device_id)
+	var device: ComputerDeviceData = GameManager.get_runtime_device_data_by_id(device_id)
 	if device == null: return
 	
-	# MENGGUNAKAN device.power (Bukan power_state)
-	if device.power == NetworkDevice.PowerState.OFF:
+	if device.power == DeviceData.PowerState.OFF:
 		if sprite_off: sprite.texture = sprite_off
 		panel_desktop.hide()
 		_close_all_apps()

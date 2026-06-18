@@ -5,7 +5,7 @@ extends Node
 signal started_moving(direction: Vector2)
 signal stopped(last_direction: Vector2)
 
-@export var speed := 100.0
+@export var speed := 200.0
 @export var character: CharacterBody2D
 
 # State tracking

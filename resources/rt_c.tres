@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://btctexfp6ic57"]
+
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_5tci8"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_pwkxw"]
+[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="4_kc7ba"]
+
+[sub_resource type="Resource" id="Resource_5tci8"]
+script = ExtResource("1_5tci8")
+interface_id = "fa0/1"
+export_ip_address = "192.168.1.254"
+metadata/_custom_type_script = "uid://tgvlvxloywkq"
+
+[sub_resource type="Resource" id="Resource_i48d7"]
+script = ExtResource("2_pwkxw")
+id = "fa0/0"
+mac_address = "xxx"
+state = 1
+export_ip_address = "192.168.1.1"
+export_subnet_mask = "255.255.255.0"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[sub_resource type="Resource" id="Resource_s2ubl"]
+script = ExtResource("2_pwkxw")
+id = "fa0/1"
+mac_address = "yyy"
+state = 1
+export_ip_address = "192.168.2.1"
+export_subnet_mask = "255.255.255.0"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[resource]
+script = ExtResource("4_kc7ba")
+dhcp_relays = Dictionary[String, ExtResource("1_5tci8")]({
+"fa0/0": SubResource("Resource_5tci8")
+})
+device_id = "router"
+hostname = "Router"
+power = 1
+interfaces = Array[ExtResource("2_pwkxw")]([SubResource("Resource_i48d7"), SubResource("Resource_s2ubl")])
+metadata/_custom_type_script = "uid://kou14e2socyo"

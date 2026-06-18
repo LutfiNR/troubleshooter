@@ -38,6 +38,7 @@ _data = {
 
 [node name="Switch" type="StaticBody2D" unique_id=1625809566 node_paths=PackedStringArray("sprite", "action_popup")]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 script = ExtResource("2_uk7y1")
 sprite = NodePath("Sprite2D")
 action_popup = NodePath("ActionContainer")

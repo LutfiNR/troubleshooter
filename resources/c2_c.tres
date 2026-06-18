@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ComputerDeviceData" format=3 uid="uid://c8vv8amehgkk1"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_r6iq5"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer_device/computer_device.gd" id="2_ty0vf"]
+
+[sub_resource type="Resource" id="Resource_ir6go"]
+script = ExtResource("1_r6iq5")
+id = "eth0"
+mac_address = "aaa"
+state = 1
+ip_allocation_mode = 1
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[resource]
+script = ExtResource("2_ty0vf")
+default_gateway = "192.168.2.1"
+dns_server = "192.168.1.254"
+device_id = "computer_1"
+hostname = "Computer 1"
+power = 1
+interfaces = Array[ExtResource("1_r6iq5")]([SubResource("Resource_ir6go")])
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

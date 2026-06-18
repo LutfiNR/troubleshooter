@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://cg2p1o0ocb3jg"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_mgvqq"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="3_w10dd"]
+
+[sub_resource type="Resource" id="Resource_g06p6"]
+script = ExtResource("1_mgvqq")
+id = "fa0/0"
+mac_address = "aaa"
+layer = 0
+state = 1
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[sub_resource type="Resource" id="Resource_mgvqq"]
+script = ExtResource("1_mgvqq")
+id = "fa0/1"
+mac_address = "bbb"
+layer = 0
+state = 1
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[sub_resource type="Resource" id="Resource_ufy53"]
+script = ExtResource("1_mgvqq")
+id = "fa0/2"
+mac_address = "ccc"
+layer = 0
+state = 1
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[resource]
+script = ExtResource("3_w10dd")
+device_id = "switch_0"
+hostname = "Switch"
+power = 1
+interfaces = Array[ExtResource("1_mgvqq")]([SubResource("Resource_g06p6"), SubResource("Resource_mgvqq"), SubResource("Resource_ufy53")])
+metadata/_custom_type_script = "uid://do02stg07ha0m"

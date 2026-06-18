@@ -3,11 +3,6 @@
 [ext_resource type="Script" uid="uid://dgvstrri8nt3b" path="res://entities/player/player.gd" id="1_k7rle"]
 [ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/riki.png" id="2_qb0yx"]
 [ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
-[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="5_fkugw"]
-[ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="6_8fjmc"]
-[ext_resource type="Script" uid="uid://biwn4p60wadpc" path="res://entities/mission_panel.gd" id="6_bectd"]
-[ext_resource type="Script" uid="uid://jgo4oncy7u13" path="res://entities/tree.gd" id="6_qiwj3"]
-[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="9_wvtmh"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
@@ -165,10 +160,9 @@ _data = {
 &"walk_up": SubResource("Animation_qb0yx")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qiwj3"]
-
 [node name="Player" type="CharacterBody2D" unique_id=196673383]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 script = ExtResource("1_k7rle")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2000051842]
@@ -190,89 +184,3 @@ libraries/ = SubResource("AnimationLibrary_ve7px")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=474593265]
 zoom = Vector2(2, 2)
 script = ExtResource("4_viyt1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1246463517]
-
-[node name="CableTool" type="Button" parent="CanvasLayer" unique_id=647156024]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -38.0
-offset_top = -36.0
-offset_right = -14.0
-offset_bottom = -12.0
-grow_horizontal = 0
-grow_vertical = 0
-toggle_mode = true
-
-[node name="TextureButton" type="TextureRect" parent="CanvasLayer/CableTool" unique_id=322184923]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = -3.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_fkugw")
-
-[node name="MissionPanel" type="Panel" parent="CanvasLayer" unique_id=1763558025 node_paths=PackedStringArray("mission_tree", "progress_bar")]
-visible = false
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 12.0
-offset_top = 40.0
-offset_right = 307.0
-offset_bottom = -12.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qiwj3")
-script = ExtResource("6_bectd")
-mission_tree = NodePath("ScrollContainer/Container/Tree")
-progress_bar = NodePath("../ProgressBar")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MissionPanel" unique_id=330169765]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Container" type="VBoxContainer" parent="CanvasLayer/MissionPanel/ScrollContainer" unique_id=1679850997]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Tree" type="Tree" parent="CanvasLayer/MissionPanel/ScrollContainer/Container" unique_id=2026556902]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 14
-theme_override_font_sizes/title_button_font_size = 14
-hide_root = true
-scroll_horizontal_enabled = false
-script = ExtResource("6_qiwj3")
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=145029104]
-offset_left = 41.0
-offset_top = 10.0
-offset_right = 306.0
-offset_bottom = 35.0
-theme_override_font_sizes/font_size = 12
-
-[node name="MissionButton" type="TextureButton" parent="CanvasLayer" unique_id=563762083]
-offset_left = 12.0
-offset_top = 11.0
-offset_right = 36.0
-offset_bottom = 35.0
-toggle_mode = true
-texture_normal = ExtResource("6_8fjmc")
-texture_pressed = ExtResource("9_wvtmh")
-stretch_mode = 4
-
-[connection signal="toggled" from="CanvasLayer/CableTool" to="." method="_on_cable_tool_toggled"]
-[connection signal="toggled" from="CanvasLayer/MissionButton" to="CanvasLayer/MissionPanel" method="_on_mission_button_toggled"]

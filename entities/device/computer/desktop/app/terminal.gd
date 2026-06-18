@@ -88,7 +88,7 @@ func _cmd_clear() -> void:
 
 
 func _cmd_ipconfig() -> void:
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not device:
 		return
 	var main_iface = device.get_main_interface()
@@ -104,11 +104,11 @@ func _cmd_ipconfig() -> void:
 func _resolve_target(target: String) -> String:
 	if target.count(".") == 3 and target.replace(".", "").is_valid_int():
 		return target
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if device.dns_server == "" or device.dns_server == "0.0.0.0":
 		_print_line("DNS Error: No DNS server configured.\n")
 		return ""
-	var resolved_ip = NetworkServiceManager.request_dns_resolve(target_device_id, target)
+	var resolved_ip = GameManager.request_dns_resolve(target_device_id, target)
 	if resolved_ip == "":
 		_print_line("Ping request could not find host " + target + ".\n")
 		return ""
@@ -118,9 +118,9 @@ func _resolve_target(target: String) -> String:
 func _cmd_nslookup(args: Array) -> void:
 	if args.size() == 0:
 		return
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	_print_line("Server:  " + device.dns_server)
-	var resolved_ip = NetworkServiceManager.request_dns_resolve(target_device_id, args[0])
+	var resolved_ip = GameManager.request_dns_resolve(target_device_id, args[0])
 	if resolved_ip != "":
 		_print_line("Name:    " + args[0] + "\nAddress:  " + resolved_ip + "\n")
 	else:
@@ -136,7 +136,7 @@ func _cmd_ping(args: Array) -> void:
 	_print_line("\nPinging " + args[0] + " [" + target_ip + "] with 32 bytes of data:")
 
 	# Basic Ping Mock Check
-	var is_connected_to_target = (NetworkServiceManager._find_server_by_ip(target_ip) != null)
+	var is_connected_to_target = (GameManager._find_server_by_ip(target_ip) != null)
 	await get_tree().create_timer(0.5).timeout
 	for i in range(4):
 		if is_connected_to_target:
@@ -154,7 +154,7 @@ func _cmd_curl(args: Array) -> void:
 	var target_ip = _resolve_target(target_url)
 	if target_ip == "":
 		return
-	var response = NetworkServiceManager.request_web(target_device_id, target_url, false)
+	var response = GameManager.request_web(target_device_id, target_url, false)
 	if response.success:
 		_print_line("\n" + response.content + "\n")
 	else:
@@ -169,8 +169,8 @@ func _cmd_ftp(args: Array) -> void:
 		return
 	_print_line("Trying " + target_ip + "...")
 	await get_tree().create_timer(0.5).timeout
-	var server = NetworkServiceManager._find_server_by_ip(target_ip)
-	if server and server.ftp_service == ServerDevice.ServiceState.ON:
+	var server = GameManager._find_server_by_ip(target_ip)
+	if server and server.ftp_service == ServerDeviceData.ServiceState.ON:
 		_print_line("Connected to " + args[0] + ". [Gunakan App File untuk Login]\n")
 	else:
 		_print_line("ftp: connect: Connection refused\n")
@@ -191,8 +191,8 @@ func _cmd_ssh(args: Array) -> void:
 		return
 
 	await get_tree().create_timer(0.5).timeout
-	var server = NetworkServiceManager._find_server_by_ip(target_ip)
-	if server and server.remote_service == ServerDevice.ServiceState.ON:
+	var server = GameManager._find_server_by_ip(target_ip)
+	if server and server.remote_service == ServerDeviceData.ServiceState.ON:
 		_print_line("Connected. Gunakan aplikasi PuTTY (coming soon).\n")
 	else:
 		_print_line("ssh: connect to host port 22: Connection refused\n")

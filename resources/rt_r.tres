@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://crc4wfyobqrqn"]
+
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_s5b31"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_0m0bt"]
+[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="4_b8nv0"]
+
+[sub_resource type="Resource" id="Resource_65wqu"]
+script = ExtResource("2_0m0bt")
+id = "fa0/0"
+mac_address = "xxx"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[sub_resource type="Resource" id="Resource_s5b31"]
+script = ExtResource("2_0m0bt")
+id = "fa0/1"
+mac_address = "yyy"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[resource]
+script = ExtResource("4_b8nv0")
+device_id = "router"
+hostname = null
+power = null
+interfaces = Array[ExtResource("2_0m0bt")]([SubResource("Resource_65wqu"), SubResource("Resource_s5b31")])
+metadata/_custom_type_script = "uid://kou14e2socyo"

@@ -39,6 +39,7 @@ _data = {
 
 [node name="PC" type="StaticBody2D" unique_id=1713763221 node_paths=PackedStringArray("sprite", "action_popup")]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 script = ExtResource("1_rx5s5")
 sprite = NodePath("Sprite2D")
 action_popup = NodePath("ActionContainer")

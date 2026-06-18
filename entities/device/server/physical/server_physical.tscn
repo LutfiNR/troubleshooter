@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_8fk5w"]
 [ext_resource type="Script" uid="uid://b6kvbwgtewbe0" path="res://entities/device/utils/physical.gd" id="1_unqpu"]
 [ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_chpgs"]
+[ext_resource type="Texture2D" uid="uid://x600qhqg5pav" path="res://assets/PC/physicaldesktop.png" id="2_uk0qv"]
 [ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="3_8ova8"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_unqpu"]
 
@@ -15,12 +16,16 @@ ports = [NodePath("Port")]
 cables = [NodePath("CableNode")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=758700171]
+position = Vector2(0.8888815, 0.500011)
+scale = Vector2(1.9972223, 1.9972224)
+texture = ExtResource("2_uk0qv")
 
 [node name="Port" parent="." unique_id=379434902 instance=ExtResource("1_8fk5w")]
+position = Vector2(0, 275)
 
 [node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("2_chpgs")]
 visible = false
-position = Vector2(0, 53)
+position = Vector2(0, 339)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2021142833]
 
@@ -28,10 +33,10 @@ position = Vector2(0, 53)
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 252.0
-offset_top = -153.0
-offset_right = 296.0
-offset_bottom = -109.0
+offset_left = 513.0
+offset_top = -308.0
+offset_right = 557.0
+offset_bottom = -264.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_uk0qv")

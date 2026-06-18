@@ -256,7 +256,6 @@ theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_styles/normal = SubResource("StyleBoxTexture_cgk24")
-editable = false
 caret_blink = true
 
 [node name="NetworkStatusLabel" type="Label" parent="UIContainer/AppContainer/Setting" unique_id=857862710]

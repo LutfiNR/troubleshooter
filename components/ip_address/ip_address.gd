@@ -1,170 +1,251 @@
 class_name IPAddress
 extends RefCounted
 
-const IPV4_MAX_STRING_LENGTH := 15
-const IPV4_OCTET_COUNT := 4
-const IPV4_MAX_PREFIX_LENGTH := 32
+const DEFAULT_MASKS = {
+	"A": "255.0.0.0",
+	"B": "255.255.0.0",
+	"C": "255.255.255.0",
+	"D": "255.255.255.255",
+	"E": "255.255.255.255",
+}
 
-var address: String = ""
-var subnet_mask: String = ""
-var prefix_length: int = 32
-var valid: bool = false
-
-
-func setup_ip_address(ip: String = "", mask: String = "255.255.255.0") -> void:
-	address = ip
-	subnet_mask = mask
-	valid = is_host_address_valid(ip, mask)
+var octets: Array[int] = [0, 0, 0, 0]
+var prefix: int = -1
 
 
-# Static Validation Helpers
-static func is_ip_address_valid(ip_address: String) -> bool:
-	if ip_address.length() > IPV4_MAX_STRING_LENGTH:
+func _init(ip: String = "", prefix_length: int = -1) -> void:
+	if ip != "":
+		set_ip(ip, prefix_length)
+
+
+static func parse(ip: String) -> IPAddress:
+	var instance = IPAddress.new()
+	instance.set_ip(ip)
+	return instance
+
+
+static func is_valid_ip(ip: String) -> bool:
+	var raw = ip.strip_edges()
+	if raw == "":
 		return false
-	var parts := ip_address.split(".")
-	if parts.size() != IPV4_OCTET_COUNT:
+
+	var parts = raw.split("/")
+	var prefix_length = -1
+	if parts.size() == 2:
+		prefix_length = int(parts[1])
+
+	var octet_strings = parts[0].split(".")
+	if octet_strings.size() != 4:
 		return false
-	for part in parts:
-		if part.is_empty() or not part.is_valid_int():
+
+	for octet_string in octet_strings:
+		var n = int(octet_string)
+		if n < 0 or n > 255:
 			return false
-		if part.length() > 1 and part.begins_with("0"):
-			return false
-		var value := int(part)
+
+	if prefix_length != -1 and (prefix_length < 0 or prefix_length > 32):
+		return false
+
+	return true
+
+
+func set_ip(ip: String, prefix_length: int = -1) -> void:
+	var raw = ip.strip_edges()
+	if raw == "":
+		push_error("IPAddress.set_ip(): empty address")
+		return
+
+	var parts = raw.split("/")
+	if parts.size() == 2:
+		prefix_length = int(parts[1])
+
+	var octet_strings = parts[0].split(".")
+	if octet_strings.size() != 4:
+		push_error("IPAddress.set_ip(): invalid IPv4 format")
+		return
+
+	for i in range(4):
+		var value = int(octet_strings[i])
 		if value < 0 or value > 255:
+			push_error("IPAddress.set_ip(): invalid octet %s" % octet_strings[i])
+			return
+		octets[i] = value
+
+	if prefix_length >= 0 and prefix_length <= 32:
+		prefix = prefix_length
+	else:
+		prefix = -1
+
+
+func set_ip_and_mask(ip: String, subnet_mask: String) -> bool:
+	if not is_valid_ip(ip):
+		push_error("IPAddress.set_ip_and_mask(): invalid IP %s" % ip)
+		return false
+	if not is_valid_mask(subnet_mask):
+		push_error("IPAddress.set_ip_and_mask(): invalid subnet mask %s" % subnet_mask)
+		return false
+
+	set_ip(ip)
+	var new_prefix = prefix_from_mask(subnet_mask)
+	if new_prefix < 0:
+		push_error("IPAddress.set_ip_and_mask(): invalid subnet mask %s" % subnet_mask)
+		self.prefix = -1
+		return false
+	self.prefix = new_prefix
+	return true
+
+
+func ip_to_string() -> String:
+	var text = "%d.%d.%d.%d" % [octets[0], octets[1], octets[2], octets[3]]
+	if prefix >= 0:
+		text += "/%d" % prefix
+	return text
+
+
+func is_valid() -> bool:
+	for octet in octets:
+		if octet < 0 or octet > 255:
 			return false
-	return true
+	return prefix == -1 or (prefix >= 0 and prefix <= 32)
 
 
-static func is_subnet_mask_valid(mask: String) -> bool:
-	if not is_ip_address_valid(mask):
-		return false
-	var value := ipv4_string_to_int(mask)
-	if value == 0:
-		return false
-	value &= 0xffffffff
-	var inverted := (~value) & 0xffffffff
-	return (inverted & (inverted + 1)) == 0
+func get_ip_class() -> String:
+	var first = octets[0]
+	if first >= 0 and first <= 127:
+		return "A"
+	if first >= 128 and first <= 191:
+		return "B"
+	if first >= 192 and first <= 223:
+		return "C"
+	if first >= 224 and first <= 239:
+		return "D"
+	return "E"
 
 
-static func is_prefix_length_valid(prefix: int) -> bool:
-	return prefix >= 0 and prefix <= IPV4_MAX_PREFIX_LENGTH
+func get_default_mask() -> String:
+	return DEFAULT_MASKS[get_ip_class()]
 
 
-static func is_host_address_valid(ip: String, mask: String) -> bool:
-	if not is_ip_address_valid(ip):
-		return false
-	if not is_subnet_mask_valid(mask):
-		return false
-	var ip_int := ipv4_string_to_int(ip) & 0xffffffff
-	var mask_int := ipv4_string_to_int(mask) & 0xffffffff
-	var network := ip_int & mask_int
-	var broadcast := network | ((~mask_int) & 0xffffffff)
-	if ip_int == network:
-		return false
-	if ip_int == broadcast:
-		return false
-	return true
+func get_octets() -> Array[int]:
+	return octets.duplicate()
 
 
-# Instance Methods
-func to_int() -> int:
-	return ipv4_string_to_int(address)
+func get_mask_octets() -> Array[int]:
+	var mask = get_subnet_mask()
+	var octet_strings = mask.split(".")
+	var mask_octets: Array[int] = []
+	for s in octet_strings:
+		mask_octets.append(int(s))
+	return mask_octets
+
+
+func get_subnet_mask() -> String:
+	if prefix >= 0:
+		return subnet_mask_from_prefix(prefix)
+	return get_default_mask()
+
+
+static func subnet_mask_from_prefix(prefix_length: int) -> String:
+	if prefix_length < 0 or prefix_length > 32:
+		push_error("IPAddress.subnet_mask_from_prefix(): invalid prefix %d" % prefix_length)
+		return "0.0.0.0"
+
+	var parts: Array[String] = []
+	for i in range(4):
+		var value = 0
+		for bit in range(8):
+			var bit_index = i * 8 + bit
+			if bit_index < prefix_length:
+				value |= 1 << (7 - bit)
+		parts.append(str(value))
+	return ".".join(parts)
+
+
+static func prefix_from_mask(mask: String) -> int:
+	var parts = mask.split(".")
+	if parts.size() != 4:
+		push_error("IPAddress.prefix_from_mask(): invalid mask format")
+		return -1
+
+	var mask_int = 0
+	for part in parts:
+		var n = int(part)
+		if n < 0 or n > 255:
+			push_error("IPAddress.prefix_from_mask(): invalid octet %s" % part)
+			return -1
+		mask_int = mask_int << 8 | n
+
+	var seen_zero = false
+	var count = 0
+	for i in range(31, -1, -1):
+		var bit = (mask_int >> i) & 1
+		if bit == 1:
+			if seen_zero:
+				push_error("IPAddress.prefix_from_mask(): invalid non-contiguous mask %s" % mask)
+				return -1
+			count += 1
+		else:
+			seen_zero = true
+
+	return count
+
+
+static func is_valid_mask(mask: String) -> bool:
+	return prefix_from_mask(mask) >= 0
 
 
 func get_network_address() -> String:
-	var ip := ipv4_string_to_int(address)
-	var mask := ipv4_string_to_int(subnet_mask)
-	return int_to_ipv4(ip & mask)
+	var mask_octets = get_mask_octets()
+	var network = []
+	for i in range(4):
+		network.append(octets[i] & mask_octets[i])
+	return "%d.%d.%d.%d" % [network[0], network[1], network[2], network[3]]
 
 
 func get_broadcast_address() -> String:
-	var ip := ipv4_string_to_int(address)
-	var mask := ipv4_string_to_int(subnet_mask)
-	var broadcast := (ip & mask) | ((~mask) & 0xffffffff)
-	return int_to_ipv4(broadcast)
+	var mask_octets = get_mask_octets()
+	var network = []
+	for i in range(4):
+		network.append(octets[i] & mask_octets[i])
+	var broadcast = []
+	for i in range(4):
+		broadcast.append(network[i] | (~mask_octets[i] & 0xFF))
+	return "%d.%d.%d.%d" % [broadcast[0], broadcast[1], broadcast[2], broadcast[3]]
 
 
-func get_prefix_length() -> int:
-	return subnet_mask_to_prefix(subnet_mask)
+func total_hosts() -> int:
+	if prefix < 0 or prefix > 32:
+		return 0
+	var host_bits = 32 - prefix
+	if host_bits == 0:
+		return 1
+	if host_bits == 1:
+		return 2
+	return (1 << host_bits) - 2
 
 
-func set_prefix_length(prefix: int) -> void:
-	if not is_prefix_length_valid(prefix):
-		return
-	prefix_length = prefix
-	subnet_mask = prefix_to_subnet_mask(prefix)
+func is_same_subnet(other: IPAddress) -> bool:
+	if other == null:
+		return false
+	if prefix < 0 or other.prefix < 0:
+		return false
+	return get_network_address() == other.get_network_address()
 
 
-# Internal Conversion Utils
-static func ipv4_string_to_int(ip: String) -> int:
-	var result := 0
-	for part in ip.split("."):
-		result = (result << 8) | int(part)
-	return result & 0xffffffff
+func is_private() -> bool:
+	var n = octets[0]
+	var m = octets[1]
+	if n == 10:
+		return true
+	if n == 172 and m >= 16 and m <= 31:
+		return true
+	if n == 192 and m == 168:
+		return true
+	return false
 
 
-static func int_to_ipv4(value: int) -> String:
-	value &= 0xffffffff
-	return "%d.%d.%d.%d" % [
-		(value >> 24) & 0xff,
-		(value >> 16) & 0xff,
-		(value >> 8) & 0xff,
-		value & 0xff,
-	]
-
-
-static func prefix_to_subnet_mask(prefix: int) -> String:
-	if not is_prefix_length_valid(prefix):
-		return ""
-	var mask := 0
-	if prefix > 0:
-		mask = ((1 << prefix) - 1) << (32 - prefix)
-	return int_to_ipv4(mask)
-
-
-static func subnet_mask_to_prefix(mask: String) -> int:
-	if not is_subnet_mask_valid(mask):
-		return -1
-	var value := ipv4_string_to_int(mask)
-	var prefix := 0
-	for i in range(32):
-		if value & (1 << (31 - i)):
-			prefix += 1
-		else:
-			break
-	return prefix
-
-
-# Verify IP configuration
-func verify_configuration(runtime_interface_ip_config: IPAddress) -> Dictionary:
-	var address_result := _verify_address(runtime_interface_ip_config.address)
-	var subnet_result := _verify_subnet_mask(runtime_interface_ip_config.subnet_mask)
-	var is_correct: bool = (
-			address_result.status
-			and subnet_result.status
-	)
-	return {
-		"address": address_result,
-		"subnet_mask": subnet_result,
-		"status": is_correct,
-	}
-
-
-# Verify IP address
-func _verify_address(runtime_ip_address: String) -> Dictionary:
-	var result := address == runtime_ip_address
-	return {
-		"correct": address,
-		"value": runtime_ip_address,
-		"status": result,
-	}
-
-
-# Verify subnet mask
-func _verify_subnet_mask(runtime_subnet_mask: String) -> Dictionary:
-	var result := subnet_mask == runtime_subnet_mask
-	return {
-		"correct": subnet_mask,
-		"value": runtime_subnet_mask,
-		"status": result,
-	}
+func copy() -> IPAddress:
+	var duplicate = IPAddress.new()
+	duplicate.octets = get_octets()
+	duplicate.prefix = prefix
+	return duplicate

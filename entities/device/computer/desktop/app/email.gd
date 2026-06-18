@@ -28,9 +28,6 @@ var target_device_id: String = ""
 var current_logged_in_email: String = ""
 var current_mail_server_ip: String = ""
 
-# ==========================================
-# SETUP & INISIALISASI
-# ==========================================
 func setup(device_id: String) -> void:
 	target_device_id = device_id
 	
@@ -51,9 +48,6 @@ func refresh_data() -> void:
 	else:
 		_show_main_panel()
 
-# ==========================================
-# LOGIKA LOGIN
-# ==========================================
 func _on_login_pressed() -> void:
 	var email = email_input.text.strip_edges()
 	var password = pass_input.text.strip_edges()
@@ -62,30 +56,25 @@ func _on_login_pressed() -> void:
 	if email == "" or password == "" or imap_server == "":
 		login_status_label.text = "Error: Harap isi semua kolom!"
 		return
-		
 	login_status_label.text = "Connecting to " + imap_server + "..."
 	await get_tree().create_timer(0.5).timeout
-	
-	# 1. Resolusi DNS menggunakan NetworkServiceManager
+
 	var target_ip = imap_server
 	if not _is_valid_ip(imap_server):
-		target_ip = NetworkServiceManager.request_dns_resolve(target_device_id, imap_server)
+		target_ip = GameManager.request_dns_resolve(target_device_id, imap_server)
 		if target_ip == "":
 			login_status_label.text = "DNS Error: Cannot resolve " + imap_server
 			return
 			
-	# 2. Validasi Format Email dasar
 	var email_parts = email.split("@")
 	if email_parts.size() != 2:
 		login_status_label.text = "Auth Error: Format email salah."
 		return
 		
-	# 3. Request autentikasi ke pusat Autoload Jaringan
-	var response = NetworkServiceManager.request_mail_login(target_ip, email_parts[0], password)
+	var response = GameManager.request_mail_login(target_ip, email_parts[0], password)
 	
 	if response.success:
-		# Validasi tambahan opsional: Pastikan domain email cocok dengan konfigurasi mail_service
-		var server = NetworkServiceManager._find_server_by_ip(target_ip)
+		var server = GameManager._find_server_by_ip(target_ip)
 		if server and server.handle_mail_request() and server.handle_mail_request().domain_name != email_parts[1]:
 			login_status_label.text = "Auth Error: Domain email tidak dikenali server ini."
 			return
@@ -97,11 +86,8 @@ func _on_login_pressed() -> void:
 	else:
 		login_status_label.text = "Auth Error: " + response.error
 
-# ==========================================
-# LOGIKA MENGIRIM PESAN (Validasi MX Record)
-# ==========================================
 func _on_send_pressed() -> void:
-	var client_device = NetworkDeviceManager.get_device_data(target_device_id) as ComputerDevice
+	var client_device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not client_device: return
 	
 	var target_email = to_input.text.strip_edges()
@@ -121,12 +107,11 @@ func _on_send_pressed() -> void:
 	send_status_label.text = "Sending email via SMTP..."
 	await get_tree().create_timer(0.5).timeout
 	
-	# 1. Simulasi Resolusi DNS MX Record dari DNS Server Klien
 	var mx_ip = ""
 	var dns_server_ip = client_device.dns_server
-	var dns_server_obj = NetworkServiceManager._find_server_by_ip(dns_server_ip)
+	var dns_server_obj = GameManager._find_server_by_ip(dns_server_ip)
 	
-	if dns_server_obj and dns_server_obj.dns_service == ServerDevice.ServiceState.ON:
+	if dns_server_obj and dns_server_obj.dns_service == ServerDeviceData.ServiceState.ON:
 		for dns_pool in dns_server_obj.dns_configuration:
 			mx_ip = dns_pool.resolve_mx(target_domain)
 			if mx_ip != "": break
@@ -135,13 +120,11 @@ func _on_send_pressed() -> void:
 		send_status_label.text = "SMTP Error: MX Record untuk " + target_domain + " tidak ditemukan."
 		return
 		
-	# 2. Ambil Server Mail Tujuan berdasarkan hasil MX IP
-	var target_server = NetworkServiceManager._find_server_by_ip(mx_ip)
-	if not target_server or target_server.mail_service == ServerDevice.ServiceState.OFF:
+	var target_server = GameManager._find_server_by_ip(mx_ip)
+	if not target_server or target_server.mail_service == ServerDeviceData.ServiceState.OFF:
 		send_status_label.text = "Delivery Failed: Mail Server tujuan (" + mx_ip + ") tidak merespon."
 		return
 		
-	# 3. Cek eksistensi user di kotak server mail tujuan
 	var user_exists = false
 	var mail_service_obj = target_server.handle_mail_request()
 	if mail_service_obj:
@@ -156,15 +139,11 @@ func _on_send_pressed() -> void:
 		subject_input.text = ""
 		body_input.text = ""
 		
-		# Simulasi masuk inbox jika berkirim ke diri sendiri
 		if target_email == current_logged_in_email:
 			inbox_list.add_item(subject + " (Baru)")
 	else:
 		send_status_label.text = "Bounced: User " + email_parts[0] + " tidak ditemukan di server tujuan."
 
-# ==========================================
-# HELPER UI & PANEL MANIPULATION
-# ==========================================
 func _show_login_panel() -> void:
 	login_panel.show()
 	main_panel.hide()

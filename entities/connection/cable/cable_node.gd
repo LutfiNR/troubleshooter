@@ -45,7 +45,10 @@ func _process(_delta: float) -> void:
 func _start_drag() -> void:
 	if plugged_port and plugged_port.connected_cable == self:
 		plugged_port.connected_cable = null
-		NetworkDeviceManager.set_interface_state(plugged_port.device_id, plugged_port.id, false)
+		var device: DeviceData = GameManager.get_runtime_device_data_by_id(plugged_port.device_id)
+		var iface = device.get_interface(plugged_port.id)
+		iface.state = NetworkInterface.InterfaceState.DOWN
+		GameManager.update_interface_device_data(plugged_port.device_id, plugged_port.id, iface)
 	
 	plugged_port = null
 	is_plugged_in = false
@@ -75,13 +78,18 @@ func _plug_into(target_port: Port) -> void:
 	is_plugged_in = true
 	target_port.connected_cable = self
 	global_position = target_port.global_position
-	
-	NetworkDeviceManager.set_interface_state(target_port.device_id, target_port.id, true)
+	var device: DeviceData = GameManager.get_runtime_device_data_by_id(target_port.device_id)
+	var iface = device.get_interface(target_port.id)
+	iface.state = NetworkInterface.InterfaceState.UP
+	GameManager.update_interface_device_data(target_port.device_id, target_port.id, iface)
 
 func _unplug() -> void:
 	if plugged_port and plugged_port.connected_cable == self:
 		plugged_port.connected_cable = null
-		NetworkDeviceManager.set_interface_state(plugged_port.device_id, plugged_port.id, false)
+		var device: DeviceData = GameManager.get_runtime_device_data_by_id(plugged_port.device_id)
+		var iface = device.get_interface(plugged_port.id)
+		iface.state = NetworkInterface.InterfaceState.DOWN
+		GameManager.update_interface_device_data(plugged_port.device_id, plugged_port.id, iface)
 	
 	plugged_port = null
 	is_plugged_in = false

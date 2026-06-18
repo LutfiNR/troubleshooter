@@ -6,20 +6,20 @@ extends Control
 
 var target_device_id: String = ""
 
-# =========================
-# INITIALIZATION
-# =========================
+
 func setup(device_id: String) -> void:
 	target_device_id = device_id
 	refresh_data()
 
+
 func refresh_data() -> void:
-	if target_device_id == "": return
-	
-	# Ubah ke NetworkDeviceManager
-	var device = NetworkDeviceManager.get_device_data(target_device_id)
-	if not device is RouterDevice: return
-	
+	if target_device_id == "":
+		return
+
+	var device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	if not device is RouterDeviceData:
+		return
+
 	# DISTRIBUSIKAN data ke masing-masing tab
 	if interface_tab and interface_tab.has_method("display_data"):
 		interface_tab.display_data(device, target_device_id)

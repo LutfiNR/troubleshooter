@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name ComputerDevice
 
 const FRAME_OFF_IDLE = 0
 const FRAME_OFF_HOVER = 1
@@ -9,27 +10,14 @@ const FRAME_ON_HOVER = 3
 @export var sprite: Sprite2D 
 @export var action_popup: VBoxContainer
 @export var physical_scene: PackedScene
-@export var desktop_scene: PackedScene # Hapus baris ini khusus untuk switch.gd
+@export var desktop_scene: PackedScene
 
 var player_in_range: bool = false
-var device: ComputerDevice
+var device_data: ComputerDeviceData
 
 func _ready() -> void:
-	# Dengarkan Sinyal Perubahan State (Power/IP)
-	NetworkDeviceManager.device_updated.connect(_on_device_updated)
-	load_device_data()
-
-# Fungsi Binding Otomatis
-func load_device_data() -> void:
-	if device_id == "":
-		push_error("[" + name + "] Device ID belum diisi di Inspector!")
-		return
-		
-	device = NetworkDeviceManager.get_device_data(device_id)
-	if device:
-		_update_visual()
-	else:
-		push_error("[" + name + "] Gagal Binding ke NetworkManager. ID: " + device_id)
+	EventManager.device_updated.connect(_on_device_updated)
+	device_data = GameManager.get_runtime_device_data_by_id(device_id)
 
 func interact() -> void:
 	if not player_in_range: return
@@ -41,19 +29,18 @@ func interact() -> void:
 			await action_popup.open()
 
 func _update_visual() -> void:
-	if device == null or sprite == null: return 
+	if device_data == null or sprite == null: return 
 	
-	var is_on: bool = (device.power == NetworkDevice.PowerState.ON)
+	var is_on: bool = (device_data.power == DeviceData.PowerState.ON)
 	if player_in_range:
 		sprite.frame = FRAME_ON_HOVER if is_on else FRAME_OFF_HOVER
 	else:
 		sprite.frame = FRAME_ON_IDLE if is_on else FRAME_OFF_IDLE
 
-func _on_device_updated(updated_device_id: String) -> void:
+func _on_device_updated(updated_device_id: String, _device_data: DeviceData) -> void:
 	if updated_device_id == device_id:
+		device_data = _device_data
 		_update_visual()
-
-# --- INPUT & AREA DETECTIONS ---
 
 func _on_detect_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
@@ -71,10 +58,12 @@ func _on_interact_area_input_event(_viewport: Node, event: InputEvent, _shape_id
 	if player_in_range and event.is_action_pressed("click_left"):
 		interact()
 
-# UI Buttons (Dihubungkan via Inspector -> Node -> Signals)
 func _on_power_button_toggled(_toggled_on: bool) -> void:
-	# Serahkan sepenuhnya ke NetworkManager
-	NetworkDeviceManager.set_device_power(device_id)
+	if device_data.power == DeviceData.PowerState.OFF:
+		device_data.power = DeviceData.PowerState.ON
+	else:
+		device_data.power = DeviceData.PowerState.OFF
+	GameManager.update_device_data(device_id, device_data)
 
 func _on_physical_button_pressed() -> void:
 	OverlaySystem.open_overlay(physical_scene, device_id)

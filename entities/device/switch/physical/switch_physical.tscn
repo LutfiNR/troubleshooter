@@ -11,12 +11,12 @@ texture = ExtResource("4_wwrw3")
 
 [node name="SwitchPhysical" type="Node2D" unique_id=380462692 node_paths=PackedStringArray("ports", "cables")]
 script = ExtResource("1_r8qhb")
-ports = [NodePath("Port"), NodePath("Port2"), NodePath("Port3"), NodePath("Port4"), NodePath("Port5"), NodePath("Port6")]
-cables = [NodePath("CableNode"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4"), NodePath("CableNode5"), NodePath("CableNode6")]
+ports = [NodePath("Port1"), NodePath("Port2"), NodePath("Port3"), NodePath("Port4"), NodePath("Port5"), NodePath("Port6")]
+cables = [NodePath("CableNode1"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4"), NodePath("CableNode5"), NodePath("CableNode6")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=936506732]
 
-[node name="Port" parent="." unique_id=379434902 instance=ExtResource("1_0dwx3")]
+[node name="Port1" parent="." unique_id=379434902 instance=ExtResource("1_0dwx3")]
 
 [node name="Port2" parent="." unique_id=325934683 instance=ExtResource("1_0dwx3")]
 position = Vector2(40, 0)
@@ -33,7 +33,7 @@ position = Vector2(160, 0)
 [node name="Port6" parent="." unique_id=356152078 instance=ExtResource("1_0dwx3")]
 position = Vector2(200, 0)
 
-[node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("2_gp1cw")]
+[node name="CableNode1" parent="." unique_id=2075118448 instance=ExtResource("2_gp1cw")]
 visible = false
 position = Vector2(0, 40)
 

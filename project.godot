@@ -10,30 +10,30 @@ config_version=5
 
 [application]
 
-config/name="troubleshooter"
-config/description="Network Administrator Game Simulation"
-config/version="1.0"
-run/main_scene="uid://dkdwx4030fgpx"
+config/name="Troubleshooter"
+config/description="A game that become Network Engineer"
+config/version="0.1"
+run/main_scene="uid://di11gyrvd3rad"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*uid://dx4h03aeue3oa"
-NetworkDeviceManager="*uid://dhehcwu5jxx6g"
-SceneLoader="*uid://bvpe8aruqccl0"
-OverlaySystem="*uid://cyar1th2ot5ul"
-ConnectionManager="*uid://3lq111hqbhxx"
-MissionManager="*uid://bkmj6ny6l4st6"
-NetworkServiceManager="*uid://cts4vwi51y354"
+GameManager="*uid://1e06str50ofw"
+EventManager="*uid://xintuoqlpcv6"
+OverlaySystem="*uid://uulstm30ngbi"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://cb7ts27d4xuqr"
 
 [input]
 

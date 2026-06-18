@@ -5,8 +5,7 @@ extends Node2D
 @onready var camera: Camera2D = $Camera2D
 
 var device_id: String
-var device: NetworkDevice
-
+var device: DeviceData
 
 func _ready() -> void:
 	camera.make_current()
@@ -15,42 +14,33 @@ func _ready() -> void:
 		push_error("Overlay: device_id not set!")
 		return
 
-	device = NetworkDeviceManager.get_device_data(device_id)
+	device = GameManager.get_runtime_device_data_by_id(device_id)
 	if device == null:
 		push_error("Overlay: Device not found for id: " + device_id)
 		return
 
-	var interfaces_array = device.get_interfaces().values()
-	for i in range(min(ports.size(), interfaces_array.size())):
+	var interfaces = device.get_interfaces()
+	for i in interfaces.size():
 		var port = ports[i]
-		var interface_data = interfaces_array[i]
+		var interface_data = interfaces[i]
 		port.id = interface_data.id
 		port.device_id = device_id
-
-	# Dengarkan perubahan jika terjadi update dari sistem
-	NetworkDeviceManager.device_updated.connect(_on_network_updated)
+	EventManager.device_updated.connect(_on_device_updated)
 	update_ui(device)
 
-
-func _on_network_updated(updated_device_id: String) -> void:
+func _on_device_updated(updated_device_id: String, device_data: DeviceData) -> void:
 	if updated_device_id == device_id:
-		# Tarik data device terbaru untuk berjaga-jaga
-		device = NetworkDeviceManager.get_device_data(device_id)
+		device = device_data
 		update_ui(device)
 
-
-func update_ui(target_device: NetworkDevice) -> void:
+func update_ui(target_device: DeviceData) -> void:
 	if target_device == null:
 		return
-
-	var interfaces_array = target_device.get_interfaces().values()
-	for i in range(min(ports.size(), interfaces_array.size())):
+	var interfaces = target_device.get_interfaces()
+	for i in interfaces.size():
 		var port = ports[i]
-		var interface_data = interfaces_array[i]
-
-		# Menggunakan target_device.power (bukan power_state)
+		var interface_data = interfaces[i]
 		port.update_visual(interface_data, target_device.power)
-
 		if i < cables.size():
 			var cable = cables[i]
 			cable.visible = true

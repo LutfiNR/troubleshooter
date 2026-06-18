@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
-@onready var ui: CanvasLayer = $CanvasLayer
+#@onready var ui: CanvasLayer = $CanvasLayer
 
 @export var camera_limit: Dictionary[String, int]
 
@@ -45,5 +45,5 @@ func _on_movement_stopped(last_direction: Vector2):
 		sprite.frame = 12
 
 
-func _on_cable_tool_toggled(toggled_on: bool) -> void:
-	ConnectionManager.cable_tool_toggled.emit(toggled_on)
+#func _on_cable_tool_toggled(toggled_on: bool) -> void:
+	#ConnectionManager.cable_tool_toggled.emit(toggled_on)

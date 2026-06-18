@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ComputerDeviceData" format=3 uid="uid://sswd4ksmdskw"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_o5ca3"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer_device/computer_device.gd" id="2_ruo3l"]
+
+[sub_resource type="Resource" id="Resource_ir6go"]
+script = ExtResource("1_o5ca3")
+id = "eth0"
+mac_address = "aaa"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"
+
+[resource]
+script = ExtResource("2_ruo3l")
+device_id = "computer_1"
+interfaces = Array[ExtResource("1_o5ca3")]([SubResource("Resource_ir6go")])
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

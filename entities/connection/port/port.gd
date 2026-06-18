@@ -18,8 +18,8 @@ func _ready() -> void:
 func is_occupied() -> bool:
 	return connected_cable != null
 	
-func update_visual(interface: NetworkInterface, device_power_state: NetworkDevice.PowerState) -> void:
+func update_visual(interface: NetworkInterface, device_power_state: DeviceData.PowerState) -> void:
 	if sprite == null or interface == null:
 		return
-	var is_active = interface.is_up() and device_power_state == NetworkDevice.PowerState.ON
+	var is_active = interface.is_up() and device_power_state == DeviceData.PowerState.ON
 	sprite.frame = FRAME_UP if is_active else FRAME_DOWN

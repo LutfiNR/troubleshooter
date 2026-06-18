@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://di11gyrvd3rad"]
+
+[ext_resource type="PackedScene" uid="uid://6a7sqd5akwlp" path="res://entities/player/player.tscn" id="1_eape4"]
+[ext_resource type="PackedScene" uid="uid://btutdscth7cb" path="res://entities/device/server/server.tscn" id="2_oo1xa"]
+[ext_resource type="PackedScene" uid="uid://bhbp4y5qe6gvk" path="res://entities/device/switch/switch.tscn" id="3_ejoc4"]
+[ext_resource type="Script" uid="uid://cuv3h2f8ad2ej" path="res://testing/mission_panel.gd" id="3_uns7a"]
+[ext_resource type="PackedScene" uid="uid://noeheffbrarg" path="res://entities/device/router/router.tscn" id="4_akd04"]
+[ext_resource type="Script" uid="uid://6mhcfq6yet32" path="res://testing/tree.gd" id="4_ejoc4"]
+[ext_resource type="PackedScene" uid="uid://tuwvtg40j5ob" path="res://entities/device/computer/pc.tscn" id="5_x2m0a"]
+[ext_resource type="PackedScene" path="res://entities/connection/cable/cable.tscn" id="6_4lyp1"]
+
+[node name="Node2D" type="Node2D" unique_id=1562019774]
+
+[node name="Main" type="Node2D" parent="." unique_id=1451004855]
+
+[node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("1_eape4")]
+
+[node name="Cables" type="Node2D" parent="Main" unique_id=1639447791]
+
+[node name="Cable" parent="Main/Cables" unique_id=247182996 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("6_4lyp1")]
+device_a = NodePath("../../Servers/Server")
+device_b = NodePath("../../Switchs/Switch")
+
+[node name="Cable2" parent="Main/Cables" unique_id=1403921857 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("6_4lyp1")]
+device_a = NodePath("../../Computers/PC")
+device_b = NodePath("../../Switchs/Switch")
+
+[node name="Cable3" parent="Main/Cables" unique_id=79129212 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("6_4lyp1")]
+device_a = NodePath("../../Routers/Router")
+device_b = NodePath("../../Switchs/Switch")
+
+[node name="Cable4" parent="Main/Cables" unique_id=466238515 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("6_4lyp1")]
+device_a = NodePath("../../Routers/Router")
+device_b = NodePath("../../Computers/PC2")
+
+[node name="Routers" type="Node2D" parent="Main" unique_id=1476679921]
+
+[node name="Router" parent="Main/Routers" unique_id=1828844198 instance=ExtResource("4_akd04")]
+position = Vector2(231, 7)
+device_id = "router"
+
+[node name="Switchs" type="Node2D" parent="Main" unique_id=1336072987]
+
+[node name="Switch" parent="Main/Switchs" unique_id=1625809566 instance=ExtResource("3_ejoc4")]
+position = Vector2(151, 37)
+device_id = "switch_0"
+
+[node name="Servers" type="Node2D" parent="Main" unique_id=1617604362]
+
+[node name="Server" parent="Main/Servers" unique_id=2022845858 instance=ExtResource("2_oo1xa")]
+position = Vector2(50, 60)
+device_id = "server_0"
+
+[node name="Computers" type="Node2D" parent="Main" unique_id=1435260271]
+
+[node name="PC" parent="Main/Computers" unique_id=1713763221 instance=ExtResource("5_x2m0a")]
+position = Vector2(155, -55)
+device_id = "computer_0"
+
+[node name="PC2" parent="Main/Computers" unique_id=753053569 instance=ExtResource("5_x2m0a")]
+position = Vector2(379, -55)
+device_id = "computer_1"
+
+[node name="Overlay" type="Node2D" parent="." unique_id=414421402]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=319931058]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=373203849 node_paths=PackedStringArray("mission_tree", "progress_bar")]
+offset_top = 339.0
+offset_right = 337.0
+offset_bottom = 718.0
+script = ExtResource("3_uns7a")
+mission_tree = NodePath("Tree")
+progress_bar = NodePath("ProgressBar")
+
+[node name="Tree" type="Tree" parent="CanvasLayer/Panel" unique_id=19472540]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ejoc4")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Panel" unique_id=2101524206]
+layout_mode = 0
+offset_right = 337.0
+offset_bottom = 20.0

@@ -8,12 +8,12 @@ signal packages_changed(installed_packages: Array[String])
 @export var uninstall_button: Button
 @export var available_packages: Array[String] = []
 
+const PACKAGE_NEED: String = "Software"
 var target_device_id: String = ""
 var current_installed_packages: Array[String] = []
-var package_need: String = "Software"
 var current_selected_index: int = -1
 
-func display_data(device: ServerDevice, device_id: String) -> void:
+func display_data(device: ServerDeviceData, device_id: String) -> void:
 	if not package_list: return
 	target_device_id = device_id
 	current_installed_packages = device.installed_packages.duplicate()
@@ -73,8 +73,8 @@ func _on_uninstall_button_pressed() -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device = NetworkDeviceManager.get_device_data(target_device_id) as ServerDevice
-	if not device: return
+	var device_data: ServerDeviceData = GameManager.get_runtime_device_data_by_id(target_device_id)
+	if not device_data: return
 	
-	device.installed_packages = current_installed_packages.duplicate()
-	NetworkDeviceManager.update_device(target_device_id, device)
+	device_data.installed_packages = current_installed_packages.duplicate()
+	EventManager.device_updated.emit(target_device_id, device_data)

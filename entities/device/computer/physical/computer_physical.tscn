@@ -16,14 +16,15 @@ ports = [NodePath("Port")]
 cables = [NodePath("CableNode")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=614812537]
+scale = Vector2(2, 2)
 texture = ExtResource("2_gnhc5")
 
 [node name="Port" parent="." unique_id=379434902 instance=ExtResource("4_vfnrb")]
-position = Vector2(0, 114)
+position = Vector2(0, 259)
 
 [node name="CableNode" parent="." unique_id=2075118448 instance=ExtResource("3_hi35w")]
 visible = false
-position = Vector2(0, 158)
+position = Vector2(0, 339)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1050315140]
 
@@ -31,10 +32,10 @@ position = Vector2(0, 158)
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 252.0
-offset_top = -153.0
-offset_right = 296.0
-offset_bottom = -109.0
+offset_left = 550.0
+offset_top = -312.0
+offset_right = 594.0
+offset_bottom = -268.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_1jh4w")

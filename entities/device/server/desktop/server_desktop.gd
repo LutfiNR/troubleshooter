@@ -10,43 +10,41 @@ extends Node2D
 
 @onready var camera: Camera2D = $Camera2D
 @onready var app_container: Panel = $UIContainer/AppContainer
-@onready var panel_desktop: HBoxContainer = $UIContainer/PanelDesktop
+@onready var desktop_panel: HBoxContainer = $UIContainer/PanelDesktop
 @onready var sprite: Sprite2D = $Desktop
 
 var device_id: String
 
 func _ready() -> void:
 	camera.make_current()
-	if service_app and service_app.has_method("setup"): service_app.setup(device_id)
-	if setting_app and setting_app.has_method("setup"): setting_app.setup(device_id)
-
-	NetworkDeviceManager.device_updated.connect(_on_device_updated)
+	EventManager.device_updated.connect(_on_device_updated)
+	if setting_app:
+		setting_app.device_id = device_id
+	if service_app:
+		service_app.device_id = device_id
 	_close_all_apps()
 	_update_visual()
 
-func _on_device_updated(updated_device_id: String) -> void:
-	if updated_device_id == device_id:
+func _on_device_updated(_device_id: String, _device_data: DeviceData)-> void:
+	if device_id == _device_id:
 		_update_visual()
 
 func _update_visual() -> void:
-	var device: ServerDevice = NetworkDeviceManager.get_device_data(device_id)
+	var device: ServerDeviceData = GameManager.get_runtime_device_data_by_id(device_id)
 	if device == null: return
 	
-	# Menggunakan device.power (Bukan power_state)
-	if device.power == NetworkDevice.PowerState.OFF:
+	if device.power == DeviceData.PowerState.OFF:
 		if sprite_off: sprite.texture = sprite_off
 		_close_all_apps()
-		panel_desktop.hide()
+		desktop_panel.hide()
 	else:
-		panel_desktop.show()
+		desktop_panel.show()
 		if sprite_on: sprite.texture = sprite_on
 
 func open_app(target_app: Control) -> void:
 	_close_all_apps()
 	app_container.show()
 	target_app.show()
-	if target_app.has_method("refresh_data"):
-		target_app.refresh_data()
 
 func _close_all_apps() -> void:
 	app_container.hide()
