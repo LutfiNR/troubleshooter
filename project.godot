@@ -13,16 +13,20 @@ config_version=5
 config/name="Troubleshooter"
 config/description="A game that become Network Engineer"
 config/version="0.1"
-run/main_scene="uid://di11gyrvd3rad"
+run/main_scene="uid://ndgyeswawkpj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/show_image=false
+boot_splash/stretch_mode=2
+boot_splash/image="uid://c4qb0anmktll7"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=5
 
 [autoload]
 
 GameManager="*uid://1e06str50ofw"
 EventManager="*uid://xintuoqlpcv6"
 OverlaySystem="*uid://uulstm30ngbi"
+SceneLoader="*uid://dcuba4c084c6k"
 
 [display]
 

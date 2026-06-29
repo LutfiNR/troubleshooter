@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://ndgyeswawkpj"]
+
+[ext_resource type="Script" uid="uid://l5av3n6vd23p" path="res://ui/main_menu/main_menu.gd" id="1_lsdqh"]
+[ext_resource type="Texture2D" uid="uid://1qk7q10itddl" path="res://assets/UI/MainMenu/main_menu_bg_0001.png" id="1_t7e0r"]
+[ext_resource type="Texture2D" uid="uid://ijhpt62s74vp" path="res://assets/UI/MainMenu/main_menu_bg_0002.png" id="2_ubpvv"]
+[ext_resource type="FontFile" uid="uid://cehw4eo62toaf" path="res://assets/font/pixel_operator/PixelOperator8-Bold.ttf" id="3_5klac"]
+[ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="3_arv2f"]
+[ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="4_5klac"]
+[ext_resource type="Texture2D" uid="uid://cjglm5dy75rjf" path="res://assets/UI/MainMenu/main_menu_bg_0005.png" id="5_lsdqh"]
+[ext_resource type="Texture2D" uid="uid://jaqmxgx1eytf" path="res://assets/UI/MainMenu/main_menu_bg_0006.png" id="6_jiymt"]
+[ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="7_bgtsx"]
+[ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="8_kaxbk"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/theme.tres" id="9_arv2f"]
+
+[sub_resource type="Animation" id="Animation_0nobx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_t7e0r")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:theme_override_colors/font_shadow_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.18030342, 0.3830504, 0.57711846, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iyrh0"]
+resource_name = "background"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_t7e0r"), ExtResource("2_ubpvv"), ExtResource("3_arv2f"), ExtResource("4_5klac"), ExtResource("5_lsdqh"), ExtResource("6_jiymt"), ExtResource("7_bgtsx"), ExtResource("8_kaxbk")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Title:theme_override_colors/font_shadow_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 3.1916666, 3.4333334, 3.7, 3.9333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.18030342, 0.3830504, 0.57711846, 1), Color(0.41238812, 0.8041832, 0.92436355, 1), Color(0.77547944, 0.4011082, 0.80935526, 1), Color(0.18030342, 0.3830504, 0.57711846, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jgmr"]
+_data = {
+&"RESET": SubResource("Animation_0nobx"),
+&"background": SubResource("Animation_iyrh0")
+}
+
+[node name="MainMenu" type="Control" unique_id=869111240]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lsdqh")
+start_scene = &"uid://di11gyrvd3rad"
+
+[node name="Background" type="TextureRect" parent="." unique_id=1117831180]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t7e0r")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1849254953]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 249.0
+offset_right = 496.0
+offset_bottom = 599.0
+theme = ExtResource("9_arv2f")
+theme_override_constants/separation = 24
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=374582776]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("9_arv2f")
+text = "START"
+
+[node name="LOButton" type="Button" parent="VBoxContainer" unique_id=856993119]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("9_arv2f")
+text = "LEARNING OBJECTIVE"
+
+[node name="SettingButton" type="Button" parent="VBoxContainer" unique_id=1741449674]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("9_arv2f")
+text = "SETTINGS"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=488295873]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("9_arv2f")
+text = "CREDITS"
+
+[node name="Title" type="Label" parent="." unique_id=1932912899]
+layout_mode = 1
+offset_left = 231.0
+offset_top = 74.0
+offset_right = 1037.0
+offset_bottom = 171.0
+theme = ExtResource("9_arv2f")
+theme_override_colors/font_color = Color(0.02745098, 0.02745098, 0.09411765, 1)
+theme_override_colors/font_shadow_color = Color(0.18030342, 0.3830504, 0.57711846, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = -4
+theme_override_fonts/font = ExtResource("3_5klac")
+theme_override_font_sizes/font_size = 56
+text = "TROUBLESHOOTER"
+vertical_alignment = 1
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1189023282]
+libraries/ = SubResource("AnimationLibrary_8jgmr")
+autoplay = &"background"
+
+[connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/LOButton" to="." method="_on_lo_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_button_up"]
