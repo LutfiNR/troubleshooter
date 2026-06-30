@@ -116,7 +116,7 @@ variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 base_font = ExtResource("2_wl1kw")
 variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
 
-[sub_resource type="Image" id="Image_wl1kw"]
+[sub_resource type="Image" id="Image_wycmq"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -126,7 +126,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_wms38"]
-image = SubResource("Image_wl1kw")
+image = SubResource("Image_wycmq")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcf2e"]
 content_margin_left = 0.0

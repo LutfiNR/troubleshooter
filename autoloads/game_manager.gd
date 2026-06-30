@@ -1,4 +1,3 @@
-# font credit Jayvee Enaguas
 extends Node
 
 var correct_config: Dictionary = {
