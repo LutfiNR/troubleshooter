@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://df44kf27fsnnh"]
+
+[ext_resource type="Script" uid="uid://dweihabrt7kta" path="res://components/mission_data/mission_data.gd" id="1_pys81"]
+
+[resource]
+script = ExtResource("1_pys81")
+id = "mission0"
+title = "Basic Networking"
+description = "Misi menyelesaikan masalah basic networking "
+metadata/_custom_type_script = "uid://dweihabrt7kta"

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dgvstrri8nt3b" path="res://entities/player/player.gd" id="1_k7rle"]
 [ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/Player/riki.png" id="2_qb0yx"]
 [ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_fkugw"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
@@ -186,11 +185,3 @@ libraries/ = SubResource("AnimationLibrary_ve7px")
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("4_viyt1")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1157645978]
-
-[node name="Virtual Joystick" parent="CanvasLayer" unique_id=1425660100 instance=ExtResource("5_fkugw")]
-action_left = "move_left"
-action_right = "move_right"
-action_up = "move_up"
-action_down = "move_down"

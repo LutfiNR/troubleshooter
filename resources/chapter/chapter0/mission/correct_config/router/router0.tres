@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://cghij2xb4drd1"]
-
-[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_4qk5a"]
-[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_4wcm1"]
-[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="3_h8um2"]
-
-[resource]
-script = ExtResource("3_h8um2")
-metadata/_custom_type_script = "uid://kou14e2socyo"
