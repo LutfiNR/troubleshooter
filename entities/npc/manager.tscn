@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://d3arrjpfyyjv4"]
+
+[ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/Player/riki.png" id="1_5surv"]
+[ext_resource type="Script" uid="uid://c5g12dbpuuoei" path="res://entities/npc/manager.gd" id="1_uuhqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnbm"]
+size = Vector2(8.5, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uuhqk"]
+atlas = ExtResource("1_5surv")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bqyvk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uuhqk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuhqk"]
+size = Vector2(19, 19.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuhqk"]
+bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="Animation" id="Animation_uuhqk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -28)]
+}
+
+[sub_resource type="Animation" id="Animation_bqyvk"]
+resource_name = "new_animation"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 16), Vector2(20, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(0.57434916, 0.6155722),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.53588665, 0.39229205),
+"update": 0,
+"values": [Vector2(0, -28), Vector2(0, -32)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dgscp"]
+_data = {
+&"RESET": SubResource("Animation_uuhqk"),
+&"talk": SubResource("Animation_bqyvk")
+}
+
+[node name="Manager" type="CharacterBody2D" unique_id=107361038]
+y_sort_enabled = true
+scale = Vector2(2, 2)
+script = ExtResource("1_uuhqk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776729171]
+position = Vector2(-0.25, -2.5)
+shape = SubResource("RectangleShape2D_wgnbm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=611288634]
+sprite_frames = SubResource("SpriteFrames_bqyvk")
+animation = &"idle"
+offset = Vector2(0, -8)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=508421399]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=113885024]
+position = Vector2(0, 2.25)
+shape = SubResource("RectangleShape2D_uuhqk")
+
+[node name="Panel" type="Panel" parent="." unique_id=1811153322]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+offset_top = -28.0
+offset_right = 17.0
+offset_bottom = -19.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_uuhqk")
+
+[node name="TalkIndicator" type="Label" parent="Panel" unique_id=763815342]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -6.25
+offset_right = 14.5
+offset_bottom = 9.75
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_colors/font_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+text = "...."
+vertical_alignment = 1
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/TalkIndicator" unique_id=1415968602]
+libraries/ = SubResource("AnimationLibrary_dgscp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

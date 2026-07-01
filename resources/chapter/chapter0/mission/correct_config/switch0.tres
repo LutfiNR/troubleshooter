@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://cfw4aturdao2a"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_4vf65"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="2_vu7uu"]
+
+[resource]
+script = ExtResource("2_vu7uu")
+metadata/_custom_type_script = "uid://do02stg07ha0m"

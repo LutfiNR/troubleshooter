@@ -28,7 +28,7 @@ func refresh_data() -> void:
 
 
 func _populate_ui() -> void:
-	var raw_device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var raw_device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not raw_device is ComputerDeviceData:
 		return
 	var device: ComputerDeviceData = raw_device
@@ -71,7 +71,7 @@ func _on_ip_dynamic_button_toggled(toggled: bool) -> void:
 
 
 func _on_save_button_pressed() -> void:
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not device:
 		return
 
@@ -91,18 +91,18 @@ func _on_save_button_pressed() -> void:
 		main_iface.initialize_ip_from_export()
 	
 	device.interfaces[0] = main_iface
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 
 func get_ip_from_dhcp():
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	var main_iface = device.get_interface("")
 
 	if not main_iface.is_up():
 		_dhcp_failed_request()
 		return
 
-	var response = GameManager.request_dhcp(target_device_id, main_iface.id)
+	var response = NetworkManager.request_dhcp(target_device_id, main_iface.id)
 
 	if response.success:
 		ip_address_input.text = device.get_interface("").export_ip_address

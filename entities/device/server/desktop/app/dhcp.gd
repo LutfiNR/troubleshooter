@@ -143,14 +143,14 @@ func _on_save_button_pressed() -> void:
 		return
 
 	if not validate_inputs():
-		EventManager.error_configuration.emit("Please enter a valid IP Address or Subnet Mask")
+		NetworkManager.error_configuration.emit("Please enter a valid IP Address or Subnet Mask")
 		return
 
 	var new_pool_name = pool_name.text.strip_edges()
 	for i in range(current_pools.size()):
 		if i != current_selected_index:
 			if current_pools[i] != null and current_pools[i].pool_name == new_pool_name:
-				EventManager.error_configuration.emit("Pool name already exists")
+				NetworkManager.error_configuration.emit("Pool name already exists")
 				return
 
 	pool.pool_name = new_pool_name
@@ -174,7 +174,7 @@ func _apply_to_server() -> void:
 	if target_device_id == "":
 		return
 
-	var device_data: ServerDeviceData = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device_data: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not device_data: return
 
 	var service_state := ServerDeviceData.ServiceState.OFF
@@ -183,7 +183,7 @@ func _apply_to_server() -> void:
 
 	device_data.dhcp_service = service_state
 	device_data.dhcp_configuration = current_pools.duplicate(true)
-	EventManager.device_updated.emit(target_device_id, device_data)
+	NetworkManager.device_updated.emit(target_device_id, device_data)
 
 
 func _to_int(value: String) -> int:

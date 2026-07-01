@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="ChapterData" format=3 uid="uid://c1w13xwer3lvj"]
+
+[ext_resource type="Script" uid="uid://dweihabrt7kta" path="res://components/mission_data/mission_data.gd" id="1_vdyv3"]
+[ext_resource type="Script" uid="uid://dpqdj2oj21f3w" path="res://components/chapter_data/chapter_data.gd" id="2_4x4aq"]
+
+[resource]
+script = ExtResource("2_4x4aq")
+metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

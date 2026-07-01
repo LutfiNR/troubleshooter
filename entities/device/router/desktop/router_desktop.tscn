@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://b57poe0x2yr5r" path="res://entities/device/router/desktop/router_desktop.gd" id="1_04prg"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="1_fw4vx"]
-[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/font/rainyhearts.ttf" id="2_04prg"]
+[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/Font/rainyhearts.ttf" id="2_04prg"]
 [ext_resource type="Script" uid="uid://m0s4iki6mfx2" path="res://entities/device/router/desktop/ui_container.gd" id="2_7p7ye"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="3_kbl0u"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_7p7ye"]
 [ext_resource type="Script" uid="uid://oy4xrlikc5bd" path="res://entities/device/router/desktop/interfaces.gd" id="4_kbl0u"]
 [ext_resource type="Script" uid="uid://bk70oybies68g" path="res://entities/device/router/desktop/dhcp_relay.gd" id="7_if22v"]
-[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/theme.tres" id="7_rmj6y"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="7_rmj6y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if22v"]
 bg_color = Color(1, 1, 1, 1)

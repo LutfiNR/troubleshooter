@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://1jdvoe122vuy" path="res://ui/cutscene/typing_animation.gd" id="1_4ptmv"]
 [ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/acc_work.gd" id="1_6j3r2"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_h1ori"]
 
 [node name="AccWork" type="Control" unique_id=2018499296]
 layout_mode = 3
@@ -29,13 +30,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -8.0
-offset_right = 20.0
-offset_bottom = 8.0
+offset_left = -488.0
+offset_top = -168.0
+offset_right = 488.0
+offset_bottom = 168.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_h1ori")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "tes"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 script = ExtResource("1_4ptmv")

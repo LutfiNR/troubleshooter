@@ -138,10 +138,10 @@ func _on_save_db_button_pressed() -> void:
 	
 	var desired_name = db_name.text.strip_edges()
 	if desired_name == "":
-		EventManager.error_configuration.emit("Database name cannot be empty")
+		NetworkManager.error_configuration.emit("Database name cannot be empty")
 		return
 	if _is_db_duplicate(desired_name, current_db_index):
-		EventManager.error_configuration.emit("Database already exists")
+		NetworkManager.error_configuration.emit("Database already exists")
 		return
 		
 	var old_name = db.db_name
@@ -229,10 +229,10 @@ func _on_save_user_button_pressed() -> void:
 	
 	var desired_name = username.text.strip_edges()
 	if desired_name == "":
-		EventManager.error_configuration.emit("Username cannot be empty")
+		NetworkManager.error_configuration.emit("Username cannot be empty")
 		return
 	if _is_user_duplicate(desired_name, current_user_index):
-		EventManager.error_configuration.emit("Username already exists")
+		NetworkManager.error_configuration.emit("Username already exists")
 		return
 		
 	user.username = desired_name
@@ -332,7 +332,7 @@ func _on_db_service_toggled(_toggled_on: bool) -> void:
 func _apply_to_server() -> void:
 	if target_device_id == "": return
 	
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -351,7 +351,7 @@ func _apply_to_server() -> void:
 	device.mariadb_service = master_state
 	var configs: Array[MariaDBService] = [new_db_config]
 	device.mariadb_configuration = configs
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 func _clear_db_inputs() -> void:
 	if db_name: db_name.text = ""

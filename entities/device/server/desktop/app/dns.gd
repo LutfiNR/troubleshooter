@@ -116,14 +116,14 @@ func _on_save_button_pressed() -> void:
 	var selected_type = type.selected as DNSRecord.RecordType
 	
 	if not _validate_domain(new_domain):
-		EventManager.error_configuration.emit("Invalid domain format")
+		NetworkManager.error_configuration.emit("Invalid domain format")
 		return
 		
 	if not _validate_target(new_target, selected_type):
 		if selected_type == DNSRecord.RecordType.A_RECORD:
-			EventManager.error_configuration.emit("Invalid IP Address format")
+			NetworkManager.error_configuration.emit("Invalid IP Address format")
 		else:
-			EventManager.error_configuration.emit("Invalid target domain format")
+			NetworkManager.error_configuration.emit("Invalid target domain format")
 		return
 		
 	record.domain_name = new_domain
@@ -138,7 +138,7 @@ func _on_dns_service_toggled(_toggled_on: bool) -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -151,4 +151,4 @@ func _apply_to_server() -> void:
 	device.dns_service = master_state
 	var configs: Array[DNSService] = [new_dns_config]
 	device.dns_configuration = configs
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)

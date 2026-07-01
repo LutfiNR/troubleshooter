@@ -109,14 +109,14 @@ func _on_save_button_pressed() -> void:
 	
 	var new_server_name = server_name.text.strip_edges()
 	if not _validate_domain(new_server_name):
-		EventManager.error_configuration.emit("Invalid domain format")
+		NetworkManager.error_configuration.emit("Invalid domain format")
 		return
 		
 	if new_server_name != "":
 		for i in range(current_vhosts.size()):
 			if i != current_selected_index:
 				if current_vhosts[i] != null and current_vhosts[i].server_name == new_server_name:
-					EventManager.error_configuration.emit("Virtual host already exists")
+					NetworkManager.error_configuration.emit("Virtual host already exists")
 					return
 					
 	vhost.server_name = new_server_name
@@ -133,7 +133,7 @@ func _on_service_toggled(_toggled_on: bool) -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device: ServerDeviceData = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -152,4 +152,4 @@ func _apply_to_server() -> void:
 	
 	device.web_service = master_state
 	device.web_configuration = [new_web_config]
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)

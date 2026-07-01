@@ -15,7 +15,7 @@ func _on_packages_changed(_current_installed_packages: Array[String]) -> void:
 	refresh_data()
 
 func setup() -> void:
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	refresh_data()
 
 func _on_device_updated(_device_id: String, _device_data: DeviceData)-> void:
@@ -26,7 +26,7 @@ func refresh_data() -> void:
 	if device_id == "":
 		return
 		
-	var device = GameManager.get_runtime_device_data_by_id(device_id)
+	var device = NetworkManager.get_runtime_device_data_by_id(device_id)
 	if device == null or not (device is ServerDeviceData):
 		return
 

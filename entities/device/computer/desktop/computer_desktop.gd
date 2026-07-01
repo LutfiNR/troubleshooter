@@ -27,7 +27,7 @@ func _ready() -> void:
 	if file_app and file_app.has_method("setup"): file_app.setup(device_id)
 	if email_app and email_app.has_method("setup"): email_app.setup(device_id)
 
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	_close_all_apps()
 	_update_visual()
 
@@ -36,7 +36,7 @@ func _on_device_updated(updated_device_id: String, _device_data: DeviceData) -> 
 		_update_visual()
 
 func _update_visual() -> void:
-	var device: ComputerDeviceData = GameManager.get_runtime_device_data_by_id(device_id)
+	var device: ComputerDeviceData = NetworkManager.get_runtime_device_data_by_id(device_id)
 	if device == null: return
 	
 	if device.power == DeviceData.PowerState.OFF:

@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://l5av3n6vd23p" path="res://ui/main_menu/main_menu.gd" id="1_lsdqh"]
 [ext_resource type="Texture2D" uid="uid://1qk7q10itddl" path="res://assets/UI/MainMenu/main_menu_bg_0001.png" id="1_t7e0r"]
 [ext_resource type="Texture2D" uid="uid://ijhpt62s74vp" path="res://assets/UI/MainMenu/main_menu_bg_0002.png" id="2_ubpvv"]
-[ext_resource type="FontFile" uid="uid://cehw4eo62toaf" path="res://assets/font/pixel_operator/PixelOperator8-Bold.ttf" id="3_5klac"]
+[ext_resource type="FontFile" uid="uid://cehw4eo62toaf" path="res://assets/Font/pixel_operator/PixelOperator8-Bold.ttf" id="3_5klac"]
 [ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="3_arv2f"]
 [ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="4_5klac"]
 [ext_resource type="Texture2D" uid="uid://cjglm5dy75rjf" path="res://assets/UI/MainMenu/main_menu_bg_0005.png" id="5_lsdqh"]
 [ext_resource type="Texture2D" uid="uid://jaqmxgx1eytf" path="res://assets/UI/MainMenu/main_menu_bg_0006.png" id="6_jiymt"]
 [ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="7_bgtsx"]
 [ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="8_kaxbk"]
-[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/theme.tres" id="9_arv2f"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_arv2f"]
 
 [sub_resource type="Animation" id="Animation_0nobx"]
 length = 0.001

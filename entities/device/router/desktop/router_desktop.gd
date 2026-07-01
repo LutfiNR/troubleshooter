@@ -11,7 +11,7 @@ func _ready() -> void:
 	if ui_container and ui_container.has_method("setup"):
 		ui_container.setup(device_id)
 
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	_update_visual()
 
 
@@ -21,7 +21,7 @@ func _on_device_updated(updated_device_id: String, _device_data: DeviceData) -> 
 
 
 func _update_visual() -> void:
-	var device: RouterDeviceData = GameManager.get_runtime_device_data_by_id(device_id)
+	var device: RouterDeviceData = NetworkManager.get_runtime_device_data_by_id(device_id)
 	if device == null:
 		return
 

@@ -1,0 +1,16 @@
+~ start
+if !has_introducing:
+	Manager: [[Hi|Hallo]], Selamat datang dan selamat bergabung di perusahaan kami.
+	Manager: Sebelum bekerja kamu harus mengikuti dan menyelesaikan program training ini.
+	Manager: Program ini akan membantu kamu untuk mempersiapkan diri saat masuk kerja nanti.
+	Manager: Di sini kamu bebas mengeksplor. Ketika sudah paham, silakan konfirmasi ke saya.
+	set has_introducing = true
+	=> END
+else:
+	Manager: Apakah kamu sudah paham?
+	- Ya, sudah.
+		Manager: Wah, bagus, baik jadi besok kamu mulai masuk ke kantor.
+		=> END
+	- Belum, saya ingin mencoba hal lain.
+		Nathan: Baiklah, semoga beruntung.
+		=> END

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_hcruw"]
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="2_cgk24"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="3_5ieel"]
-[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/font/rainyhearts.ttf" id="4_5rb34"]
+[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/Font/rainyhearts.ttf" id="4_5rb34"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_cgk24"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="5_j2re7"]
 [ext_resource type="Script" uid="uid://c2pqf8bdubnfu" path="res://entities/device/computer/desktop/app/pc_setting_app.gd" id="6_cgk24"]

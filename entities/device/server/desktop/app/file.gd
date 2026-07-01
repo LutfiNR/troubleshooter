@@ -175,15 +175,15 @@ func _on_save_user_button_pressed() -> void:
 	
 	var desired_name = username.text.strip_edges()
 	if desired_name == "":
-		EventManager.error_configuration.emit("Username cannot be empty")
+		NetworkManager.error_configuration.emit("Username cannot be empty")
 		return
 	var regex = RegEx.new()
 	regex.compile("^[a-zA-Z0-9_-]+$")
 	if not regex.search(desired_name):
-		EventManager.error_configuration.emit("Username can only contain alphanumeric characters, dashes, and underscores")
+		NetworkManager.error_configuration.emit("Username can only contain alphanumeric characters, dashes, and underscores")
 		return
 	if _is_user_duplicate(desired_name, current_user_index):
-		EventManager.error_configuration.emit("Username already exists")
+		NetworkManager.error_configuration.emit("Username already exists")
 		return
 		
 	# Update key username in share.valid_users if changed
@@ -215,26 +215,26 @@ func _on_save_share_button_pressed() -> void:
 	var desired_name = share_name.text.strip_edges()
 	var desired_path = folder_path.text.strip_edges()
 	if desired_name == "":
-		EventManager.error_configuration.emit("Share name cannot be empty")
+		NetworkManager.error_configuration.emit("Share name cannot be empty")
 		return
 	var regex = RegEx.new()
 	regex.compile("^[a-zA-Z0-9_-]+$")
 	if not regex.search(desired_name):
-		EventManager.error_configuration.emit("Share name can only contain alphanumeric characters, dashes, and underscores")
+		NetworkManager.error_configuration.emit("Share name can only contain alphanumeric characters, dashes, and underscores")
 		return
 	if desired_path == "":
-		EventManager.error_configuration.emit("Folder path cannot be empty")
+		NetworkManager.error_configuration.emit("Folder path cannot be empty")
 		return
 	if not desired_path.begins_with("/"):
-		EventManager.error_configuration.emit("Folder path must be an absolute path starting with '/'")
+		NetworkManager.error_configuration.emit("Folder path must be an absolute path starting with '/'")
 		return
 	var path_regex = RegEx.new()
 	path_regex.compile("^/[a-zA-Z0-9_.-]*(/[a-zA-Z0-9_.-]*)*$")
 	if not path_regex.search(desired_path):
-		EventManager.error_configuration.emit("Folder path contains invalid characters")
+		NetworkManager.error_configuration.emit("Folder path contains invalid characters")
 		return
 	if _is_share_duplicate(desired_name, current_share_index):
-		EventManager.error_configuration.emit("Share name already exists")
+		NetworkManager.error_configuration.emit("Share name already exists")
 		return
 		
 	share.share_name = desired_name
@@ -267,7 +267,7 @@ func _on_file_service_toggled(_toggled_on: bool) -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -279,4 +279,4 @@ func _apply_to_server() -> void:
 	device.samba_service = master_state
 	var configs: Array[SambaService] = [new_samba_config]
 	device.samba_configuration = configs
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)

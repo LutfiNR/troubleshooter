@@ -122,10 +122,10 @@ func _on_save_user_button_pressed() -> void:
 	var desired_username = username.text.strip_edges()
 	
 	if desired_username == "":
-		EventManager.error_configuration.emit("Username cannot be empty")
+		NetworkManager.error_configuration.emit("Username cannot be empty")
 		return
 	if _is_user_duplicate(desired_username, current_selected_index):
-		EventManager.error_configuration.emit("Username already exists")
+		NetworkManager.error_configuration.emit("Username already exists")
 		return
 	
 	user.username = desired_username
@@ -144,7 +144,7 @@ func _on_domain_name_focus_exited() -> void:
 func _apply_to_server() -> void:
 	if target_device_id == "": return
 	
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -153,7 +153,7 @@ func _apply_to_server() -> void:
 		
 	var domain = domain_name.text.strip_edges() if domain_name else ""
 	if domain != "" and not _validate_domain(domain):
-		EventManager.error_configuration.emit("Invalid domain format")
+		NetworkManager.error_configuration.emit("Invalid domain format")
 		return
 		
 	var new_mail_config = MailService.new()
@@ -170,7 +170,7 @@ func _apply_to_server() -> void:
 	device.mail_service = master_state
 	var configs: Array[MailService] = [new_mail_config]
 	device.mail_configuration = configs
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 func _validate_domain(domain: String) -> bool:
 	var trimmed = domain.strip_edges()

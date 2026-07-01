@@ -18,7 +18,7 @@ func refresh_data() -> void:
 	pass
 
 func _on_url_text_submitted(new_text: String) -> void:
-	var raw_device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var raw_device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not raw_device: return
 	
 	var request_url = new_text.strip_edges()
@@ -30,12 +30,12 @@ func _on_url_text_submitted(new_text: String) -> void:
 	var target_ip = request_url
 	
 	if not _is_valid_ip(request_url):
-		target_ip = GameManager.request_dns_resolve(target_device_id, request_url)
+		target_ip = NetworkManager.request_dns_resolve(target_device_id, request_url)
 		if target_ip == "":
 			_show_error("DNS Error: Domain '" + request_url + "' not found or server unreachable.")
 			return
 	
-	var response = GameManager.request_web(target_device_id, target_ip, is_https)
+	var response = NetworkManager.request_web(target_device_id, target_ip, is_https)
 	
 	if response.success:
 		web_content.text = response.content

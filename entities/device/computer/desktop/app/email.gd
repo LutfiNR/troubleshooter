@@ -61,7 +61,7 @@ func _on_login_pressed() -> void:
 
 	var target_ip = imap_server
 	if not _is_valid_ip(imap_server):
-		target_ip = GameManager.request_dns_resolve(target_device_id, imap_server)
+		target_ip = NetworkManager.request_dns_resolve(target_device_id, imap_server)
 		if target_ip == "":
 			login_status_label.text = "DNS Error: Cannot resolve " + imap_server
 			return
@@ -71,10 +71,10 @@ func _on_login_pressed() -> void:
 		login_status_label.text = "Auth Error: Format email salah."
 		return
 		
-	var response = GameManager.request_mail_login(target_ip, email_parts[0], password)
+	var response = NetworkManager.request_mail_login(target_ip, email_parts[0], password)
 	
 	if response.success:
-		var server = GameManager._find_server_by_ip(target_ip)
+		var server = NetworkManager._find_server_by_ip(target_ip)
 		if server and server.handle_mail_request() and server.handle_mail_request().domain_name != email_parts[1]:
 			login_status_label.text = "Auth Error: Domain email tidak dikenali server ini."
 			return
@@ -87,7 +87,7 @@ func _on_login_pressed() -> void:
 		login_status_label.text = "Auth Error: " + response.error
 
 func _on_send_pressed() -> void:
-	var client_device = GameManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var client_device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not client_device: return
 	
 	var target_email = to_input.text.strip_edges()
@@ -109,7 +109,7 @@ func _on_send_pressed() -> void:
 	
 	var mx_ip = ""
 	var dns_server_ip = client_device.dns_server
-	var dns_server_obj = GameManager._find_server_by_ip(dns_server_ip)
+	var dns_server_obj = NetworkManager._find_server_by_ip(dns_server_ip)
 	
 	if dns_server_obj and dns_server_obj.dns_service == ServerDeviceData.ServiceState.ON:
 		for dns_pool in dns_server_obj.dns_configuration:
@@ -120,7 +120,7 @@ func _on_send_pressed() -> void:
 		send_status_label.text = "SMTP Error: MX Record untuk " + target_domain + " tidak ditemukan."
 		return
 		
-	var target_server = GameManager._find_server_by_ip(mx_ip)
+	var target_server = NetworkManager._find_server_by_ip(mx_ip)
 	if not target_server or target_server.mail_service == ServerDeviceData.ServiceState.OFF:
 		send_status_label.text = "Delivery Failed: Mail Server tujuan (" + mx_ip + ") tidak merespon."
 		return

@@ -16,8 +16,8 @@ var player_in_range: bool = false
 var device_data: ServerDeviceData
 
 func _ready() -> void:
-	EventManager.device_updated.connect(_on_device_updated)
-	device_data = GameManager.get_runtime_device_data_by_id(device_id)
+	NetworkManager.device_updated.connect(_on_device_updated)
+	device_data = NetworkManager.get_runtime_device_data_by_id(device_id)
 
 func interact() -> void:
 	if not player_in_range:
@@ -69,4 +69,4 @@ func _on_power_button_pressed() -> void:
 		device_data.power = DeviceData.PowerState.ON
 	else:
 		device_data.power = DeviceData.PowerState.OFF
-	GameManager.update_device_data(device_id, device_data)
+	NetworkManager.update_device_data(device_id, device_data)

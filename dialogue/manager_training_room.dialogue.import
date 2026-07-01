@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ytxqpey1fvg8"
+path="res://.godot/imported/manager_training_room.dialogue-adae932508bcc0a2a18f18c0aafeff9f.tres"
+
+[deps]
+
+source_file="res://dialogue/manager_training_room.dialogue"
+dest_files=["res://.godot/imported/manager_training_room.dialogue-adae932508bcc0a2a18f18c0aafeff9f.tres"]
+
+[params]
+
+defaults=true

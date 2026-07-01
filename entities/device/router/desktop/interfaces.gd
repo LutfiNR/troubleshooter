@@ -60,14 +60,11 @@ func _on_interface_list_item_selected(index: int) -> void:
 func _on_save_button_pressed() -> void:
 	if current_selected_index == -1 or target_device_id == "":
 		return
-
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not device is RouterDeviceData:
 		return
-
 	var interfaces_array = device.get_interfaces()
 	var iface: NetworkInterface = interfaces_array[current_selected_index]
-
 	if iface == null:
 		return
 
@@ -75,19 +72,16 @@ func _on_save_button_pressed() -> void:
 	var new_mask = subnet_mask.text.strip_edges()
 	
 	if new_ip != "" and not IPAddress.is_valid_ip(new_ip):
-		EventManager.error_configuration.emit("Invalid IP Address format")
+		NetworkManager.error_configuration.emit("Invalid IP Address format")
 		return
 	if new_mask != "" and not IPAddress.is_valid_mask(new_mask):
-		EventManager.error_configuration.emit("Invalid Subnet Mask format")
+		NetworkManager.error_configuration.emit("Invalid Subnet Mask format")
 		return
-
 	iface.export_ip_address = new_ip
 	iface.export_subnet_mask = new_mask
 	iface.mac_address = mac_address.text.strip_edges()
-
 	iface.initialize_ip_from_export()
-
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 
 func _clear_input_fields() -> void:
@@ -99,7 +93,7 @@ func _clear_input_fields() -> void:
 
 func _on_hostname_focus_exited() -> void:
 	if hostname.text.strip_edges() != "":
-		var device = GameManager.get_runtime_device_data_by_id(target_device_id)
+		var device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 		if device:
 			device.hostname = hostname.text.strip_edges()
-			GameManager.update_device_data(target_device_id, device)
+			NetworkManager.update_device_data(target_device_id, device)

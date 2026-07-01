@@ -16,7 +16,7 @@ func refresh_data() -> void:
 	if target_device_id == "":
 		return
 
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not device is RouterDeviceData:
 		return
 

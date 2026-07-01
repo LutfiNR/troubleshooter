@@ -97,18 +97,18 @@ func _on_save_button_pressed() -> void:
 	
 	var new_username = username.text.strip_edges()
 	if new_username == "":
-		EventManager.error_configuration.emit("Username cannot be empty")
+		NetworkManager.error_configuration.emit("Username cannot be empty")
 		return
 		
 	for i in range(current_users.size()):
 		if i != current_selected_index:
 			if current_users[i] != null and current_users[i].username == new_username:
-				EventManager.error_configuration.emit("Username already exists")
+				NetworkManager.error_configuration.emit("Username already exists")
 				return
 				
 	var new_home = home_dir.text.strip_edges()
 	if new_home != "" and not new_home.begins_with("/"):
-		EventManager.error_configuration.emit("Home directory must be an absolute path starting with '/'")
+		NetworkManager.error_configuration.emit("Home directory must be an absolute path starting with '/'")
 		return
 		
 	user.username = new_username
@@ -123,7 +123,7 @@ func _on_service_toggled(_toggled_on: bool) -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -140,7 +140,7 @@ func _apply_to_server() -> void:
 	var configs: Array[FTPService] = [new_ftp_config]
 	device.ftp_configuration = configs
 	
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 func _on_ftp_service_toggled(toggled_on: bool) -> void:
 	_on_service_toggled(toggled_on)

@@ -91,10 +91,10 @@ func _on_save_button_pressed() -> void:
 	
 	var desired_name = username.text.strip_edges()
 	if desired_name == "":
-		EventManager.error_configuration.emit("Username cannot be empty")
+		NetworkManager.error_configuration.emit("Username cannot be empty")
 		return
 	if _is_user_duplicate(desired_name, current_selected_index):
-		EventManager.error_configuration.emit("Username already exists")
+		NetworkManager.error_configuration.emit("Username already exists")
 		return
 		
 	user.username = desired_name
@@ -115,7 +115,7 @@ func _on_service_toggled(_toggled_on: bool) -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ServerDeviceData
 	if not device: return
 	
 	var master_state = ServerDeviceData.ServiceState.OFF
@@ -128,7 +128,7 @@ func _apply_to_server() -> void:
 	if ssh_port:
 		var port_val = ssh_port.text.strip_edges().to_int()
 		if port_val <= 0 or port_val > 65535:
-			EventManager.error_configuration.emit("Invalid SSH Port (must be 1-65535)")
+			NetworkManager.error_configuration.emit("Invalid SSH Port (must be 1-65535)")
 			return
 		new_remote_config.ssh_port = port_val
 	if permit_root_login:
@@ -138,7 +138,7 @@ func _apply_to_server() -> void:
 	device.remote_service = master_state
 	var configs: Array[RemoteService] = [new_remote_config]
 	device.remote_configuration = configs
-	GameManager.update_device_data(target_device_id, device)
+	NetworkManager.update_device_data(target_device_id, device)
 
 func _on_ssh_port_text_changed(_new_text: String) -> void:
 	_apply_to_server()

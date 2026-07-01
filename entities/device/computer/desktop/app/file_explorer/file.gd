@@ -46,7 +46,7 @@ func refresh_data() -> void:
 	if delete_button: delete_button.disabled = not current_write_enable
 
 func _load_local_files() -> void:
-	var device = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if device:
 		path.text = "/" + device.device_id
 		
@@ -89,12 +89,12 @@ func _handle_ftp_path(input_path: String) -> void:
 	target_ip = request_url
 	
 	if not _is_valid_ip(request_url):
-		target_ip = GameManager.request_dns_resolve(target_device_id, request_url)
+		target_ip = NetworkManager.request_dns_resolve(target_device_id, request_url)
 		if target_ip == "":
 			_show_error("DNS Error: Domain '" + request_url + "' not found or server unreachable.")
 			return
 
-	var server = GameManager._find_server_by_ip(target_ip)
+	var server = NetworkManager._find_server_by_ip(target_ip)
 	if not server or server.ftp_service == ServerDeviceData.ServiceState.OFF:
 		_show_error("Error: Connection refused. FTP Service is OFF.")
 		return
@@ -125,12 +125,12 @@ func _handle_smb_path(input_path: String) -> void:
 	target_ip = host_part
 
 	if not _is_valid_ip(host_part):
-		target_ip = GameManager.request_dns_resolve(target_device_id, host_part)
+		target_ip = NetworkManager.request_dns_resolve(target_device_id, host_part)
 		if target_ip == "":
 			_show_error("DNS Error: Domain '" + host_part + "' not found or server unreachable.")
 			return
 
-	var server = GameManager._find_server_by_ip(target_ip)
+	var server = NetworkManager._find_server_by_ip(target_ip)
 	if not server or server.samba_service == ServerDeviceData.ServiceState.OFF:
 		_show_error("Error: Connection refused. Samba Service is OFF.")
 		return
@@ -184,13 +184,13 @@ func _on_credential_login_button_pressed() -> void:
 
 
 func _handle_ftp_login(input_user: String, input_pass: String) -> void:
-	var response = GameManager.request_ftp_login(target_ip, input_user, input_pass)
+	var response = NetworkManager.request_ftp_login(target_ip, input_user, input_pass)
 	
 	if response.success:
 		close_credential_popup()
 		is_logged_in = true
 		
-		var server = GameManager._find_server_by_ip(target_ip)
+		var server = NetworkManager._find_server_by_ip(target_ip)
 		if server and server.handle_ftp_request():
 			current_write_enable = server.handle_ftp_request().write_enable
 			
@@ -207,13 +207,13 @@ func _handle_ftp_login(input_user: String, input_pass: String) -> void:
 
 
 func _handle_smb_login(input_user: String, input_pass: String) -> void:
-	var response = GameManager.request_samba_login(target_ip, input_user, input_pass)
+	var response = NetworkManager.request_samba_login(target_ip, input_user, input_pass)
 
 	if response.success:
 		close_credential_popup()
 		is_logged_in = true
 
-		var server = GameManager._find_server_by_ip(target_ip)
+		var server = NetworkManager._find_server_by_ip(target_ip)
 		if not server:
 			_show_error("Error: Server not found.")
 			return

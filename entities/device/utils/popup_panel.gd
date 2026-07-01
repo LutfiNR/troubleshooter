@@ -4,7 +4,7 @@ extends Panel
 @onready var ok_button: Button = $OKButton
 
 func _ready()->void:
-	EventManager.error_configuration.connect(_on_error_configuration)
+	NetworkManager.error_configuration.connect(_on_error_configuration)
 	visible = false
 
 func _on_error_configuration(message: String)->void:

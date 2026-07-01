@@ -6,8 +6,8 @@ extends Line2D
 var cable_data: CableData
 
 func _ready()-> void:
-	EventManager.cable_updated.connect(_on_cable_updated)
-	var cables_data = GameManager.get_cables_for_device(device_a.device_data) 
+	NetworkManager.cable_updated.connect(_on_cable_updated)
+	var cables_data = NetworkManager.get_cables_for_device(device_a.device_data) 
 	for cable in cables_data:
 		if cable.device_a == device_a.device_id and cable.device_b == device_b.device_id:
 			cable_data = cable

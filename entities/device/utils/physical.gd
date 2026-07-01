@@ -14,7 +14,7 @@ func _ready() -> void:
 		push_error("Overlay: device_id not set!")
 		return
 
-	device = GameManager.get_runtime_device_data_by_id(device_id)
+	device = NetworkManager.get_runtime_device_data_by_id(device_id)
 	if device == null:
 		push_error("Overlay: Device not found for id: " + device_id)
 		return
@@ -25,7 +25,7 @@ func _ready() -> void:
 		var interface_data = interfaces[i]
 		port.id = interface_data.id
 		port.device_id = device_id
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	update_ui(device)
 
 func _on_device_updated(updated_device_id: String, device_data: DeviceData) -> void:

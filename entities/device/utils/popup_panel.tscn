@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1yqpkqil2l3c"]
 
 [ext_resource type="Script" uid="uid://bfe74tj1bo221" path="res://entities/device/utils/popup_panel.gd" id="1_rii6k"]
-[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/theme.tres" id="2_tb8dv"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_tb8dv"]
 
 [node name="PopupPanel" type="Panel" unique_id=75760130]
 visible = false

@@ -73,8 +73,8 @@ func _on_uninstall_button_pressed() -> void:
 
 func _apply_to_server() -> void:
 	if target_device_id == "": return
-	var device_data: ServerDeviceData = GameManager.get_runtime_device_data_by_id(target_device_id)
+	var device_data: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if not device_data: return
 	
 	device_data.installed_packages = current_installed_packages.duplicate()
-	EventManager.device_updated.emit(target_device_id, device_data)
+	NetworkManager.device_updated.emit(target_device_id, device_data)

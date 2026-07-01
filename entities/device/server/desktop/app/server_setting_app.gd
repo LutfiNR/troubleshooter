@@ -22,8 +22,8 @@ func _ready() -> void:
 	call_deferred("setup")
 
 func setup() -> void:
-	device_data = GameManager.get_runtime_device_data_by_id(device_id)
-	EventManager.device_updated.connect(_on_device_updated)
+	device_data = NetworkManager.get_runtime_device_data_by_id(device_id)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	populate_ui()
 
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
@@ -67,7 +67,7 @@ func validate_inputs() -> bool:
 
 func _on_save_button_pressed() -> void:
 	if not validate_inputs():
-		EventManager.error_configuration.emit("Please enter a valid IP Address or Subnet Mask")
+		NetworkManager.error_configuration.emit("Please enter a valid IP Address or Subnet Mask")
 		return
 	device_data.hostname = host_name_input.text.strip_edges()
 	device_data.default_gateway = gateway_input.text.strip_edges()
@@ -77,4 +77,4 @@ func _on_save_button_pressed() -> void:
 		main_iface.export_ip_address = ip_address_input.text.strip_edges()
 		main_iface.export_subnet_mask = subnet_mask_input.text.strip_edges()
 		main_iface.initialize_ip_from_export()
-	GameManager.update_interface_device_data(device_id, main_iface.id, main_iface)
+	NetworkManager.update_interface_device_data(device_id, main_iface.id, main_iface)

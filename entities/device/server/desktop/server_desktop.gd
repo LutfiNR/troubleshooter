@@ -17,7 +17,7 @@ var device_id: String
 
 func _ready() -> void:
 	camera.make_current()
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	if setting_app:
 		setting_app.device_id = device_id
 	if service_app:
@@ -30,7 +30,7 @@ func _on_device_updated(_device_id: String, _device_data: DeviceData)-> void:
 		_update_visual()
 
 func _update_visual() -> void:
-	var device: ServerDeviceData = GameManager.get_runtime_device_data_by_id(device_id)
+	var device: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(device_id)
 	if device == null: return
 	
 	if device.power == DeviceData.PowerState.OFF:
