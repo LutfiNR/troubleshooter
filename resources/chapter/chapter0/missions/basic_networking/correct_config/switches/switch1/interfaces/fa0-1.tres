@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_mool5")
 id = "fa0/1"
-mac_address = "d0:ea:f6:b1:b0:9e"
+mac_address = "0f:ee:33:30:9a:c1"
 layer = 0
 state = 1
 metadata/_custom_type_script = "uid://ci1x0glfens8u"

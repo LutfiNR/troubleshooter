@@ -9,7 +9,7 @@ const COLOR: Dictionary = {
 func _ready() -> void:
 	clear()
 	populate_ui_tree()
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 
 
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
@@ -19,7 +19,7 @@ func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
 
 func populate_ui_tree() -> void:
 	var root = create_item()
-	var data = GameManager.mission_data
+	var data = NetworkManager.mission_checking_result
 	for dev in data.keys():
 		_populate_device(root, data[dev])
 

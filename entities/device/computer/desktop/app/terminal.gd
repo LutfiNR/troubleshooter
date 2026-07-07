@@ -135,11 +135,25 @@ func _cmd_ping(args: Array) -> void:
 		return
 	_print_line("\nPinging " + args[0] + " [" + target_ip + "] with 32 bytes of data:")
 
-	# Basic Ping Mock Check
-	var is_connected_to_target = (NetworkManager._find_server_by_ip(target_ip) != null)
+	# Find the destination device by its IP across all runtime devices.
+	var dst_device_id: String = ""
+	for key in NetworkManager.runtime_configs:
+		var device: DeviceData = NetworkManager.runtime_configs[key]
+		for iface: NetworkInterface in device.interfaces:
+			if iface.ip and iface.ip.ip_to_string().split("/")[0] == target_ip:
+				dst_device_id = key
+				break
+		if dst_device_id != "":
+			break
+
+	# Use check_connectivity to validate actual network path from this computer.
+	var is_reachable: bool = false
+	if dst_device_id != "":
+		var result: Dictionary = NetworkManager.check_connectivity(target_device_id, dst_device_id)
+		is_reachable = result.get("reachable", false)
 	await get_tree().create_timer(0.5).timeout
 	for i in range(4):
-		if is_connected_to_target:
+		if is_reachable:
 			_print_line("Reply from " + target_ip + ": bytes=32 time<1ms TTL=64")
 		else:
 			_print_line("Request timed out.")

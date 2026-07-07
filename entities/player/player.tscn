@@ -3,7 +3,15 @@
 [ext_resource type="Script" uid="uid://dgvstrri8nt3b" path="res://entities/player/player.gd" id="1_k7rle"]
 [ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/Player/riki.png" id="2_qb0yx"]
 [ext_resource type="Script" uid="uid://sgvdgwxem3kw" path="res://entities/player/camera.gd" id="4_viyt1"]
+[ext_resource type="PackedScene" uid="uid://du03fqgatn66o" path="res://ui/timer.tscn" id="5_fkugw"]
+[ext_resource type="Texture2D" uid="uid://cka60odb3oi5k" path="res://assets/UI/player_stats/player_stats.png" id="6_qiwj3"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="7_26q78"]
+[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="8_bectd"]
+[ext_resource type="Texture2D" uid="uid://cms0y1e4ysbh2" path="res://assets/UI/web_icon.png" id="9_wvtmh"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
+[ext_resource type="PackedScene" uid="uid://bgkh0aflvfep" path="res://world/roadmap_chapter.tscn" id="10_wvtmh"]
+[ext_resource type="Script" uid="uid://nvkm8iq3towb" path="res://ui/mission/mission.gd" id="11_a1qjk"]
+[ext_resource type="PackedScene" uid="uid://cmjyrgyheap33" path="res://ui/mission/task_item.tscn" id="12_j3ovn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
 size = Vector2(10, 14)
@@ -185,3 +193,80 @@ libraries/ = SubResource("AnimationLibrary_ve7px")
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 script = ExtResource("4_viyt1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1487841205]
+
+[node name="Timer" parent="CanvasLayer" unique_id=1616835283 instance=ExtResource("5_fkugw")]
+visible = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1073717267]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1270.0
+offset_top = 16.0
+offset_right = -1015.0
+offset_bottom = 101.0
+grow_horizontal = 0
+texture = ExtResource("6_qiwj3")
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=81076281]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 5.0
+offset_right = 173.0
+offset_bottom = 37.0
+theme = ExtResource("7_26q78")
+text = "Lutfi Nur Rohman"
+text_overrun_behavior = 5
+
+[node name="RoadmapButton" type="TextureButton" parent="CanvasLayer" unique_id=1582589157]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1135.0
+offset_top = 60.9
+offset_right = -1095.0
+offset_bottom = 100.9
+grow_horizontal = 0
+theme = ExtResource("7_26q78")
+texture_normal = ExtResource("8_bectd")
+texture_pressed = ExtResource("8_bectd")
+texture_hover = ExtResource("8_bectd")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/RoadmapButton" unique_id=632942185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_wvtmh")
+
+[node name="RoadmapContainer" parent="CanvasLayer/RoadmapButton" unique_id=1826743698 instance=ExtResource("10_wvtmh")]
+visible = false
+layout_mode = 1
+offset_left = -151.0
+offset_top = 50.1
+offset_right = 169.0
+offset_bottom = 322.1
+
+[node name="Mission" type="VBoxContainer" parent="CanvasLayer" unique_id=1606562367]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1270.0
+offset_top = 112.0
+offset_right = -1015.0
+offset_bottom = 482.0
+grow_horizontal = 0
+script = ExtResource("11_a1qjk")
+task_item_scene = ExtResource("12_j3ovn")
+
+[node name="TaskItem" parent="CanvasLayer/Mission" unique_id=1222381161 instance=ExtResource("12_j3ovn")]
+layout_mode = 2

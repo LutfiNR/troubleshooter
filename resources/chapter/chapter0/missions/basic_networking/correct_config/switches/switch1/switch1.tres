@@ -13,8 +13,8 @@
 
 [resource]
 script = ExtResource("10_gesse")
-device_id = "switch0"
-hostname = "Switch Client"
+device_id = "switch1"
+hostname = "Switch Server"
 power = 1
 interfaces = Array[ExtResource("1_2qmlr")]([ExtResource("2_lp2hf"), ExtResource("3_r21ad"), ExtResource("4_r5rue"), ExtResource("5_8r4jq"), ExtResource("6_73khd"), ExtResource("7_ycno8"), ExtResource("8_8r63t"), ExtResource("9_8ftu2")])
 metadata/_custom_type_script = "uid://do02stg07ha0m"

@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://dga8wf5ce0q3x"]
 
+[ext_resource type="Script" uid="uid://du5o4f7h8pct3" path="res://world/training_room.gd" id="1_i4j8i"]
 [ext_resource type="TileSet" uid="uid://dhj3w0nkdhx58" path="res://assets/Atlas/floor.tres" id="1_i44f2"]
 [ext_resource type="PackedScene" uid="uid://6a7sqd5akwlp" path="res://entities/player/player.tscn" id="1_mxsk6"]
 [ext_resource type="TileSet" uid="uid://66xplyb10s63" path="res://assets/Atlas/wall.tres" id="2_lxc53"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://btutdscth7cb" path="res://entities/device/server/server.tscn" id="7_i4j8i"]
 [ext_resource type="PackedScene" uid="uid://d3arrjpfyyjv4" path="res://entities/npc/manager.tscn" id="10_iki3j"]
 [ext_resource type="Resource" uid="uid://ytxqpey1fvg8" path="res://dialogue/manager_training_room.dialogue" id="11_0l8w3"]
+[ext_resource type="PackedScene" uid="uid://cnf8nd3ngi8x8" path="res://world/tutorial.tscn" id="15_ui3s3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0l8w3"]
 texture = ExtResource("3_lxc53")
@@ -68,6 +70,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_0l8w3")
 
 [node name="TrainingRoom" type="Node2D" unique_id=1750261536]
+script = ExtResource("1_i4j8i")
 
 [node name="Main" type="Node2D" parent="." unique_id=1841524894]
 y_sort_enabled = true
@@ -89,6 +92,7 @@ tile_map_data = PackedByteArray("AAANAP3/AAABAAEAAAANAP7/AAABAAIAAAANAP//AAABAAM
 tile_set = SubResource("TileSet_woc7e")
 
 [node name="Cables" type="Node2D" parent="Main" unique_id=2028253221]
+z_index = -1
 y_sort_enabled = true
 
 [node name="Cable" parent="Main/Cables" unique_id=247182996 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("4_iki3j")]
@@ -161,3 +165,7 @@ position = Vector2(-128, -112)
 dialogue = ExtResource("11_0l8w3")
 
 [node name="Overlay" type="Node2D" parent="." unique_id=394251463]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1717643212]
+
+[node name="Tutorial" parent="CanvasLayer" unique_id=239402749 instance=ExtResource("15_ui3s3")]

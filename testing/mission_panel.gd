@@ -8,7 +8,7 @@ var total_count: int = -1
 
 
 func _ready() -> void:
-	EventManager.device_updated.connect(_on_device_updated)
+	NetworkManager.device_updated.connect(_on_device_updated)
 	update_progress()
 
 
@@ -18,7 +18,7 @@ func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
 
 # Update mission completion progress
 func update_progress() -> void:
-	var tree_data: Dictionary = GameManager.mission_data
+	var tree_data: Dictionary = NetworkManager.mission_checking_result
 
 	var false_count: int = get_false_status_count(tree_data)
 

@@ -7,4 +7,28 @@ script = ExtResource("1_pys81")
 id = "mission0"
 title = "Basic Networking"
 description = "Misi menyelesaikan masalah basic networking "
+time = 300.0
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://b5v0gqqtexvpv",
+"computer1": &"uid://bd8twwownwuqh",
+"router0": &"uid://cghij2xb4drd1",
+"server0": &"uid://bt01b5ntf4m7h",
+"switch0": &"uid://cfw4aturdao2a",
+"switch1": &"uid://doov1hl61gpwq"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://bf5vrvh44imfu",
+"computer1": &"uid://cpywojkpbtvs2",
+"router0": &"uid://yd7usv1y1i3u",
+"server0": &"uid://y53knfq3hmw4",
+"switch0": &"uid://wxhd7ckc6nvp",
+"switch1": &"uid://d4vgicxpoj4r"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://0umcyvsfsgpf",
+"computer1_switch0": &"uid://dra7gpigu8xon",
+"server_switch1": &"uid://0u3m0njs3wq5",
+"switch0_router": &"uid://bwaqexnksrjis",
+"switch1_router": &"uid://b568rx686jsnl"
+})
 metadata/_custom_type_script = "uid://dweihabrt7kta"

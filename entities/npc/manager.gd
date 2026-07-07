@@ -6,7 +6,7 @@ extends CharacterBody2D
 var has_introducing: bool = false
 var player_in_range: bool = false
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if player_in_range and event.is_action_pressed("click_left"):
 		DialogueManager.show_dialogue_balloon(dialogue, "start" ,[self])
 

@@ -16,9 +16,15 @@ func _ready():
 	GameManager.mission_loaded.connect(_on_mission_loaded)
 
 func _on_mission_loaded(mission: MissionData)-> void:
-	correct_configs = mission.correct_configs
-	runtime_configs = mission.runtime_configs
-	runtime_cables = mission.runtime_cables
+	correct_configs.clear()
+	runtime_configs.clear()
+	runtime_cables.clear()
+	for key in mission.correct_configs:
+		correct_configs[key] = load(mission.correct_configs[key])
+	for key in mission.runtime_configs:
+		runtime_configs[key] = load(mission.runtime_configs[key])
+	for key in mission.runtime_cables:
+		runtime_cables[key] = load(mission.runtime_cables[key])
 	setup_all_devices()
 
 func setup_all_devices() -> void:
@@ -124,6 +130,11 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 	if not src_iface or not src_iface.ip or not dst_iface or not dst_iface.ip:
 		return { "reachable": false, "reason": "One or both devices have no IP address configured." }
 
+	if not src_iface.is_up():
+		return { "reachable": false, "reason": "Source interface is down." }
+	if not dst_iface.is_up():
+		return { "reachable": false, "reason": "Destination interface is down." }
+
 	var src_ip: IPAddress = src_iface.ip
 	var dst_ip: IPAddress = dst_iface.ip
 
@@ -154,6 +165,12 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 			var gw_iface: NetworkInterface = _find_interface_by_ip(candidate, gw_ip)
 			if not gw_iface:
 				continue
+			# Verify src is actually in the same subnet as the gateway interface.
+			if not src_ip.is_same_subnet(gw_iface.ip):
+				return {
+					"reachable": false,
+					"reason": "Source network does not match gateway subnet. Check IP/subnet mask.",
+				}
 			# Router found. Now check if it also has an interface in dst's subnet.
 			var dst_facing_iface: NetworkInterface = _find_interface_in_subnet(candidate, dst_ip)
 			if dst_facing_iface:
@@ -174,28 +191,32 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 	return { "reachable": false, "reason": "Different subnet and no default gateway configured." }
 
 
-## Returns the first Layer-3 (THIRDLAYER) interface of a device, or null.
+## Returns the first Layer-3 (THIRDLAYER) interface of a device that is UP, or null.
 func _get_l3_interface(device: DeviceData) -> NetworkInterface:
 	for iface: NetworkInterface in device.interfaces:
-		if iface.layer == NetworkInterface.InterfaceLayer.THIRDLAYER:
+		if iface.layer == NetworkInterface.InterfaceLayer.THIRDLAYER and iface.is_up():
 			return iface
 	return null
 
 
-## Returns the interface on [param device] whose IP matches [param target_ip], or null.
+## Returns the interface on [param device] whose IP matches [param target_ip] and is UP, or null.
 func _find_interface_by_ip(device: DeviceData, target_ip: IPAddress) -> NetworkInterface:
 	for iface: NetworkInterface in device.interfaces:
 		if iface.layer != NetworkInterface.InterfaceLayer.THIRDLAYER:
+			continue
+		if not iface.is_up():
 			continue
 		if iface.ip and iface.ip.ip_to_string().split("/")[0] == target_ip.ip_to_string().split("/")[0]:
 			return iface
 	return null
 
 
-## Returns the interface on [param device] that is in the same subnet as [param target_ip], or null.
+## Returns the interface on [param device] that is in the same subnet as [param target_ip] and is UP, or null.
 func _find_interface_in_subnet(device: DeviceData, target_ip: IPAddress) -> NetworkInterface:
 	for iface: NetworkInterface in device.interfaces:
 		if iface.layer != NetworkInterface.InterfaceLayer.THIRDLAYER:
+			continue
+		if not iface.is_up():
 			continue
 		if iface.ip and iface.ip.is_same_subnet(target_ip):
 			return iface
