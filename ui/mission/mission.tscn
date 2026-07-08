@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://yahg57jtrsjy"]
+
+[ext_resource type="Script" uid="uid://nvkm8iq3towb" path="res://ui/mission/mission.gd" id="1_sfccj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1qjk"]
+bg_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+
+[node name="Mission" type="Panel" unique_id=1058897919]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_a1qjk")
+script = ExtResource("1_sfccj")
+
+[node name="MissionDetail" type="RichTextLabel" parent="." unique_id=1817143077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true

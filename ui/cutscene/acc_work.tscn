@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dl40m452oln6v"]
 
 [ext_resource type="Script" uid="uid://1jdvoe122vuy" path="res://ui/cutscene/typing_animation.gd" id="1_4ptmv"]
-[ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/acc_work.gd" id="1_6j3r2"]
+[ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/cutscene.gd" id="1_6j3r2"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_h1ori"]
 
 [node name="AccWork" type="Control" unique_id=2018499296]
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6j3r2")
 intro_lines = Array[String](["Hari ini adalah hari yang spesial.", "Kamu diterima kerja sebagai network administrator di sebuah perusahaan tapi sebelum benar benar bekerja sepenuhnya kamu harus mengikuti program training.", "Persiapkan dirimu!!"])
-training_room_scene = &"uid://di11gyrvd3rad"
+next_scene = &"uid://dga8wf5ce0q3x"
 
 [node name="Panel" type="Panel" parent="." unique_id=1800015742]
 layout_mode = 1

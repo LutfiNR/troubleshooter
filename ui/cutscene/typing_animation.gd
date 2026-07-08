@@ -2,6 +2,8 @@ extends Label
 
 @export var type_speed : float = 0.03
 
+signal typing_finished
+
 var current_line : int = 0
 var typing : bool = false
 
@@ -16,4 +18,5 @@ func play_typing(lines: Array[String]) -> void:
 		await get_tree().create_timer(2.0).timeout
 	visible_characters = -1
 	typing = false
+	typing_finished.emit()
 	text = ""

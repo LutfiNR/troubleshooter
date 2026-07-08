@@ -82,7 +82,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lsdqh")
-start_scene = &"uid://dga8wf5ce0q3x"
+start_new_game_scene = &"uid://dl40m452oln6v"
+training_scene = &"uid://dga8wf5ce0q3x"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1117831180]
 layout_mode = 1
@@ -102,23 +103,23 @@ offset_bottom = 599.0
 theme = ExtResource("9_arv2f")
 theme_override_constants/separation = 24
 
-[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=374582776]
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=374582776]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme = ExtResource("9_arv2f")
-text = "START"
+text = "START NEW GAME"
+
+[node name="LoadGameButton" type="Button" parent="VBoxContainer" unique_id=1741449674]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme = ExtResource("9_arv2f")
+text = "LOAD GAME"
 
 [node name="LOButton" type="Button" parent="VBoxContainer" unique_id=856993119]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme = ExtResource("9_arv2f")
 text = "LEARNING OBJECTIVE"
-
-[node name="SettingButton" type="Button" parent="VBoxContainer" unique_id=1741449674]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-theme = ExtResource("9_arv2f")
-text = "SETTINGS"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=488295873]
 custom_minimum_size = Vector2(0, 80)
@@ -147,7 +148,7 @@ clip_text = true
 libraries/ = SubResource("AnimationLibrary_8jgmr")
 autoplay = &"background"
 
-[connection signal="button_up" from="VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="button_up" from="VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/LOButton" to="." method="_on_lo_button_button_up"]
-[connection signal="button_up" from="VBoxContainer/SettingButton" to="." method="_on_setting_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_button_up"]

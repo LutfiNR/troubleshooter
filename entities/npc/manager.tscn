@@ -24,6 +24,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uuhqk"]
 size = Vector2(19, 19.5)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uuhqk"]
+radius = 7.0
+height = 27.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuhqk"]
 bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
 border_width_left = 1
@@ -140,6 +144,12 @@ offset = Vector2(0, -8)
 position = Vector2(0, 2.25)
 shape = SubResource("RectangleShape2D_uuhqk")
 
+[node name="ClickArea" type="Area2D" parent="." unique_id=1971213968]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea" unique_id=2005868146]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_uuhqk")
+
 [node name="Panel" type="Panel" parent="." unique_id=1811153322]
 modulate = Color(1, 1, 1, 0)
 z_index = 2
@@ -172,3 +182,4 @@ libraries/ = SubResource("AnimationLibrary_dgscp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

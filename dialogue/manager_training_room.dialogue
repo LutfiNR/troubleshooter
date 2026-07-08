@@ -1,6 +1,4 @@
 ~ start
-if !GameManager.tutorial_completed:
-	=> END
 if !has_introducing:
 	Manager: [[Hi|Hallo]], Selamat datang dan selamat bergabung di perusahaan kami.
 	Manager: Sebelum bekerja kamu harus mengikuti dan menyelesaikan program training ini.

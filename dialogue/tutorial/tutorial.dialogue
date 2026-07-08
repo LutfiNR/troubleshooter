@@ -1,0 +1,45 @@
+~ movement
+Kirin: Selamat datang. Saya akan memandu Anda melalui tutorial singkat.
+Kirin: Pertama, mari kita pelajari cara bergerak.
+Kirin: Tekan tombol [A] [D] [W] [S] untuk bergerak ke Kiri, Kanan, Atas, Bawah.
+Kirin: Sekarang, silakan berjalan menuju Manager untuk melanjutkan tutorial berikutnya.
+=> END
+
+~ interact
+Kirin: Untuk berbicara dengan seseorang atau berinteraksi dengan suatu objek, arahkan kursor ke target lalu klik tombol kiri mouse.
+=> END
+
+~ after_interact
+Kirin: Sekarang coba mendekat ke arah computer.
+=> END
+
+~ device
+Kirin: Bagus. Sekarang mari kita pelajari cara berinteraksi dengan perangkat.
+Kirin: Dekati sebuah perangkat (Device), lalu klik perangkat tersebut dengan tombol kiri mouse untuk membukanya.
+Kirin: Setelah jendela perangkat terbuka, Anda akan melihat tiga tombol.
+Kirin: [img]res://assets/PopupActionDevice/popupobject_0001.png[/img] digunakan untuk menyalakan atau mematikan perangkat.
+Kirin: [img]res://assets/PopupActionDevice/popupobject_0002.png[/img] digunakan untuk membuka tampilan Desktop perangkat dan melakukan konfigurasi perangkat lunak.
+Kirin: [img]res://assets/PopupActionDevice/popupobject_0003.png[/img] digunakan untuk membuka tampilan Physical, tempat Anda dapat melihat kondisi fisik perangkat, seperti port dan koneksi kabel.
+Kirin: Cobalah masing-masing tombol agar Anda memahami fungsinya sebelum melanjutkan ke tutorial berikutnya.
+=> END
+
+~ roadmap
+Kirin: Ini adalah Roadmap.
+Kirin: Roadmap menampilkan alur pembelajaran yang akan Anda tempuh.
+Kirin: Di sini Anda dapat melihat chapter dan misi yang sedang dikerjakan,yang telah selesai, dan yang akan dibuka berikutnya.
+=> END
+
+~ mission
+Kirin: Ini adalah detail Mission.
+Kirin: Mission berisi tujuan yang harus Anda selesaikan pada misi saat ini.
+Kirin: Bacalah petunjuk yang diberikan sebelum mulai mengerjakan konfigurasi pada perangkat.
+Kirin: Jika Anda lupa apa yang harus dilakukan, Anda dapat membuka Mission kapan saja.
+=> END
+
+~ check
+Kirin: Ini Check Progress.
+Kirin: Setelah Anda yakin konfigurasi sudah benar, tekan tombol ini untuk memeriksa hasil pekerjaan Anda.
+Kirin: Sistem akan membandingkan konfigurasi perangkat dengan jawaban yang benar.
+Kirin: Jika masih terdapat kesalahan, Anda dapat memperbaikinya lalu melakukan pemeriksaan kembali.
+Kirin: Perhatikan bahwa jumlah Check Progress pada setiap misi terbatas, jadi gunakan dengan bijak.
+=> END

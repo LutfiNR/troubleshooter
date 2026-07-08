@@ -21,8 +21,6 @@ func open_overlay(scene: PackedScene, device_id: String, is_ui: bool = false) ->
 		current_overlay_instance.device_id = device_id
 	overlay_container.add_child(current_overlay_instance)
 
-	# Pause the game world and show the UI layer
-	main.process_mode = Node.PROCESS_MODE_DISABLED
 	main.hide()
 	overlay_container.show()
 

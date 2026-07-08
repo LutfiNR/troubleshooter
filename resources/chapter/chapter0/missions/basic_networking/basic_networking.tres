@@ -7,7 +7,88 @@ script = ExtResource("1_pys81")
 id = "mission0"
 title = "Basic Networking"
 description = "Misi menyelesaikan masalah basic networking "
-time = 300.0
+time = -1.0
+check_progress_limit = 10
+guide = "[center][font_size=26][color=#1565C0][b]Basic Networking[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+
+[color=#333333]
+Selamat datang pada tahap [b]Tes Praktik Program Magang[/b].
+
+Pada skenario ini, Anda diberikan sebuah topologi jaringan yang telah dikonfigurasi. Namun, terdapat beberapa kesalahan konfigurasi yang menyebabkan komputer klien tidak dapat berkomunikasi dengan server.
+
+Tugas Anda adalah melakukan [b]troubleshooting[/b] untuk menemukan dan memperbaiki konfigurasi yang bermasalah.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+
+[color=#333333]
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+
+[color=#333333][b]Server0[/b][/color]
+[color=#455A64]
+• IP Address  : 192.168.1.254
+• Subnet Mask : 255.255.255.0
+[/color]
+
+[color=#333333][b]Router[/b][/color]
+[color=#455A64]
+• FastEthernet0/0 : 192.168.1.1
+• FastEthernet0/1 : 192.168.2.1
+[/color]
+
+[color=#333333][b]Switch[/b][/color]
+[color=#455A64]
+• Switch0
+• Switch1
+[/color]
+
+[color=#333333][b]Komputer A[/b][/color]
+[color=#455A64]
+• IP Address : 192.168.2.2
+[/color]
+
+[color=#333333][b]Komputer B[/b][/color]
+[color=#455A64]
+• IP Address : 192.168.2.3
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Analisis konfigurasi pada setiap perangkat jaringan.
+
+✓ Identifikasi kesalahan konfigurasi yang menyebabkan kegagalan komunikasi.
+
+✓ Perbaiki konfigurasi yang diperlukan tanpa mengubah topologi jaringan.
+
+✓ Pastikan seluruh interface yang digunakan berada dalam kondisi aktif.
+
+✓ Verifikasi konektivitas menggunakan perintah [b]ping[/b].
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Komputer A berhasil melakukan ping ke Server0.
+
+✓ Komputer B berhasil melakukan ping ke Server0.
+
+✓ Seluruh perangkat dapat saling berkomunikasi sesuai dengan topologi yang telah disediakan.
+[/color]
+"
 correct_configs = Dictionary[String, StringName]({
 "computer0": &"uid://b5v0gqqtexvpv",
 "computer1": &"uid://bd8twwownwuqh",

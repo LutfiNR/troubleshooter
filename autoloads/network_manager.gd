@@ -1,7 +1,7 @@
 extends Node
 
 signal device_updated(device_id: String, device_data: DeviceData)
-
+signal devices_initialized()
 signal cable_updated(cable_id: String, cable_data: CableData)
 
 signal error_configuration(message: String)
@@ -32,6 +32,7 @@ func setup_all_devices() -> void:
 		correct_configs[key].setup_device()
 		runtime_configs[key].setup_device()
 		device_updated.emit(key, runtime_configs[key])
+	devices_initialized.emit()
 
 
 func update_device_data(device_id: String, device_data: Variant) -> void:

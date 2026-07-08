@@ -8,41 +8,54 @@ signal mission_completed(id: String)
 var chapter_datas: Array[ChapterData] = [
 	preload("uid://c1w13xwer3lvj"),
 ]
-var current_chapter_id: String
-var current_mission_id: String
-var completed_chapter: Array[ChapterData]
-var tutorial_completed: bool = false
+
+var game_data: Dictionary = {
+	"completed_chapters": {
+		
+	}
+}
+
+var current_chapter: ChapterData
+var current_mission: MissionData
+var completed_current_chapter_missions: Array[String] = []
+var tutorial_completed: Array[String]
 
 func _ready() -> void:
 	chapter_completed.connect(_on_chapter_completed)
 	mission_completed.connect(_on_mission_completed)
 
 func _on_chapter_completed(id: String) -> void:
-	if current_chapter_id == "chapter0":
-		tutorial_completed = true
 	for chapter in chapter_datas:
-		if current_chapter_id != id:
+		if chapter.id == id:
+			if !game_data.completed_chapters.has(chapter.id):
+				game_data.completed_chapters[chapter.id] = { 
+					"completed_missions": completed_current_chapter_missions
+					}
 			return
-		completed_chapter.append(chapter)
 
 func _on_mission_completed(id: String) -> void:
-	for chapter in completed_chapter:
-		completed_chapter.append(chapter)
+	for mission in current_chapter.missions:
+		if mission.id == id:
+			if !completed_current_chapter_missions.has(mission.id):
+				completed_current_chapter_missions.append(mission.id)
+			if completed_current_chapter_missions.size() == current_chapter.missions.size():
+				chapter_completed.emit(current_chapter.id)
+			return
 
 func load_chapter(chapter_id: String) -> void:
 	for chapter in chapter_datas:
-		if chapter.id != chapter_id:
+		if chapter.id == chapter_id:
+			current_chapter = chapter
+			chapter_loaded.emit(chapter)
+			if chapter.id == "chapter0":
+				load_mission(chapter.missions[0].id)
 			return
-		current_chapter_id = chapter_id
-		chapter_loaded.emit(chapter)
-		load_mission(chapter.missions[0].id)
 
-func load_mission(mission_id: String)-> void:
-	for chapter in chapter_datas:
-		if chapter.id != current_chapter_id:
-			return
-		for mission in chapter.missions:
-			if mission.id != mission_id:
-				return
-			current_mission_id = mission_id
+func load_mission(mission_id: String) -> void:
+	if current_chapter == null:
+		return
+	for mission in current_chapter.missions:
+		if mission.id == mission_id:
+			current_mission = mission
 			mission_loaded.emit(mission)
+			return

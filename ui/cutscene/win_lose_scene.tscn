@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://huymfpmo6da0"]
+
+[ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/cutscene.gd" id="1_sc14s"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_jnevc"]
+[ext_resource type="Script" uid="uid://1jdvoe122vuy" path="res://ui/cutscene/typing_animation.gd" id="3_0lp3l"]
+[ext_resource type="FontFile" uid="uid://d0u37shxy5q20" path="res://assets/Font/pixel_operator/PixelOperatorHB8.ttf" id="4_yxah8"]
+[ext_resource type="Script" uid="uid://cmbvj23xpa52p" path="res://ui/cutscene/title_label.gd" id="5_x8tpf"]
+
+[node name="WinLoseScene" type="Control" unique_id=2018499296]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sc14s")
+lose_intro_lines = Array[String](["Inspeksi Dimulai", "Waktu telah habis dan tim inspeksi telah melakukan pemeriksaan.", "Karena trouble jaringan belum berhasil diperbaiki, misi gagal."])
+
+[node name="Panel" type="Panel" parent="." unique_id=1800015742]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel" unique_id=840119554]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -79.5
+offset_right = 488.0
+offset_bottom = 79.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jnevc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "tes"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("3_0lp3l")
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=1433842783]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -44.0
+offset_right = 488.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_jnevc")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_yxah8")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("5_x8tpf")
