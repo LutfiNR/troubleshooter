@@ -7,9 +7,12 @@ if !has_introducing:
 	set has_introducing = true
 	=> END
 else:
-	Manager: Apakah kamu sudah paham?
+	Manager: Apakah kamu sudah paham dan sudah menyelesaikan misi?
 	- Ya, sudah.
-		Manager: Wah, bagus, baik jadi besok kamu mulai masuk ke kantor.
+		if tutorial_completed:
+			Manager: Wah, bagus, baik jadi besok kamu mulai masuk ke kantor.
+			do SceneLoader.load_scene("uid://bvvlmlwaspwh8")
+		Manager: Sepertinya kamu belum menyelesaikan misi.
 		=> END
 	- Belum, saya ingin mencoba hal lain.
 		Nathan: Baiklah, semoga beruntung.

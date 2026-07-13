@@ -31,6 +31,7 @@ func _on_chapter_completed(id: String) -> void:
 				game_data.completed_chapters[chapter.id] = { 
 					"completed_missions": completed_current_chapter_missions
 					}
+				print_debug("chapter completed", id)
 			return
 
 func _on_mission_completed(id: String) -> void:
@@ -40,6 +41,7 @@ func _on_mission_completed(id: String) -> void:
 				completed_current_chapter_missions.append(mission.id)
 			if completed_current_chapter_missions.size() == current_chapter.missions.size():
 				chapter_completed.emit(current_chapter.id)
+			print_debug("mission completed", id)
 			return
 
 func load_chapter(chapter_id: String) -> void:

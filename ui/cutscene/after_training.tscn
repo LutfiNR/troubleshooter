@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://dl40m452oln6v"]
+[gd_scene format=3 uid="uid://bvvlmlwaspwh8"]
 
-[ext_resource type="Script" uid="uid://1jdvoe122vuy" path="res://ui/cutscene/typing_animation.gd" id="1_4ptmv"]
-[ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/cutscene.gd" id="1_6j3r2"]
-[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_h1ori"]
-[ext_resource type="FontFile" uid="uid://d0u37shxy5q20" path="res://assets/Font/pixel_operator/PixelOperatorHB8.ttf" id="4_c6oog"]
-[ext_resource type="Script" uid="uid://cmbvj23xpa52p" path="res://ui/cutscene/title_label.gd" id="5_eam6o"]
+[ext_resource type="Script" uid="uid://el1qflklyfr4" path="res://ui/cutscene/cutscene.gd" id="1_e12m1"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_l7m0n"]
+[ext_resource type="Script" uid="uid://1jdvoe122vuy" path="res://ui/cutscene/typing_animation.gd" id="3_odcb5"]
+[ext_resource type="FontFile" uid="uid://d0u37shxy5q20" path="res://assets/Font/pixel_operator/PixelOperatorHB8.ttf" id="4_cvnlo"]
+[ext_resource type="Script" uid="uid://cmbvj23xpa52p" path="res://ui/cutscene/title_label.gd" id="5_7u3sl"]
 
 [node name="AccWork" type="Control" unique_id=2018499296]
 layout_mode = 3
@@ -13,9 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6j3r2")
-lose_intro_lines = Array[String](["Hari ini adalah hari yang spesial. ", "Kamu diterima kerja sebagai network administrator di sebuah perusahaan tapi sebelum benar benar bekerja sepenuhnya kamu harus mengikuti program training.", "Persiapkan dirimu!!"])
-next_scene = &"uid://dga8wf5ce0q3x"
+script = ExtResource("1_e12m1")
+lose_intro_lines = Array[String](["Selanjutnya kamu akan masuk kerja besok"])
+next_scene = &"uid://ndgyeswawkpj"
 
 [node name="Panel" type="Panel" parent="." unique_id=1800015742]
 layout_mode = 1
@@ -38,13 +38,13 @@ offset_right = 488.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_h1ori")
+theme = ExtResource("2_l7m0n")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "tes"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-script = ExtResource("1_4ptmv")
+script = ExtResource("3_odcb5")
 
 [node name="TitleLabel" type="Label" parent="Panel" unique_id=1959833531]
 layout_mode = 1
@@ -59,12 +59,12 @@ offset_right = 488.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_h1ori")
+theme = ExtResource("2_l7m0n")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_c6oog")
+theme_override_fonts/font = ExtResource("4_cvnlo")
 theme_override_font_sizes/font_size = 64
 text = "SELAMAT"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-script = ExtResource("5_eam6o")
+script = ExtResource("5_7u3sl")
