@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://bnwhgjdy25vut"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_20xun"]
+[ext_resource type="Resource" uid="uid://dcd3sc05o1qal" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-0.tres" id="2_d4mgx"]
+[ext_resource type="Resource" uid="uid://dp17p61vcdys7" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-1.tres" id="3_y7fvp"]
+[ext_resource type="Resource" uid="uid://d3n74vpx86bfd" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-2.tres" id="4_es76u"]
+[ext_resource type="Resource" uid="uid://bs0ouvowoyyd0" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-3.tres" id="5_j6rxl"]
+[ext_resource type="Resource" uid="uid://dfd1tbpx4v8c1" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-4.tres" id="6_j15h8"]
+[ext_resource type="Resource" uid="uid://b1xsavor7mbov" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-5.tres" id="7_f0kll"]
+[ext_resource type="Resource" uid="uid://cjs8qi1dcgxal" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-6.tres" id="8_vvb2s"]
+[ext_resource type="Resource" uid="uid://bredjwo31eond" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch1/interfaces/fa0-7.tres" id="9_dhcgd"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="10_rnowo"]
+
+[resource]
+script = ExtResource("10_rnowo")
+device_id = "switch1"
+hostname = "Switch Server"
+power = 1
+interfaces = Array[ExtResource("1_20xun")]([ExtResource("2_d4mgx"), ExtResource("3_y7fvp"), ExtResource("4_es76u"), ExtResource("5_j6rxl"), ExtResource("6_j15h8"), ExtResource("7_f0kll"), ExtResource("8_vvb2s"), ExtResource("9_dhcgd")])
+metadata/_custom_type_script = "uid://do02stg07ha0m"

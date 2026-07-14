@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://dokljmyxkk3iv"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_gpahn"]
+
+[resource]
+script = ExtResource("1_gpahn")
+id = "eth0"
+mac_address = "68:50:1a:42:bd:13"
+export_ip_address = "192.168.1.254"
+export_subnet_mask = "255.255.255.0"
+metadata/_custom_type_script = "uid://ci1x0glfens8u"

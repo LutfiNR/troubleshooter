@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ServerDeviceData" format=3 uid="uid://bc1ia3i73d6ed"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_0yt66"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="2_c5td4"]
+[ext_resource type="Resource" uid="uid://c8ar4qtlew8th" path="res://resources/chapter/chapter1/missions/DHCP/correct_config/servers/server0/dhcp/pool_1.tres" id="2_s6nqt"]
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="3_plose"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="4_bifm1"]
+[ext_resource type="Resource" uid="uid://cjw4t6rsevewc" path="res://resources/chapter/chapter1/missions/DHCP/correct_config/servers/server0/interfaces/eth0.tres" id="5_84g3u"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="6_2gsus"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="7_mdp3g"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="8_llwew"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="9_0jko1"]
+[ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="10_mixta"]
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="11_bno8k"]
+
+[resource]
+script = ExtResource("10_mixta")
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+installed_packages = Array[String](["isc-dhcp-server"])
+dhcp_service = 1
+dhcp_configuration = Array[ExtResource("1_0yt66")]([ExtResource("2_s6nqt"), null])
+device_id = "server0"
+hostname = "Server A"
+power = 1
+interfaces = Array[ExtResource("4_bifm1")]([ExtResource("5_84g3u")])
+metadata/_custom_type_script = "uid://3wt8jxh6n6th"

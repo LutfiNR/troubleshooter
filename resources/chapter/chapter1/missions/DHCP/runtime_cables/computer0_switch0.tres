@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CableData" format=3 uid="uid://cde0v450oroiw"]
+
+[ext_resource type="Resource" uid="uid://bwsecs6u1vy8g" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/computers/computer1/computer1.tres" id="1_uomt7"]
+[ext_resource type="Resource" uid="uid://m2ms3cwj3q62" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/switches/switch0/switch0.tres" id="2_tvbo4"]
+[ext_resource type="Script" uid="uid://bi6dgcqfra5ai" path="res://components/cable_data/cable_data.gd" id="3_t8trs"]
+
+[resource]
+script = ExtResource("3_t8trs")
+device_a = ExtResource("1_uomt7")
+device_b = ExtResource("2_tvbo4")
+interface_id_a = "eth0"
+interface_id_b = "fa0/2"
+metadata/_custom_type_script = "uid://bi6dgcqfra5ai"
