@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SambaShare" format=3 uid="uid://c0oe7i26y0vos"]
+
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_service/File/share_folder.gd" id="1_incgt"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="2_nfj56"]
+
+[resource]
+script = ExtResource("1_incgt")
+writeable = false
+metadata/_custom_type_script = "uid://43ucjh8escsm"

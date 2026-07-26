@@ -23,6 +23,11 @@ Kirin: [img]res://assets/PopupActionDevice/popupobject_0003.png[/img] digunakan 
 Kirin: Cobalah masing-masing tombol agar Anda memahami fungsinya sebelum melanjutkan ke tutorial berikutnya.
 => END
 
+~ tutorial_completed
+Kirin: Selamat. Kamu telah menyelesaikan tutorial sederhana.
+Kirin: Silahkan, mulai misi basic networking di sebelah kanan atas, dan selamat mengeksplorasi. 
+=> END
+
 ~ roadmap
 Kirin: Ini adalah Roadmap.
 Kirin: Roadmap menampilkan alur pembelajaran yang akan Anda tempuh.

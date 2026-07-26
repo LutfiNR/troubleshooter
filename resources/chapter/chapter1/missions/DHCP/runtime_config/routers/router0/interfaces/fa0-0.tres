@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://qbdcjpj422up"]
+[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://brcf1533t7ste"]
 
-[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_u1cmq"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_lywy7"]
 
 [resource]
-script = ExtResource("1_u1cmq")
+script = ExtResource("1_lywy7")
 id = "fa0/0"
 mac_address = "b4:05:3f:39:19:15"
+state = 1
 export_ip_address = "192.168.1.1"
 export_subnet_mask = "255.255.255.0"
 metadata/_custom_type_script = "uid://ci1x0glfens8u"

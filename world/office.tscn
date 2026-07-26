@@ -125,10 +125,6 @@ device_id = "server_0"
 position = Vector2(911, 16)
 device_id = "server_1"
 
-[node name="Server3" parent="Main/Servers" unique_id=1139964216 instance=ExtResource("5_1xkqq")]
-position = Vector2(974, 16)
-device_id = "server_2"
-
 [node name="Connections" type="Node2D" parent="Main" unique_id=759012094]
 visible = false
 z_index = 2
@@ -150,9 +146,8 @@ points = PackedVector2Array(-372, -152, -363, -111)
 device_a = NodePath("../../Servers/Server2")
 device_b = NodePath("../../Switchs/Switch")
 
-[node name="Cable4" parent="Main/Connections" unique_id=1925207474 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("1_w3m8c")]
+[node name="Cable4" parent="Main/Connections" unique_id=1925207474 node_paths=PackedStringArray("device_b") instance=ExtResource("1_w3m8c")]
 points = PackedVector2Array(-339, -152, -360, -111)
-device_a = NodePath("../../Servers/Server3")
 device_b = NodePath("../../Switchs/Switch")
 
 [node name="Cable5" parent="Main/Connections" unique_id=409212058 node_paths=PackedStringArray("device_a", "device_b") instance=ExtResource("1_w3m8c")]

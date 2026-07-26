@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DHCPRelayData" format=3 uid="uid://bev63lt6ge1rm"]
+
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_mqogr"]
+
+[resource]
+script = ExtResource("1_mqogr")
+interface_id = "fa0/2"
+export_ip_address = "192.168.1.254"
+metadata/_custom_type_script = "uid://tgvlvxloywkq"

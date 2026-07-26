@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://df44kf27fsnnh"]
 
-[ext_resource type="Script" uid="uid://dweihabrt7kta" path="res://components/mission_data/mission_data.gd" id="1_pys81"]
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_pys81"]
 
 [resource]
 script = ExtResource("1_pys81")
-id = "mission0"
+id = "mission1"
 title = "Basic Networking"
 description = "Misi menyelesaikan masalah basic networking "
 time = -1.0
@@ -112,4 +112,3 @@ runtime_cables = Dictionary[String, StringName]({
 "switch0_router": &"uid://bwaqexnksrjis",
 "switch1_router": &"uid://b568rx686jsnl"
 })
-metadata/_custom_type_script = "uid://dweihabrt7kta"

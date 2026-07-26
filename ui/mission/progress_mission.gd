@@ -22,9 +22,7 @@ func setup_progress()-> void:
 func update_progress() -> void:
 	var tree_data: Dictionary = NetworkManager.mission_checking_result
 	var false_count: int =  get_false_status_count(tree_data)
-	if total_count <= 0:
-		progress_value = 0.0
-	elif false_count == 0:
+	if total_count < 0:
 		progress_value = 1.0
 	else:
 		var filled_count = total_count - false_count

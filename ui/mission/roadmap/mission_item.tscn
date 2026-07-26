@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://4j2q8mpww6hm"]
+
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="1_woq7w"]
+[ext_resource type="Texture2D" uid="uid://cms0y1e4ysbh2" path="res://assets/UI/web_icon.png" id="3_rp3sa"]
+[ext_resource type="Script" uid="uid://bymran40vwi0h" path="res://ui/mission/roadmap/mission_item.gd" id="3_samgu"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="3_vit4q"]
+[ext_resource type="Texture2D" uid="uid://dtp52w0ur51hs" path="res://assets/UI/Input/radio_input_0001.png" id="4_f884q"]
+[ext_resource type="Texture2D" uid="uid://byygs72i1lsjl" path="res://assets/UI/Input/input_0002.png" id="4_rp3sa"]
+[ext_resource type="Texture2D" uid="uid://c5gspk6n1emqb" path="res://assets/UI/Input/radio_input_0002.png" id="6_thq35"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f884q"]
+content_margin_top = 14.0
+texture = ExtResource("6_thq35")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
+[node name="Button" type="Button" unique_id=1066473464]
+offset_right = 361.0
+offset_bottom = 76.0
+size_flags_horizontal = 3
+theme = ExtResource("1_woq7w")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_f884q")
+script = ExtResource("3_samgu")
+mission_icon_texture = Dictionary[StringName, Texture2D]({
+&"completed": ExtResource("3_rp3sa"),
+&"locked": ExtResource("4_f884q"),
+&"on_progress": ExtResource("4_rp3sa"),
+&"unlocked": ExtResource("6_thq35")
+})
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1922644001]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 27.0
+offset_bottom = -38.0
+grow_vertical = 2
+texture = ExtResource("3_vit4q")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="." unique_id=1644274776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 15.0
+offset_right = -12.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 16
+text = "DHCP"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

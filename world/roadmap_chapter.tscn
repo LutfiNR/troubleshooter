@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bgkh0aflvfep"]
 
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="1_j6cv4"]
+[ext_resource type="Script" uid="uid://ctv7ad3vhrhtp" path="res://ui/mission/roadmap/roadmap_chapter.gd" id="2_bx4ay"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_xsq8h"]
 [ext_resource type="FontFile" uid="uid://b4otuo7mh5qml" path="res://assets/Font/pixel_operator/PixelOperatorMonoHB.ttf" id="3_bx4ay"]
-[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="4_lwb43"]
+[ext_resource type="PackedScene" uid="uid://bvn3d6o6v2cx" path="res://ui/mission/roadmap/chapter_item.tscn" id="3_lwb43"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu47b"]
 texture = ExtResource("1_j6cv4")
@@ -12,32 +13,27 @@ texture_margin_top = 25.970413
 texture_margin_right = 10.001567
 texture_margin_bottom = 9.989931
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kawag"]
-texture = ExtResource("4_lwb43")
-texture_margin_left = 6.0
-texture_margin_top = 6.0
-texture_margin_right = 6.0
-texture_margin_bottom = 6.0
-
 [node name="RoadmapContainer" type="Panel" unique_id=1826743698]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -819.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_lu47b")
+script = ExtResource("2_bx4ay")
+chapter_item_scene = ExtResource("3_lwb43")
 
 [node name="ChapterLabel" type="Label" parent="." unique_id=1748282126]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 25.0
-offset_right = 96.0
-offset_bottom = 57.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 21.0
+offset_top = 34.0
+offset_right = -21.0
+offset_bottom = 66.0
 grow_horizontal = 2
 theme = ExtResource("2_xsq8h")
 theme_override_fonts/font = ExtResource("3_bx4ay")
@@ -46,165 +42,14 @@ text = "ROADMAP"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="." unique_id=1415497019]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -144.0
-offset_top = 64.0
-offset_right = 144.0
-offset_bottom = 104.0
-grow_horizontal = 2
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel" unique_id=460424466]
+[node name="ChapterContainer" type="VBoxContainer" parent="." unique_id=776179300]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 80.0
+offset_right = -21.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "CHAPTER 0 | JUNIOR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1931671874]
-layout_mode = 0
-offset_top = 48.0
-offset_right = 288.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="Panel/VBoxContainer" unique_id=1139341557]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/Panel" unique_id=1024924410]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "TUTORIAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel2" type="Panel" parent="Panel/VBoxContainer" unique_id=1393132548]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel/VBoxContainer/Panel2" unique_id=652700596]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "TUTORIAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel2" type="Panel" parent="." unique_id=1475235442]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -144.0
-offset_top = 160.0
-offset_right = 144.0
-offset_bottom = 200.0
-grow_horizontal = 2
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel2" unique_id=1167691526]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "CHAPTER 0 | JUNIOR"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel2" unique_id=154181162]
-layout_mode = 0
-offset_top = 48.0
-offset_right = 288.0
-offset_bottom = 80.0
-
-[node name="Panel" type="Panel" parent="Panel2/VBoxContainer" unique_id=628524429]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel2/VBoxContainer/Panel" unique_id=1603833640]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "TUTORIAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Panel2" type="Panel" parent="Panel2/VBoxContainer" unique_id=1671325142]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-tooltip_text = "- taskk 1
-- task 2"
-theme = ExtResource("2_xsq8h")
-theme_override_styles/panel = SubResource("StyleBoxTexture_kawag")
-
-[node name="Label" type="Label" parent="Panel2/VBoxContainer/Panel2" unique_id=492670801]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_xsq8h")
-theme_override_font_sizes/font_size = 16
-text = "TUTORIAL"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1617220910]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 96.0
-offset_right = 568.0
-offset_bottom = 163.0

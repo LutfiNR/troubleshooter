@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SambaShare" format=3 uid="uid://cb3j5pnxbkox"]
+
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_service/File/share_folder.gd" id="1_1d8i4"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="2_pd4tp"]
+[ext_resource type="Resource" uid="uid://cfjfcmbo3urpv" path="res://resources/chapter/chapter1/correct_config/servers/server1/services/file/users/accounting.tres" id="3_ngxbr"]
+[ext_resource type="Resource" uid="uid://c2akysbovrrhg" path="res://resources/chapter/chapter1/correct_config/servers/server1/services/file/users/sales.tres" id="4_1o5rl"]
+[ext_resource type="Resource" uid="uid://dhbctan60p1kc" path="res://resources/chapter/chapter1/correct_config/servers/server1/services/file/users/media.tres" id="5_jc5gw"]
+[ext_resource type="Resource" uid="uid://bw3q7d10745do" path="res://resources/chapter/chapter1/correct_config/servers/server1/services/file/users/kirin.tres" id="6_gvcwo"]
+
+[resource]
+script = ExtResource("1_1d8i4")
+share_name = "PrivateShare"
+folder_path = "/home/private"
+guest_ok = false
+security = 1
+valid_users = Array[ExtResource("2_pd4tp")]([ExtResource("3_ngxbr"), ExtResource("4_1o5rl"), ExtResource("5_jc5gw"), ExtResource("6_gvcwo")])
+metadata/_custom_type_script = "uid://43ucjh8escsm"

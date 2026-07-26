@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SambaUser" format=3 uid="uid://c2akysbovrrhg"]
+
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="1_62vrp"]
+
+[resource]
+script = ExtResource("1_62vrp")
+username = "sales"
+password = "sales123"
+metadata/_custom_type_script = "uid://bgicx1nx7vr6f"

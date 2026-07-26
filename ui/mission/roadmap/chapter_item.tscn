@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvn3d6o6v2cx"]
+
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="1_1fm3x"]
+[ext_resource type="Script" uid="uid://cim48k04xcpdq" path="res://ui/mission/roadmap/chapter_item.gd" id="3_7osul"]
+[ext_resource type="PackedScene" uid="uid://4j2q8mpww6hm" path="res://ui/mission/roadmap/mission_item.tscn" id="4_o380i"]
+
+[node name="ChapterItem" type="VBoxContainer" unique_id=1216345336]
+custom_minimum_size = Vector2(0, 80)
+offset_right = 480.0
+offset_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme = ExtResource("1_1fm3x")
+script = ExtResource("3_7osul")
+mission_item_scene = ExtResource("4_o380i")
+
+[node name="Title" type="Label" parent="." unique_id=1204170809]
+layout_mode = 2
+theme = ExtResource("1_1fm3x")
+theme_override_font_sizes/font_size = 26
+text = "Text"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissionContainer" type="HFlowContainer" parent="." unique_id=1395655292]
+layout_mode = 2
+alignment = 1
+last_wrap_alignment = 2

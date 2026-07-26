@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://bmea8ag2r0qij"]
+
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_x4wx0"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_qfu7c"]
+[ext_resource type="Resource" uid="uid://cfi56mhhbaucq" path="res://resources/chapter/chapter0/missions/default/runtime_config/routers/router0/interfaces/fa0-0.tres" id="3_is267"]
+[ext_resource type="Resource" uid="uid://c7w83hhiwrn0h" path="res://resources/chapter/chapter0/missions/default/runtime_config/routers/router0/interfaces/fa0-1.tres" id="4_s3ajl"]
+[ext_resource type="Resource" uid="uid://vtsfmc7yioad" path="res://resources/chapter/chapter0/missions/default/runtime_config/routers/router0/interfaces/fa0-3.tres" id="5_7hk5f"]
+[ext_resource type="Resource" uid="uid://dens4wc7sll03" path="res://resources/chapter/chapter0/missions/default/runtime_config/routers/router0/interfaces/fa0-4.tres" id="6_hxxku"]
+[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="7_iy14a"]
+
+[resource]
+script = ExtResource("7_iy14a")
+device_id = "router0"
+hostname = "Router"
+power = 1
+interfaces = Array[ExtResource("2_qfu7c")]([ExtResource("3_is267"), ExtResource("4_s3ajl"), ExtResource("5_7hk5f"), ExtResource("6_hxxku")])
+metadata/_custom_type_script = "uid://kou14e2socyo"

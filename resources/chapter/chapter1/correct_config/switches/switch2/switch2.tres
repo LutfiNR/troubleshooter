@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://6bjl83u8h3f1"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_rjr1i"]
+[ext_resource type="Resource" uid="uid://cyt87y0bp8vsi" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-0.tres" id="2_tmtmy"]
+[ext_resource type="Resource" uid="uid://ddepkv86803o" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-1.tres" id="3_g3qyd"]
+[ext_resource type="Resource" uid="uid://cwak22bk0wda0" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-2.tres" id="4_lwlel"]
+[ext_resource type="Resource" uid="uid://cq4lfpd0w08r2" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-3.tres" id="5_b3sbh"]
+[ext_resource type="Resource" uid="uid://di343w3kkaaj0" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-4.tres" id="6_y3egs"]
+[ext_resource type="Resource" uid="uid://br8b8i5ebsmg6" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-5.tres" id="7_ky8st"]
+[ext_resource type="Resource" uid="uid://dpc5mk0gssdew" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-6.tres" id="8_r537j"]
+[ext_resource type="Resource" uid="uid://d3au387mynwy2" path="res://resources/chapter/chapter1/correct_config/switches/switch2/interfaces/fa0-7.tres" id="9_dbtwr"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="10_dejvg"]
+
+[resource]
+script = ExtResource("10_dejvg")
+device_id = "switch3"
+hostname = "Switch Accounting"
+power = 1
+interfaces = Array[ExtResource("1_rjr1i")]([ExtResource("2_tmtmy"), ExtResource("3_g3qyd"), ExtResource("4_lwlel"), ExtResource("5_b3sbh"), ExtResource("6_y3egs"), ExtResource("7_ky8st"), ExtResource("8_r537j"), ExtResource("9_dbtwr")])
+metadata/_custom_type_script = "uid://do02stg07ha0m"

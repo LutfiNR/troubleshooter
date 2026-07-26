@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DHCPService" format=3 uid="uid://ggfm0x6bsmwy"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_tyyu7"]
+
+[resource]
+script = ExtResource("1_tyyu7")
+pool_name = "pool_1"
+interface_id = "eth0"
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+start_ip_address = "192.168.1.2"
+subnet_mask = "255.255.255.0"
+metadata/_custom_type_script = "uid://0ql8hefurn4"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WebVirtualHost" format=3 uid="uid://c6st5q1dn52na"]
+
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="1_cnf3n"]
+
+[resource]
+script = ExtResource("1_cnf3n")
+name = "accounting.kirin.com"
+protocol = 1
+server_name = "accounting.kirin.com"
+document_root = "/var/www/accounting"
+content = "Halaman divisi accounting"
+metadata/_custom_type_script = "uid://ctckbs8wmy7ox"

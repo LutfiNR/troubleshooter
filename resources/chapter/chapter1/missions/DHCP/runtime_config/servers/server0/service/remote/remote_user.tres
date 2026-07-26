@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RemoteService" format=3 uid="uid://dofqxuf12aimd"]
+
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="1_bq0kq"]
+[ext_resource type="Script" uid="uid://btora1j7tt2cm" path="res://components/network_service/Remote/remote_user.gd" id="2_2nk1s"]
+[ext_resource type="Resource" uid="uid://wxyfsv7ne5b" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server0/service/remote/kirin.tres" id="3_gatrb"]
+
+[resource]
+script = ExtResource("1_bq0kq")
+telnet_state = 1
+ssh_state = 1
+ssh_port = 2222
+users = Array[ExtResource("2_2nk1s")]([ExtResource("3_gatrb")])
+metadata/_custom_type_script = "uid://4e050fk3gmtl"

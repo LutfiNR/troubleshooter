@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WebVirtualHost" format=3 uid="uid://skuwgk3pnmmx"]
+
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="1_scubm"]
+
+[resource]
+script = ExtResource("1_scubm")
+name = "kirin.com"
+protocol = 1
+server_name = "kirin.com"
+content = "Halaman web utama kirin.com"
+metadata/_custom_type_script = "uid://ctckbs8wmy7ox"

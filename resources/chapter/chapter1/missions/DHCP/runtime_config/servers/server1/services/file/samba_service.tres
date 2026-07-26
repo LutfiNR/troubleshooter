@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SambaService" format=3 uid="uid://6htk8pgvmxtq"]
+
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="1_6d3yx"]
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_service/File/share_folder.gd" id="2_4mbqe"]
+[ext_resource type="Resource" uid="uid://cnf4jm8fdafpe" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/shares/public.tres" id="3_5c5bw"]
+[ext_resource type="Resource" uid="uid://ctatcg0pgb6bv" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/shares/private.tres" id="4_lqq0v"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="5_sy221"]
+[ext_resource type="Resource" uid="uid://bp4cu3oqkiw7m" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/users/kirin.tres" id="6_fh8k5"]
+[ext_resource type="Resource" uid="uid://8cyiwug8qv8i" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/users/media.tres" id="7_lma3c"]
+[ext_resource type="Resource" uid="uid://cdio32byjpmi0" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/users/sales.tres" id="8_pd3lr"]
+[ext_resource type="Resource" uid="uid://chwcdtn8bk50h" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/users/accounting.tres" id="9_mx83s"]
+
+[resource]
+script = ExtResource("1_6d3yx")
+users = Array[ExtResource("5_sy221")]([ExtResource("6_fh8k5"), ExtResource("7_lma3c"), ExtResource("8_pd3lr"), ExtResource("9_mx83s")])
+shares = Array[ExtResource("2_4mbqe")]([ExtResource("3_5c5bw"), ExtResource("4_lqq0v")])
+metadata/_custom_type_script = "uid://blfdumormqk75"

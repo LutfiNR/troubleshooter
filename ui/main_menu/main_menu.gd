@@ -14,6 +14,7 @@ func _on_credits_button_button_up() -> void:
 	SceneLoader.load_scene(credtis_scene)
 
 func _on_new_game_button_pressed() -> void:
+	GameManager.initialize_game_data()
 	SceneLoader.load_scene(start_new_game_scene)
 
 func _on_load_game_button_button_up() -> void:

@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://capulotb0vqjd"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_bmpyf"]
+
+[resource]
+script = ExtResource("1_bmpyf")
+id = "mission0"
+title = "Tutorial"
+description = "Misi menyelesaikan masalah basic networking "
+time = -1.0
+check_progress_limit = 10
+guide = "[center][font_size=26][color=#1565C0][b]Basic Networking[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+
+[color=#333333]
+Selamat datang pada tahap [b]Tes Praktik Program Magang[/b].
+
+Pada skenario ini, Anda diberikan sebuah topologi jaringan yang telah dikonfigurasi. Namun, terdapat beberapa kesalahan konfigurasi yang menyebabkan komputer klien tidak dapat berkomunikasi dengan server.
+
+Tugas Anda adalah melakukan [b]troubleshooting[/b] untuk menemukan dan memperbaiki konfigurasi yang bermasalah.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+
+[color=#333333]
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+
+[color=#333333][b]Server0[/b][/color]
+[color=#455A64]
+• IP Address  : 192.168.1.254
+• Subnet Mask : 255.255.255.0
+[/color]
+
+[color=#333333][b]Router[/b][/color]
+[color=#455A64]
+• FastEthernet0/0 : 192.168.1.1
+• FastEthernet0/1 : 192.168.2.1
+[/color]
+
+[color=#333333][b]Switch[/b][/color]
+[color=#455A64]
+• Switch0
+• Switch1
+[/color]
+
+[color=#333333][b]Komputer A[/b][/color]
+[color=#455A64]
+• IP Address : 192.168.2.2
+[/color]
+
+[color=#333333][b]Komputer B[/b][/color]
+[color=#455A64]
+• IP Address : 192.168.2.3
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Analisis konfigurasi pada setiap perangkat jaringan.
+
+✓ Identifikasi kesalahan konfigurasi yang menyebabkan kegagalan komunikasi.
+
+✓ Perbaiki konfigurasi yang diperlukan tanpa mengubah topologi jaringan.
+
+✓ Pastikan seluruh interface yang digunakan berada dalam kondisi aktif.
+
+✓ Verifikasi konektivitas menggunakan perintah [b]ping[/b].
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Komputer A berhasil melakukan ping ke Server0.
+
+✓ Komputer B berhasil melakukan ping ke Server0.
+
+✓ Seluruh perangkat dapat saling berkomunikasi sesuai dengan topologi yang telah disediakan.
+[/color]
+"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://b5v0gqqtexvpv",
+"computer1": &"uid://bd8twwownwuqh",
+"router0": &"uid://cghij2xb4drd1",
+"server0": &"uid://bt01b5ntf4m7h",
+"switch0": &"uid://cfw4aturdao2a",
+"switch1": &"uid://doov1hl61gpwq"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://b5v0gqqtexvpv",
+"computer1": &"uid://bd8twwownwuqh",
+"router0": &"uid://cghij2xb4drd1",
+"server0": &"uid://bt01b5ntf4m7h",
+"switch0": &"uid://cfw4aturdao2a",
+"switch1": &"uid://doov1hl61gpwq"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://db5ckn3yps3lq",
+"computer1_switch0": &"uid://bbolxsy87oj55",
+"server_switch1": &"uid://ddrhm04hlhlxf",
+"switch0_router": &"uid://bretiwsbg2nyf",
+"switch1_router": &"uid://p177aab7ebms"
+})
+metadata/_custom_type_script = "uid://dweihabrt7kta"

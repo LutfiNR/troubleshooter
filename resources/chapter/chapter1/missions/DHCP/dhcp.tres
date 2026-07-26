@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://bkeec5biauvxl"]
 
-[ext_resource type="Script" uid="uid://dweihabrt7kta" path="res://components/mission_data/mission_data.gd" id="1_nytc6"]
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_nytc6"]
 
 [resource]
 script = ExtResource("1_nytc6")
@@ -9,6 +9,7 @@ title = "Komputer Baru Tidak Bisa Masuk Jaringan"
 description = "Hari ini ada lima karyawan baru. Semua komputer sudah terpasang, tetapi tidak mendapat alamat IP."
 time = 180.0
 check_progress_limit = 5
+required_progress_id = "chapter0"
 guide = "[h1]Mission 1 - Komputer Baru Tidak Mendapatkan Alamat IP[/h1]
 
 [b]Divisi:[/b] IT Support
@@ -46,26 +47,25 @@ Supervisor meminta Anda untuk memeriksa infrastruktur jaringan dan memastikan se
 [*]Seluruh komputer dapat saling terhubung melalui jaringan.
 [/list]"
 correct_configs = Dictionary[String, StringName]({
-"computer0": &"uid://b5v0gqqtexvpv",
-"computer1": &"uid://bd8twwownwuqh",
-"router0": &"uid://cghij2xb4drd1",
-"server0": &"uid://bt01b5ntf4m7h",
-"switch0": &"uid://cfw4aturdao2a",
-"switch1": &"uid://doov1hl61gpwq"
-})
-runtime_configs = Dictionary[String, StringName]({
-"computer0": &"uid://bf5vrvh44imfu",
-"computer1": &"uid://cpywojkpbtvs2",
-"router0": &"uid://yd7usv1y1i3u",
-"server0": &"uid://y53knfq3hmw4",
-"switch0": &"uid://wxhd7ckc6nvp",
-"switch1": &"uid://d4vgicxpoj4r"
-})
-runtime_cables = Dictionary[String, StringName]({
-"computer0_switch0": &"uid://0umcyvsfsgpf",
-"computer1_switch0": &"uid://dra7gpigu8xon",
-"server_switch1": &"uid://0u3m0njs3wq5",
-"switch0_router": &"uid://bwaqexnksrjis",
-"switch1_router": &"uid://b568rx686jsnl"
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
 })
 metadata/_custom_type_script = "uid://dweihabrt7kta"

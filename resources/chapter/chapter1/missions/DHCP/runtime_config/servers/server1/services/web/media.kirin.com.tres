@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WebVirtualHost" format=3 uid="uid://dpgri3grrdi5e"]
+
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="1_6pg06"]
+
+[resource]
+script = ExtResource("1_6pg06")
+name = "media.kirin.com"
+protocol = 1
+server_name = "media.kirin.com"
+document_root = "/var/www/media"
+content = "Halaman divisi media"
+metadata/_custom_type_script = "uid://ctckbs8wmy7ox"

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="ServerDeviceData" format=3 uid="uid://rj4rclry31fy"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_nnt1j"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="2_kos5l"]
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="3_f2aj1"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="4_j0cep"]
+[ext_resource type="Resource" uid="uid://ohsr34cbvl7q" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/interfaces/eth0.tres" id="5_rdycm"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="6_cdgsw"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="7_6het0"]
+[ext_resource type="Resource" uid="uid://cjore68mv0ro1" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/db/database_service.tres" id="8_race6"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="9_yblp4"]
+[ext_resource type="Resource" uid="uid://dq27a2et6jxh6" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/remote/remote_user.tres" id="10_n5f0o"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="11_csga3"]
+[ext_resource type="Resource" uid="uid://6htk8pgvmxtq" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/file/samba_service.tres" id="12_yixlc"]
+[ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="13_2rihk"]
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="14_d55w3"]
+[ext_resource type="Resource" uid="uid://dvh71wix5cyia" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/servers/server1/services/web/web_service.tres" id="15_lc7jt"]
+
+[resource]
+script = ExtResource("13_2rihk")
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+installed_packages = Array[String](["apache2", "vsftpd", "openssh-server", "samba", "postfix", "mariadb-server"])
+web_service = 1
+web_configuration = Array[ExtResource("14_d55w3")]([ExtResource("15_lc7jt")])
+ftp_service = 1
+remote_service = 1
+remote_configuration = Array[ExtResource("9_yblp4")]([ExtResource("10_n5f0o")])
+samba_service = 1
+samba_configuration = Array[ExtResource("11_csga3")]([ExtResource("12_yixlc")])
+mariadb_service = 1
+mariadb_configuration = Array[ExtResource("7_6het0")]([ExtResource("8_race6")])
+mail_service = 1
+device_id = "server1"
+hostname = "Server B"
+power = 1
+interfaces = Array[ExtResource("4_j0cep")]([ExtResource("5_rdycm")])
+metadata/_custom_type_script = "uid://3wt8jxh6n6th"

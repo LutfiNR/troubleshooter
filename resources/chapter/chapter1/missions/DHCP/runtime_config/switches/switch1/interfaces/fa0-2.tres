@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://d3n74vpx86bfd"]
+[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://n1m6yh0h4hyc"]
 
-[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_xxtfq"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_gp6pm"]
 
 [resource]
-script = ExtResource("1_xxtfq")
+script = ExtResource("1_gp6pm")
 id = "fa0/2"
 mac_address = "06:36:5c:4e:1a:18"
 layer = 0

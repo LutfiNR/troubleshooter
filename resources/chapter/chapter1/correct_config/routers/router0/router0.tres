@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://dthfcfx5mtjoo"]
+
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_qxl4n"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_4yh0b"]
+[ext_resource type="Resource" uid="uid://bvpl56syl77w7" path="res://resources/chapter/chapter1/correct_config/routers/router0/relays/fa0-0.tres" id="2_lqlkt"]
+[ext_resource type="Resource" uid="uid://bvjv0qk6c50rc" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-0.tres" id="3_iksf2"]
+[ext_resource type="Resource" uid="uid://7ph6ewc3k7op" path="res://resources/chapter/chapter1/correct_config/routers/router0/relays/fa0-1.tres" id="3_kpfux"]
+[ext_resource type="Resource" uid="uid://c0t18vhqigugw" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-1.tres" id="4_dc0kt"]
+[ext_resource type="Resource" uid="uid://cqth51j4p56dy" path="res://resources/chapter/chapter1/correct_config/routers/router0/relays/fa0-2.tres" id="4_xp35m"]
+[ext_resource type="Resource" uid="uid://yvsc3my6o4y7" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-3.tres" id="5_kl711"]
+[ext_resource type="Resource" uid="uid://c6u6pfujms1em" path="res://resources/chapter/chapter1/correct_config/routers/router0/relays/fa0-3.tres" id="5_nlkvo"]
+[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="7_bktq4"]
+[ext_resource type="Resource" uid="uid://lgoc82ve1grd" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-2.tres" id="9_y1deh"]
+
+[resource]
+script = ExtResource("7_bktq4")
+dhcp_relays = Dictionary[String, ExtResource("1_qxl4n")]({
+"fa0/0": ExtResource("2_lqlkt"),
+"fa0/1": ExtResource("3_kpfux"),
+"fa0/2": ExtResource("4_xp35m"),
+"fa0/3": ExtResource("5_nlkvo")
+})
+device_id = "router0"
+hostname = "Router"
+power = 1
+interfaces = Array[ExtResource("2_4yh0b")]([ExtResource("3_iksf2"), ExtResource("4_dc0kt"), ExtResource("9_y1deh"), ExtResource("5_kl711")])
+metadata/_custom_type_script = "uid://kou14e2socyo"

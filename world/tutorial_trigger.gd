@@ -27,3 +27,4 @@ func _on_device_trigger_body_entered(body: Node2D) -> void:
 			DialogueManager.show_dialogue_balloon(tutorial_dialog, "device")
 			await DialogueManager.dialogue_ended
 			GameManager.tutorial_completed.append("device")
+			DialogueManager.show_dialogue_balloon(tutorial_dialog, "tutorial_completed")
