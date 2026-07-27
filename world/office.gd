@@ -1,6 +1,6 @@
 extends Node2D
 
-const CHAPTER_ID := "chapter0"
+const CHAPTER_ID := "chapter1"
 
 func _ready() -> void:
 	if GameManager.current_chapter == null \

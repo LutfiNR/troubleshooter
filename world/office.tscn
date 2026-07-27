@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://efh4iyv58tmo"]
 
+[ext_resource type="Script" uid="uid://d02awm5w65k8k" path="res://world/office.gd" id="1_ly7xn"]
 [ext_resource type="TileSet" uid="uid://dhj3w0nkdhx58" path="res://assets/Atlas/floor.tres" id="1_nl42f"]
 [ext_resource type="PackedScene" uid="uid://tuwvtg40j5ob" path="res://entities/device/computer/pc.tscn" id="1_pavic"]
 [ext_resource type="PackedScene" path="res://entities/connection/cable/cable.tscn" id="1_w3m8c"]
@@ -11,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://btutdscth7cb" path="res://entities/device/server/server.tscn" id="5_1xkqq"]
 
 [node name="Office" type="Node2D" unique_id=2034895024]
+script = ExtResource("1_ly7xn")
 
 [node name="Main" type="Node2D" parent="." unique_id=1084319578]
 y_sort_enabled = true

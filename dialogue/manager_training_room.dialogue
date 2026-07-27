@@ -11,7 +11,8 @@ else:
 	- Ya, sudah.
 		if tutorial_completed:
 			Manager: Wah, bagus, baik jadi besok kamu mulai masuk ke kantor.
-			do SceneLoader.load_scene("uid://bvvlmlwaspwh8")
+			do SceneLoader.load_scene("uid://efh4iyv58tmo")
+			=> END
 		Manager: Sepertinya kamu belum menyelesaikan misi.
 		=> END
 	- Belum, saya ingin mencoba hal lain.

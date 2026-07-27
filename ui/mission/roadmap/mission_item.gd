@@ -30,13 +30,12 @@ func setup(chapter: ChapterData, mission: MissionData) -> void:
 
 func update_ui() -> void:
 	var status := GameManager.get_mission_status(chapter_id, mission_id)
-
 	mission_icon.texture = mission_icon_texture.get(
 		STATUS_ICON[status],
 		null
 	)
-
 	disabled = status == GameManager.ProgressStatus.LOCKED
+	disabled = status == GameManager.ProgressStatus.COMPLETED and chapter_id == "chapter0"
 
 func _on_mission_loaded(_mission_data: MissionData)-> void:
 	update_ui()

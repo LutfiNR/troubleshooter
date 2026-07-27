@@ -1,7 +1,9 @@
 extends Node2D
 
 @export var tutorial_dialog: DialogueResource
+
 func _ready() -> void:
+	GameManager.chapter_completed.connect(_on_chapter_completed)
 	if not GameManager.tutorial_completed.has("movement"):
 		DialogueManager.show_dialogue_balloon(tutorial_dialog, "movement")
 		await DialogueManager.dialogue_ended
@@ -27,4 +29,9 @@ func _on_device_trigger_body_entered(body: Node2D) -> void:
 			DialogueManager.show_dialogue_balloon(tutorial_dialog, "device")
 			await DialogueManager.dialogue_ended
 			GameManager.tutorial_completed.append("device")
+			await get_tree().create_timer(1).timeout
 			DialogueManager.show_dialogue_balloon(tutorial_dialog, "tutorial_completed")
+
+func _on_chapter_completed(chapter_id: String)-> void:
+	if chapter_id == "chapter0":
+		DialogueManager.show_dialogue_balloon(tutorial_dialog, "chapter0_completed")

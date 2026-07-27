@@ -25,7 +25,11 @@ Kirin: Cobalah masing-masing tombol agar Anda memahami fungsinya sebelum melanju
 
 ~ tutorial_completed
 Kirin: Selamat. Kamu telah menyelesaikan tutorial sederhana.
-Kirin: Silahkan, mulai misi basic networking di sebelah kanan atas, dan selamat mengeksplorasi. 
+Kirin: Silahkan, mulai misi basic networking di sebelah kiri atas, dan selamat mengeksplorasi. 
+=> END
+
+~ chapter0_completed
+Kirin: Selamat. Kamu telah menyelesaikan chapter pertama silahkan lapora ke manager.
 => END
 
 ~ roadmap
