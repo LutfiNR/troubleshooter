@@ -12,10 +12,28 @@ var current_popup_scene: PackedScene = null
 
 func _ready() -> void:
 	GameManager.mission_loaded.connect(_on_mission_loaded)
+	GameManager.chapter_loaded.connect(_on_chapter_loaded)
+	GameManager.mission_completed.connect(_on_mission_completed_ui)
+	$MissionButton.hide()
+	$CheckProgressButton.hide()
+
+func _on_chapter_loaded(_chapter: ChapterData) -> void:
+	hide_popup()
+	$MissionButton.hide()
+	$CheckProgressButton.hide()
+
+func _on_mission_completed_ui(_mission_id: String) -> void:
+	hide_popup()
+	$MissionButton.hide()
+	$CheckProgressButton.hide()
 
 func _on_mission_loaded(mission: MissionData) -> void:
+	if mission.id == "mission0" and mission.title == "Tutorial":
+		return
 	check_open_limit = mission.check_progress_limit
 	check_open_count = 0
+	$MissionButton.show()
+	$CheckProgressButton.show()
 	update_ui()
 
 func show_popup(scene: PackedScene) -> void:

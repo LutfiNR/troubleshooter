@@ -27,6 +27,17 @@ func _on_mission_loaded(mission: MissionData)-> void:
 		runtime_cables[key] = load(mission.runtime_cables[key])
 	setup_all_devices()
 
+func load_default_configuration(default_configs: Dictionary, default_cables: Dictionary)-> void:
+	correct_configs.clear()
+	runtime_configs.clear()
+	runtime_cables.clear()
+	for key in default_configs:
+		correct_configs[key] = load(default_configs[key])
+		runtime_configs[key] = load(default_configs[key])
+	for key in default_cables:
+		runtime_cables[key] = load(default_cables[key])
+	setup_all_devices()
+	
 func setup_all_devices() -> void:
 	for key in correct_configs:
 		correct_configs[key].setup_device()

@@ -14,7 +14,7 @@ var chapter_datas: Array[ChapterData] = [
 	preload("uid://c6v81yrcson83"),
 ]
 
-var game_data := {
+var game_data : Dictionary = {
 	"current_chapter": "",
 	"current_mission": "",
 	"chapters": {}
@@ -33,30 +33,6 @@ func _ready() -> void:
 	else:
 		new_game()
 
-func initialize_game_data() -> void:
-	game_data = {
-		"current_chapter": "",
-		"current_mission": "",
-		"chapters": {}
-	}
-
-	for chapter in chapter_datas:
-		var missions := {}
-
-		for mission in chapter.missions:
-			missions[mission.id] = {
-				"status": ProgressStatus.LOCKED
-			}
-
-		game_data.chapters[chapter.id] = {
-			"missions": missions
-		}
-
-	for chapter in chapter_datas:
-		for mission in chapter.missions:
-			if mission.required_progress_id.is_empty():
-				game_data.chapters[chapter.id].missions[mission.id].status = ProgressStatus.UNLOCKED
-
 func save_game() -> void:
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file == null:
@@ -69,22 +45,15 @@ func load_game() -> void:
 	if file == null:
 		new_game()
 		return
-
 	game_data = file.get_var()
 	file.close()
-
-	update_mission_unlocks()
-
 	if game_data.current_chapter != "":
 		load_chapter(game_data.current_chapter)
-
 	if game_data.current_mission != "":
 		load_mission(game_data.current_mission)
 
 func new_game() -> void:
 	initialize_game_data()
-	current_chapter = null
-	current_mission = null
 	save_game()
 
 func reset_save() -> void:
@@ -92,113 +61,145 @@ func reset_save() -> void:
 		DirAccess.remove_absolute(SAVE_PATH)
 	new_game()
 
+func initialize_game_data() -> void:
+	reset_game_data()
+	initialize_progress_data()
+
+func reset_game_data()->void:
+	game_data = {
+		"current_chapter": "",
+		"current_mission": "",
+		"chapters": {}
+	}
+	current_chapter = null
+	current_mission = null
+
+func initialize_progress_data()-> void:
+	for chapter in chapter_datas:
+		var missions := {}
+		for mission in chapter.missions:
+			missions[mission.id] = {
+				"status": ProgressStatus.LOCKED
+			}
+		game_data.chapters[chapter.id] = {
+			"status" : ProgressStatus.LOCKED,
+			"missions": missions
+		}
+	for chapter in chapter_datas:
+		if chapter.required_progress_id.is_empty():
+			game_data.chapters[chapter.id].status = ProgressStatus.UNLOCKED
+		for mission in chapter.missions:
+			if mission.required_progress_id.is_empty():
+				game_data.chapters[chapter.id].missions[mission.id].status = ProgressStatus.UNLOCKED
+
 func load_chapter(chapter_id:String) -> void:
+	if get_game_data_chapter_status(chapter_id) == ProgressStatus.LOCKED:
+		return
+
 	for chapter in chapter_datas:
 		if chapter.id != chapter_id:
 			continue
-
 		current_chapter = chapter
 		game_data.current_chapter = chapter.id
-
+		if get_game_data_chapter_status(chapter_id) == ProgressStatus.UNLOCKED:
+			set_game_data_chapter_status(chapter_id, ProgressStatus.ON_PROGRESS)
 		chapter_loaded.emit(chapter)
-
-		if game_data.current_mission == "":
-			for mission in chapter.missions:
-				if mission.id == "mission0":
-					load_mission(mission.id)
-					break
+		save_game()
+		NetworkManager.load_default_configuration(current_chapter.default_configs, current_chapter.default_cables)
 		return
 
 func load_mission(mission_id:String) -> void:
 	if current_chapter == null:
 		return
-
-	var state = game_data.chapters[current_chapter.id].missions[mission_id]
-
-	if state.status == ProgressStatus.LOCKED:
+	if is_mission_locked(mission_id):
 		return
-
 	for mission in current_chapter.missions:
 		if mission.id != mission_id:
 			continue
-
 		current_mission = mission
 		game_data.current_mission = mission.id
-
-		if state.status == ProgressStatus.UNLOCKED:
-			state.status = ProgressStatus.ON_PROGRESS
-
+		if get_game_data_mission_status(current_chapter.id, mission_id) == ProgressStatus.UNLOCKED:
+			set_game_data_mission_status(current_chapter.id, mission_id, ProgressStatus.ON_PROGRESS)
+			print_debug(mission_id, " loaded with status ", get_game_data_mission_status(current_chapter.id, mission_id))
+			print_debug(game_data)
 		mission_loaded.emit(mission)
 		save_game()
 		return
 
-func _on_mission_completed(id:String) -> void:
-	var state = game_data.chapters[current_chapter.id].missions[id]
-
-	if state.status == ProgressStatus.COMPLETED:
+func _on_mission_completed(mission_id:String) -> void:
+	if is_mission_completed(mission_id):
 		return
-
-	state.status = ProgressStatus.COMPLETED
-
-	update_mission_unlocks()
-
-	if get_chapter_status(current_chapter.id) == ProgressStatus.COMPLETED:
+	set_game_data_mission_status(current_chapter.id, mission_id, ProgressStatus.COMPLETED)
+	unlock_new_mission()
+	var all_missions_completed := true
+	for game_data_mission in game_data.chapters[current_chapter.id].missions.values():
+		if game_data_mission.status != ProgressStatus.COMPLETED:
+			all_missions_completed = false
+			break
+	if all_missions_completed:
 		chapter_completed.emit(current_chapter.id)
+	current_mission = null
+	game_data.current_mission = ""
+	save_game()
+	NetworkManager.load_default_configuration(current_chapter.default_configs, current_chapter.default_cables)
 
+func _on_chapter_completed(chapter_id:String) -> void:
+	if is_chapter_completed(chapter_id):
+		return
+	set_game_data_chapter_status(chapter_id, ProgressStatus.COMPLETED)
+	unlock_new_chapter()
 	save_game()
 
-func _on_chapter_completed(_id:String) -> void:
-	save_game()
-
-func update_mission_unlocks() -> void:
-	for chapter in chapter_datas:
-		var missions = game_data.chapters[chapter.id].missions
-
-		for mission in chapter.missions:
-			var state = missions[mission.id]
-
-			if state.status != ProgressStatus.LOCKED:
+func unlock_new_mission() -> void:
+	for chapter_data in chapter_datas:
+		for mission_data in chapter_data.missions:
+			var status := get_game_data_mission_status(chapter_data.id, mission_data.id)
+			if status != ProgressStatus.LOCKED:
 				continue
+			if mission_data.required_progress_id.is_empty():
+				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
+				print_debug(game_data)
+			elif is_mission_completed(mission_data.required_progress_id):
+				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
+				print_debug(game_data)
 
-			if mission.required_progress_id.is_empty():
-				state.status = ProgressStatus.UNLOCKED
-			elif is_mission_completed(mission.required_progress_id):
-				state.status = ProgressStatus.UNLOCKED
+func unlock_new_chapter() -> void:
+	for chapter_data in chapter_datas:
+		var status := get_game_data_chapter_status(chapter_data.id)
+		if status != ProgressStatus.LOCKED:
+			continue
+		if chapter_data.required_progress_id.is_empty():
+			set_game_data_chapter_status(chapter_data.id, ProgressStatus.UNLOCKED)
+		elif is_chapter_completed(chapter_data.required_progress_id):
+			set_game_data_chapter_status(chapter_data.id, ProgressStatus.UNLOCKED)
 
-func get_chapter_status(chapter_id:String) -> ProgressStatus:
-	var chapter := get_chapter(chapter_id)
+func set_game_data_chapter_status(chapter_id: String, status:ProgressStatus)-> void:
+	game_data.chapters[chapter_id].status = status
 
-	if chapter == null:
-		return ProgressStatus.LOCKED
+func set_game_data_mission_status(chapter_id:String, mission_id: String, status:ProgressStatus)-> void:
+	game_data.chapters[chapter_id].missions[mission_id].status = status
 
-	var missions = game_data.chapters[chapter_id].missions
+func get_game_data_chapter_status(chapter_id:String) -> ProgressStatus:
+	return game_data.chapters[chapter_id].status
 
-	var completed := 0
-	var on_progress := false
-	var unlocked := false
-
-	for mission in chapter.missions:
-		match missions[mission.id].status:
-			ProgressStatus.COMPLETED:
-				completed += 1
-			ProgressStatus.ON_PROGRESS:
-				on_progress = true
-			ProgressStatus.UNLOCKED:
-				unlocked = true
-
-	if completed == chapter.missions.size():
-		return ProgressStatus.COMPLETED
-
-	if on_progress:
-		return ProgressStatus.ON_PROGRESS
-
-	if unlocked:
-		return ProgressStatus.UNLOCKED
-
-	return ProgressStatus.LOCKED
-
-func get_mission_status(chapter_id:String, mission_id:String) -> ProgressStatus:
+func get_game_data_mission_status(chapter_id:String, mission_id:String) -> ProgressStatus:
 	return game_data.chapters[chapter_id].missions[mission_id].status
+
+func is_chapter_locked(chapter_id: String)-> bool:
+	if game_data.chapters.has(chapter_id):
+		return game_data.chapters[chapter_id].status == ProgressStatus.LOCKED
+	return false
+
+func is_mission_locked(mission_id: String)-> bool:
+	for chapter in game_data.chapters.values():
+		if game_data.chapters.has(mission_id):
+			return chapter.missions[mission_id].status == ProgressStatus.LOCKED
+	return false
+
+func is_chapter_completed(chapter_id: String) -> bool:
+	if game_data.chapters.has(chapter_id):
+		return game_data.chapters[chapter_id].status == ProgressStatus.COMPLETED
+	return false
 
 func is_mission_completed(mission_id:String) -> bool:
 	for chapter in game_data.chapters.values():

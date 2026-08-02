@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_0e4a0")
-id = "mission0"
-title = "Komputer Baru Tidak Bisa Masuk Jaringan"
-description = "Hari ini ada lima karyawan baru. Semua komputer sudah terpasang, tetapi tidak mendapat alamat IP."
+id = "default"
+title = "Default"
+description = "Konfigurasi Default"
 time = 180.0
 check_progress_limit = 5
 required_progress_id = "chapter0"
@@ -90,4 +90,24 @@ runtime_configs = Dictionary[String, StringName]({
 "switch2": &"uid://6bjl83u8h3f1",
 "switch3": &"uid://dalbm2wnn77mu"
 })
-metadata/_custom_type_script = "uid://dweihabrt7kta"
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})

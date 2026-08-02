@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://dbufxjh7msttn"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_qwapm"]
+
+[resource]
+script = ExtResource("1_qwapm")
+id = "mission0"
+title = "Tutorial"
+description = "Tutorial"
+time = -1.0
+check_progress_limit = -1
+guide = "[center][font_size=26][color=#1565C0][b]Tutorial[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+
+[color=#333333]
+Selamat datang pada tahap Tutorial
+"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c38a2ba0t6ng5",
+"computer1": &"uid://bqp1b0l75ufli",
+"router0": &"uid://yju72wabkxx8",
+"server0": &"uid://dcjwkhf7ren4a",
+"switch0": &"uid://bd0irlvh4n4ag",
+"switch1": &"uid://d3i2kdknm7b6v"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c38a2ba0t6ng5",
+"computer1": &"uid://bqp1b0l75ufli",
+"router0": &"uid://yju72wabkxx8",
+"server0": &"uid://dcjwkhf7ren4a",
+"switch0": &"uid://bd0irlvh4n4ag",
+"switch1": &"uid://d3i2kdknm7b6v"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://db5ckn3yps3lq",
+"computer1_switch0": &"uid://bbolxsy87oj55",
+"server_switch1": &"uid://ddrhm04hlhlxf",
+"switch0_router": &"uid://bretiwsbg2nyf",
+"switch1_router": &"uid://p177aab7ebms"
+})

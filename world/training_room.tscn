@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://66xplyb10s63" path="res://assets/Atlas/wall.tres" id="2_lxc53"]
 [ext_resource type="PackedScene" uid="uid://noeheffbrarg" path="res://entities/device/router/router.tscn" id="4_0l8w3"]
 [ext_resource type="TileSet" uid="uid://kg3n47tbqnvr" path="res://assets/Atlas/interior.tres" id="4_i4j8i"]
-[ext_resource type="PackedScene" path="res://entities/connection/cable/cable.tscn" id="4_iki3j"]
+[ext_resource type="PackedScene" uid="uid://c8bbcjv2qsdvc" path="res://entities/connection/cable/cable.tscn" id="4_iki3j"]
 [ext_resource type="PackedScene" uid="uid://bhbp4y5qe6gvk" path="res://entities/device/switch/switch.tscn" id="5_woc7e"]
 [ext_resource type="PackedScene" uid="uid://tuwvtg40j5ob" path="res://entities/device/computer/pc.tscn" id="6_oy5c4"]
 [ext_resource type="PackedScene" uid="uid://btutdscth7cb" path="res://entities/device/server/server.tscn" id="7_i4j8i"]

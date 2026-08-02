@@ -31,6 +31,8 @@ func _on_device_trigger_body_entered(body: Node2D) -> void:
 			GameManager.tutorial_completed.append("device")
 			await get_tree().create_timer(1).timeout
 			DialogueManager.show_dialogue_balloon(tutorial_dialog, "tutorial_completed")
+			await DialogueManager.dialogue_ended
+			GameManager.mission_completed.emit("mission0")
 
 func _on_chapter_completed(chapter_id: String)-> void:
 	if chapter_id == "chapter0":

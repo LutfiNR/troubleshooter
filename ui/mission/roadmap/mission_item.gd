@@ -29,7 +29,7 @@ func setup(chapter: ChapterData, mission: MissionData) -> void:
 	update_ui()
 
 func update_ui() -> void:
-	var status := GameManager.get_mission_status(chapter_id, mission_id)
+	var status: GameManager.ProgressStatus = GameManager.get_game_data_mission_status(chapter_id, mission_id)
 	mission_icon.texture = mission_icon_texture.get(
 		STATUS_ICON[status],
 		null

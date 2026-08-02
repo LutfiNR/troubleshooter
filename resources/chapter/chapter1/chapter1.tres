@@ -8,6 +8,7 @@
 [resource]
 script = ExtResource("3_rppxs")
 id = "chapter1"
-title = "Beginner"
+title = "Amateur"
+required_progress_id = "chapter0"
 missions = Array[ExtResource("1_28ski")]([ExtResource("2_rppxs"), ExtResource("2_4lnge")])
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"
