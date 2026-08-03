@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="MariaDBDatabase" format=3 uid="uid://ccbk3ynshii2k"]
-
-[ext_resource type="Script" uid="uid://cduenld6bakjc" path="res://components/network_service/DB/db.gd" id="1_dhv1l"]
-
-[resource]
-script = ExtResource("1_dhv1l")
-db_name = "accounting"
-metadata/_custom_type_script = "uid://cduenld6bakjc"

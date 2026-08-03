@@ -69,6 +69,7 @@ func _on_mission_button_pressed() -> void:
 		if not GameManager.tutorial_completed.has("mission"):
 			DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "mission")
 			GameManager.tutorial_completed.append("mission")
+			
 func _on_check_progress_button_pressed() -> void:
 	if has_same_popup(check_popup_scene):
 		hide_popup()

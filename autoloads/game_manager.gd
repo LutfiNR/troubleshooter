@@ -159,7 +159,8 @@ func unlock_new_mission() -> void:
 			if mission_data.required_progress_id.is_empty():
 				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
 				print_debug(game_data)
-			elif is_mission_completed(mission_data.required_progress_id):
+			elif is_mission_completed(mission_data.required_progress_id) \
+					or is_chapter_completed(mission_data.required_progress_id):
 				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
 				print_debug(game_data)
 
