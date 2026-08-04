@@ -38,9 +38,10 @@ func _update_progress() -> void:
 	if counts.false_count == 0:
 		var is_mission_completed: bool = GameManager.is_mission_completed(
 			GameManager.current_mission.id
-		)
-		if not is_mission_completed and GameManager.current_mission.id != "default":
+		)			
+		if not is_mission_completed and GameManager.current_mission.title != "Tutorial":
 			GameManager.mission_completed.emit(GameManager.current_mission.id)
+			print_debug("completed")
 
 func get_status_counts(data: Dictionary) -> Dictionary:
 	var result := {

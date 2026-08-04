@@ -120,8 +120,6 @@ func load_mission(mission_id:String) -> void:
 		game_data.current_mission = mission.id
 		if get_game_data_mission_status(current_chapter.id, mission_id) == ProgressStatus.UNLOCKED:
 			set_game_data_mission_status(current_chapter.id, mission_id, ProgressStatus.ON_PROGRESS)
-			print_debug(mission_id, " loaded with status ", get_game_data_mission_status(current_chapter.id, mission_id))
-			print_debug(game_data)
 		mission_loaded.emit(mission)
 		save_game()
 		return
@@ -158,11 +156,9 @@ func unlock_new_mission() -> void:
 				continue
 			if mission_data.required_progress_id.is_empty():
 				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
-				print_debug(game_data)
 			elif is_mission_completed(mission_data.required_progress_id) \
 					or is_chapter_completed(mission_data.required_progress_id):
 				set_game_data_mission_status(chapter_data.id, mission_data.id, ProgressStatus.UNLOCKED)
-				print_debug(game_data)
 
 func unlock_new_chapter() -> void:
 	for chapter_data in chapter_datas:

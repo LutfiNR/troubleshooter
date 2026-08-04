@@ -28,7 +28,7 @@ func _on_mission_completed_ui(_mission_id: String) -> void:
 	$CheckProgressButton.hide()
 
 func _on_mission_loaded(mission: MissionData) -> void:
-	if mission.id == "mission0" and mission.title == "Tutorial":
+	if mission.title == "Tutorial":
 		return
 	check_open_limit = mission.check_progress_limit
 	check_open_count = 0
