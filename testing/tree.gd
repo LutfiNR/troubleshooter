@@ -11,18 +11,15 @@ func _ready() -> void:
 	populate_ui_tree()
 	NetworkManager.device_updated.connect(_on_device_updated)
 
-
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
 	clear()
 	populate_ui_tree()
-
 
 func populate_ui_tree() -> void:
 	var root = create_item()
 	var data = NetworkManager.mission_checking_result
 	for dev in data.keys():
 		_populate_device(root, data[dev])
-
 
 # --- Helper Functions ---
 func _create_tree_item(parent: TreeItem, text: String, status: bool = true, collapsed: bool = false) -> TreeItem:

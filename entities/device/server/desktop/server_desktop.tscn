@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://bm441bap7idbf" path="res://entities/device/server/desktop/app/server_setting_app.gd" id="11_0d2s3"]
 [ext_resource type="PackedScene" uid="uid://c1yqpkqil2l3c" path="res://entities/device/utils/popup_panel.tscn" id="11_fqsl8"]
 [ext_resource type="Script" uid="uid://blvqcuvra0i2c" path="res://entities/device/server/desktop/app/server_app.gd" id="12_03joq"]
-[ext_resource type="Texture2D" uid="uid://cn01rhb4d7fl5" path="res://assets/UI/Button/button_0001.png" id="12_fqsl8"]
 [ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="13_fqsl8"]
 [ext_resource type="Script" uid="uid://cvim00ug7ugmq" path="res://entities/device/server/desktop/app/software.gd" id="13_q3fwd"]
 [ext_resource type="Script" uid="uid://bc7pw1yrw22ls" path="res://entities/device/server/desktop/app/dhcp.gd" id="14_fw4op"]
@@ -49,15 +48,6 @@ texture_margin_left = 2.0
 texture_margin_top = 2.0
 texture_margin_right = 2.0
 texture_margin_bottom = 2.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nbrwe"]
-texture = ExtResource("12_fqsl8")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
@@ -129,18 +119,21 @@ service_app = NodePath("UIContainer/AppContainer/ServiceApp")
 setting_app = NodePath("UIContainer/AppContainer/SettingApp")
 
 [node name="Desktop" type="Sprite2D" parent="." unique_id=679797629]
-scale = Vector2(1.9999999, 2.0000002)
+position = Vector2(0, 58)
+scale = Vector2(1.672, 1.672)
 texture = ExtResource("1_xx8oc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1530814101]
 
 [node name="UIContainer" type="Control" parent="." unique_id=571055037]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -608.0863
-offset_top = -329.0
-offset_right = 608.0863
-offset_bottom = 328.0
+offset_left = -508.0
+offset_top = -216.0
+offset_right = 508.0
+offset_bottom = 333.0
 grow_horizontal = 2
 size_flags_horizontal = 8
 
@@ -149,10 +142,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -49.0
-offset_top = 17.0
-offset_right = -17.0
-offset_bottom = 49.0
+offset_left = 64.0
+offset_top = -111.0
+offset_right = 110.0
+offset_bottom = -65.0
 grow_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_q3fwd")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_q3fwd")
@@ -161,18 +154,45 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_q3fwd")
 [node name="TextureRect" type="TextureRect" parent="UIContainer/ExitButton" unique_id=588157638]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -9.0
-offset_right = 8.0
-offset_bottom = 7.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_ldhip")
+
+[node name="PanelDesktop" type="HBoxContainer" parent="UIContainer" unique_id=244127346]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -38.0
+offset_right = 25.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="ServiceButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=118266169]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("13_fqsl8")
+texture_pressed = ExtResource("13_fqsl8")
+texture_hover = ExtResource("13_fqsl8")
+stretch_mode = 5
+
+[node name="SettingButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=658631799]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("14_srt4w")
+texture_pressed = ExtResource("14_srt4w")
+texture_hover = ExtResource("14_srt4w")
+stretch_mode = 5
 
 [node name="AppContainer" type="Panel" parent="UIContainer" unique_id=1839547412]
 layout_mode = 1
@@ -190,10 +210,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 233.1977
-offset_top = 52.0
-offset_right = -232.1977
-offset_bottom = -53.0
+offset_left = 56.0
+offset_top = 38.0
+offset_right = -54.99994
+offset_bottom = -39.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_0d2s3")
@@ -338,7 +358,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
 offset_top = 166.0
-offset_right = -384.8886
+offset_right = -462.00006
 offset_bottom = 322.0
 grow_horizontal = 2
 
@@ -378,7 +398,7 @@ caret_blink = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 384.8886
+offset_left = 463.0
 offset_top = 166.0
 offset_right = -21.0
 offset_bottom = 322.0
@@ -428,8 +448,7 @@ offset_right = -20.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_nbrwe")
+theme_override_font_sizes/font_size = 32
 text = "Save"
 
 [node name="ServiceApp" type="Control" parent="UIContainer/AppContainer" unique_id=409627036 node_paths=PackedStringArray("tabs", "tab_container")]
@@ -2646,41 +2665,9 @@ grow_vertical = 2
 [node name="PopupPanel" parent="UIContainer/AppContainer" unique_id=305657255 instance=ExtResource("11_fqsl8")]
 layout_mode = 1
 
-[node name="PanelDesktop" type="HBoxContainer" parent="UIContainer" unique_id=244127346]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -41.0
-offset_top = -42.0
-offset_right = 46.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="ServiceButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=118266169]
-custom_minimum_size = Vector2(36, 36)
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("13_fqsl8")
-texture_pressed = ExtResource("13_fqsl8")
-texture_hover = ExtResource("13_fqsl8")
-stretch_mode = 0
-
-[node name="SettingButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=658631799]
-custom_minimum_size = Vector2(36, 36)
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("14_srt4w")
-texture_pressed = ExtResource("14_srt4w")
-texture_hover = ExtResource("14_srt4w")
-stretch_mode = 0
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1530814101]
-
 [connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="UIContainer/PanelDesktop/ServiceButton" to="." method="_on_service_button_pressed"]
+[connection signal="pressed" from="UIContainer/PanelDesktop/SettingButton" to="." method="_on_setting_button_pressed"]
 [connection signal="pressed" from="UIContainer/AppContainer/SettingApp/SettingExitButton" to="." method="_on_app_exit_button_pressed"]
 [connection signal="pressed" from="UIContainer/AppContainer/SettingApp/SaveButton" to="UIContainer/AppContainer/SettingApp" method="_on_save_button_pressed"]
 [connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/ServiceExitButton" to="." method="_on_app_exit_button_pressed"]
@@ -2752,5 +2739,3 @@ stretch_mode = 0
 [connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/AddUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_add_user_button_pressed"]
 [connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/RemoveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_remove_user_button_pressed"]
 [connection signal="pressed" from="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users/VBoxContainer2/HBoxContainer7/SaveUserButton" to="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL" method="_on_save_user_button_pressed"]
-[connection signal="pressed" from="UIContainer/PanelDesktop/ServiceButton" to="." method="_on_service_button_pressed"]
-[connection signal="pressed" from="UIContainer/PanelDesktop/SettingButton" to="." method="_on_setting_button_pressed"]

@@ -170,6 +170,15 @@ _data = {
 &"walk_up": SubResource("Animation_qb0yx")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afbqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx6sm"]
+bg_color = Color(0.05882353, 0.105882354, 0.2, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Player" type="CharacterBody2D" unique_id=196673383 groups=["player"]]
 y_sort_enabled = true
 scale = Vector2(2, 2)
@@ -211,28 +220,22 @@ offset_bottom = 101.0
 grow_horizontal = 0
 texture = ExtResource("6_qiwj3")
 
-[node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=81076281]
-layout_mode = 0
-offset_left = 87.0
-offset_top = 5.0
-offset_right = 244.0
-offset_bottom = 37.0
-theme = ExtResource("7_26q78")
-text = "Lutfi Nur Rohman"
-text_overrun_behavior = 5
-
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1955042892]
-offset_left = 93.0
-offset_top = 64.0
-offset_right = 265.0
-offset_bottom = 100.0
+offset_left = 90.0
+offset_top = 22.0
+offset_right = 260.0
+offset_bottom = 52.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_afbqv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gx6sm")
+value = 100.0
 script = ExtResource("14_afbqv")
 
 [node name="PopupContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1252462743]
+visible = false
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 11.0
-offset_top = 152.0
+offset_top = 114.0
 offset_right = 455.0
 offset_bottom = -18.0
 grow_vertical = 2
@@ -240,10 +243,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=710199721]
-offset_left = 9.0
-offset_top = 105.0
-offset_right = 264.0
-offset_bottom = 145.0
+offset_left = 90.0
+offset_top = 61.0
+offset_right = 345.0
+offset_bottom = 101.0
 script = ExtResource("8_yqrof")
 roadmap_popup_scene = ExtResource("10_wvtmh")
 mission_popup_scene = ExtResource("11_a1qjk")
@@ -296,7 +299,7 @@ grow_vertical = 2
 texture = ExtResource("9_wvtmh")
 
 [node name="CheckProgressButton" type="TextureButton" parent="CanvasLayer/ButtonContainer" unique_id=1109078369]
-custom_minimum_size = Vector2(96, 40)
+custom_minimum_size = Vector2(87, 40)
 layout_mode = 2
 theme = ExtResource("7_26q78")
 toggle_mode = true
@@ -323,7 +326,9 @@ offset_left = 47.0
 offset_top = 4.0999985
 offset_right = 87.0
 offset_bottom = 36.1
+theme_override_font_sizes/font_size = 24
 text = "3/3"
+vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/RoadmapButton" to="CanvasLayer/ButtonContainer" method="_on_roadmap_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/MissionButton" to="CanvasLayer/ButtonContainer" method="_on_mission_button_pressed"]

@@ -6,46 +6,105 @@
 script = ExtResource("1_nytc6")
 id = "mission1"
 title = "Komputer Baru Tidak Bisa Masuk Jaringan"
-description = "Hari ini ada lima karyawan baru. Semua komputer sudah terpasang, tetapi tidak mendapat alamat IP."
 time = 180.0
 check_progress_limit = 5
 required_progress_id = "chapter0"
-guide = "[h1]Mission 1 - Komputer Baru Tidak Mendapatkan Alamat IP[/h1]
+description = "Hari ini ada lima karyawan baru. Semua komputer sudah terpasang, tetapi tidak mendapat alamat IP."
+guide = "[center][font_size=26][color=#1565C0][b]DHCP Server[/b][/color][/font_size][/center]
 
-[b]Divisi:[/b] IT Support
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
 
-[h2]Latar Belakang[/h2]
+[color=#333333]
+Selamat datang pada tahap [b]Tes Praktik Program Magang[/b].
 
-Hari ini perusahaan menerima beberapa karyawan baru. Seluruh komputer telah dipasang di ruang Accounting, Sales, dan Media.
+Hari ini perusahaan menerima beberapa karyawan baru yang ditempatkan di divisi Accounting, Sales, dan Media. Tim IT telah menyiapkan seluruh komputer beserta infrastruktur jaringan agar dapat langsung digunakan.
 
-Namun setelah dinyalakan, tidak ada satu pun komputer yang dapat terhubung ke jaringan perusahaan.
+Namun, setelah seluruh komputer dinyalakan, tidak satu pun komputer client berhasil memperoleh alamat IP secara otomatis sehingga tidak dapat terhubung ke jaringan perusahaan.
 
-Supervisor meminta Anda untuk memeriksa infrastruktur jaringan dan memastikan seluruh komputer dapat digunakan.
+Sebagai peserta magang, Anda ditugaskan untuk melakukan [b]troubleshooting[/b] terhadap infrastruktur jaringan dan mengembalikan layanan jaringan agar seluruh komputer dapat beroperasi dengan normal.
+[/color]
 
-[h2]Objektif[/h2]
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
 
-[list]
-[*]Pulihkan layanan jaringan perusahaan.
-[*]Pastikan seluruh komputer client memperoleh alamat IP secara otomatis.
-[*]Pastikan seluruh komputer dapat berkomunikasi di jaringan lokal.
-[/list]
+[color=#333333]
+• Jangan menambahkan perangkat baru.
+• Jangan mengubah topologi jaringan.
+• Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
+[/color]
 
-[h2]Informasi[/h2]
+[hr]
 
-[list]
-[*]Ruang IT memiliki sebuah router dan switch utama.
-[*]Setiap divisi terhubung ke switch masing-masing.
-[*]Seluruh perangkat jaringan telah terpasang.
-[*]Tidak semua konfigurasi jaringan berada dalam kondisi yang benar.
-[/list]
+[color=#2E7D32][font_size=18][b]Informasi Infrastruktur[/b][/font_size][/color]
 
-[h2]Keberhasilan[/h2]
+[color=#333333][b]IT Room[/b][/color]
 
-[list]
-[*]Semua komputer memperoleh alamat IP.
-[*]Tidak ada komputer yang menggunakan alamat APIPA.
-[*]Seluruh komputer dapat saling terhubung melalui jaringan.
-[/list]"
+[color=#455A64]
+• Router-IT
+• Switch-IT
+• Computer-IT
+[/color]
+
+[color=#333333][b]Accounting Room[/b][/color]
+
+[color=#455A64]
+• Switch-Accounting
+• Accounting-PC01
+• Accounting-PC02
+• Accounting-PC03
+• Accounting-PC04
+[/color]
+
+[color=#333333][b]Sales Room[/b][/color]
+
+[color=#455A64]
+• Switch-Sales
+• Sales-PC01
+• Sales-PC02
+• Sales-PC03
+• Sales-PC04
+[/color]
+
+[color=#333333][b]Media Room[/b][/color]
+
+[color=#455A64]
+• Switch-Media
+• Media-PC01
+• Media-PC02
+• Media-PC03
+• Media-PC04
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Analisis kondisi jaringan pada setiap perangkat yang tersedia.
+
+✓ Identifikasi penyebab seluruh komputer client tidak memperoleh alamat IP.
+
+✓ Perbaiki konfigurasi layanan jaringan yang diperlukan.
+
+✓ Pastikan seluruh komputer client memperoleh alamat IP secara otomatis.
+
+✓ Verifikasi bahwa seluruh komputer dapat terhubung ke jaringan perusahaan.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+
+[color=#333333]
+✓ Seluruh komputer di ruang Accounting memperoleh alamat IP secara otomatis.
+
+✓ Seluruh komputer di ruang Sales memperoleh alamat IP secara otomatis.
+
+✓ Seluruh komputer di ruang Media memperoleh alamat IP secara otomatis.
+
+✓ Tidak ada komputer yang menggunakan alamat APIPA.
+
+✓ Seluruh komputer client dapat berkomunikasi di dalam jaringan lokal.
+[/color]"
 correct_configs = Dictionary[String, StringName]({
 "computer0": &"uid://c52egd43detro",
 "computer1": &"uid://b5cp67qt1tbgw",
@@ -68,4 +127,3 @@ correct_configs = Dictionary[String, StringName]({
 "switch2": &"uid://6bjl83u8h3f1",
 "switch3": &"uid://dalbm2wnn77mu"
 })
-metadata/_custom_type_script = "uid://dweihabrt7kta"
