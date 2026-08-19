@@ -11,11 +11,13 @@ var runtime_configs: Dictionary
 var runtime_cables: Dictionary
 var mission_checking_result: Dictionary
 
+
 func _ready():
 	device_updated.connect(_on_device_updated)
 	GameManager.mission_loaded.connect(_on_mission_loaded)
 
-func _on_mission_loaded(mission: MissionData)-> void:
+
+func _on_mission_loaded(mission: MissionData) -> void:
 	correct_configs.clear()
 	runtime_configs.clear()
 	runtime_cables.clear()
@@ -27,7 +29,8 @@ func _on_mission_loaded(mission: MissionData)-> void:
 		runtime_cables[key] = load(mission.runtime_cables[key])
 	setup_all_devices()
 
-func load_default_configuration(default_configs: Dictionary, default_cables: Dictionary)-> void:
+
+func load_default_configuration(default_configs: Dictionary, default_cables: Dictionary) -> void:
 	correct_configs.clear()
 	runtime_configs.clear()
 	runtime_cables.clear()
@@ -37,7 +40,8 @@ func load_default_configuration(default_configs: Dictionary, default_cables: Dic
 	for key in default_cables:
 		runtime_cables[key] = load(default_cables[key])
 	setup_all_devices()
-	
+
+
 func setup_all_devices() -> void:
 	for key in correct_configs:
 		correct_configs[key].setup_device()
@@ -51,7 +55,11 @@ func update_device_data(device_id: String, device_data: Variant) -> void:
 	device_updated.emit(device_id, runtime_configs[device_id])
 
 
-func update_interface_device_data(device_id: String, interface_id: String, interface_data: NetworkInterface) -> void:
+func update_interface_device_data(
+	device_id: String,
+	interface_id: String,
+	interface_data: NetworkInterface,
+) -> void:
 	var interfaces = runtime_configs[device_id].interfaces
 	for i in interfaces.size():
 		if interfaces[i].id == interface_id:
@@ -62,6 +70,7 @@ func update_interface_device_data(device_id: String, interface_id: String, inter
 
 func get_runtime_device_data_by_id(device_id: String) -> DeviceData:
 	return runtime_configs.get(device_id)
+
 
 func get_correct_device_data_by_id(device_id: String) -> DeviceData:
 	return correct_configs.get(device_id)
@@ -98,10 +107,11 @@ func get_cables_for_device(device_data: DeviceData) -> Array[CableData]:
 			result.append(cable)
 	return result
 
+
 func get_reachable_devices(
-		start: DeviceData,
-		_excluded: Array[DeviceData] = [],
-		stop_at_layer3: bool = false
+	start: DeviceData,
+	_excluded: Array[DeviceData] = [],
+	stop_at_layer3: bool = false,
 ) -> Array[Dictionary]:
 	var reachable: Array[Dictionary] = []
 	_excluded.append(start)
@@ -128,6 +138,7 @@ func get_reachable_devices(
 		reachable.append_array(get_reachable_devices(peer, _excluded, stop_at_layer3))
 	return reachable
 
+
 func check_connectivity(src_device_id: String, dst_device_id: String) -> Dictionary:
 	var src: DeviceData = get_runtime_device_data_by_id(src_device_id)
 	var dst: DeviceData = get_runtime_device_data_by_id(dst_device_id)
@@ -140,7 +151,10 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 	var dst_iface: NetworkInterface = _get_l3_interface(dst)
 
 	if not src_iface or not src_iface.ip or not dst_iface or not dst_iface.ip:
-		return { "reachable": false, "reason": "One or both devices have no IP address configured." }
+		return {
+			"reachable": false,
+			"reason": "One or both devices have no IP address configured.",
+		}
 
 	if not src_iface.is_up():
 		return { "reachable": false, "reason": "Source interface is down." }
@@ -163,10 +177,13 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 		if reachable_devices.has(dst):
 			return { "reachable": true, "reason": "Same subnet, directly connected." }
 		else:
-			return { "reachable": false, "reason": "Same subnet but no physical path to destination." }
+			return {
+				"reachable": false,
+				"reason": "Same subnet but no physical path to destination.",
+			}
 	if src is ComputerDeviceData and src.default_gateway != "":
 		var gw_ip: IPAddress = IPAddress.parse(src.default_gateway)
-		
+
 		# Find the router reachable from src whose interface matches the gateway IP.
 		for entry: Dictionary in reachable_entries:
 			var candidate: DeviceData = entry["device"]
@@ -193,7 +210,8 @@ func check_connectivity(src_device_id: String, dst_device_id: String) -> Diction
 			else:
 				return {
 					"reachable": false,
-					"reason": "Gateway %s reachable but has no route to destination subnet." % src.default_gateway,
+					"reason": "Gateway %s reachable but has no route to destination subnet."
+					% src.default_gateway,
 				}
 		return {
 			"reachable": false,
@@ -218,7 +236,9 @@ func _find_interface_by_ip(device: DeviceData, target_ip: IPAddress) -> NetworkI
 			continue
 		if not iface.is_up():
 			continue
-		if iface.ip and iface.ip.ip_to_string().split("/")[0] == target_ip.ip_to_string().split("/")[0]:
+		if iface.ip and iface.ip.ip_to_string().split("/")[0] == target_ip.ip_to_string().split("/")[
+				0
+			]:
 			return iface
 	return null
 
@@ -234,6 +254,7 @@ func _find_interface_in_subnet(device: DeviceData, target_ip: IPAddress) -> Netw
 			return iface
 	return null
 
+
 func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 	var client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
 	if not client_device:
@@ -242,7 +263,10 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 
 	var client_iface: NetworkInterface = client_device.get_interface(interface_id)
 	if not client_iface:
-		push_error("GameManager.request_dhcp(): interface '%s' not found on '%s'" % [interface_id, client_device_id])
+		push_error(
+			"GameManager.request_dhcp(): interface '%s' not found on '%s'"
+			% [interface_id, client_device_id]
+		)
 		return { "success": false }
 
 	var mac: String = client_iface.mac_address
@@ -251,9 +275,9 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 	# cross routers). Routers still appear in the list for relay checking.
 	for entry: Dictionary in get_reachable_devices(client_device, [], true):
 		var peer_device: DeviceData = entry["device"]
-		var peer_iface_id: String   = entry["iface_id"]
+		var peer_iface_id: String = entry["iface_id"]
 
-		var dhcp_response: Dictionary = {}
+		var dhcp_response: Dictionary = { }
 
 		if peer_device is ServerDeviceData:
 			dhcp_response = peer_device.handle_dhcp_request(mac, peer_iface_id)
@@ -264,10 +288,14 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 				var relay_ip: IPAddress = peer_device.get_dhcp_relay_ip(peer_iface_id)
 				if relay_ip:
 					# relay_ip is the DHCP server address — use it to find the server.
-					var server: ServerDeviceData = _find_server_by_ip(relay_ip.ip_to_string().split("/")[0])
+					var server: ServerDeviceData = _find_server_by_ip(
+						relay_ip.ip_to_string().split("/")[0]
+					)
 					if server:
 						# The router's own IP on this interface is the client's default gateway.
-						var router_iface: NetworkInterface = peer_device.get_interface(peer_iface_id)
+						var router_iface: NetworkInterface = peer_device.get_interface(
+							peer_iface_id
+						)
 						if router_iface and router_iface.ip:
 							var gateway_ip: String = router_iface.ip.ip_to_string().split("/")[0]
 							var pool: DHCPService = server.handle_dhcp_relay_request(gateway_ip)
@@ -280,7 +308,11 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 
 
 ## Applies a successful DHCP response to the client device's runtime state.
-func _apply_dhcp_response(device: DeviceData, iface: NetworkInterface, cfg: Dictionary) -> Dictionary:
+func _apply_dhcp_response(
+	device: DeviceData,
+	iface: NetworkInterface,
+	cfg: Dictionary,
+) -> Dictionary:
 	iface.export_ip_address = cfg.get("ip_address", "")
 	iface.export_subnet_mask = cfg.get("subnet_mask", "")
 	iface.initialize_ip_from_export()
@@ -306,6 +338,7 @@ func _find_server_by_ip(target_ip: String) -> ServerDeviceData:
 				return device
 	return null
 
+
 func request_dns_resolve(client_device_id: String, domain: String) -> String:
 	var client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
 	if not client_device:
@@ -322,6 +355,7 @@ func request_dns_resolve(client_device_id: String, domain: String) -> String:
 		return ""
 	return dns_server.handle_dns_request(domain)
 
+
 func request_web(client_device_id: String, target_ip: String, is_https: bool) -> Dictionary:
 	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
 	if not _client_device:
@@ -333,17 +367,20 @@ func request_web(client_device_id: String, target_ip: String, is_https: bool) ->
 
 	return server.handle_web_request(target_ip, is_https)
 
+
 func request_ftp_login(target_ip: String, username: String, password: String) -> Dictionary:
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
 	return server.handle_ftp_login(username, password)
 
+
 func request_samba_login(target_ip: String, username: String, password: String) -> Dictionary:
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
 	return server.handle_samba_login(username, password)
+
 
 func request_mail_login(target_ip: String, username: String, password: String) -> Dictionary:
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)

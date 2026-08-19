@@ -9,5 +9,5 @@ script = ExtResource("3_ik6wq")
 device_a = ExtResource("1_aw1y5")
 device_b = ExtResource("2_r2ude")
 interface_id_a = "fa0/0"
-interface_id_b = "fa0/0"
+interface_id_b = "fa0/1"
 metadata/_custom_type_script = "uid://bi6dgcqfra5ai"

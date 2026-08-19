@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CableData" format=3 uid="uid://r6ada3xyupk6"]
 
-[ext_resource type="Resource" uid="uid://b5cp67qt1tbgw" path="res://resources/chapter/chapter1/correct_config/computers/sales/computer1/computer1.tres" id="1_vby51"]
+[ext_resource type="Resource" uid="uid://dgr0b5wiij01n" path="res://resources/chapter/chapter1/correct_config/computers/accounting/computer11/computer11.tres" id="1_vby51"]
 [ext_resource type="Resource" uid="uid://dalbm2wnn77mu" path="res://resources/chapter/chapter1/correct_config/switches/switch3/switch3.tres" id="2_5bh0a"]
 [ext_resource type="Script" uid="uid://bi6dgcqfra5ai" path="res://components/cable_data/cable_data.gd" id="3_wx4g3"]
 

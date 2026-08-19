@@ -57,11 +57,14 @@ func setup_device() -> void:
 	for interface in interfaces:
 		interface.initialize_ip_from_export()
 
+
 func is_package_installed(package_name: String) -> bool:
 	return installed_packages.has(package_name)
 
+
 func get_interface(_interface_id: String) -> NetworkInterface:
 	return interfaces[0]
+
 
 func handle_dhcp_request(mac: String, interface_id: String) -> Dictionary:
 	if dhcp_service == ServiceState.OFF:
@@ -78,6 +81,7 @@ func handle_dhcp_relay_request(ip_address: String) -> DHCPService:
 	for pool in dhcp_configuration:
 		if pool != null and pool.default_gateway == ip_address:
 			return pool
+			print_debug("DHCP Relay: Found matching pool for IP " + ip_address)
 	return null
 
 
@@ -247,11 +251,7 @@ func verify_configuration(runtime_device_configuration: DeviceData) -> Dictionar
 	var gateway_result = _verify_gateway(runtime_server.default_gateway)
 	result["dns"] = dns_result
 	result["gateway"] = gateway_result
-	is_correct = (
-			is_correct
-			and dns_result.status
-			and gateway_result.status
-	)
+	is_correct = (is_correct and dns_result.status and gateway_result.status)
 
 	# Service verification
 	var services := {
@@ -309,36 +309,27 @@ func verify_configuration(runtime_device_configuration: DeviceData) -> Dictionar
 		result[service_name] = _verify_service(data[0], data[1], data[2], data[3])
 		is_correct = is_correct and result[service_name].status
 	result["status"] = is_correct
-	return {
-		device_id: result
-	}
+	return { device_id: result }
 
 
 # Verify gateway
 func _verify_gateway(runtime_ip_gateway: String) -> Dictionary:
-	var result: bool = (
-			default_gateway == runtime_ip_gateway
-	)
-	return {
-		"correct": default_gateway,
-		"value": runtime_ip_gateway,
-		"status": result,
-	}
+	var result: bool = (default_gateway == runtime_ip_gateway)
+	return { "correct": default_gateway, "value": runtime_ip_gateway, "status": result }
 
 
 # Verify DNS server
 func _verify_dns(runtime_ip_dns: String) -> Dictionary:
-	var result: bool = (
-			dns_server == runtime_ip_dns
-	)
-	return {
-		"correct": dns_server,
-		"value": runtime_ip_dns,
-		"status": result,
-	}
+	var result: bool = (dns_server == runtime_ip_dns)
+	return { "correct": dns_server, "value": runtime_ip_dns, "status": result }
 
 
-func _verify_service(c_state: ServiceState, p_state: ServiceState, c_configs: Array, p_configs: Array) -> Dictionary:
+func _verify_service(
+	c_state: ServiceState,
+	p_state: ServiceState,
+	c_configs: Array,
+	p_configs: Array,
+) -> Dictionary:
 	var result := {
 		"status": c_state == p_state,
 		"service_state": {
@@ -362,22 +353,26 @@ func _verify_service(c_state: ServiceState, p_state: ServiceState, c_configs: Ar
 					break
 
 		var verification = (
-				c_service.verify_configuration(matched_service)
-				if matched_service
-				else c_service.verify_configuration()
+			c_service.verify_configuration(matched_service)
+			if matched_service
+			else c_service.verify_configuration()
 		)
 		result["details"].merge(verification, true)
 		if c_service is DHCPService:
 			result["status"] = result["status"] and verification[verification.keys()[0]]["status"]
 		elif c_service is WebService:
 			result["status"] = (
-				result["status"] 
-				and verification["http_state"]["status"] 
+				result["status"] and verification["http_state"]["status"]
 				and verification["https_state"]["status"]
 			)
 			for vh_name in verification["virtual_hosts"]:
-				result["status"] = result["status"] and verification["virtual_hosts"][vh_name]["status"]
-		elif c_service is FTPService or c_service is RemoteService or c_service is SambaService or c_service is MariaDBService or c_service is MailService:
+				result["status"] = (
+					result["status"] and verification["virtual_hosts"][vh_name]["status"]
+				)
+		elif (
+			c_service is FTPService or c_service is RemoteService or c_service is SambaService
+			or c_service is MariaDBService or c_service is MailService
+		):
 			result["status"] = result["status"] and verification["status"]
 		else:
 			for key in verification:
