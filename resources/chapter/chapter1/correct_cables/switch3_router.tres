@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="CableData" format=3 uid="uid://ce0mltpbrsjum"]
 
 [ext_resource type="Resource" uid="uid://dalbm2wnn77mu" path="res://resources/chapter/chapter1/correct_config/switches/switch3/switch3.tres" id="1_7bcr7"]
-[ext_resource type="Resource" uid="uid://d3ql311cd0afs" path="res://resources/chapter/chapter1/missions/DHCP/runtime_config/routers/router0/router0.tres" id="2_ec2go"]
+[ext_resource type="Resource" uid="uid://dthfcfx5mtjoo" path="res://resources/chapter/chapter1/correct_config/routers/router0/router0.tres" id="2_7bcr7"]
 [ext_resource type="Script" uid="uid://bi6dgcqfra5ai" path="res://components/cable_data/cable_data.gd" id="3_ylrp3"]
 
 [resource]
 script = ExtResource("3_ylrp3")
 device_a = ExtResource("1_7bcr7")
-device_b = ExtResource("2_ec2go")
+device_b = ExtResource("2_7bcr7")
 interface_id_a = "fa0/0"
 interface_id_b = "fa0/3"
 metadata/_custom_type_script = "uid://bi6dgcqfra5ai"

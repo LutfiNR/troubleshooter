@@ -202,7 +202,6 @@ libraries/ = SubResource("AnimationLibrary_ve7px")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=474593265]
 zoom = Vector2(2, 2)
-position_smoothing_enabled = true
 script = ExtResource("4_viyt1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1487841205]
