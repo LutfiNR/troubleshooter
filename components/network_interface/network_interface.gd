@@ -29,17 +29,17 @@ enum IPAllocationMode {
 var has_connection: bool = false
 var ip: IPAddress
 
+
 func initialize_ip_from_export() -> void:
 	if layer == InterfaceLayer.SECONDLAYER:
 		ip = null
 		return
 
-	if ip_allocation_mode == IPAllocationMode.DHCP:
-		ip = IPAddress.new("0.0.0.0/0")
-		return
-
 	if export_ip_address == "":
-		ip = IPAddress.new("192.168.1.1/24")
+		if ip_allocation_mode == IPAllocationMode.DHCP:
+			ip = IPAddress.new("0.0.0.0/0")
+		else:
+			ip = IPAddress.new("192.168.1.1/24")
 	else:
 		ip = IPAddress.new(export_ip_address, -1)
 		if export_subnet_mask != "":
@@ -47,11 +47,13 @@ func initialize_ip_from_export() -> void:
 			if prefix >= 0:
 				ip.prefix = prefix
 
-func is_up()->bool:
+
+func is_up() -> bool:
 	if state == InterfaceState.UP:
 		return true
 	else:
 		return false
+
 
 func verify_config(runtime_interface_config: NetworkInterface) -> Dictionary:
 	var runtime_id = runtime_interface_config.id
@@ -64,9 +66,15 @@ func verify_config(runtime_interface_config: NetworkInterface) -> Dictionary:
 	var res_mac = _verify(mac_address, runtime_mac)
 	var res_layer = _verify(InterfaceLayer.keys()[layer], InterfaceLayer.keys()[runtime_layer])
 	var res_state = _verify(InterfaceState.keys()[state], InterfaceState.keys()[runtime_state])
-	var res_allocation_mode = _verify(IPAllocationMode.keys()[ip_allocation_mode], IPAllocationMode.keys()[runtime_allocation_mode])
+	var res_allocation_mode = _verify(
+		IPAllocationMode.keys()[ip_allocation_mode],
+		IPAllocationMode.keys()[runtime_allocation_mode],
+	)
 
-	var overall_ok: bool = res_id["status"] and res_mac["status"] and res_layer["status"] and res_state["status"] and res_allocation_mode["status"]
+	var overall_ok: bool = (
+		res_id["status"] and res_mac["status"] and res_layer["status"]
+		and res_state["status"] and res_allocation_mode["status"]
+	)
 
 	# Layer 3 specific verification
 	var res_ip: Dictionary = { }
@@ -81,7 +89,8 @@ func verify_config(runtime_interface_config: NetworkInterface) -> Dictionary:
 			overall_ok = overall_ok and res_ip["status"]
 		else:
 			res_ip = {
-				"value": runtime_interface_config.ip.ip_to_string() if runtime_interface_config.ip != null else "null",
+				"value": runtime_interface_config.ip.ip_to_string() if runtime_interface_config.ip
+				!= null else "null",
 				"correct": ip.ip_to_string() if ip != null else "null",
 				"status": false,
 				"error": "IP not initialized",

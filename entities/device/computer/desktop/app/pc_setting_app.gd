@@ -2,6 +2,7 @@ extends Control
 
 @export_group("General Inputs")
 @export var host_name_input: LineEdit
+@export var interface_label: Label
 @export var network_status_label: Label
 
 @export_group("Network Inputs")
@@ -36,15 +37,17 @@ func _populate_ui() -> void:
 	host_name_input.text = device.hostname
 	gateway_input.text = device.default_gateway
 	primary_dns_input.text = device.dns_server
-	var is_dhcp = (device.get_interface("").ip_allocation_mode == NetworkInterface.IPAllocationMode.DHCP)
-	var main_iface = device.get_interface("")
+	var is_dhcp = (
+		device.get_interface().ip_allocation_mode == NetworkInterface.IPAllocationMode.DHCP
+	)
+	var main_iface = device.get_interface()
 	if main_iface:
+		interface_label.text = main_iface.id
 		if is_dhcp:
 			get_ip_from_dhcp()
 		else:
 			ip_address_input.text = main_iface.export_ip_address
 			subnet_mask_input.text = main_iface.export_subnet_mask
-
 		if main_iface.state == NetworkInterface.InterfaceState.UP:
 			network_status_label.text = "Plugged"
 			network_status_label.add_theme_color_override("font_color", Color(0.0, 0.541, 0.0, 1.0))
@@ -80,23 +83,23 @@ func _on_save_button_pressed() -> void:
 	device.dns_server = primary_dns_input.text.strip_edges()
 
 	if ip_set_mode_input.button_pressed:
-		device.get_interface("").ip_allocation_mode = NetworkInterface.IPAllocationMode.DHCP
+		device.get_interface().ip_allocation_mode = NetworkInterface.IPAllocationMode.DHCP
 	else:
-		device.get_interface("").ip_allocation_mode = NetworkInterface.IPAllocationMode.STATIC
+		device.get_interface().ip_allocation_mode = NetworkInterface.IPAllocationMode.STATIC
 
-	var main_iface = device.get_interface("")
+	var main_iface = device.get_interface()
 	if main_iface:
 		main_iface.export_ip_address = ip_address_input.text.strip_edges()
 		main_iface.export_subnet_mask = subnet_mask_input.text.strip_edges()
 		main_iface.initialize_ip_from_export()
-	
+
 	device.interfaces[0] = main_iface
 	NetworkManager.update_device_data(target_device_id, device)
 
 
 func get_ip_from_dhcp():
 	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
-	var main_iface = device.get_interface("")
+	var main_iface = device.get_interface()
 
 	if not main_iface.is_up():
 		_dhcp_failed_request()
@@ -105,8 +108,8 @@ func get_ip_from_dhcp():
 	var response = NetworkManager.request_dhcp(target_device_id, main_iface.id)
 
 	if response.success:
-		ip_address_input.text = device.get_interface("").export_ip_address
-		subnet_mask_input.text = device.get_interface("").export_subnet_mask
+		ip_address_input.text = device.get_interface().export_ip_address
+		subnet_mask_input.text = device.get_interface().export_subnet_mask
 		gateway_input.text = device.default_gateway
 		primary_dns_input.text = device.dns_server
 		network_status_label.text = "DHCP Success"

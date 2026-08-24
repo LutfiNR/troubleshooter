@@ -33,7 +33,9 @@ DialogueManager="*uid://c3rodes2l3gxb"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
@@ -42,10 +44,6 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [global_group]
 
 player=""
-
-[gui]
-
-theme/custom_font="uid://cb7ts27d4xuqr"
 
 [input]
 

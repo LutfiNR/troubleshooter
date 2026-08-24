@@ -6,14 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://du03fqgatn66o" path="res://ui/timer.tscn" id="5_fkugw"]
 [ext_resource type="Texture2D" uid="uid://cka60odb3oi5k" path="res://assets/UI/player_stats/player_stats.png" id="6_qiwj3"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="7_26q78"]
-[ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="8_bectd"]
 [ext_resource type="Script" uid="uid://dr2uukvwqpl14" path="res://ui/mission/button_container.gd" id="8_yqrof"]
-[ext_resource type="Texture2D" uid="uid://cms0y1e4ysbh2" path="res://assets/UI/web_icon.png" id="9_wvtmh"]
 [ext_resource type="Script" uid="uid://co3y8tt6qsgiv" path="res://entities/player/player_movement.gd" id="10_ve7px"]
 [ext_resource type="PackedScene" uid="uid://bgkh0aflvfep" path="res://world/roadmap_chapter.tscn" id="10_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://yahg57jtrsjy" path="res://ui/mission/mission.tscn" id="11_a1qjk"]
 [ext_resource type="PackedScene" uid="uid://wqbtuuhvfkpw" path="res://ui/check_progression_panel.tscn" id="12_a1qjk"]
+[ext_resource type="Texture2D" uid="uid://b1w8kkpowwuin" path="res://assets/UI/Button/chapter_mission_button/chapter_mission_button.png" id="13_b2kln"]
+[ext_resource type="Texture2D" uid="uid://cpgvcyln1ps37" path="res://assets/UI/Button/chapter_mission_button/chapter_mission_button_1.png" id="14_3wlsy"]
 [ext_resource type="Script" uid="uid://34w8u555rn6x" path="res://ui/mission/progress_mission.gd" id="14_afbqv"]
+[ext_resource type="Texture2D" uid="uid://ck0wb25g8b0vi" path="res://assets/UI/Button/detail_mission_button/detail_mission_button.png" id="15_b2kln"]
+[ext_resource type="Texture2D" uid="uid://dcxbm5ij6h32y" path="res://assets/UI/Button/detail_mission_button/detail_mission_button_1.png" id="16_we0b7"]
+[ext_resource type="Texture2D" uid="uid://clwj1o3f64lu5" path="res://assets/UI/Button/check_mission_button/check_mission_button.png" id="17_we0b7"]
+[ext_resource type="Texture2D" uid="uid://cw7ksjj24wtlu" path="res://assets/UI/Button/check_mission_button/check_mission_button_1.png" id="18_mtric"]
+[ext_resource type="Texture2D" uid="uid://cc5p53shcvdr8" path="res://assets/UI/Button/check_mission_button/check_mission_button_disabled.png" id="19_we0b7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
 size = Vector2(10, 14)
@@ -170,14 +175,11 @@ _data = {
 &"walk_up": SubResource("Animation_qb0yx")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_afbqv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afbqv"]
+bg_color = Color(0.9955804, 0.99558026, 0.99558026, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx6sm"]
 bg_color = Color(0.05882353, 0.105882354, 0.2, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="Player" type="CharacterBody2D" unique_id=196673383 groups=["player"]]
 y_sort_enabled = true
@@ -207,126 +209,93 @@ script = ExtResource("4_viyt1")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1487841205]
 
 [node name="Timer" parent="CanvasLayer" unique_id=1616835283 instance=ExtResource("5_fkugw")]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1073717267]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1270.0
-offset_top = 16.0
-offset_right = -1015.0
-offset_bottom = 101.0
-grow_horizontal = 0
-texture = ExtResource("6_qiwj3")
+offset_top = 13.0
+offset_bottom = 45.0
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=1955042892]
-offset_left = 90.0
-offset_top = 22.0
-offset_right = 260.0
-offset_bottom = 52.0
-theme_override_styles/background = SubResource("StyleBoxEmpty_afbqv")
+offset_left = 101.0
+offset_top = 26.0
+offset_right = 269.0
+offset_bottom = 56.0
+theme_override_styles/background = SubResource("StyleBoxFlat_afbqv")
 theme_override_styles/fill = SubResource("StyleBoxFlat_gx6sm")
-value = 100.0
+value = 82.0
 script = ExtResource("14_afbqv")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=1073717267]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 275.0
+offset_bottom = 105.0
+texture = ExtResource("6_qiwj3")
+
 [node name="PopupContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1252462743]
-visible = false
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 114.0
-offset_right = 455.0
-offset_bottom = -18.0
-grow_vertical = 2
+offset_left = 20.0
+offset_top = 124.0
+offset_right = 480.0
+offset_bottom = 704.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=710199721]
-offset_left = 90.0
-offset_top = 61.0
-offset_right = 345.0
+[node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer" unique_id=710199721 node_paths=PackedStringArray("popup_container", "mission_button", "check_progress_button", "roadmap_button")]
+offset_left = 102.0
+offset_top = 69.0
+offset_right = 278.0
 offset_bottom = 101.0
+theme_override_constants/separation = 6
 script = ExtResource("8_yqrof")
 roadmap_popup_scene = ExtResource("10_wvtmh")
 mission_popup_scene = ExtResource("11_a1qjk")
 check_popup_scene = ExtResource("12_a1qjk")
+popup_container = NodePath("../PopupContainer")
+mission_button = NodePath("MissionButton")
+check_progress_button = NodePath("CheckProgressButton")
+roadmap_button = NodePath("RoadmapButton")
 
 [node name="RoadmapButton" type="TextureButton" parent="CanvasLayer/ButtonContainer" unique_id=1582589157]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("7_26q78")
 toggle_mode = true
-texture_normal = ExtResource("8_bectd")
-texture_pressed = ExtResource("8_bectd")
-texture_hover = ExtResource("8_bectd")
+texture_normal = ExtResource("13_b2kln")
+texture_pressed = ExtResource("13_b2kln")
+texture_hover = ExtResource("14_3wlsy")
+texture_focused = ExtResource("14_3wlsy")
 stretch_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ButtonContainer/RoadmapButton" unique_id=632942185]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = -7.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_wvtmh")
 
 [node name="MissionButton" type="TextureButton" parent="CanvasLayer/ButtonContainer" unique_id=1074726157]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 theme = ExtResource("7_26q78")
 toggle_mode = true
-texture_normal = ExtResource("8_bectd")
-texture_pressed = ExtResource("8_bectd")
-texture_hover = ExtResource("8_bectd")
+texture_normal = ExtResource("15_b2kln")
+texture_pressed = ExtResource("15_b2kln")
+texture_hover = ExtResource("16_we0b7")
+texture_focused = ExtResource("16_we0b7")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ButtonContainer/MissionButton" unique_id=942856860]
+[node name="CheckProgressButton" type="TextureButton" parent="CanvasLayer/ButtonContainer" unique_id=1109078369]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("7_26q78")
+toggle_mode = true
+texture_normal = ExtResource("17_we0b7")
+texture_pressed = ExtResource("17_we0b7")
+texture_hover = ExtResource("18_mtric")
+texture_disabled = ExtResource("19_we0b7")
+texture_focused = ExtResource("17_we0b7")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/ButtonContainer/CheckProgressButton" unique_id=956068990]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = 7.0
-offset_right = -7.0
-offset_bottom = -7.0
+offset_left = 27.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_wvtmh")
-
-[node name="CheckProgressButton" type="TextureButton" parent="CanvasLayer/ButtonContainer" unique_id=1109078369]
-custom_minimum_size = Vector2(87, 40)
-layout_mode = 2
-theme = ExtResource("7_26q78")
-toggle_mode = true
-texture_normal = ExtResource("8_bectd")
-texture_pressed = ExtResource("8_bectd")
-texture_hover = ExtResource("8_bectd")
-stretch_mode = 0
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ButtonContainer/CheckProgressButton" unique_id=1178605667]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 12.0
-offset_top = -14.0
-offset_right = 40.0
-offset_bottom = 14.0
-grow_vertical = 2
-texture = ExtResource("9_wvtmh")
-
-[node name="Label" type="Label" parent="CanvasLayer/ButtonContainer/CheckProgressButton" unique_id=956068990]
-layout_mode = 0
-offset_left = 47.0
-offset_top = 4.0999985
-offset_right = 87.0
-offset_bottom = 36.1
-theme_override_font_sizes/font_size = 24
-text = "3/3"
+theme_override_font_sizes/font_size = 16
+text = "10/10"
 vertical_alignment = 1
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/RoadmapButton" to="CanvasLayer/ButtonContainer" method="_on_roadmap_button_pressed"]

@@ -4,37 +4,47 @@ extends HBoxContainer
 @export var mission_popup_scene: PackedScene
 @export var check_popup_scene: PackedScene
 
-@onready var popup_container: VBoxContainer = $"../PopupContainer"
+@export var popup_container: VBoxContainer
+@export var mission_button: TextureButton
+@export var check_progress_button: TextureButton
+@export var roadmap_button: TextureButton
 
 var check_open_limit: int = 0
 var check_open_count: int = 0
 var current_popup_scene: PackedScene = null
 
+
 func _ready() -> void:
 	GameManager.mission_loaded.connect(_on_mission_loaded)
 	GameManager.chapter_loaded.connect(_on_chapter_loaded)
 	GameManager.mission_completed.connect(_on_mission_completed_ui)
-	$MissionButton.hide()
-	$CheckProgressButton.hide()
+	mission_button.hide()
+	check_progress_button.hide()
+
 
 func _on_chapter_loaded(_chapter: ChapterData) -> void:
 	hide_popup()
-	$MissionButton.hide()
-	$CheckProgressButton.hide()
+	mission_button.hide()
+	check_progress_button.hide()
+
 
 func _on_mission_completed_ui(_mission_id: String) -> void:
 	hide_popup()
-	$MissionButton.hide()
-	$CheckProgressButton.hide()
+	mission_button.hide()
+	check_progress_button.hide()
+	roadmap_button.texture_normal = load("uid://cpwvb08juo4rl")
+	roadmap_button.texture_hover = load("uid://bfoslpav2vde3")
+
 
 func _on_mission_loaded(mission: MissionData) -> void:
 	if mission.title == "Tutorial":
 		return
 	check_open_limit = mission.check_progress_limit
 	check_open_count = 0
-	$MissionButton.show()
-	$CheckProgressButton.show()
+	mission_button.show()
+	check_progress_button.show()
 	update_ui()
+
 
 func show_popup(scene: PackedScene) -> void:
 	hide_popup()
@@ -43,33 +53,40 @@ func show_popup(scene: PackedScene) -> void:
 		current_popup_scene = scene
 		popup_container.show()
 
+
 func hide_popup() -> void:
 	for child in popup_container.get_children():
 		child.queue_free()
 	current_popup_scene = null
 	popup_container.hide()
 
+
 func has_same_popup(scene: PackedScene) -> bool:
 	return current_popup_scene == scene
+
 
 func _on_roadmap_button_pressed() -> void:
 	if has_same_popup(roadmap_popup_scene):
 		hide_popup()
 	else:
+		roadmap_button.texture_normal = load("uid://b1w8kkpowwuin")
+		roadmap_button.texture_hover = load("uid://cpgvcyln1ps37")
 		show_popup(roadmap_popup_scene)
-		if not GameManager.tutorial_completed.has("roadmap"):
+		if not GameManager.game_data.tutorial_completed.has("roadmap"):
 			DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "roadmap")
-			GameManager.tutorial_completed.append("roadmap")
+			GameManager.tutorial_completed.emit("roadmap")
+
 
 func _on_mission_button_pressed() -> void:
 	if has_same_popup(mission_popup_scene):
 		hide_popup()
 	else:
 		show_popup(mission_popup_scene)
-		if not GameManager.tutorial_completed.has("mission"):
+		if not GameManager.game_data.tutorial_completed.has("mission"):
 			DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "mission")
-			GameManager.tutorial_completed.append("mission")
-			
+			GameManager.tutorial_completed.emit("mission")
+
+
 func _on_check_progress_button_pressed() -> void:
 	if has_same_popup(check_popup_scene):
 		hide_popup()
@@ -79,9 +96,14 @@ func _on_check_progress_button_pressed() -> void:
 	check_open_count += 1
 	update_ui()
 	show_popup(check_popup_scene)
-	if not GameManager.tutorial_completed.has("check"):
+	if not GameManager.game_data.tutorial_completed.has("check"):
 		DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "check")
-		GameManager.tutorial_completed.append("check")
-	
+		GameManager.tutorial_completed.emit("check")
+
+
 func update_ui() -> void:
-	$CheckProgressButton/Label.text = str(check_open_count) + "/" + str(check_open_limit)
+	if check_open_count >= check_open_limit:
+		check_progress_button.disabled = true
+	check_progress_button.get_node("Label").text = str(check_open_count) + "/" + str(
+		check_open_limit
+	)

@@ -17,9 +17,9 @@ Kirin: Sekarang coba mendekat ke arah computer.
 Kirin: Bagus. Sekarang mari kita pelajari cara berinteraksi dengan perangkat.
 Kirin: Dekati sebuah perangkat (Device), lalu klik perangkat tersebut dengan tombol kiri mouse untuk membukanya.
 Kirin: Setelah jendela perangkat terbuka, Anda akan melihat tiga tombol.
-Kirin: [img]res://assets/PopupActionDevice/popupobject_0001.png[/img] digunakan untuk menyalakan atau mematikan perangkat.
-Kirin: [img]res://assets/PopupActionDevice/popupobject_0002.png[/img] digunakan untuk membuka tampilan Desktop perangkat dan melakukan konfigurasi perangkat lunak.
-Kirin: [img]res://assets/PopupActionDevice/popupobject_0003.png[/img] digunakan untuk membuka tampilan Physical, tempat Anda dapat melihat kondisi fisik perangkat, seperti port dan koneksi kabel.
+Kirin: [img width=32 height=32]res://assets/PopupActionDevice/popupobject_0001.png[/img] digunakan untuk menyalakan atau mematikan perangkat.
+Kirin: [img width=32 height=32 ]res://assets/PopupActionDevice/popupobject_0002.png[/img] digunakan untuk membuka tampilan Desktop perangkat dan melakukan konfigurasi perangkat lunak.
+Kirin: [img width=32 height=32 ]res://assets/PopupActionDevice/popupobject_0003.png[/img] digunakan untuk membuka tampilan Physical, tempat Anda dapat melihat kondisi fisik perangkat, seperti port dan koneksi kabel.
 Kirin: Cobalah masing-masing tombol agar Anda memahami fungsinya sebelum melanjutkan ke tutorial berikutnya.
 => END
 

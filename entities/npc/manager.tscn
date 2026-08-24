@@ -35,9 +35,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
 
 [sub_resource type="Animation" id="Animation_uuhqk"]
 length = 0.001
@@ -115,7 +112,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.53588665, 0.39229205),
 "update": 0,
-"values": [Vector2(0, -28), Vector2(0, -32)]
+"values": [Vector2(-8, -28), Vector2(-8, -32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgscp"]
@@ -165,10 +162,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.5
-offset_top = -6.25
-offset_right = 14.5
-offset_bottom = 9.75
+offset_left = -5.0
+offset_top = -8.25
+offset_right = 15.0
+offset_bottom = 14.75
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)

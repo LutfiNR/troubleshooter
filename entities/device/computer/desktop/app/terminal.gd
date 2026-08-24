@@ -91,14 +91,25 @@ func _cmd_ipconfig() -> void:
 	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
 	if not device:
 		return
-	var main_iface = device.get_main_interface()
+	var main_iface = device.get_interface("eth0")
 
 	_print_line("\nEthernet adapter Local Area Connection:")
 	if main_iface:
-		_print_line("   IPv4 Address. . . : " + (main_iface.export_ip_address if main_iface.export_ip_address != "" else "0.0.0.0"))
-		_print_line("   Subnet Mask . . . : " + (main_iface.export_subnet_mask if main_iface.export_subnet_mask != "" else "0.0.0.0"))
-	_print_line("   Default Gateway . : " + (device.default_gateway if device.default_gateway != "" else "0.0.0.0"))
-	_print_line("   DNS Server. . . . : " + (device.dns_server if device.dns_server != "" else "0.0.0.0\n"))
+		_print_line(
+			"   IPv4 Address. . . : "
+			+ (main_iface.export_ip_address if main_iface.export_ip_address != "" else "0.0.0.0")
+		)
+		_print_line(
+			"   Subnet Mask . . . : "
+			+ (main_iface.export_subnet_mask if main_iface.export_subnet_mask != "" else "0.0.0.0")
+		)
+	_print_line(
+		"   Default Gateway . : "
+		+ (device.default_gateway if device.default_gateway != "" else "0.0.0.0")
+	)
+	_print_line(
+		"   DNS Server. . . . : " + (device.dns_server if device.dns_server != "" else "0.0.0.0\n")
+	)
 
 
 func _resolve_target(target: String) -> String:
@@ -151,6 +162,7 @@ func _cmd_ping(args: Array) -> void:
 	if dst_device_id != "":
 		var result: Dictionary = NetworkManager.check_connectivity(target_device_id, dst_device_id)
 		is_reachable = result.get("reachable", false)
+		print_debug("Ping result: %s" % result)
 	await get_tree().create_timer(0.5).timeout
 	for i in range(4):
 		if is_reachable:

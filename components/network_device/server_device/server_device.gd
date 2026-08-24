@@ -92,7 +92,6 @@ func handle_dns_request(domain: String) -> String:
 	for dns_config in dns_configuration:
 		if dns_config != null:
 			var result = dns_config.resolve(domain)
-			print_debug(result)
 			if result != "":
 				return result
 	return ""

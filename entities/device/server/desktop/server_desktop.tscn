@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="13_fqsl8"]
 [ext_resource type="Script" uid="uid://cvim00ug7ugmq" path="res://entities/device/server/desktop/app/software.gd" id="13_q3fwd"]
 [ext_resource type="Script" uid="uid://bc7pw1yrw22ls" path="res://entities/device/server/desktop/app/dhcp.gd" id="14_fw4op"]
-[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/setting_icon.png" id="14_srt4w"]
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="14_srt4w"]
 [ext_resource type="Script" uid="uid://djpse1ca4yalt" path="res://entities/device/server/desktop/app/web.gd" id="15_q3fwd"]
 [ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="15_tvplv"]
 [ext_resource type="Script" uid="uid://bgsykipk5ul5g" path="res://entities/device/server/desktop/app/dns.gd" id="16_fw4op"]

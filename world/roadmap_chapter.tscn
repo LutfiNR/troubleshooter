@@ -9,7 +9,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lu47b"]
 texture = ExtResource("1_j6cv4")
 texture_margin_left = 10.024197
-texture_margin_top = 25.970413
+texture_margin_top = 38.0
 texture_margin_right = 10.001567
 texture_margin_bottom = 9.989931
 
@@ -31,13 +31,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 21.0
-offset_top = 34.0
+offset_top = 39.0
 offset_right = -21.0
-offset_bottom = 66.0
+offset_bottom = 87.0
 grow_horizontal = 2
 theme = ExtResource("2_xsq8h")
 theme_override_fonts/font = ExtResource("3_bx4ay")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 48
 text = "ROADMAP"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -48,7 +48,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 21.0
-offset_top = 80.0
+offset_top = 97.0
 offset_right = -21.0
 offset_bottom = -19.0
 grow_horizontal = 2

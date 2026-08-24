@@ -11,6 +11,7 @@ func _ready() -> void:
 	NetworkManager.devices_initialized.connect(_on_devices_initialized)
 	if not NetworkManager.runtime_cables.is_empty():
 		_initialize_cable_data()
+		_update_visual()
 
 
 func _on_devices_initialized() -> void:

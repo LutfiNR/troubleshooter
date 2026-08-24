@@ -13,12 +13,14 @@ const FRAME_ON_HOVER = 3
 @export var desktop_scene: PackedScene
 
 var player_in_range: bool = false
-var device_data: RouterDeviceData
+var device_data: RouterDeviceData = null
 
 
 func _ready() -> void:
 	NetworkManager.device_updated.connect(_on_device_updated)
 	device_data = NetworkManager.get_runtime_device_data_by_id(device_id)
+	_update_visual()
+
 
 func interact() -> void:
 	if not player_in_range:
@@ -28,6 +30,7 @@ func interact() -> void:
 			await action_popup.close()
 		else:
 			await action_popup.open()
+
 
 func _update_visual() -> void:
 	if device_data == null or sprite == null:

@@ -6,11 +6,27 @@
 [ext_resource type="FontFile" uid="uid://cehw4eo62toaf" path="res://assets/Font/pixel_operator/PixelOperator8-Bold.ttf" id="3_5klac"]
 [ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="3_arv2f"]
 [ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="4_5klac"]
+[ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="4_tf5ef"]
 [ext_resource type="Texture2D" uid="uid://cjglm5dy75rjf" path="res://assets/UI/MainMenu/main_menu_bg_0005.png" id="5_lsdqh"]
+[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="5_qao3l"]
 [ext_resource type="Texture2D" uid="uid://jaqmxgx1eytf" path="res://assets/UI/MainMenu/main_menu_bg_0006.png" id="6_jiymt"]
 [ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="7_bgtsx"]
 [ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="8_kaxbk"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_arv2f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2jyo"]
+texture = ExtResource("5_qao3l")
+texture_margin_left = 12.0
+texture_margin_top = 18.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lknku"]
+texture = ExtResource("4_tf5ef")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 18.0
 
 [sub_resource type="Animation" id="Animation_0nobx"]
 length = 0.001
@@ -83,6 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lsdqh")
 start_new_game_scene = &"uid://dl40m452oln6v"
+office_scene = &"uid://efh4iyv58tmo"
 training_scene = &"uid://dga8wf5ce0q3x"
 
 [node name="Background" type="TextureRect" parent="." unique_id=1117831180]
@@ -93,46 +110,93 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_t7e0r")
+stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1849254953]
-layout_mode = 0
-offset_left = 127.0
-offset_top = 249.0
-offset_right = 496.0
-offset_bottom = 599.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -112.0
+offset_right = -131.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("9_arv2f")
 theme_override_constants/separation = 24
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=374582776]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme = ExtResource("9_arv2f")
+theme_override_colors/font_color = Color(0.0059792562, 0.054681547, 0.0973072, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lknku")
 text = "START NEW GAME"
 
 [node name="LoadGameButton" type="Button" parent="VBoxContainer" unique_id=1741449674]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme = ExtResource("9_arv2f")
+theme_override_colors/font_color = Color(0.0059792562, 0.054681547, 0.0973072, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lknku")
 text = "LOAD GAME"
 
 [node name="LOButton" type="Button" parent="VBoxContainer" unique_id=856993119]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme = ExtResource("9_arv2f")
+theme_override_colors/font_color = Color(0.0059792562, 0.054681547, 0.0973072, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lknku")
 text = "LEARNING OBJECTIVE"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=488295873]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-theme = ExtResource("9_arv2f")
+theme_override_colors/font_color = Color(0.0059792562, 0.054681547, 0.0973072, 1)
+theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lknku")
 text = "CREDITS"
 
 [node name="Title" type="Label" parent="." unique_id=1932912899]
 layout_mode = 1
-offset_left = 231.0
-offset_top = 74.0
-offset_right = 1037.0
-offset_bottom = 171.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -403.0
+offset_top = -287.0
+offset_right = 403.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("9_arv2f")
 theme_override_colors/font_color = Color(0.02745098, 0.02745098, 0.09411765, 1)
 theme_override_colors/font_shadow_color = Color(0.18030342, 0.3830504, 0.57711846, 1)

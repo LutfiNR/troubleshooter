@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="1_1fm3x"]
 [ext_resource type="Script" uid="uid://cim48k04xcpdq" path="res://ui/mission/roadmap/chapter_item.gd" id="3_7osul"]
+[ext_resource type="FontFile" uid="uid://cb7ts27d4xuqr" path="res://assets/Font/pixel_operator/PixelOperator.ttf" id="4_5sow0"]
 [ext_resource type="PackedScene" uid="uid://4j2q8mpww6hm" path="res://ui/mission/roadmap/mission_item.tscn" id="4_o380i"]
 
 [node name="ChapterItem" type="VBoxContainer" unique_id=1216345336]
@@ -16,8 +17,8 @@ mission_item_scene = ExtResource("4_o380i")
 
 [node name="Title" type="Label" parent="." unique_id=1204170809]
 layout_mode = 2
-theme = ExtResource("1_1fm3x")
-theme_override_font_sizes/font_size = 26
+theme_override_fonts/font = ExtResource("4_5sow0")
+theme_override_font_sizes/font_size = 32
 text = "Text"
 horizontal_alignment = 1
 vertical_alignment = 1
