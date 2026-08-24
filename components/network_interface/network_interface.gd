@@ -89,8 +89,11 @@ func verify_config(runtime_interface_config: NetworkInterface) -> Dictionary:
 			overall_ok = overall_ok and res_ip["status"]
 		else:
 			res_ip = {
-				"value": runtime_interface_config.ip.ip_to_string() if runtime_interface_config.ip
-				!= null else "null",
+				"value": (
+					runtime_interface_config.ip.ip_to_string()
+					if runtime_interface_config.ip != null
+					else "null"
+				),
 				"correct": ip.ip_to_string() if ip != null else "null",
 				"status": false,
 				"error": "IP not initialized",

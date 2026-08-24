@@ -162,7 +162,6 @@ func _cmd_ping(args: Array) -> void:
 	if dst_device_id != "":
 		var result: Dictionary = NetworkManager.check_connectivity(target_device_id, dst_device_id)
 		is_reachable = result.get("reachable", false)
-		print_debug("Ping result: %s" % result)
 	await get_tree().create_timer(0.5).timeout
 	for i in range(4):
 		if is_reachable:

@@ -44,7 +44,8 @@ func _populate_ui() -> void:
 	if main_iface:
 		interface_label.text = main_iface.id
 		if is_dhcp:
-			get_ip_from_dhcp()
+			ip_address_input.text = main_iface.export_ip_address
+			subnet_mask_input.text = main_iface.export_subnet_mask
 		else:
 			ip_address_input.text = main_iface.export_ip_address
 			subnet_mask_input.text = main_iface.export_subnet_mask

@@ -47,7 +47,18 @@ func setup_all_devices() -> void:
 		correct_configs[key].setup_device()
 		runtime_configs[key].setup_device()
 		device_updated.emit(key, runtime_configs[key])
+	_initialize_dhcp_clients()
 	devices_initialized.emit()
+
+
+func _initialize_dhcp_clients() -> void:
+	for key in runtime_configs:
+		var device: DeviceData = runtime_configs[key]
+		if not device is ComputerDeviceData:
+			continue
+		for iface: NetworkInterface in device.interfaces:
+			if iface.ip_allocation_mode != NetworkInterface.IPAllocationMode.DHCP:
+				continue
 
 
 func update_device_data(device_id: String, device_data: Variant) -> void:
