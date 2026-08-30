@@ -59,6 +59,7 @@ func _initialize_dhcp_clients() -> void:
 		for iface: NetworkInterface in device.interfaces:
 			if iface.ip_allocation_mode != NetworkInterface.IPAllocationMode.DHCP:
 				continue
+			var response: Dictionary = request_dhcp(device.device_id, iface.id)
 
 
 func update_device_data(device_id: String, device_data: Variant) -> void:

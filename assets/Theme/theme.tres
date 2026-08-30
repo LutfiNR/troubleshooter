@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://fi7a7oxd0svy" path="res://assets/UI/Input/check_button2.png" id="4_d66b8"]
 [ext_resource type="Texture2D" uid="uid://orvqomlh03sl" path="res://assets/UI/Input/check_button3.png" id="5_hbwbd"]
 [ext_resource type="Texture2D" uid="uid://b7bdf8alhw4j2" path="res://assets/UI/Input/check_button4.png" id="6_nge8h"]
+[ext_resource type="StyleBox" uid="uid://by2jbbhtyvclo" path="res://assets/Theme/tab_bar/tab_selected.tres" id="11_hbwbd"]
+[ext_resource type="StyleBox" uid="uid://col4ixxr0kfwd" path="res://assets/Theme/tab_bar/tab_unselected.tres" id="12_nge8h"]
+[ext_resource type="StyleBox" uid="uid://c0y7netmnp8or" path="res://assets/Theme/tab_bar/tab_bar_panel.tres" id="13_nge8h"]
+[ext_resource type="StyleBox" uid="uid://c2fqw078pegec" path="res://assets/Theme/tab_bar/tab_bar_bg.tres" id="14_nwk38"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5ob3"]
 
@@ -20,6 +24,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n1r02"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ms78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76y0q"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.4509804, 0.4509804, 0.4509804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0d2s3"]
 content_margin_left = 4.0
@@ -179,26 +190,21 @@ border_width_right = 1
 border_color = Color(0.175, 0.175, 0.175, 1)
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ctyr4"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-border_width_top = 2
-border_color = Color(1, 1, 1, 0.75)
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyr7b"]
-content_margin_left = 10.0
-content_margin_top = 4.0
-content_margin_right = 10.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-border_width_left = 1
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8e7w"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(0.22790965, 0.22790968, 0.2279095, 1)
 border_width_right = 1
-border_color = Color(0.175, 0.175, 0.175, 1)
-corner_detail = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sc6al"]
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.078431375, 0.13725491, 0.22745098, 0.48235294)
 
 [resource]
 Button/font_sizes/font_size = 24
@@ -221,6 +227,10 @@ CheckButton/styles/focus = SubResource("StyleBoxEmpty_roo7c")
 CheckButton/styles/hover = SubResource("StyleBoxEmpty_rako2")
 CheckButton/styles/normal = SubResource("StyleBoxEmpty_n1r02")
 CheckButton/styles/pressed = SubResource("StyleBoxEmpty_6ms78")
+ItemList/colors/font_color = Color(0.65, 0.65, 0.65, 1)
+ItemList/font_sizes/font_size = 24
+ItemList/styles/hovered = null
+ItemList/styles/panel = SubResource("StyleBoxFlat_76y0q")
 Label/colors/font_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
@@ -296,8 +306,7 @@ TabBar/constants/h_separation = 4
 TabBar/constants/hover_switch_wait_msec = 500
 TabBar/constants/icon_max_width = 0
 TabBar/constants/outline_size = 0
-TabBar/font_sizes/font_size = 32
-TabBar/fonts/font = ExtResource("1_5x3i2")
+TabBar/font_sizes/font_size = 24
 TabBar/icons/close = SubResource("DPITexture_lu33j")
 TabBar/icons/decrement = SubResource("DPITexture_wycmq")
 TabBar/icons/decrement_highlight = SubResource("DPITexture_x2pqw")
@@ -309,5 +318,12 @@ TabBar/styles/button_pressed = SubResource("StyleBoxFlat_357y2")
 TabBar/styles/tab_disabled = SubResource("StyleBoxFlat_llqld")
 TabBar/styles/tab_focus = SubResource("StyleBoxFlat_uy2me")
 TabBar/styles/tab_hovered = SubResource("StyleBoxFlat_502fs")
-TabBar/styles/tab_selected = SubResource("StyleBoxFlat_ctyr4")
-TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_yyr7b")
+TabBar/styles/tab_selected = ExtResource("11_hbwbd")
+TabBar/styles/tab_unselected = ExtResource("12_nge8h")
+TabContainer/styles/panel = ExtResource("13_nge8h")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_m8e7w")
+TabContainer/styles/tab_hovered = ExtResource("11_hbwbd")
+TabContainer/styles/tab_selected = ExtResource("11_hbwbd")
+TabContainer/styles/tab_unselected = ExtResource("12_nge8h")
+TabContainer/styles/tabbar_background = ExtResource("14_nwk38")
+Tree/styles/panel = SubResource("StyleBoxFlat_sc6al")

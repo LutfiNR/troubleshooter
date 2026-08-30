@@ -6,9 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="3_5ieel"]
 [ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/Font/rainyhearts.ttf" id="4_5rb34"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_cgk24"]
-[ext_resource type="Texture2D" uid="uid://brgsh8w8pyf1j" path="res://assets/UI/Button/regular_button/regular_button_red.png" id="4_jelbd"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_g83hl"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="5_j2re7"]
 [ext_resource type="Script" uid="uid://c2pqf8bdubnfu" path="res://entities/device/computer/desktop/app/pc_setting_app.gd" id="6_cgk24"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="6_llneo"]
 [ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="11_cgk24"]
 [ext_resource type="Script" uid="uid://dylpmq0d8yxsi" path="res://entities/device/computer/desktop/app/web.gd" id="11_nbrwe"]
 [ext_resource type="Texture2D" uid="uid://cms0y1e4ysbh2" path="res://assets/UI/Icon/web_icon.png" id="12_j2re7"]
@@ -29,13 +30,6 @@
 [ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="21_ger8l"]
 [ext_resource type="Script" uid="uid://dam0gb336c2ac" path="res://entities/device/computer/desktop/app/terminal.gd" id="22_k3k4b"]
 [ext_resource type="Script" uid="uid://c33vfpf2lj4dm" path="res://entities/device/computer/desktop/app/email.gd" id="23_jelbd"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j1ipk"]
-texture = ExtResource("4_jelbd")
-texture_margin_left = 4.0
-texture_margin_top = 6.0
-texture_margin_right = 4.0
-texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgk24"]
 bg_color = Color(0.17044133, 0.17044118, 0.17044118, 0.5803922)
@@ -125,7 +119,11 @@ offset_top = -89.0
 offset_right = 73.0
 offset_bottom = -49.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_j1ipk")
+theme = ExtResource("12_jelbd")
+theme_override_styles/normal = ExtResource("5_g83hl")
+theme_override_styles/pressed = ExtResource("5_g83hl")
+theme_override_styles/hover = ExtResource("6_llneo")
+theme_override_styles/focus = ExtResource("6_llneo")
 
 [node name="TextureRect" type="TextureRect" parent="UIContainer/ExitButton" unique_id=2136937543]
 texture_filter = 1
@@ -306,7 +304,7 @@ offset_top = 111.0
 offset_right = -169.0
 offset_bottom = 145.0
 grow_horizontal = 2
-theme_override_constants/h_separation = 24
+theme_override_constants/h_separation = 12
 
 [node name="Interface" type="Label" parent="UIContainer/AppContainer/Setting/HFlowContainer" unique_id=857862710]
 layout_mode = 2
@@ -342,7 +340,6 @@ caret_blink = true
 [node name="Label2" type="Label" parent="UIContainer/AppContainer/Setting/GridContainer2" unique_id=227731288]
 layout_mode = 2
 theme = ExtResource("12_jelbd")
-theme_override_font_sizes/font_size = 24
 text = "Subnetmask :"
 
 [node name="SubnetMask" type="LineEdit" parent="UIContainer/AppContainer/Setting/GridContainer2" unique_id=745694774]
@@ -375,7 +372,6 @@ caret_blink = true
 [node name="Label4" type="Label" parent="UIContainer/AppContainer/Setting/GridContainer3" unique_id=1190964326]
 layout_mode = 2
 theme = ExtResource("12_jelbd")
-theme_override_font_sizes/font_size = 24
 text = "DNS:"
 
 [node name="DNS1" type="LineEdit" parent="UIContainer/AppContainer/Setting/GridContainer3" unique_id=1854641287]

@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bhg8xs1x3dkbt" path="res://entities/device/server/desktop/server_desktop.gd" id="1_7vsty"]
 [ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_xx8oc"]
-[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="2_7vsty"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="3_ldhip"]
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="3_xpotj"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="5_0d2s3"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_ovbx6"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="6_fbk0g"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="7_2p471"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_fqsl8"]
 [ext_resource type="Script" uid="uid://bm441bap7idbf" path="res://entities/device/server/desktop/app/server_setting_app.gd" id="11_0d2s3"]
@@ -24,14 +25,8 @@
 [ext_resource type="Script" uid="uid://bt8apbn1rgj7o" path="res://entities/device/server/desktop/app/database.gd" id="20_ekut4"]
 [ext_resource type="Script" uid="uid://da47v1ki651hi" path="res://entities/device/server/desktop/app/mail.gd" id="21_xmgsi"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3fwd"]
-texture = ExtResource("2_7vsty")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldhip"]
 bg_color = Color(0.16862746, 0.16862746, 0.16862746, 0.5803922)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ieel"]
-texture = ExtResource("3_ldhip")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgk24"]
 texture = ExtResource("7_2p471")
@@ -41,37 +36,6 @@ texture_margin_right = 2.0
 texture_margin_bottom = 2.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j2re7"]
-texture = ExtResource("7_2p471")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tvplv"]
-texture = ExtResource("3_ldhip")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5yui"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2p471"]
-bg_color = Color(0.4509804, 0.4509804, 0.4509804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx8oc"]
-content_margin_left = 9.0
-content_margin_right = 6.0
-bg_color = Color(0.4519397, 0.45193976, 0.45193958, 1)
-border_width_right = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vsty"]
-content_margin_left = 6.0
-content_margin_right = 6.0
-bg_color = Color(0.082426794, 0.19966432, 0.26179636, 1)
-border_width_right = 1
-border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mu7cj"]
 bg_color = Color(1, 1, 1, 1)
@@ -147,9 +111,11 @@ offset_top = -111.0
 offset_right = 110.0
 offset_bottom = -65.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_q3fwd")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_q3fwd")
-theme_override_styles/hover = SubResource("StyleBoxTexture_q3fwd")
+theme = ExtResource("9_fqsl8")
+theme_override_styles/normal = ExtResource("5_ovbx6")
+theme_override_styles/pressed = ExtResource("5_ovbx6")
+theme_override_styles/hover = ExtResource("6_fbk0g")
+theme_override_styles/focus = ExtResource("6_fbk0g")
 
 [node name="TextureRect" type="TextureRect" parent="UIContainer/ExitButton" unique_id=588157638]
 texture_filter = 1
@@ -157,6 +123,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.9999924
+offset_top = 6.456093
+offset_right = -5.9999924
+offset_bottom = -4.456093
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_ldhip")
@@ -199,29 +169,27 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldhip")
 
-[node name="SettingApp" type="Control" parent="UIContainer/AppContainer" unique_id=193963640 node_paths=PackedStringArray("id_input", "host_name_input", "interface_label", "mac_address_label", "network_status_label", "ip_address_input", "subnet_mask_input", "gateway_input", "primary_dns_input")]
+[node name="SettingApp" type="Control" parent="UIContainer/AppContainer" unique_id=193963640 node_paths=PackedStringArray("id_input", "host_name_input", "interface_label", "network_status_label", "ip_address_input", "subnet_mask_input", "gateway_input", "primary_dns_input")]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_top = 38.0
-offset_right = -54.99994
-offset_bottom = -39.0
+offset_left = 90.0
+offset_top = 46.0
+offset_right = -89.0
+offset_bottom = -90.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_0d2s3")
 id_input = NodePath("GridContainer/ID")
 host_name_input = NodePath("GridContainer/Hostname2")
-interface_label = NodePath("GridContainer4/Interface")
-mac_address_label = NodePath("GridContainer4/Mac")
-network_status_label = NodePath("GridContainer4/NetworkStatus")
+interface_label = NodePath("HFlowContainer/Interface")
+network_status_label = NodePath("HFlowContainer/NetworkStatus")
 ip_address_input = NodePath("GridContainer2/IpAddress")
 subnet_mask_input = NodePath("GridContainer2/SubnetMask")
 gateway_input = NodePath("GridContainer3/Gateway")
@@ -232,12 +200,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_0d2s3")
 patch_margin_left = 10
-patch_margin_top = 26
+patch_margin_top = 38
 patch_margin_right = 10
 patch_margin_bottom = 10
 
@@ -245,8 +212,8 @@ patch_margin_bottom = 10
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 35.0
-offset_right = -35.0
+offset_left = 42.0
+offset_right = -39.0
 offset_bottom = 25.0
 grow_horizontal = 2
 theme = ExtResource("9_fqsl8")
@@ -255,26 +222,30 @@ theme_override_font_sizes/font_size = 22
 text = "Setting"
 horizontal_alignment = 1
 
-[node name="SettingExitButton" type="Button" parent="UIContainer/AppContainer/SettingApp" unique_id=851034041]
+[node name="SettingExitButton" type="TextureButton" parent="UIContainer/AppContainer/SettingApp" unique_id=317179022]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
-offset_top = 3.0
-offset_right = -11.0
-offset_bottom = 21.0
+offset_left = -42.0
+offset_top = 2.0
+offset_right = -10.0
+offset_bottom = 34.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_5ieel")
+texture_normal = ExtResource("3_ldhip")
+texture_pressed = ExtResource("3_ldhip")
+texture_hover = ExtResource("3_ldhip")
+texture_focused = ExtResource("3_ldhip")
+stretch_mode = 0
 
 [node name="GridContainer" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=113878089]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 36.0
+offset_top = 48.0
 offset_right = -20.0
-offset_bottom = 61.0
+offset_bottom = 90.0
 grow_horizontal = 2
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 2
@@ -307,133 +278,89 @@ theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1
 theme_override_styles/normal = SubResource("StyleBoxTexture_cgk24")
 caret_blink = true
 
-[node name="GridContainer4" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=2124292120]
+[node name="HFlowContainer" type="HFlowContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=916602326]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 20.0
-offset_top = 120.0
-offset_right = -20.0
-offset_bottom = 152.0
+offset_left = 21.0
+offset_top = 111.0
+offset_right = -23.0
+offset_bottom = 145.0
 grow_horizontal = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 2
-columns = 6
+theme_override_constants/h_separation = 12
 
-[node name="InterfaceLabel" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=1107629072]
+[node name="Interface" type="Label" parent="UIContainer/AppContainer/SettingApp/HFlowContainer" unique_id=478946136]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-text = "Interface :"
+text = "tes"
 
-[node name="Interface" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=8458005]
+[node name="NetworkStatus" type="Label" parent="UIContainer/AppContainer/SettingApp/HFlowContainer" unique_id=155282236]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "eth0"
-
-[node name="MacLable" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=72293298]
-layout_mode = 2
-theme = ExtResource("9_fqsl8")
-text = "MAC :"
-
-[node name="Mac" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=716368560]
-layout_mode = 2
-theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "xxxxx"
-
-[node name="NetworkStatusLabel3" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=465418431]
-layout_mode = 2
-theme = ExtResource("9_fqsl8")
-text = "Status :"
-
-[node name="NetworkStatus" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer4" unique_id=2017569904]
-layout_mode = 2
-theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "tes"
 
 [node name="GridContainer2" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=360811996]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 20.0
-offset_top = 166.0
-offset_right = -462.00006
-offset_bottom = 322.0
+offset_top = 156.0
+offset_right = -441.0
+offset_bottom = 320.0
 grow_horizontal = 2
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=704833652]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "IP Address :"
 
 [node name="IpAddress" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1897180536]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
 caret_blink = true
 
 [node name="Label2" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1274585415]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Subnetmask :"
 
 [node name="SubnetMask" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer2" unique_id=1844117312]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
 caret_blink = true
 
 [node name="GridContainer3" type="GridContainer" parent="UIContainer/AppContainer/SettingApp" unique_id=2132896861]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 463.0
-offset_top = 166.0
-offset_right = -21.0
-offset_bottom = 322.0
+offset_left = 409.0
+offset_top = 156.0
+offset_right = -20.0
+offset_bottom = 320.0
 grow_horizontal = 2
 
 [node name="Label3" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=1153010801]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Gateway :"
 
 [node name="Gateway" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=790692012]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
 caret_blink = true
 
 [node name="Label4" type="Label" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=1630853137]
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "DNS:"
 
 [node name="DNS1" type="LineEdit" parent="UIContainer/AppContainer/SettingApp/GridContainer3" unique_id=832361819]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9_fqsl8")
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_j2re7")
 caret_blink = true
 
 [node name="SaveButton" type="Button" parent="UIContainer/AppContainer/SettingApp" unique_id=1865119945]
@@ -448,7 +375,7 @@ offset_right = -20.0
 offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("9_fqsl8")
 text = "Save"
 
 [node name="ServiceApp" type="Control" parent="UIContainer/AppContainer" unique_id=409627036 node_paths=PackedStringArray("tabs", "tab_container")]
@@ -474,7 +401,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_0d2s3")
 patch_margin_left = 10
-patch_margin_top = 26
+patch_margin_top = 38
 patch_margin_right = 10
 patch_margin_bottom = 10
 
@@ -489,44 +416,42 @@ offset_bottom = 22.0
 grow_horizontal = 2
 theme = ExtResource("9_fqsl8")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
 text = "Service"
 horizontal_alignment = 1
 
-[node name="ServiceExitButton" type="Button" parent="UIContainer/AppContainer/ServiceApp" unique_id=960668147]
+[node name="ServiceExitButton" type="TextureButton" parent="UIContainer/AppContainer/ServiceApp" unique_id=616951049]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
-offset_top = 3.0
-offset_right = -11.0
-offset_bottom = 21.0
+offset_left = -39.0
+offset_top = 2.0
+offset_right = -7.0
+offset_bottom = 34.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_tvplv")
+texture_normal = ExtResource("3_ldhip")
+texture_pressed = ExtResource("3_ldhip")
+texture_hover = ExtResource("3_ldhip")
+texture_focused = ExtResource("3_ldhip")
+stretch_mode = 0
 
 [node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/ServiceApp" unique_id=2015845834]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 26.0
-offset_right = -11.0
-offset_bottom = -11.0
+offset_left = 14.0
+offset_top = 43.0
+offset_right = -12.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("9_fqsl8")
 theme_override_constants/side_margin = 0
 theme_override_constants/outline_size = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_g5yui")
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2p471")
-theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_xx8oc")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_7vsty")
-current_tab = 1
+current_tab = 0
 
 [node name="Software" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=2091632546 node_paths=PackedStringArray("package_list", "status_label", "install_button", "uninstall_button")]
-visible = false
 layout_mode = 2
 theme = ExtResource("9_fqsl8")
 script = ExtResource("13_q3fwd")
@@ -542,10 +467,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = -4.5
-offset_bottom = -6.0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = -9.5
+offset_bottom = -12.0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=265428866]
@@ -556,7 +481,7 @@ text = "Software List"
 [node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=1196890487]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme = ExtResource("9_fqsl8")
 item_count = 3
 item_0/text = "isc-dhcp-server"
 item_1/text = "apache2"
@@ -568,10 +493,10 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -583.0863
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -7.0
+offset_left = -478.0
+offset_top = 15.0
+offset_right = -12.0
+offset_bottom = -12.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -588,11 +513,13 @@ layout_mode = 2
 [node name="UninstallButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7" unique_id=830435856]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_fqsl8")
 text = "Uninstall"
 
 [node name="InstallButton" type="Button" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer/HBoxContainer7" unique_id=1401614000]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9_fqsl8")
 text = "Install"
 
 [node name="VSeparator" type="VSeparator" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software" unique_id=925860586]
@@ -609,6 +536,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DHCP" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer" unique_id=1171662025 node_paths=PackedStringArray("pool_list", "dhcp_service_state", "pool_name", "interface_id", "default_gateway", "dns_server", "start_ip_address", "subnet_mask", "pool_size")]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 script = ExtResource("14_fw4op")

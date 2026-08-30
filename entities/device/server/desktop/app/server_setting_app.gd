@@ -4,7 +4,6 @@ extends Control
 @export var id_input: LineEdit
 @export var host_name_input: LineEdit
 @export var interface_label: Label
-@export var mac_address_label: Label
 @export var network_status_label: Label
 
 @export_group("Network Inputs")
@@ -39,7 +38,6 @@ func populate_ui() -> void:
 	var main_iface = device_data.get_interface("")
 	if main_iface:
 		interface_label.text = main_iface.id
-		mac_address_label.text = main_iface.mac_address
 		ip_address_input.text = main_iface.export_ip_address
 		subnet_mask_input.text = main_iface.export_subnet_mask
 		if main_iface.is_up():

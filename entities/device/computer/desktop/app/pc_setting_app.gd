@@ -43,11 +43,8 @@ func _populate_ui() -> void:
 	var main_iface = device.get_interface()
 	if main_iface:
 		interface_label.text = main_iface.id
-		if is_dhcp:
-			get_ip_from_dhcp()
-		else:
-			ip_address_input.text = main_iface.export_ip_address
-			subnet_mask_input.text = main_iface.export_subnet_mask
+		ip_address_input.text = main_iface.export_ip_address
+		subnet_mask_input.text = main_iface.export_subnet_mask
 		if main_iface.state == NetworkInterface.InterfaceState.UP:
 			network_status_label.text = "Plugged"
 			network_status_label.add_theme_color_override("font_color", Color(0.0, 0.541, 0.0, 1.0))
@@ -67,8 +64,8 @@ func _update_input_editability() -> void:
 	primary_dns_input.editable = not is_dynamic
 
 
-func _on_ip_dynamic_button_toggled(toggled: bool) -> void:
-	if toggled:
+func _on_ip_dynamic_button_toggled(_toggled: bool) -> void:
+	if ip_set_mode_input.button_pressed:
 		get_ip_from_dhcp()
 	_update_input_editability()
 

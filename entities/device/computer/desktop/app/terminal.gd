@@ -7,6 +7,11 @@ extends Control
 
 var target_device_id: String = ""
 var prompt_string: String = "C:\\> "
+var ftp_connected: bool = false
+var ftp_username: String = ""
+var ftp_host: String = ""
+var ftp_path: String = "~"
+var ftp_home_directory: String = "~"
 
 const AVAILABLE_COMMANDS = {
 	"help": "Menampilkan daftar perintah.",
@@ -15,7 +20,7 @@ const AVAILABLE_COMMANDS = {
 	"ping": "Menguji koneksi. Format: ping <ip/domain>",
 	"nslookup": "Mencari informasi DNS. Format: nslookup <domain>",
 	"curl": "Mengambil web HTTP. Format: curl <url>",
-	"ftp": "Koneksi FTP. Format: ftp <ip/domain>",
+	"ftp": "Koneksi FTP. Format: ftp -u <username> -p <password> <ip/domain>",
 	"ssh": "Koneksi SSH. Format: ssh user@<ip/domain>",
 }
 
@@ -42,9 +47,9 @@ func _on_text_submitted(text: String) -> void:
 	var raw_input = text.strip_edges()
 	input_line.text = ""
 	if raw_input == "":
-		_print_line(prompt_string)
+		_print_line(_get_prompt())
 		return
-	_print_line(prompt_string + raw_input)
+	_print_line(_get_prompt() + raw_input)
 
 	var parts = raw_input.split(" ", false)
 	if parts.size() > 0:
@@ -55,6 +60,10 @@ func _on_text_submitted(text: String) -> void:
 
 
 func _process_command(command: String, args: Array) -> void:
+	if ftp_connected:
+		_process_ftp_command(command, args)
+		return
+
 	match command:
 		"help":
 			_cmd_help()
@@ -74,6 +83,26 @@ func _process_command(command: String, args: Array) -> void:
 			_cmd_ssh(args)
 		_:
 			_print_line("'" + command + "' is not recognized as a command.\n")
+
+
+func _process_ftp_command(command: String, _args: Array) -> void:
+	match command:
+		"help":
+			_print_line("  help - Show FTP commands.")
+			_print_line("  pwd  - Print working directory.")
+			_print_line("  quit - Close the FTP connection.\n")
+		"pwd":
+			_print_line(ftp_home_directory + "\n")
+		"quit":
+			ftp_connected = false
+			ftp_username = ""
+			ftp_host = ""
+			ftp_path = "~"
+			ftp_home_directory = "~"
+			prompt_label.text = prompt_string
+			_print_line("221 Goodbye.\n")
+		_:
+			_print_line("Unknown FTP command. Type 'help' for available commands.\n")
 
 
 func _cmd_help() -> void:
@@ -130,7 +159,7 @@ func _cmd_nslookup(args: Array) -> void:
 	if args.size() == 0:
 		return
 	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
-	_print_line("Server:  " + device.dns_server)
+	_print_line("DNS Server:  " + device.dns_server)
 	var resolved_ip = NetworkManager.request_dns_resolve(target_device_id, args[0])
 	if resolved_ip != "":
 		_print_line("Name:    " + args[0] + "\nAddress:  " + resolved_ip + "\n")
@@ -187,18 +216,35 @@ func _cmd_curl(args: Array) -> void:
 
 
 func _cmd_ftp(args: Array) -> void:
-	if args.size() == 0:
+	if args.size() != 5 or args[0] != "-u" or args[2] != "-p":
+		_print_line("Usage: ftp -u <username> -p <password> <ip/domain>\n")
 		return
-	var target_ip = _resolve_target(args[0])
+
+	var username = args[1]
+	var password = args[3]
+	var host = args[4]
+	var target_ip = _resolve_target(host)
 	if target_ip == "":
 		return
 	_print_line("Trying " + target_ip + "...")
 	await get_tree().create_timer(0.5).timeout
-	var server = NetworkManager._find_server_by_ip(target_ip)
-	if server and server.ftp_service == ServerDeviceData.ServiceState.ON:
-		_print_line("Connected to " + args[0] + ". [Gunakan App File untuk Login]\n")
+	var response: Dictionary = NetworkManager.request_ftp_login(target_ip, username, password)
+	if response.get("success", false):
+		ftp_connected = true
+		ftp_username = username
+		ftp_host = host
+		ftp_path = "~"
+		ftp_home_directory = response.get("home_dir", "~")
+		prompt_label.text = _get_prompt()
+		_print_line("230 Login successful.\n")
 	else:
-		_print_line("ftp: connect: Connection refused\n")
+		_print_line("ftp: " + response.get("error", "Connection refused") + "\n")
+
+
+func _get_prompt() -> String:
+	if ftp_connected:
+		return ftp_username + "@" + ftp_host + ":" + ftp_path + "> "
+	return prompt_string
 
 
 func _cmd_ssh(args: Array) -> void:
