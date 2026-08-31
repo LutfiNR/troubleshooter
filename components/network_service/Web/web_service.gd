@@ -18,18 +18,56 @@ func handle_request(request_url: String, is_https: bool) -> String:
 	if not is_https and http_state == ServiceState.OFF:
 		return ""
 
-	var is_ip_request = IPAddress.is_valid_ip(request_url)
-	var host_candidates: Array[String] = [request_url]
-	if request_url.begins_with("www."):
-		host_candidates.append(request_url.substr(4))
+	var raw_host = request_url.strip_edges().to_lower()
+	if raw_host == "":
+		return ""
+	if raw_host.begins_with("http://"):
+		raw_host = raw_host.replace("http://", "")
+	if raw_host.begins_with("https://"):
+		raw_host = raw_host.replace("https://", "")
+	if raw_host.ends_with("/"):
+		raw_host = raw_host.rstrip("/")
+	if raw_host.contains("/"):
+		raw_host = raw_host.split("/", false, 1)[0]
+	if raw_host.contains(":"):
+		raw_host = raw_host.split(":", false, 1)[0]
+
+	# Check for exact host match first
 	for vhost in virtual_hosts:
 		if vhost == null:
 			continue
-		if is_ip_request:
-			return vhost.content
-		for host_name in host_candidates:
-			if vhost.server_name == host_name:
+		var vhost_name = (vhost.server_name as String).strip_edges().to_lower()
+		if vhost_name == raw_host:
+			if is_https and vhost.protocol == WebVirtualHost.Protocol.HTTPS:
 				return vhost.content
+			if not is_https and vhost.protocol == WebVirtualHost.Protocol.HTTP:
+				return vhost.content
+
+	# Check for www alias (www.example.com -> example.com)
+	if raw_host.begins_with("www."):
+		var without_www = raw_host.substr(4)
+		for vhost in virtual_hosts:
+			if vhost == null:
+				continue
+			var vhost_name = (vhost.server_name as String).strip_edges().to_lower()
+			if vhost_name == without_www:
+				if is_https and vhost.protocol == WebVirtualHost.Protocol.HTTPS:
+					return vhost.content
+				if not is_https and vhost.protocol == WebVirtualHost.Protocol.HTTP:
+					return vhost.content
+
+	# Fall back to default (main) vhost only for IP requests or as last resort
+	if IPAddress.is_valid_ip(raw_host):
+		for vhost in virtual_hosts:
+			if vhost == null:
+				continue
+			var vhost_name = (vhost.server_name as String).strip_edges().to_lower()
+			if vhost_name == "kirin.com" or vhost_name == "www.kirin.com":
+				if is_https and vhost.protocol == WebVirtualHost.Protocol.HTTPS:
+					return vhost.content
+				if not is_https and vhost.protocol == WebVirtualHost.Protocol.HTTP:
+					return vhost.content
+
 	return ""
 
 

@@ -230,12 +230,14 @@ func _cmd_ping(args: Array) -> void:
 func _cmd_curl(args: Array) -> void:
 	if args.size() == 0:
 		return
-	var target_url = args[0].replace("http://", "").replace("https://", "")
-	var target_ip = _resolve_target(target_url)
+	var target_url = args[0]
+	var is_https = target_url.begins_with("https://")
+	var request_host = target_url.replace("http://", "").replace("https://", "")
+	var target_ip = _resolve_target(request_host)
 	if target_ip == "":
 		return
 
-	var response = NetworkManager.request_web(target_device_id, target_ip, false, target_url)
+	var response = NetworkManager.request_web(target_device_id, target_ip, is_https, request_host)
 	if response.success:
 		_print_line("\n" + response.content + "\n")
 	else:
