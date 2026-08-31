@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_hcruw"]
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="2_cgk24"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="3_5ieel"]
-[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/Font/rainyhearts.ttf" id="4_5rb34"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_cgk24"]
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_g83hl"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="5_j2re7"]
@@ -34,17 +33,14 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgk24"]
 bg_color = Color(0.17044133, 0.17044118, 0.17044118, 0.5803922)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cgk24"]
-texture = ExtResource("5_j2re7")
-texture_margin_left = 2.0
-texture_margin_top = 2.0
-texture_margin_right = 2.0
-texture_margin_bottom = 2.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g83hl"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ieel"]
-texture = ExtResource("4_cgk24")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g83hl"]
+texture = ExtResource("3_5ieel")
+texture_margin_left = 10.0
+texture_margin_top = 38.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3k4b"]
 content_margin_left = 8.0
@@ -61,24 +57,7 @@ bg_color = Color(0.10747974, 0.10747974, 0.10747967, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1yxkk"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jelbd"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j1ipk"]
-bg_color = Color(0.4509804, 0.4509804, 0.4509804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yxkk"]
-content_margin_left = 9.0
-content_margin_right = 6.0
-bg_color = Color(0.4519397, 0.45193976, 0.45193958, 1)
-border_width_right = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g83hl"]
-content_margin_left = 6.0
-content_margin_right = 6.0
-bg_color = Color(0.082426794, 0.19966432, 0.26179636, 1)
-border_width_right = 1
-border_color = Color(1, 1, 1, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_llneo"]
 
 [node name="ComputerDesktop" type="Node2D" unique_id=2083425935 node_paths=PackedStringArray("setting_app", "browser_app", "file_app", "cmd_app", "email_app")]
 script = ExtResource("1_5rb34")
@@ -199,6 +178,7 @@ texture_hover = ExtResource("15_udkyp")
 stretch_mode = 5
 
 [node name="AppContainer" type="Panel" parent="UIContainer" unique_id=459273456]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -496,10 +476,7 @@ stretch_mode = 5
 [node name="URL" type="LineEdit" parent="UIContainer/AppContainer/Web/VBox/HBoxContainer" unique_id=1476336421]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_cgk24")
+theme = ExtResource("12_jelbd")
 text = "https://"
 caret_blink = true
 
@@ -507,7 +484,8 @@ caret_blink = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("12_jelbd")
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 text = "Zoogle"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -552,7 +530,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5ieel")
 patch_margin_left = 10
-patch_margin_top = 26
+patch_margin_top = 38
 patch_margin_right = 10
 patch_margin_bottom = 10
 
@@ -561,61 +539,65 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 31.0
-offset_top = 3.0
+offset_top = 2.0
 offset_right = -39.0
-offset_bottom = 22.0
+offset_bottom = 36.0
 grow_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_5rb34")
-theme_override_font_sizes/font_size = 16
 text = "File Explorer"
 horizontal_alignment = 1
 
-[node name="SettingExitButton" type="Button" parent="UIContainer/AppContainer/File" unique_id=795880999]
+[node name="SettingExitButton" type="TextureButton" parent="UIContainer/AppContainer/File" unique_id=357268071]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
+offset_left = -46.0
 offset_top = 3.0
-offset_right = -11.0
-offset_bottom = 21.0
+offset_right = -14.0
+offset_bottom = 35.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_5ieel")
+texture_normal = ExtResource("4_cgk24")
+texture_pressed = ExtResource("4_cgk24")
+texture_hover = ExtResource("4_cgk24")
+texture_focused = ExtResource("4_cgk24")
+stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="UIContainer/AppContainer/File" unique_id=1488657519]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 10.0
-offset_top = 26.0
-offset_right = -12.0
-offset_bottom = 485.0
+offset_left = 15.0
+offset_top = 45.0
+offset_right = -17.0
+offset_bottom = 525.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/File/VBox" unique_id=14673396]
 layout_mode = 2
-theme_override_constants/separation = 2
 
 [node name="SSLIcon" type="TextureRect" parent="UIContainer/AppContainer/File/VBox/HBoxContainer" unique_id=1340378649]
 layout_mode = 2
-texture = ExtResource("12_noohq")
-expand_mode = 2
-stretch_mode = 3
+texture = ExtResource("17_j1ipk")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="URL" type="LineEdit" parent="UIContainer/AppContainer/File/VBox/HBoxContainer" unique_id=1321005479]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = SubResource("StyleBoxTexture_cgk24")
+theme = ExtResource("12_jelbd")
 caret_blink = true
 
 [node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/File/VBox" unique_id=293103083]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.060530387, 0.060530342, 0.060530342, 1)
+theme_override_colors/font_hovered_color = Color(0.16086814, 0.16086817, 0.1608682, 1)
+theme_override_colors/font_hovered_selected_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_colors/font_selected_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g83hl")
 max_columns = 3
 same_column_width = true
 
@@ -625,10 +607,12 @@ alignment = 2
 
 [node name="UploadButton" type="Button" parent="UIContainer/AppContainer/File/VBox/HBoxContainer2" unique_id=1026325345]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 text = "Upload"
 
 [node name="DeleteButton" type="Button" parent="UIContainer/AppContainer/File/VBox/HBoxContainer2" unique_id=706667775]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 text = "Delete"
 
 [node name="Panel" type="Panel" parent="UIContainer/AppContainer/File" unique_id=1304297054]
@@ -639,24 +623,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -123.5
-offset_top = -37.5
-offset_right = 123.5
-offset_bottom = 52.5
+offset_left = -249.5
+offset_top = -99.5
+offset_right = 249.5
+offset_bottom = 114.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_jelbd")
+theme_override_styles/panel = SubResource("StyleBoxTexture_g83hl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/File/Panel" unique_id=264785381]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 10.0
-offset_right = -8.0
-offset_bottom = -10.0
+offset_left = 15.0
+offset_top = 41.0
+offset_right = -15.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/File/Panel/VBoxContainer" unique_id=1066103798]
 layout_mode = 2
@@ -665,7 +652,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "Username"
+text = "Username "
 
 [node name="Username" type="LineEdit" parent="UIContainer/AppContainer/File/Panel/VBoxContainer/HBoxContainer" unique_id=678042215]
 layout_mode = 2
@@ -683,7 +670,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-text = "Password"
+text = "Password  "
 
 [node name="Password" type="LineEdit" parent="UIContainer/AppContainer/File/Panel/VBoxContainer/HBoxContainer2" unique_id=1968908153]
 layout_mode = 2
@@ -711,6 +698,7 @@ layout_mode = 2
 text = "Login"
 
 [node name="Terminal" type="Control" parent="UIContainer/AppContainer" unique_id=374708104 node_paths=PackedStringArray("output_history", "prompt_label", "input_line", "scroll_container")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -755,17 +743,21 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Terminal"
 horizontal_alignment = 1
 
-[node name="SettingExitButton" type="Button" parent="UIContainer/AppContainer/Terminal" unique_id=1216807649]
+[node name="SettingExitButton" type="TextureButton" parent="UIContainer/AppContainer/Terminal" unique_id=1216807649]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
+offset_left = -46.0
 offset_top = 3.0
-offset_right = -11.0
-offset_bottom = 21.0
+offset_right = -14.0
+offset_bottom = 35.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_5ieel")
+texture_normal = ExtResource("4_cgk24")
+texture_pressed = ExtResource("4_cgk24")
+texture_hover = ExtResource("4_cgk24")
+texture_focused = ExtResource("4_cgk24")
+stretch_mode = 0
 
 [node name="VBox" type="ScrollContainer" parent="UIContainer/AppContainer/Terminal" unique_id=1858509344]
 layout_mode = 1
@@ -817,10 +809,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 207.0
-offset_top = 109.0
-offset_right = -206.0
-offset_bottom = -100.0
+offset_left = 43.0
+offset_top = 14.0
+offset_right = -40.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("23_jelbd")
@@ -848,12 +840,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5ieel")
 patch_margin_left = 10
-patch_margin_top = 26
+patch_margin_top = 38
 patch_margin_right = 10
 patch_margin_bottom = 10
 
@@ -861,42 +852,45 @@ patch_margin_bottom = 10
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 31.0
-offset_top = 3.0
+offset_left = 42.0
 offset_right = -39.0
-offset_bottom = 22.0
+offset_bottom = 25.0
 grow_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_5rb34")
-theme_override_font_sizes/font_size = 16
 text = "Email"
 horizontal_alignment = 1
 
-[node name="SettingExitButton" type="Button" parent="UIContainer/AppContainer/Email" unique_id=178332869]
+[node name="SettingExitButton" type="TextureButton" parent="UIContainer/AppContainer/Email" unique_id=178332869]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -29.0
+offset_left = -40.0
 offset_top = 3.0
-offset_right = -11.0
-offset_bottom = 21.0
+offset_right = -8.0
+offset_bottom = 35.0
 grow_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxTexture_5ieel")
+texture_normal = ExtResource("4_cgk24")
+texture_pressed = ExtResource("4_cgk24")
+texture_hover = ExtResource("4_cgk24")
+texture_focused = ExtResource("4_cgk24")
+stretch_mode = 0
 
 [node name="VBox" type="VBoxContainer" parent="UIContainer/AppContainer/Email" unique_id=332017699]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 13.0
-offset_top = 32.0
+offset_top = 42.0
 offset_right = -15.0
-offset_bottom = 226.0
+offset_bottom = 499.0
 grow_horizontal = 2
+theme_override_constants/separation = 6
 
-[node name="NetworkStatus" type="Label" parent="UIContainer/AppContainer/Email/VBox" unique_id=1585309469]
+[node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox" unique_id=1585309469]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("12_jelbd")
 text = "Mail Client Setup"
 
 [node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/Email/VBox" unique_id=306319279]
@@ -904,29 +898,34 @@ layout_mode = 2
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox" unique_id=1673838034]
 layout_mode = 2
+theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer7" unique_id=1166119637]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("12_jelbd")
 text = "SSL"
 
 [node name="SSL" type="CheckButton" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer7" unique_id=377562905]
 layout_mode = 2
-theme_override_colors/button_checked_color = Color(0.77647233, 0.7764724, 0.7764724, 1)
+theme = ExtResource("12_jelbd")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox" unique_id=1880162051]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer3" unique_id=12136415]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Email"
 
 [node name="Email" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer3" unique_id=395556262]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -936,12 +935,15 @@ caret_blink = true
 [node name="Label3" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer3" unique_id=708890174]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "IMAP Server"
 
 [node name="IMAP" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer3" unique_id=9615358]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -950,16 +952,20 @@ caret_blink = true
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox" unique_id=28617392]
 layout_mode = 2
+theme_override_constants/separation = 12
 
 [node name="Label3" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer5" unique_id=802088087]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Password"
 
 [node name="Password" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer5" unique_id=114042460]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -969,12 +975,15 @@ caret_blink = true
 [node name="Label2" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer5" unique_id=63309484]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "SMTP Server"
 
 [node name="SMTP" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer5" unique_id=1544288972]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -992,10 +1001,12 @@ alignment = 2
 
 [node name="ValidationLabel" type="Label" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer8" unique_id=1157995722]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.90588236, 0.22745098, 0.18431373, 1)
 
 [node name="LoginButton" type="Button" parent="UIContainer/AppContainer/Email/VBox/HBoxContainer8" unique_id=52496125]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 text = "Login"
 
 [node name="VBox2" type="VBoxContainer" parent="UIContainer/AppContainer/Email" unique_id=338306926]
@@ -1003,11 +1014,12 @@ visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 13.0
-offset_top = 32.0
-offset_right = -15.0
-offset_bottom = 283.0
+offset_left = 16.0
+offset_top = 49.0
+offset_right = -19.0
+offset_bottom = 497.0
 grow_horizontal = 2
+theme_override_constants/separation = 6
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox2" unique_id=675638952]
 layout_mode = 2
@@ -1015,11 +1027,12 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox2/HBoxContainer7" unique_id=350567546]
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("12_jelbd")
 text = "Welcome Label"
 
 [node name="LogoutButton" type="Button" parent="UIContainer/AppContainer/Email/VBox2/HBoxContainer7" unique_id=1177417107]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 text = "Logout"
 
 [node name="HSeparator" type="HSeparator" parent="UIContainer/AppContainer/Email/VBox2" unique_id=915000079]
@@ -1027,16 +1040,10 @@ layout_mode = 2
 
 [node name="TabContainer" type="TabContainer" parent="UIContainer/AppContainer/Email/VBox2" unique_id=1659249093]
 layout_mode = 2
-theme_override_constants/side_margin = 0
-theme_override_constants/outline_size = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_jelbd")
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_j1ipk")
-theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_1yxkk")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_g83hl")
-current_tab = 1
+theme = ExtResource("12_jelbd")
+current_tab = 0
 
 [node name="Inbox" type="TabBar" parent="UIContainer/AppContainer/Email/VBox2/TabContainer" unique_id=41728396]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -1045,21 +1052,28 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 197.0
+offset_left = 2.0
+offset_top = 6.0
+offset_right = -2.0
+offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 
 [node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Inbox/HBoxContainer" unique_id=9923097]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_llneo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Inbox/HBoxContainer" unique_id=1284483775]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/default_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("12_jelbd")
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 text = "tes"
 
 [node name="Compose" type="TabBar" parent="UIContainer/AppContainer/Email/VBox2/TabContainer" unique_id=1112125814]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -1069,9 +1083,10 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 5.0
-offset_bottom = 197.0
+offset_bottom = 358.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 6
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer" unique_id=1827823635]
 layout_mode = 2
@@ -1079,12 +1094,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer" unique_id=1781552501]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "To"
 
 [node name="To" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer" unique_id=816622756]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -1097,12 +1114,14 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer2" unique_id=415742002]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Subject"
 
 [node name="Subject" type="LineEdit" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer2" unique_id=22548169]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
 theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
@@ -1116,6 +1135,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer3" unique_id=2100761588]
 layout_mode = 2
 size_flags_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
 text = "Body"
 
@@ -1123,10 +1143,7 @@ text = "Body"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
-theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
-theme_override_styles/normal = ExtResource("21_ger8l")
+theme = ExtResource("12_jelbd")
 caret_blink = true
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer" unique_id=220196998]
@@ -1135,10 +1152,12 @@ alignment = 2
 
 [node name="ValidationLabel" type="Label" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer8" unique_id=162427030]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(0.90588236, 0.22745098, 0.18431373, 1)
 
 [node name="SendButton" type="Button" parent="UIContainer/AppContainer/Email/VBox2/TabContainer/Compose/VBoxContainer/HBoxContainer8" unique_id=117380783]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
 text = "Send"
 
 [connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]

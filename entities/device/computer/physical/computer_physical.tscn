@@ -4,11 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://x600qhqg5pav" path="res://assets/PC/physicaldesktop.png" id="2_gnhc5"]
 [ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="3_hi35w"]
 [ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="4_vfnrb"]
-[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="5_hi35w"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="5_1jh4w"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="6_tvyk0"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="6_vfnrb"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1jh4w"]
-texture = ExtResource("5_hi35w")
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="7_yjpp0"]
 
 [node name="ComputerPhysical" type="Node2D" unique_id=554239978 node_paths=PackedStringArray("ports", "cables")]
 script = ExtResource("1_ptwwl")
@@ -16,7 +15,8 @@ ports = [NodePath("Port")]
 cables = [NodePath("CableNode")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=614812537]
-scale = Vector2(2, 2)
+position = Vector2(0, 36)
+scale = Vector2(1.8, 1.8)
 texture = ExtResource("2_gnhc5")
 
 [node name="Port" parent="." unique_id=379434902 instance=ExtResource("4_vfnrb")]
@@ -32,25 +32,28 @@ position = Vector2(0, 339)
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 550.0
-offset_top = -312.0
-offset_right = 594.0
-offset_bottom = -268.0
+offset_left = 563.0
+offset_top = -338.0
+offset_right = 607.0
+offset_bottom = -294.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_1jh4w")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_1jh4w")
-theme_override_styles/hover = SubResource("StyleBoxTexture_1jh4w")
+theme = ExtResource("5_1jh4w")
+theme_override_styles/normal = ExtResource("6_tvyk0")
+theme_override_styles/pressed = ExtResource("6_tvyk0")
+theme_override_styles/hover = ExtResource("7_yjpp0")
+theme_override_styles/focus = ExtResource("7_yjpp0")
 
 [node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=930804083]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 7.0
-offset_right = -8.0
-offset_bottom = -9.0
+offset_left = 5.9999924
+offset_top = 6.456093
+offset_right = -5.9999924
+offset_bottom = -4.456093
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_vfnrb")
