@@ -12,6 +12,10 @@ var ftp_username: String = ""
 var ftp_host: String = ""
 var ftp_path: String = "~"
 var ftp_home_directory: String = "~"
+var ssh_connected: bool = false
+var ssh_username: String = ""
+var ssh_host: String = ""
+var ssh_path: String = "~"
 
 const AVAILABLE_COMMANDS = {
 	"help": "Menampilkan daftar perintah.",
@@ -21,7 +25,7 @@ const AVAILABLE_COMMANDS = {
 	"nslookup": "Mencari informasi DNS. Format: nslookup <domain>",
 	"curl": "Mengambil web HTTP. Format: curl <url>",
 	"ftp": "Koneksi FTP. Format: ftp -u <username> -p <password> <ip/domain>",
-	"ssh": "Koneksi SSH. Format: ssh user@<ip/domain>",
+	"ssh": "Koneksi SSH. Format: ssh user@<ip/domain> --pass <password> [-p <port>]",
 }
 
 
@@ -63,6 +67,9 @@ func _process_command(command: String, args: Array) -> void:
 	if ftp_connected:
 		_process_ftp_command(command, args)
 		return
+	if ssh_connected:
+		_process_ssh_command(command, args)
+		return
 
 	match command:
 		"help":
@@ -103,6 +110,25 @@ func _process_ftp_command(command: String, _args: Array) -> void:
 			_print_line("221 Goodbye.\n")
 		_:
 			_print_line("Unknown FTP command. Type 'help' for available commands.\n")
+
+
+func _process_ssh_command(command: String, _args: Array) -> void:
+	match command:
+		"help":
+			_print_line("  help - Show SSH commands.")
+			_print_line("  pwd  - Print working directory.")
+			_print_line("  exit - Close the SSH connection.\n")
+		"pwd":
+			_print_line(ssh_path + "\n")
+		"exit", "quit":
+			ssh_connected = false
+			ssh_username = ""
+			ssh_host = ""
+			ssh_path = "~"
+			prompt_label.text = prompt_string
+			_print_line("Connection closed.\n")
+		_:
+			_print_line("Unknown SSH command. Type 'help' for available commands.\n")
 
 
 func _cmd_help() -> void:
@@ -208,7 +234,8 @@ func _cmd_curl(args: Array) -> void:
 	var target_ip = _resolve_target(target_url)
 	if target_ip == "":
 		return
-	var response = NetworkManager.request_web(target_device_id, target_url, false)
+
+	var response = NetworkManager.request_web(target_device_id, target_ip, false, target_url)
 	if response.success:
 		_print_line("\n" + response.content + "\n")
 	else:
@@ -244,29 +271,71 @@ func _cmd_ftp(args: Array) -> void:
 func _get_prompt() -> String:
 	if ftp_connected:
 		return ftp_username + "@" + ftp_host + ":" + ftp_path + "> "
+	if ssh_connected:
+		return ssh_username + "@" + ssh_host + ":" + ssh_path + "> "
 	return prompt_string
 
 
 func _cmd_ssh(args: Array) -> void:
 	if args.size() == 0:
+		_print_line("Usage: ssh user@<ip/domain> --pass <password> [-p <port>]\n")
 		return
-	var target = args[0]
-	var _username = "root"
-	var host = target
-	if "@" in target:
-		var split = target.split("@")
-		_username = split[0]
+
+	var username: String = "root"
+	var host: String = ""
+	var password: String = ""
+	var port: int = 22
+	var target_token: String = ""
+
+	for i in range(args.size()):
+		var arg: String = args[i]
+		if arg == "--pass" and i + 1 < args.size():
+			password = args[i + 1]
+			i += 1
+		elif arg == "-p" and i + 1 < args.size():
+			if args[i + 1].is_valid_int():
+				port = int(args[i + 1])
+			i += 1
+		elif arg == "--port" and i + 1 < args.size():
+			if args[i + 1].is_valid_int():
+				port = int(args[i + 1])
+			i += 1
+		elif arg.contains("@"):
+			target_token = arg
+		elif target_token == "":
+			target_token = arg
+
+	if target_token == "":
+		_print_line("Usage: ssh user@<ip/domain> --pass <password> [-p <port>]\n")
+		return
+
+	if "@" in target_token:
+		var split = target_token.split("@", false)
+		username = split[0]
 		host = split[1]
+	else:
+		host = target_token
+
+	if password == "":
+		_print_line("Usage: ssh user@<ip/domain> --pass <password> [-p <port>]\n")
+		return
+
 	var target_ip = _resolve_target(host)
 	if target_ip == "":
 		return
 
+	_print_line("Trying " + target_ip + " on port " + str(port) + "...")
 	await get_tree().create_timer(0.5).timeout
-	var server = NetworkManager._find_server_by_ip(target_ip)
-	if server and server.remote_service == ServerDeviceData.ServiceState.ON:
-		_print_line("Connected. Gunakan aplikasi PuTTY (coming soon).\n")
+	var response: Dictionary = NetworkManager.request_ssh_login(target_ip, username, password, port)
+	if response.get("success", false):
+		ssh_connected = true
+		ssh_username = username
+		ssh_host = host
+		ssh_path = "~"
+		prompt_label.text = _get_prompt()
+		_print_line("SSH login successful.\n")
 	else:
-		_print_line("ssh: connect to host port 22: Connection refused\n")
+		_print_line("ssh: " + response.get("error", "Connection refused") + "\n")
 
 
 func _print_line(text: String) -> void:

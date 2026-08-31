@@ -152,14 +152,16 @@ func handle_remote_request() -> RemoteService:
 
 
 ## Authenticates an SSH user. Returns { "success": bool, "error": String }.
-func handle_ssh_login(username_input: String, password_input: String) -> Dictionary:
+func handle_ssh_login(username_input: String, password_input: String, port: int = 22) -> Dictionary:
 	if remote_service == ServiceState.OFF:
 		return { "success": false, "error": "Remote service is OFF." }
 	for remote_config in remote_configuration:
 		if remote_config != null:
+			if remote_config.ssh_port != port:
+				continue
 			if remote_config.authenticate_ssh(username_input, password_input):
 				return { "success": true }
-	return { "success": false, "error": "Authentication failed." }
+	return { "success": false, "error": "Connection refused on port " + str(port) + "." }
 
 
 ## Authenticates a Telnet user. Returns { "success": bool, "error": String }.

@@ -368,7 +368,12 @@ func request_dns_resolve(client_device_id: String, domain: String) -> String:
 	return dns_server.handle_dns_request(domain)
 
 
-func request_web(client_device_id: String, target_ip: String, is_https: bool) -> Dictionary:
+func request_web(
+	client_device_id: String,
+	target_ip: String,
+	is_https: bool,
+	request_host: String = "",
+) -> Dictionary:
 	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
 	if not _client_device:
 		return { "success": false, "error": "Unknown client device." }
@@ -377,7 +382,11 @@ func request_web(client_device_id: String, target_ip: String, is_https: bool) ->
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
 
-	return server.handle_web_request(target_ip, is_https)
+	var host_to_check = request_host.strip_edges()
+	if host_to_check == "":
+		host_to_check = target_ip
+
+	return server.handle_web_request(host_to_check, is_https)
 
 
 func request_ftp_login(target_ip: String, username: String, password: String) -> Dictionary:
@@ -385,6 +394,18 @@ func request_ftp_login(target_ip: String, username: String, password: String) ->
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
 	return server.handle_ftp_login(username, password)
+
+
+func request_ssh_login(
+	target_ip: String,
+	username: String,
+	password: String,
+	port: int = 22,
+) -> Dictionary:
+	var server: ServerDeviceData = _find_server_by_ip(target_ip)
+	if not server:
+		return { "success": false, "error": "Server not found at " + target_ip + "." }
+	return server.handle_ssh_login(username, password, port)
 
 
 func request_samba_login(target_ip: String, username: String, password: String) -> Dictionary:

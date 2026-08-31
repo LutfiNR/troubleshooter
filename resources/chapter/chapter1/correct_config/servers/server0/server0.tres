@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="9_0jko1"]
 [ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="10_mixta"]
 [ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="11_bno8k"]
+[ext_resource type="Resource" uid="uid://8737lghl00px" path="res://resources/chapter/chapter1/correct_config/servers/server0/service/remote/remote_service.tres" id="14_v40pd"]
 
 [resource]
 script = ExtResource("10_mixta")
@@ -26,6 +27,8 @@ dhcp_service = 1
 dhcp_configuration = Array[ExtResource("1_0yt66")]([ExtResource("2_s6nqt"), ExtResource("3_apnm3"), ExtResource("4_jqt4h"), ExtResource("5_v40pd")])
 dns_service = 1
 dns_configuration = Array[ExtResource("2_c5td4")]([ExtResource("7_jqt4h")])
+remote_service = 1
+remote_configuration = Array[ExtResource("8_llwew")]([ExtResource("14_v40pd")])
 device_id = "server0"
 hostname = "Server A"
 power = 1

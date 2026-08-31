@@ -2,7 +2,10 @@ extends Resource
 
 class_name WebService
 
-enum ServiceState { OFF, ON }
+enum ServiceState {
+	OFF,
+	ON,
+}
 
 @export var http_state: ServiceState = ServiceState.OFF
 @export var https_state: ServiceState = ServiceState.OFF
@@ -15,19 +18,20 @@ func handle_request(request_url: String, is_https: bool) -> String:
 	if not is_https and http_state == ServiceState.OFF:
 		return ""
 
-	var expected_protocol = WebVirtualHost.Protocol.HTTPS if is_https else WebVirtualHost.Protocol.HTTP
 	var is_ip_request = IPAddress.is_valid_ip(request_url)
-
+	var host_candidates: Array[String] = [request_url]
+	if request_url.begins_with("www."):
+		host_candidates.append(request_url.substr(4))
 	for vhost in virtual_hosts:
 		if vhost == null:
 			continue
-		if vhost.protocol != expected_protocol:
-			continue
-
-		if is_ip_request or vhost.server_name == request_url:
+		if is_ip_request:
 			return vhost.content
-
+		for host_name in host_candidates:
+			if vhost.server_name == host_name:
+				return vhost.content
 	return ""
+
 
 func verify_configuration(runtime_web_service: WebService = null) -> Dictionary:
 	var runtime_http = null
@@ -47,7 +51,7 @@ func verify_configuration(runtime_web_service: WebService = null) -> Dictionary:
 			"correct": ServiceState.keys()[https_state],
 			"status": runtime_web_service != null and https_state == runtime_web_service.https_state,
 		},
-		"virtual_hosts": {},
+		"virtual_hosts": { },
 	}
 	for vhost in virtual_hosts:
 		var matched_vh: WebVirtualHost = null
