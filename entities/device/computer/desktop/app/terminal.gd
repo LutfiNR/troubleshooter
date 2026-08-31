@@ -257,7 +257,12 @@ func _cmd_ftp(args: Array) -> void:
 		return
 	_print_line("Trying " + target_ip + "...")
 	await get_tree().create_timer(0.5).timeout
-	var response: Dictionary = NetworkManager.request_ftp_login(target_ip, username, password)
+	var response: Dictionary = NetworkManager.request_ftp_login(
+		target_device_id,
+		target_ip,
+		username,
+		password,
+	)
 	if response.get("success", false):
 		ftp_connected = true
 		ftp_username = username
@@ -328,7 +333,13 @@ func _cmd_ssh(args: Array) -> void:
 
 	_print_line("Trying " + target_ip + " on port " + str(port) + "...")
 	await get_tree().create_timer(0.5).timeout
-	var response: Dictionary = NetworkManager.request_ssh_login(target_ip, username, password, port)
+	var response: Dictionary = NetworkManager.request_ssh_login(
+		target_device_id,
+		target_ip,
+		username,
+		password,
+		port,
+	)
 	if response.get("success", false):
 		ssh_connected = true
 		ssh_username = username

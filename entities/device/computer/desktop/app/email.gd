@@ -74,7 +74,12 @@ func _on_login_pressed() -> void:
 		login_status_label.text = "Auth Error: Format email salah."
 		return
 
-	var response = NetworkManager.request_mail_login(target_ip, email_parts[0], password)
+	var response = NetworkManager.request_mail_login(
+		target_device_id,
+		target_ip,
+		email_parts[0],
+		password,
+	)
 
 	if response.success:
 		var server = NetworkManager._find_server_by_ip(target_ip)

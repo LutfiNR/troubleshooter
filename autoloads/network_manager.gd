@@ -130,15 +130,30 @@ func get_reachable_devices(
 	for cable: CableData in get_cables_for_device(start):
 		var peer: DeviceData
 		var peer_iface_id: String
+		var start_iface_id: String
+
 		if cable.device_a == start:
 			peer = cable.device_b
 			peer_iface_id = cable.interface_id_b
+			start_iface_id = cable.interface_id_a
 		else:
 			peer = cable.device_a
 			peer_iface_id = cable.interface_id_a
+			start_iface_id = cable.interface_id_b
+
 		if not peer or _excluded.has(peer):
 			continue
-		# Always add the peer to results.
+
+		# Check if both interfaces are UP
+		var start_iface = start.get_interface(start_iface_id)
+		var peer_iface = peer.get_interface(peer_iface_id)
+
+		if not start_iface or not start_iface.is_up():
+			continue
+		if not peer_iface or not peer_iface.is_up():
+			continue
+
+		# Both interfaces are UP, path is valid
 		reachable.append({ "device": peer, "iface_id": peer_iface_id })
 		# Routers are Layer-3 boundaries: when stop_at_layer3 is set,
 		# include them so the caller can check for relay/routing,
@@ -382,6 +397,15 @@ func request_web(
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
 
+	# Check connectivity before allowing access
+	var connectivity = check_connectivity(client_device_id, server.device_id)
+	if not connectivity.get("reachable", false):
+		return {
+			"success": false,
+			"error": "No network connectivity to server. Reason: "
+			+ connectivity.get("reason", "Unknown"),
+		}
+
 	var host_to_check = request_host.strip_edges()
 	if host_to_check == "":
 		host_to_check = target_ip
@@ -389,34 +413,106 @@ func request_web(
 	return server.handle_web_request(host_to_check, is_https)
 
 
-func request_ftp_login(target_ip: String, username: String, password: String) -> Dictionary:
+func request_ftp_login(
+	client_device_id: String,
+	target_ip: String,
+	username: String,
+	password: String,
+) -> Dictionary:
+	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
+	if not _client_device:
+		return { "success": false, "error": "Unknown client device." }
+
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
+
+	# Check connectivity before allowing access
+	var connectivity = check_connectivity(client_device_id, server.device_id)
+	if not connectivity.get("reachable", false):
+		return {
+			"success": false,
+			"error": "No network connectivity to server. Reason: "
+			+ connectivity.get("reason", "Unknown"),
+		}
+
 	return server.handle_ftp_login(username, password)
 
 
 func request_ssh_login(
+	client_device_id: String,
 	target_ip: String,
 	username: String,
 	password: String,
 	port: int = 22,
 ) -> Dictionary:
+	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
+	if not _client_device:
+		return { "success": false, "error": "Unknown client device." }
+
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
+
+	# Check connectivity before allowing access
+	var connectivity = check_connectivity(client_device_id, server.device_id)
+	if not connectivity.get("reachable", false):
+		return {
+			"success": false,
+			"error": "No network connectivity to server. Reason: "
+			+ connectivity.get("reason", "Unknown"),
+		}
+
 	return server.handle_ssh_login(username, password, port)
 
 
-func request_samba_login(target_ip: String, username: String, password: String) -> Dictionary:
+func request_samba_login(
+	client_device_id: String,
+	target_ip: String,
+	username: String,
+	password: String,
+) -> Dictionary:
+	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
+	if not _client_device:
+		return { "success": false, "error": "Unknown client device." }
+
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
+
+	# Check connectivity before allowing access
+	var connectivity = check_connectivity(client_device_id, server.device_id)
+	if not connectivity.get("reachable", false):
+		return {
+			"success": false,
+			"error": "No network connectivity to server. Reason: "
+			+ connectivity.get("reason", "Unknown"),
+		}
+
 	return server.handle_samba_login(username, password)
 
 
-func request_mail_login(target_ip: String, username: String, password: String) -> Dictionary:
+func request_mail_login(
+	client_device_id: String,
+	target_ip: String,
+	username: String,
+	password: String,
+) -> Dictionary:
+	var _client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
+	if not _client_device:
+		return { "success": false, "error": "Unknown client device." }
+
 	var server: ServerDeviceData = _find_server_by_ip(target_ip)
 	if not server:
 		return { "success": false, "error": "Server not found at " + target_ip + "." }
+
+	# Check connectivity before allowing access
+	var connectivity = check_connectivity(client_device_id, server.device_id)
+	if not connectivity.get("reachable", false):
+		return {
+			"success": false,
+			"error": "No network connectivity to server. Reason: "
+			+ connectivity.get("reason", "Unknown"),
+		}
+
 	return server.handle_mail_login(username, password)

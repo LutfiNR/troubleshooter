@@ -6,7 +6,7 @@ extends Control
 @export var path: LineEdit
 @export var content_list: ItemList
 @export var credential_popup: Panel
-@export var credential_username: LineEdit 
+@export var credential_username: LineEdit
 @export var credential_password: LineEdit
 @export var validation_label: Label
 
@@ -19,7 +19,11 @@ extends Control
 @export var local_items: Array[FileExplorerItem] = []
 @export var network_items: Array[FileExplorerItem] = []
 
-enum Protocol { LOCAL, FTP, SMB }
+enum Protocol {
+	LOCAL,
+	FTP,
+	SMB,
+}
 
 var target_device_id: String
 var target_ip: String = ""
@@ -31,43 +35,52 @@ var current_selected_index: int = -1
 var current_protocol: Protocol = Protocol.LOCAL
 var current_smb_share_name: String = ""
 
+
 func setup(device_id: String) -> void:
 	target_device_id = device_id
-	
+
 	if path and not path.text_submitted.is_connected(_on_path_text_submitted):
 		path.text_submitted.connect(_on_path_text_submitted)
-		
+
 	_load_local_files()
 	refresh_data()
 
+
 func refresh_data() -> void:
-	if target_device_id == "": return
-	if upload_button: upload_button.disabled = not current_write_enable
-	if delete_button: delete_button.disabled = not current_write_enable
+	if target_device_id == "":
+		return
+	if upload_button:
+		upload_button.disabled = not current_write_enable
+	if delete_button:
+		delete_button.disabled = not current_write_enable
+
 
 func _load_local_files() -> void:
 	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id)
 	if device:
 		path.text = "/" + device.device_id
-		
+
 	content_list.clear()
 	current_selected_index = -1
-	if ssl_icon: ssl_icon.texture = null
-	if button_container: button_container.visible = false
-	
+	if ssl_icon:
+		ssl_icon.texture = null
+	if button_container:
+		button_container.visible = false
+
 	is_logged_in = false
 	current_write_enable = true
-	
+
 	for item in local_items:
 		var index = content_list.add_item(item.file_or_folder_name)
 		var tex = folder_texture if item.type == FileExplorerItem.ItemType.FOLDER else file_texture
 		content_list.set_item_icon(index, tex)
-		
+
 	refresh_data()
+
 
 func _on_path_text_submitted(new_text: String) -> void:
 	var input_path = new_text.strip_edges()
-	
+
 	if not is_path_network(input_path):
 		_load_local_files()
 		return
@@ -82,12 +95,12 @@ func _handle_ftp_path(input_path: String) -> void:
 	current_protocol = Protocol.FTP
 	is_secure_request = input_path.begins_with("ftps://")
 	var request_url = input_path.replace("ftps://", "").replace("ftp://", "").strip_edges()
-	
+
 	if "/" in request_url:
 		request_url = request_url.split("/")[0]
-		
+
 	target_ip = request_url
-	
+
 	if not _is_valid_ip(request_url):
 		target_ip = NetworkManager.request_dns_resolve(target_device_id, request_url)
 		if target_ip == "":
@@ -150,32 +163,43 @@ func _handle_smb_path(input_path: String) -> void:
 		if share.guest_ok and share.security == SambaShare.SecurityType.NONE:
 			is_logged_in = true
 			current_write_enable = share.writeable
-			if ssl_icon: ssl_icon.texture = unsecure_texture
+			if ssl_icon:
+				ssl_icon.texture = unsecure_texture
 			_load_smb_share_files(share)
 			refresh_data()
 			return
 
 	open_credential_popup()
 
+
 func is_path_network(check_path: String) -> bool:
-	return (check_path.begins_with("ftp://")
-		or check_path.begins_with("ftps://")
-		or check_path.begins_with("smb://"))
+	return (
+		check_path.begins_with("ftp://") or check_path.begins_with("ftps://")
+		or check_path.begins_with("smb://")
+	)
+
 
 func open_credential_popup() -> void:
-	if credential_username: credential_username.text = ""
-	if credential_password: credential_password.text = ""
-	if validation_label: validation_label.text = ""
+	if credential_username:
+		credential_username.text = ""
+	if credential_password:
+		credential_password.text = ""
+	if validation_label:
+		validation_label.text = ""
 	credential_popup.show()
+
 
 func close_credential_popup() -> void:
 	credential_popup.hide()
 
+
 func _on_credential_login_button_pressed() -> void:
 	var input_user = ""
 	var input_pass = ""
-	if credential_username: input_user = credential_username.text.strip_edges()
-	if credential_password: input_pass = credential_password.text.strip_edges()
+	if credential_username:
+		input_user = credential_username.text.strip_edges()
+	if credential_password:
+		input_pass = credential_password.text.strip_edges()
 
 	if current_protocol == Protocol.SMB:
 		_handle_smb_login(input_user, input_pass)
@@ -184,30 +208,41 @@ func _on_credential_login_button_pressed() -> void:
 
 
 func _handle_ftp_login(input_user: String, input_pass: String) -> void:
-	var response = NetworkManager.request_ftp_login(target_ip, input_user, input_pass)
-	
+	var response = NetworkManager.request_ftp_login(
+		target_device_id,
+		target_ip,
+		input_user,
+		input_pass,
+	)
+
 	if response.success:
 		close_credential_popup()
 		is_logged_in = true
-		
+
 		var server = NetworkManager._find_server_by_ip(target_ip)
 		if server and server.handle_ftp_request():
 			current_write_enable = server.handle_ftp_request().write_enable
-			
+
 		path.text = path.text + response.home_dir
-		
+
 		if ssl_icon:
 			ssl_icon.texture = secure_texture if is_secure_request else unsecure_texture
-		
+
 		_load_ftp_dummy_files()
 		refresh_data()
 	else:
-		if credential_password: credential_password.text = ""
+		if credential_password:
+			credential_password.text = ""
 		validation_label.text = response.error
 
 
 func _handle_smb_login(input_user: String, input_pass: String) -> void:
-	var response = NetworkManager.request_samba_login(target_ip, input_user, input_pass)
+	var response = NetworkManager.request_samba_login(
+		target_device_id,
+		target_ip,
+		input_user,
+		input_pass,
+	)
 
 	if response.success:
 		close_credential_popup()
@@ -223,7 +258,8 @@ func _handle_smb_login(input_user: String, input_pass: String) -> void:
 			_show_error("Error: Samba configuration not found.")
 			return
 
-		if ssl_icon: ssl_icon.texture = unsecure_texture
+		if ssl_icon:
+			ssl_icon.texture = unsecure_texture
 
 		if current_smb_share_name != "":
 			# Access specific share
@@ -249,18 +285,23 @@ func _handle_smb_login(input_user: String, input_pass: String) -> void:
 
 		refresh_data()
 	else:
-		if credential_password: credential_password.text = ""
+		if credential_password:
+			credential_password.text = ""
 		validation_label.text = response.error
 
+
 func _on_credential_cancel_button_pressed() -> void:
-	if validation_label: validation_label.text = "" 
+	if validation_label:
+		validation_label.text = ""
 	close_credential_popup()
+
 
 func _load_ftp_dummy_files() -> void:
 	content_list.clear()
 	current_selected_index = -1
-	if button_container: button_container.visible = true
-	
+	if button_container:
+		button_container.visible = true
+
 	for item in network_items:
 		var index = content_list.add_item(item.file_or_folder_name)
 		var tex = folder_texture if item.type == FileExplorerItem.ItemType.FOLDER else file_texture
@@ -271,7 +312,8 @@ func _load_smb_share_list(samba_config: SambaService) -> void:
 	content_list.clear()
 	current_selected_index = -1
 	current_write_enable = false
-	if button_container: button_container.visible = false
+	if button_container:
+		button_container.visible = false
 
 	for share in samba_config.shares:
 		if share != null:
@@ -282,7 +324,8 @@ func _load_smb_share_list(samba_config: SambaService) -> void:
 func _load_smb_share_files(share: SambaShare) -> void:
 	content_list.clear()
 	current_selected_index = -1
-	if button_container: button_container.visible = share.writeable
+	if button_container:
+		button_container.visible = share.writeable
 
 	path.text = "smb://" + target_ip + "/" + share.share_name
 
@@ -291,28 +334,38 @@ func _load_smb_share_files(share: SambaShare) -> void:
 		var tex = folder_texture if item.type == FileExplorerItem.ItemType.FOLDER else file_texture
 		content_list.set_item_icon(index, tex)
 
+
 func _on_content_list_item_selected(index: int) -> void:
 	current_selected_index = index
 
+
 func _on_upload_button_pressed() -> void:
-	if not current_write_enable: return
+	if not current_write_enable:
+		return
 	var new_file_name = "uploaded_file_" + str(randi() % 1000) + ".txt"
 	var index = content_list.add_item(new_file_name)
 	content_list.set_item_icon(index, file_texture)
 
+
 func _on_delete_button_pressed() -> void:
-	if not current_write_enable or current_selected_index == -1: return
+	if not current_write_enable or current_selected_index == -1:
+		return
 	content_list.remove_item(current_selected_index)
 	current_selected_index = -1
+
 
 func _show_error(msg: String) -> void:
 	content_list.clear()
 	content_list.add_item(msg)
-	if ssl_icon: ssl_icon.texture = unsecure_texture
+	if ssl_icon:
+		ssl_icon.texture = unsecure_texture
+
 
 func _is_valid_ip(text: String) -> bool:
 	var parts = text.split(".")
-	if parts.size() != 4: return false
+	if parts.size() != 4:
+		return false
 	for p in parts:
-		if not p.is_valid_int(): return false
+		if not p.is_valid_int():
+			return false
 	return true
