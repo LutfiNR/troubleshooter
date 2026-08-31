@@ -7,4 +7,5 @@ script = ExtResource("1_242qb")
 id = "fa0/3"
 mac_address = "82:03:9d:80:8e:ec"
 layer = 0
+state = 1
 metadata/_custom_type_script = "uid://ci1x0glfens8u"

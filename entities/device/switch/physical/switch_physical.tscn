@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_0dwx3"]
 [ext_resource type="Script" uid="uid://b6kvbwgtewbe0" path="res://entities/device/utils/physical.gd" id="1_r8qhb"]
 [ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_gp1cw"]
-[ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="4_wwrw3"]
+[ext_resource type="Texture2D" uid="uid://c3g28w54fg8nx" path="res://assets/Switch/switch_pysical.png" id="2_wwrw3"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="5_1dg0h"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xf0pk"]
-texture = ExtResource("4_wwrw3")
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="5_xf0pk"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="6_qaaj0"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="7_ek15n"]
 
 [node name="SwitchPhysical" type="Node2D" unique_id=380462692 node_paths=PackedStringArray("ports", "cables")]
 script = ExtResource("1_r8qhb")
@@ -15,6 +15,9 @@ ports = [NodePath("Port1"), NodePath("Port2"), NodePath("Port3"), NodePath("Port
 cables = [NodePath("CableNode1"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4"), NodePath("CableNode5"), NodePath("CableNode6"), NodePath("CableNode7"), NodePath("CableNode8")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=936506732]
+position = Vector2(115, -17)
+scale = Vector2(16, 16)
+texture = ExtResource("2_wwrw3")
 
 [node name="Port1" parent="." unique_id=379434902 instance=ExtResource("1_0dwx3")]
 
@@ -77,15 +80,17 @@ position = Vector2(280, 40)
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 252.0
-offset_top = -153.0
-offset_right = 296.0
-offset_bottom = -109.0
+offset_left = 539.0
+offset_top = -314.0
+offset_right = 583.0
+offset_bottom = -270.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_xf0pk")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_xf0pk")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xf0pk")
+theme = ExtResource("5_xf0pk")
+theme_override_styles/normal = ExtResource("6_qaaj0")
+theme_override_styles/pressed = ExtResource("6_qaaj0")
+theme_override_styles/hover = ExtResource("7_ek15n")
+theme_override_styles/focus = ExtResource("7_ek15n")
 
 [node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=401288022]
 layout_mode = 1

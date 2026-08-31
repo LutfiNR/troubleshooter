@@ -386,6 +386,7 @@ anchor_bottom = 1.0
 offset_left = 5.0
 offset_top = 5.0
 offset_right = -6.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_03joq")
@@ -475,7 +476,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=265428866]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("9_fqsl8")
 text = "Software List"
 
 [node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/ListPool" unique_id=1196890487]
@@ -504,7 +505,7 @@ theme_override_constants/separation = 6
 [node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer" unique_id=1334806156]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("9_fqsl8")
 text = "Installed"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/Software/EditorContainer" unique_id=572711561]

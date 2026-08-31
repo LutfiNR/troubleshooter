@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doi21fnyxy8in"
-path="res://.godot/imported/LAN_port.png-701e6c5105c330b67956925115c14b44.ctex"
+uid="uid://lqt8g8oymjxl"
+path="res://.godot/imported/physicalserver.png-a2a7e1eceaa4249c3f397e5ff9ff5968.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/LAN/LAN_port.png"
-dest_files=["res://.godot/imported/LAN_port.png-701e6c5105c330b67956925115c14b44.ctex"]
+source_file="res://assets/Server/physicalserver.png"
+dest_files=["res://.godot/imported/physicalserver.png-a2a7e1eceaa4249c3f397e5ff9ff5968.ctex"]
 
 [params]
 

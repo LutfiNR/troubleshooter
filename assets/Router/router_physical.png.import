@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl71dob3uveyd"
-path="res://.godot/imported/LAN_cable.png-863a54f2696fb1d8d02f2e651878f9d8.ctex"
+uid="uid://csfj0t55d47cr"
+path="res://.godot/imported/router_physical.png-73fc27a266726c51f1d4a78a930d9001.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/LAN/LAN_cable.png"
-dest_files=["res://.godot/imported/LAN_cable.png-863a54f2696fb1d8d02f2e651878f9d8.ctex"]
+source_file="res://assets/Router/router_physical.png"
+dest_files=["res://.godot/imported/router_physical.png-73fc27a266726c51f1d4a78a930d9001.ctex"]
 
 [params]
 

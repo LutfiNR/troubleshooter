@@ -46,7 +46,7 @@ func _on_package_list_item_selected(index: int) -> void:
 func _update_ui_state(index: int) -> void:
 	if index == -1:
 		if status_label:
-			status_label.text = "Pilih paket untuk melihat status."
+			status_label.text = "Selet Pacakge First."
 		if install_button:
 			install_button.disabled = true
 		if uninstall_button:
