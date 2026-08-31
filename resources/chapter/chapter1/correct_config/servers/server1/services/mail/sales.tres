@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MailUser" format=3 uid="uid://qhmdmdesw4ri"]
+
+[ext_resource type="Script" uid="uid://c7j25f12sehs3" path="res://components/network_service/Mail/mail_user.gd" id="1_83uqs"]
+
+[resource]
+script = ExtResource("1_83uqs")
+username = "sales"
+password = "sales123"
+metadata/_custom_type_script = "uid://c7j25f12sehs3"
