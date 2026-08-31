@@ -1,21 +1,29 @@
 [gd_scene format=3 uid="uid://c1yqpkqil2l3c"]
 
+[ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="1_ieqgp"]
 [ext_resource type="Script" uid="uid://bfe74tj1bo221" path="res://entities/device/utils/popup_panel.gd" id="1_rii6k"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="2_tb8dv"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hr22p"]
+texture = ExtResource("1_ieqgp")
+texture_margin_left = 10.0
+texture_margin_top = 38.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
 [node name="PopupPanel" type="Panel" unique_id=75760130]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -254.0
-offset_top = -127.0
-offset_right = 254.0
-offset_bottom = 127.0
+offset_left = -378.0
+offset_top = -135.0
+offset_right = 378.0
+offset_bottom = 243.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hr22p")
 script = ExtResource("1_rii6k")
 
 [node name="Text" type="RichTextLabel" parent="." unique_id=1357957971]
@@ -23,15 +31,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 9.0
-offset_right = -8.0
-offset_bottom = -49.0
+offset_left = 16.0
+offset_top = 48.0
+offset_right = -21.0
+offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_tb8dv")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_colors/default_color = Color(0.1847857, 0.18478566, 0.18478566, 1)
+theme_override_font_sizes/normal_font_size = 24
 text = "INformation"
 
 [node name="OKButton" type="Button" parent="." unique_id=366905536]
@@ -40,10 +48,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.0
-offset_top = -41.0
-offset_right = -7.0
-offset_bottom = -8.0
+offset_left = 23.0
+offset_top = -65.0
+offset_right = -23.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_tb8dv")

@@ -208,6 +208,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cgk24")
 
 [node name="Setting" type="Control" parent="UIContainer/AppContainer" unique_id=521528596 node_paths=PackedStringArray("host_name_input", "interface_label", "network_status_label", "ip_address_input", "subnet_mask_input", "gateway_input", "ip_set_mode_input", "primary_dns_input")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -710,7 +711,6 @@ layout_mode = 2
 text = "Login"
 
 [node name="Terminal" type="Control" parent="UIContainer/AppContainer" unique_id=374708104 node_paths=PackedStringArray("output_history", "prompt_label", "input_line", "scroll_container")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -737,7 +737,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5ieel")
 patch_margin_left = 10
-patch_margin_top = 26
+patch_margin_top = 38
 patch_margin_right = 10
 patch_margin_bottom = 10
 
@@ -750,9 +750,8 @@ offset_top = 3.0
 offset_right = -39.0
 offset_bottom = 22.0
 grow_horizontal = 2
+theme = ExtResource("12_jelbd")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_5rb34")
-theme_override_font_sizes/font_size = 16
 text = "Terminal"
 horizontal_alignment = 1
 
@@ -773,9 +772,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
-offset_top = 24.0
+offset_top = 35.0
 offset_right = -10.0
-offset_bottom = 490.0
+offset_bottom = 531.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k3k4b")
 
@@ -786,19 +785,27 @@ size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UIContainer/AppContainer/Terminal/VBox/VBoxContainer" unique_id=8008580]
 layout_mode = 2
+focus_mode = 2
+theme = ExtResource("12_jelbd")
+theme_override_font_sizes/normal_font_size = 24
 text = "tes"
 fit_content = true
+selection_enabled = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/Terminal/VBox/VBoxContainer" unique_id=581374281]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/Terminal/VBox/VBoxContainer/HBoxContainer" unique_id=543707648]
 layout_mode = 2
+theme = ExtResource("12_jelbd")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
 
 [node name="LineEdit" type="LineEdit" parent="UIContainer/AppContainer/Terminal/VBox/VBoxContainer/HBoxContainer" unique_id=1352036803]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_k3k4b")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_jelbd")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j1ipk")

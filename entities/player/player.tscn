@@ -230,6 +230,7 @@ offset_bottom = 105.0
 texture = ExtResource("6_qiwj3")
 
 [node name="PopupContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1252462743]
+visible = false
 offset_left = 20.0
 offset_top = 124.0
 offset_right = 480.0

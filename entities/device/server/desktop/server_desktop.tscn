@@ -8,11 +8,11 @@
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_ovbx6"]
 [ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="6_fbk0g"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="7_2p471"]
+[ext_resource type="Texture2D" uid="uid://b32ctbem0w3my" path="res://assets/UI/Icon/configuration_icon.png" id="8_ovbx6"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_fqsl8"]
 [ext_resource type="Script" uid="uid://bm441bap7idbf" path="res://entities/device/server/desktop/app/server_setting_app.gd" id="11_0d2s3"]
 [ext_resource type="PackedScene" uid="uid://c1yqpkqil2l3c" path="res://entities/device/utils/popup_panel.tscn" id="11_fqsl8"]
 [ext_resource type="Script" uid="uid://blvqcuvra0i2c" path="res://entities/device/server/desktop/app/server_app.gd" id="12_03joq"]
-[ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="13_fqsl8"]
 [ext_resource type="Script" uid="uid://cvim00ug7ugmq" path="res://entities/device/server/desktop/app/software.gd" id="13_q3fwd"]
 [ext_resource type="Script" uid="uid://bc7pw1yrw22ls" path="res://entities/device/server/desktop/app/dhcp.gd" id="14_fw4op"]
 [ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="14_srt4w"]
@@ -150,9 +150,9 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 toggle_mode = true
-texture_normal = ExtResource("13_fqsl8")
-texture_pressed = ExtResource("13_fqsl8")
-texture_hover = ExtResource("13_fqsl8")
+texture_normal = ExtResource("8_ovbx6")
+texture_pressed = ExtResource("8_ovbx6")
+texture_hover = ExtResource("8_ovbx6")
 stretch_mode = 5
 
 [node name="SettingButton" type="TextureButton" parent="UIContainer/PanelDesktop" unique_id=658631799]
@@ -556,10 +556,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = -4.5
-offset_bottom = -6.0
+offset_left = 9.0
+offset_top = 12.0
+offset_right = -6.5
+offset_bottom = -9.0
 grow_vertical = 2
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP/ListPool" unique_id=559616566]
@@ -590,14 +590,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DHCP" unique_id=1448035207]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.5
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -580.0863
-offset_top = 5.5
-offset_right = -6.0
-offset_bottom = -6.5
+offset_left = 9.5
+offset_top = 13.0
+offset_right = -8.0
+offset_bottom = -14.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -776,10 +776,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = -5.5
-offset_bottom = -6.0
+offset_left = 9.0
+offset_top = 16.0
+offset_right = -59.5
+offset_bottom = -15.0
 grow_vertical = 2
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB/ListPool" unique_id=619085316]
@@ -837,23 +837,24 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -2.0
+offset_left = -56.5
 offset_top = 1.0
-offset_right = 2.0
+offset_right = -52.5
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/WEB" unique_id=148164769]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.013
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -579.0863
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -7.0
+offset_left = -49.5
+offset_top = 4.124
+offset_right = -13.0
+offset_bottom = -15.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -981,10 +982,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = 7.0
-offset_right = -5.5
-offset_bottom = -6.0
+offset_left = 13.0
+offset_top = 20.0
+offset_right = -12.5
+offset_bottom = -14.0
 grow_vertical = 2
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS/ListPool" unique_id=25670143]
@@ -1015,14 +1016,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DNS" unique_id=1758983476]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.504
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -583.0863
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = -7.0
+offset_left = -0.41601563
+offset_top = 10.0
+offset_right = -9.0
+offset_bottom = -13.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -1157,10 +1158,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 6.0
-offset_right = -599.0863
-offset_bottom = -2.0
+offset_right = -498.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1263,20 +1261,20 @@ metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User" unique_id=375522484]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.019000001
+anchor_right = 0.425
 anchor_bottom = 1.0
-offset_left = -579.5
-offset_top = 8.0
-offset_right = -8.5
+offset_left = 4.0
+offset_top = 0.1529994
+offset_right = -0.375
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer" unique_id=2108194855]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme = ExtResource("9_fqsl8")
 text = "user list"
 
 [node name="ItemList" type="ItemList" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User/VBoxContainer" unique_id=1134058222]
@@ -1286,13 +1284,13 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FTP/TabContainer2/User" unique_id=1226651206]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.43800002
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.5
+offset_left = -0.05001831
 offset_top = 8.0
-offset_right = 583.5
+offset_right = -7.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1375,9 +1373,9 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -2.0
+offset_left = -69.5
 offset_top = 1.0
-offset_right = 2.0
+offset_right = -65.5
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1426,7 +1424,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
 offset_top = 6.0
-offset_right = -601.0863
+offset_right = -496.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1522,13 +1520,13 @@ metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User" unique_id=2107667305]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.019000001
+anchor_right = 0.455
 anchor_bottom = 1.0
-offset_left = -584.5
-offset_top = 8.0
-offset_right = -8.5
+offset_left = 8.0
+offset_top = 0.1529994
+offset_right = 0.375
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1545,13 +1543,13 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/REMOTE/TabContainer2/User" unique_id=511083955]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.47000003
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.5
+offset_left = -0.25003052
 offset_top = 8.0
-offset_right = 577.5
+offset_right = -10.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1704,12 +1702,13 @@ same_column_width = true
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/GlobalConfig" unique_id=1638557192]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.40500003
+anchor_top = 0.015000001
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -669.0863
-offset_top = 6.0
+offset_left = 9.1249695
+offset_top = -0.19500017
 offset_right = -4.0
 offset_bottom = -3.0
 grow_horizontal = 0
@@ -1840,13 +1839,13 @@ metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User" unique_id=877343779]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.019000001
+anchor_right = 0.41900003
 anchor_bottom = 1.0
-offset_left = -585.5
-offset_top = 8.0
-offset_right = -8.5
+offset_left = 6.0
+offset_top = 0.1529994
+offset_right = 0.4749756
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1863,13 +1862,14 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/FILE/TabContainer/User" unique_id=1421899613]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.42800003
+anchor_top = 0.019000001
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 7.5
-offset_top = 8.0
-offset_right = 582.5
+offset_left = 2.6999817
+offset_top = 0.1529994
+offset_right = -5.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -1974,21 +1974,21 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_x0h83")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_bnoh2")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_sk1d1")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_e5vpb")
-current_tab = 1
+current_tab = 0
 
 [node name="General Config" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer" unique_id=482153848]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="ListPool" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config" unique_id=733822383]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.5
+anchor_top = 0.010000001
+anchor_right = 0.437
 anchor_bottom = 1.0
 offset_left = 3.0
-offset_top = 4.0
-offset_right = -61.5
+offset_top = -0.13000011
+offset_right = -0.07501221
 offset_bottom = -3.0
 grow_vertical = 2
 
@@ -2006,11 +2006,11 @@ same_column_width = true
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/General Config" unique_id=887861532]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.45800003
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -632.0863
+offset_left = 0.4499817
 offset_top = 6.0
 offset_right = -4.0
 offset_bottom = -3.0
@@ -2102,18 +2102,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Users" type="TabBar" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer" unique_id=1854502131]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users" unique_id=840068842]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
+anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -584.5
+offset_left = 1.0
 offset_top = 8.0
-offset_right = -8.5
+offset_right = -36.5
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2130,13 +2130,13 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Users" unique_id=1236142139]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.47300002
+anchor_right = 0.99500006
 anchor_bottom = 1.0
-offset_left = 7.5
+offset_left = -0.17501831
 offset_top = 8.0
-offset_right = 584.5
+offset_right = -0.12506104
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2215,11 +2215,10 @@ metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges" unique_id=1002429967]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
+anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -587.5
+offset_left = 10.0
 offset_top = 8.0
 offset_right = 7.5
 offset_bottom = -5.0
@@ -2276,13 +2275,13 @@ text = "Save"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/DATABASE/TabContainer/Privileges" unique_id=1062026430]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = -1
 anchor_left = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 20.5
 offset_top = 8.0
-offset_right = 585.5
+offset_right = -3.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2408,12 +2407,13 @@ popup/item_1/id = 1
 
 [node name="EditorContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/General Config" unique_id=2051706944]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.51000005
+anchor_top = 0.015000001
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -577.0863
-offset_top = 6.0
+offset_left = -0.25006104
+offset_top = -0.19500017
 offset_right = -4.0
 offset_bottom = -3.0
 grow_horizontal = 0
@@ -2489,12 +2489,12 @@ metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users" unique_id=1537576395]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
+anchors_preset = -1
+anchor_top = 0.019000001
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -585.5
-offset_top = 8.0
+offset_left = 9.0
+offset_top = 0.1529994
 offset_right = -8.5
 offset_bottom = -5.0
 grow_horizontal = 2
@@ -2512,13 +2512,13 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIContainer/AppContainer/ServiceApp/TabContainer/MAIL/TabContainer/Users" unique_id=1014366302]
 layout_mode = 1
-anchors_preset = 13
+anchors_preset = -1
 anchor_left = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.5
 offset_top = 8.0
-offset_right = 584.5
+offset_right = -6.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -2591,6 +2591,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PopupPanel" parent="UIContainer/AppContainer" unique_id=305657255 instance=ExtResource("11_fqsl8")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]

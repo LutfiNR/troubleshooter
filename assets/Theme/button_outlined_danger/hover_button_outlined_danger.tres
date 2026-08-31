@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bx0babn7yomms" path="res://assets/UI/Button/regular_button/regular_button_red_1.png" id="1_sr1nf"]
 
 [resource]
+content_margin_bottom = 2.0
 texture = ExtResource("1_sr1nf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0

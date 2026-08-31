@@ -1,11 +1,9 @@
 [gd_resource type="Theme" format=3 uid="uid://dd5ntn00ugsv"]
 
-[ext_resource type="FontFile" uid="uid://cb7ts27d4xuqr" path="res://assets/Font/pixel_operator/PixelOperator.ttf" id="1_5x3i2"]
 [ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="1_dlunq"]
 [ext_resource type="StyleBox" uid="uid://co48oojlikso0" path="res://assets/Theme/button_filled_primary/normal_button_filled_primary.tres" id="1_i5ob3"]
 [ext_resource type="StyleBox" uid="uid://bt3c5jbeb624e" path="res://assets/Theme/button_filled_primary/hover_button_filled_primary.tres" id="1_roo7c"]
 [ext_resource type="Texture2D" uid="uid://byygs72i1lsjl" path="res://assets/UI/Input/input_0002.png" id="2_n1r02"]
-[ext_resource type="FontFile" uid="uid://b3r11jl3hl6lp" path="res://assets/Font/rainyhearts.ttf" id="2_wl1kw"]
 [ext_resource type="Texture2D" uid="uid://d3eixc28qtqcb" path="res://assets/UI/Input/check_button1.png" id="3_iuutd"]
 [ext_resource type="Texture2D" uid="uid://fi7a7oxd0svy" path="res://assets/UI/Input/check_button2.png" id="4_d66b8"]
 [ext_resource type="Texture2D" uid="uid://orvqomlh03sl" path="res://assets/UI/Input/check_button3.png" id="5_hbwbd"]
@@ -68,20 +66,7 @@ texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="FontVariation" id="FontVariation_lu33j"]
-base_font = ExtResource("2_wl1kw")
-variation_embolden = 1.2
-
-[sub_resource type="FontVariation" id="FontVariation_wycmq"]
-base_font = ExtResource("2_wl1kw")
-variation_embolden = 1.2
-variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
-
-[sub_resource type="FontVariation" id="FontVariation_x2pqw"]
-base_font = ExtResource("2_wl1kw")
-variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
-
-[sub_resource type="Image" id="Image_swglo"]
+[sub_resource type="Image" id="Image_nwk38"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -91,7 +76,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_wms38"]
-image = SubResource("Image_swglo")
+image = SubResource("Image_nwk38")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcf2e"]
 content_margin_left = 0.0
@@ -259,14 +244,6 @@ LineEdit/icons/clear = SubResource("DPITexture_wl1kw")
 LineEdit/styles/focus = ExtResource("1_dlunq")
 LineEdit/styles/normal = ExtResource("1_dlunq")
 LineEdit/styles/read_only = SubResource("StyleBoxTexture_i5ob3")
-RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
-RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 0)
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0)
-RichTextLabel/colors/selection_color = Color(0.1, 0.1, 1, 0.8)
-RichTextLabel/colors/table_border = Color(0, 0, 0, 0)
-RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 0)
-RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 0)
 RichTextLabel/constants/line_separation = 0
 RichTextLabel/constants/outline_size = 0
 RichTextLabel/constants/paragraph_separation = 0
@@ -279,16 +256,6 @@ RichTextLabel/constants/table_v_separation = 3
 RichTextLabel/constants/text_highlight_h_padding = 3
 RichTextLabel/constants/text_highlight_v_padding = 3
 RichTextLabel/constants/underline_alpha = 50
-RichTextLabel/font_sizes/bold_font_size = 16
-RichTextLabel/font_sizes/bold_italics_font_size = 16
-RichTextLabel/font_sizes/italics_font_size = 16
-RichTextLabel/font_sizes/mono_font_size = 32
-RichTextLabel/font_sizes/normal_font_size = 32
-RichTextLabel/fonts/bold_font = SubResource("FontVariation_lu33j")
-RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_wycmq")
-RichTextLabel/fonts/italics_font = SubResource("FontVariation_x2pqw")
-RichTextLabel/fonts/mono_font = ExtResource("1_5x3i2")
-RichTextLabel/fonts/normal_font = ExtResource("1_5x3i2")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_wms38")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_0d2s3")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_bcf2e")
