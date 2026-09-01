@@ -6,10 +6,10 @@
 script = ExtResource("1_pys81")
 id = "mission1"
 title = "Basic Networking"
-description = "Misi menyelesaikan masalah basic networking "
 time = -1.0
 check_progress_limit = 10
 required_progress_id = "mission0"
+description = "Misi menyelesaikan masalah basic networking "
 guide = "[center][font_size=26][color=#1565C0][b]Basic Networking[/b][/color][/font_size][/center]
 
 [color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]

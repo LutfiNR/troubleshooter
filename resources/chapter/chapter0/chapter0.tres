@@ -24,5 +24,6 @@ default_cables = Dictionary[String, StringName]({
 "switch0_router": &"uid://bretiwsbg2nyf",
 "switch1_router": &"uid://p177aab7ebms"
 })
+guide = "tes"
 missions = Array[ExtResource("1_vdyv3")]([ExtResource("3_2cfih"), ExtResource("2_c6245")])
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

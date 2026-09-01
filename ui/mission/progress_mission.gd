@@ -9,7 +9,10 @@ func _ready() -> void:
 	GameManager.mission_loaded.connect(_on_mission_loaded)
 	GameManager.chapter_loaded.connect(_on_chapter_loaded)
 	GameManager.mission_completed.connect(_on_mission_completed_ui)
-	reset_value()
+	if GameManager.current_mission != null:
+		_on_mission_loaded(GameManager.current_mission)
+	else:
+		reset_value()
 
 
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:

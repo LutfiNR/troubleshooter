@@ -7,5 +7,6 @@ class_name ChapterData
 @export_group("Default Configuration")
 @export var default_configs: Dictionary[String,StringName]
 @export var default_cables: Dictionary[String,StringName]
+@export_multiline var guide: String
 @export_group("Mission Data")
 @export var missions: Array[MissionData]

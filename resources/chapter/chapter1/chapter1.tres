@@ -51,4 +51,5 @@ default_cables = Dictionary[String, StringName]({
 "switch2_router0": &"uid://cqkjqpxi5mt6q",
 "switch3_router0": &"uid://ce0mltpbrsjum"
 })
+guide = "chapter 1"
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

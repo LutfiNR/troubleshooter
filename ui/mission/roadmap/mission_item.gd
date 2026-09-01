@@ -13,7 +13,7 @@ extends Button
 var chapter_id: String
 var mission_id: String
 
-const STATUS_ICON := {
+var STATUS_ICON := {
 	GameManager.ProgressStatus.LOCKED: "locked",
 	GameManager.ProgressStatus.UNLOCKED: "unlocked",
 	GameManager.ProgressStatus.ON_PROGRESS: "on_progress",
