@@ -19,6 +19,8 @@ func _ready() -> void:
 	GameManager.chapter_loaded.connect(_on_chapter_loaded)
 	GameManager.mission_completed.connect(_on_mission_completed_ui)
 	check_progress_button.hide()
+	if GameManager.current_mission != null:
+		_on_mission_loaded(GameManager.current_mission)
 
 
 func _on_chapter_loaded(_chapter: ChapterData) -> void:
@@ -37,7 +39,11 @@ func _on_mission_loaded(mission: MissionData) -> void:
 	if mission.title == "Tutorial":
 		return
 	check_open_limit = mission.check_progress_limit
-	check_open_count = 0
+	# Load check count from game data
+	check_open_count = GameManager.get_mission_check_count(
+		GameManager.current_chapter.id,
+		mission.id,
+	)
 	check_progress_button.show()
 	update_ui()
 
@@ -90,6 +96,11 @@ func _on_check_progress_button_pressed() -> void:
 	if check_open_count >= check_open_limit:
 		return
 	check_open_count += 1
+	# Save check count to game data
+	GameManager.increment_mission_check_count(
+		GameManager.current_chapter.id,
+		GameManager.current_mission.id,
+	)
 	update_ui()
 	show_popup(check_popup_scene)
 	if not GameManager.game_data.tutorial_completed.has("check"):

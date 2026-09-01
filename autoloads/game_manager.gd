@@ -94,7 +94,7 @@ func initialize_progress_data() -> void:
 	for chapter in chapter_datas:
 		var missions := { }
 		for mission in chapter.missions:
-			missions[mission.id] = { "status": ProgressStatus.LOCKED }
+			missions[mission.id] = { "status": ProgressStatus.LOCKED, "check_count": 0 }
 		game_data.chapters[chapter.id] = { "status": ProgressStatus.LOCKED, "missions": missions }
 	for chapter in chapter_datas:
 		if chapter.required_progress_id.is_empty():
@@ -145,6 +145,7 @@ func _on_mission_completed(mission_id: String) -> void:
 	if is_mission_completed(mission_id):
 		return
 	set_game_data_mission_status(current_chapter.id, mission_id, ProgressStatus.COMPLETED)
+	reset_mission_check_count(current_chapter.id, mission_id)
 	unlock_new_mission()
 	var all_missions_completed := true
 	for game_data_mission in game_data.chapters[current_chapter.id].missions.values():
@@ -266,3 +267,23 @@ func get_mission(mission_id: String) -> MissionData:
 			if mission.id == mission_id:
 				return mission
 	return null
+
+
+func get_mission_check_count(chapter_id: String, mission_id: String) -> int:
+	if game_data.chapters.has(chapter_id):
+		if game_data.chapters[chapter_id].missions.has(mission_id):
+			return game_data.chapters[chapter_id].missions[mission_id].get("check_count", 0)
+	return 0
+
+
+func increment_mission_check_count(chapter_id: String, mission_id: String) -> void:
+	if game_data.chapters.has(chapter_id):
+		if game_data.chapters[chapter_id].missions.has(mission_id):
+			game_data.chapters[chapter_id].missions[mission_id]["check_count"] += 1
+			save_game()
+
+
+func reset_mission_check_count(chapter_id: String, mission_id: String) -> void:
+	if game_data.chapters.has(chapter_id):
+		if game_data.chapters[chapter_id].missions.has(mission_id):
+			game_data.chapters[chapter_id].missions[mission_id]["check_count"] = 0

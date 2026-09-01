@@ -58,9 +58,9 @@ func update_ui(target_device: DeviceData) -> void:
 				):
 					has_cable_connection = true
 					break
-			print_debug(has_cable_connection)
 			cable.visible = has_cable_connection
 			cable.force_state_from_data(port, interface_data.is_up())
+
 
 func _on_exit_button_pressed() -> void:
 	queue_free()

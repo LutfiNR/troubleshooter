@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="CableData" format=3 uid="uid://bbolxsy87oj55"]
 
-[ext_resource type="Resource" uid="uid://c38a2ba0t6ng5" path="res://resources/chapter/chapter0/correct_config/computers/computer0/computer0.tres" id="1_b73ms"]
+[ext_resource type="Resource" uid="uid://bqp1b0l75ufli" path="res://resources/chapter/chapter0/correct_config/computers/computer1/computer1.tres" id="1_jog0l"]
 [ext_resource type="Resource" uid="uid://bd0irlvh4n4ag" path="res://resources/chapter/chapter0/correct_config/switches/switch0/switch0.tres" id="2_irufq"]
 [ext_resource type="Script" uid="uid://bi6dgcqfra5ai" path="res://components/cable_data/cable_data.gd" id="3_mwawg"]
 
 [resource]
 script = ExtResource("3_mwawg")
-device_a = ExtResource("1_b73ms")
+device_a = ExtResource("1_jog0l")
 device_b = ExtResource("2_irufq")
 interface_id_a = "eth0"
 interface_id_b = "fa0/1"

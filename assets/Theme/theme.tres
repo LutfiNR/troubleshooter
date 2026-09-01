@@ -66,7 +66,7 @@ texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="Image" id="Image_nwk38"]
+[sub_resource type="Image" id="Image_hbwbd"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -76,7 +76,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_wms38"]
-image = SubResource("Image_nwk38")
+image = SubResource("Image_hbwbd")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcf2e"]
 content_margin_left = 0.0

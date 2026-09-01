@@ -112,12 +112,37 @@ func remove_cable_data(cable_id: String) -> void:
 
 
 ## Returns all CableData where device_data is one of the two ends.
+## Compares by device values (device_id, hostname, power state) instead of object reference.
 func get_cables_for_device(device_data: DeviceData) -> Array[CableData]:
 	var result: Array[CableData] = []
 	for cable: CableData in runtime_cables.values():
-		if cable.device_a == device_data or cable.device_b == device_data:
+		if (
+			_devices_equal(cable.device_a, device_data)
+			or _devices_equal(cable.device_b, device_data)
+		):
 			result.append(cable)
 	return result
+
+
+## Helper function to compare two DeviceData objects by their values instead of reference.
+## Checks device_id, hostname, power state, and interface count.
+func _devices_equal(device_a: DeviceData, device_b: DeviceData) -> bool:
+	if not device_a or not device_b:
+		return device_a == device_b
+
+	# Compare primary identifying fields
+	if device_a.device_id != device_b.device_id:
+		return false
+	if device_a.hostname != device_b.hostname:
+		return false
+	if device_a.power != device_b.power:
+		return false
+
+	# Compare interface count as a basic check
+	if device_a.interfaces.size() != device_b.interfaces.size():
+		return false
+
+	return true
 
 
 func get_reachable_devices(
@@ -132,7 +157,7 @@ func get_reachable_devices(
 		var peer_iface_id: String
 		var start_iface_id: String
 
-		if cable.device_a == start:
+		if _devices_equal(cable.device_a, start):
 			peer = cable.device_b
 			peer_iface_id = cable.interface_id_b
 			start_iface_id = cable.interface_id_a
