@@ -45,10 +45,20 @@ func _generate_ip(index: int) -> String:
 	return _int_to_ip(generated_value)
 
 
+func _is_ip_in_current_pool(ip_address: String) -> bool:
+	var ip_value := _ip_to_int(ip_address)
+	var pool_start := _ip_to_int(start_ip_address)
+	if ip_value < 0 or pool_start < 0 or pool_size <= 0:
+		return false
+	return ip_value >= pool_start and ip_value < pool_start + pool_size
+
+
 func request_ip(mac: String) -> Dictionary:
-	# Return existing lease for this MAC
 	if leased_ips.has(mac):
-		return _build_config(leased_ips[mac])
+		var existing_ip: String = leased_ips[mac]
+		if _is_ip_in_current_pool(existing_ip):
+			return _build_config(existing_ip)
+		release_ip(mac)
 
 	# Find the next available IP in the pool
 	for i in range(pool_size):
