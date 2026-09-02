@@ -359,6 +359,27 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 	return { "success": false }
 
 
+func refresh_dhcp_client(client_device_id: String, interface_id: String) -> Dictionary:
+	var client_device := get_runtime_device_data_by_id(client_device_id) as ComputerDeviceData
+	if not client_device:
+		return { "success": false }
+
+	var client_iface := client_device.get_interface(interface_id)
+	if not client_iface:
+		return { "success": false }
+
+	client_iface.export_ip_address = ""
+	client_iface.export_subnet_mask = ""
+	client_iface.initialize_ip_from_export()
+	client_device.default_gateway = ""
+	client_device.dns_server = ""
+
+	var response := request_dhcp(client_device_id, interface_id)
+	if not response.get("success", false):
+		device_updated.emit(client_device.device_id, client_device)
+	return response
+
+
 ## Applies a successful DHCP response to the client device's runtime state.
 func _apply_dhcp_response(
 	device: DeviceData,

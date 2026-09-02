@@ -25,6 +25,12 @@ func setup(device_id: String) -> void:
 func refresh_data() -> void:
 	if target_device_id == "":
 		return
+	var device := (
+		NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	)
+	var main_iface := device.get_interface() if device else null
+	if main_iface and main_iface.ip_allocation_mode == NetworkInterface.IPAllocationMode.DHCP:
+		NetworkManager.refresh_dhcp_client(target_device_id, main_iface.id)
 	_populate_ui()
 
 
@@ -45,7 +51,9 @@ func _populate_ui() -> void:
 		interface_label.text = main_iface.id
 		ip_address_input.text = main_iface.export_ip_address
 		subnet_mask_input.text = main_iface.export_subnet_mask
-		if main_iface.state == NetworkInterface.InterfaceState.UP:
+		if is_dhcp and main_iface.export_ip_address == "":
+			_dhcp_failed_request()
+		elif main_iface.state == NetworkInterface.InterfaceState.UP:
 			network_status_label.text = "Plugged"
 			network_status_label.add_theme_color_override("font_color", Color(0.0, 0.541, 0.0, 1.0))
 		else:
@@ -71,7 +79,9 @@ func _on_ip_dynamic_button_toggled(_toggled: bool) -> void:
 
 
 func _on_save_button_pressed() -> void:
-	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var device := (
+		NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	)
 	if not device:
 		return
 
@@ -95,16 +105,18 @@ func _on_save_button_pressed() -> void:
 
 
 func get_ip_from_dhcp():
-	var device = NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	var device := (
+		NetworkManager.get_runtime_device_data_by_id(target_device_id) as ComputerDeviceData
+	)
 	var main_iface = device.get_interface()
 
 	if not main_iface.is_up():
 		_dhcp_failed_request()
 		return
 
-	var response = NetworkManager.request_dhcp(target_device_id, main_iface.id)
+	var response = NetworkManager.refresh_dhcp_client(target_device_id, main_iface.id)
 
-	if response.success:
+	if response.get("success", false):
 		ip_address_input.text = device.get_interface().export_ip_address
 		subnet_mask_input.text = device.get_interface().export_subnet_mask
 		gateway_input.text = device.default_gateway
@@ -116,6 +128,8 @@ func get_ip_from_dhcp():
 
 
 func _dhcp_failed_request() -> void:
+	ip_address_input.text = ""
+	subnet_mask_input.text = ""
 	gateway_input.text = "0.0.0.0"
 	primary_dns_input.text = "0.0.0.0"
 	ip_address_input.text = "169.254.55.232"

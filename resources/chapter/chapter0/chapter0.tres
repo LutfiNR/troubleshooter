@@ -24,6 +24,29 @@ default_cables = Dictionary[String, StringName]({
 "switch0_router": &"uid://bretiwsbg2nyf",
 "switch1_router": &"uid://p177aab7ebms"
 })
-guide = "tes"
+guide = "[center][font_size=26][color=#1565C0][b]Tutorial Room[/b][/color][/font_size][/center]
+[color=#333333]
+Selamat datang pada tahap [b]Tes Praktik Program Magang[/b].
+
+Pada skenario ini, Anda diberikan sebuah topologi jaringan sederhana yang telah dikonfigurasi. Gunakan ruangan ini untuk mengenali perangkat jaringan serta memahami hubungan dasar antarperangkat sebelum melanjutkan ke tahap berikutnya.
+[/color]
+[hr]
+[color=#1565C0][font_size=20][b]Perangkat Jaringan[/b][/font_size][/color]
+[color=#333333]
+[b]Client[/b]
+• Computer A — [color=#455A64]Computer0[/color]
+• Computer B — [color=#455A64]Computer1[/color]
+[b]Switch[/b]
+• Switch A — [color=#455A64]Switch0[/color]
+• Switch B — [color=#455A64]Switch1[/color]
+[b]Router[/b]
+• Router — [color=#455A64]Router0[/color]
+[b]Server[/b]
+• Server — [color=#455A64]Server0[/color]
+[/color]
+[hr]
+[color=#455A64]
+[b]Catatan:[/b] Gunakan perangkat yang tersedia untuk mempelajari dasar konektivitas jaringan dan interaksi antarperangkat.
+[/color]"
 missions = Array[ExtResource("1_vdyv3")]([ExtResource("3_2cfih"), ExtResource("2_c6245")])
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

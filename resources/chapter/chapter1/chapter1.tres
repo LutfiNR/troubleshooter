@@ -51,5 +51,85 @@ default_cables = Dictionary[String, StringName]({
 "switch2_router0": &"uid://cqkjqpxi5mt6q",
 "switch3_router0": &"uid://ce0mltpbrsjum"
 })
-guide = "chapter 1"
+guide = "[center][font_size=26][color=#1565C0][b]Panduan Infrastruktur Jaringan[/b][/color][/font_size][/center]
+[color=#333333]
+Selamat datang di [b]Kirin Corp.[/b]
+Dokumen ini berisi informasi dan panduan mengenai infrastruktur jaringan yang digunakan di lingkungan perusahaan Kirin Corp.
+
+Gunakan panduan ini sebagai referensi untuk memahami struktur jaringan, perangkat yang digunakan, serta konfigurasi standar yang diterapkan di lingkungan perusahaan.
+[/color]
+[hr]
+[center][font_size=20][color=#1565C0][b]Topologi Jaringan Kirin Corp.[/b][/color][/font_size][/center]
+[center]
+[img=700x0]res://assets/topology.png[/img]
+[/center]
+[center][color=#455A64][i]Gambar 1. Topologi Infrastruktur Jaringan Kirin Corp.[/i][/color][/center]
+
+[color=#455A64]
+[b]Catatan:[/b] Informasi dalam panduan ini merupakan konfigurasi standar jaringan Kirin Corp. dan dapat digunakan sebagai referensi saat melakukan troubleshooting.
+[/color]
+[hr]
+[center][font_size=24][color=#1565C0][b]Struktur Infrastruktur Jaringan[/b][/color][/font_size][/center]
+[color=#333333]
+Kirin Corp. memiliki empat divisi yang terhubung dalam satu infrastruktur jaringan perusahaan. Setiap divisi menggunakan jaringan (subnet) yang berbeda untuk memisahkan lalu lintas jaringan dan memudahkan pengelolaan perangkat.
+[/color]
+[hr]
+[color=#1565C0][font_size=20][b]IT Division[/b][/font_size][/color]
+[color=#333333]
+[b]Network[/b] : [color=#455A64]192.168.1.0/24[/color]
+Divisi IT merupakan pusat pengelolaan infrastruktur jaringan Kirin Corp. Divisi ini memiliki router, switch, komputer administrator, serta dua server yang menyediakan berbagai layanan jaringan perusahaan.
+[/color]
+[color=#333333][b]Server A — Server0[/b][/color]
+[color=#455A64]
+• DHCP Service
+• DNS Service
+• Remote Service
+[/color]
+[color=#333333][b]Server B — Server1[/b][/color]
+[color=#455A64]
+• Web Service
+• FTP Service
+• File Service (Samba)
+• Database Service
+• Mail Service
+[/color]
+[color=#333333][b]Network Devices[/b][/color]
+[color=#455A64]
+• Router : Router0
+• Switch : Switch0
+• Computer : Computer0
+[/color]
+[hr]
+[color=#1565C0][font_size=20][b]Sales Division[/b][/font_size][/color]
+[color=#333333]
+[b]Network[/b] : [color=#455A64]192.168.2.0/24[/color]
+Divisi Sales digunakan oleh karyawan untuk menjalankan aktivitas operasional dan mengakses layanan jaringan perusahaan.
+[/color]
+[color=#333333][b]Network Devices[/b][/color]
+[color=#455A64]
+• Switch : Switch1
+• Computer : Computer1 — Computer4
+[/color]
+[hr]
+[color=#1565C0][font_size=20][b]Media Division[/b][/font_size][/color]
+[color=#333333]
+[b]Network[/b] : [color=#455A64]192.168.3.0/24[/color]
+Divisi Media memiliki jaringan tersendiri untuk mendukung aktivitas kerja dan akses terhadap layanan jaringan perusahaan.
+[/color]
+[color=#333333][b]Network Devices[/b][/color]
+[color=#455A64]
+• Switch : Switch2
+• Computer : Computer5 — Computer8
+[/color]
+[hr]
+[color=#1565C0][font_size=20][b]Accounting Division[/b][/font_size][/color]
+[color=#333333]
+[b]Network[/b] : [color=#455A64]192.168.4.0/24[/color]
+Divisi Accounting memiliki jaringan tersendiri untuk mendukung aktivitas pengelolaan dan administrasi perusahaan.
+[/color]
+[color=#333333][b]Network Devices[/b][/color]
+[color=#455A64]
+• Switch : Switch3
+• Computer : Computer9 — Computer12
+[/color]"
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

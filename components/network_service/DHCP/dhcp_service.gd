@@ -108,13 +108,9 @@ func verify_configuration(runtime_dhcp_service: DHCPService = null) -> Dictionar
 	var res_pool_size = _verify(pool_size, runtime_pool_size)
 
 	var status: bool = (
-			res_pool_name.status
-			and res_interface_id.status
-			and res_start_ip_address.status
-			and res_subnet_mask.status
-			and res_default_gateway.status
-			and res_dns_server.status
-			and res_pool_size.status
+		res_pool_name.status and res_interface_id.status
+		and res_start_ip_address.status and res_subnet_mask.status
+		and res_default_gateway.status and res_dns_server.status and res_pool_size.status
 	)
 
 	var key: String = pool_name if pool_name != "" else "unnamed"

@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://yahg57jtrsjy"]
 
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="1_8savo"]
 [ext_resource type="Script" uid="uid://nvkm8iq3towb" path="res://ui/mission/mission.gd" id="1_sfccj"]
+[ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="2_nk8a1"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1qjk"]
-bg_color = Color(0.75398386, 0.75398386, 0.75398374, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bne5"]
+texture = ExtResource("2_nk8a1")
+texture_margin_left = 120.0
+texture_margin_top = 38.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [node name="Mission" type="Panel" unique_id=1058897919]
 anchors_preset = 15
@@ -13,7 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_a1qjk")
+theme = ExtResource("1_8savo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_5bne5")
 script = ExtResource("1_sfccj")
 
 [node name="MissionDetail" type="RichTextLabel" parent="." unique_id=1817143077]
@@ -21,6 +28,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 50.0
+offset_right = -18.0
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8savo")
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
+text = "erewrefsffd"

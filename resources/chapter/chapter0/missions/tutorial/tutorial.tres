@@ -6,16 +6,12 @@
 script = ExtResource("1_qwapm")
 id = "mission0"
 title = "Tutorial"
-description = "Tutorial"
 time = -1.0
 check_progress_limit = -1
+description = "Tutorial"
 guide = "[center][font_size=26][color=#1565C0][b]Tutorial[/b][/color][/font_size][/center]
-
-[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
-
 [color=#333333]
-Selamat datang pada tahap Tutorial
-"
+Selamat datang pada tahap Tutorial, ikuti langkah langkah yang diberikan"
 correct_configs = Dictionary[String, StringName]({
 "computer0": &"uid://c38a2ba0t6ng5",
 "computer1": &"uid://bqp1b0l75ufli",
