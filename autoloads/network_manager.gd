@@ -429,6 +429,21 @@ func request_dns_resolve(client_device_id: String, domain: String) -> String:
 	return dns_server.handle_dns_request(domain)
 
 
+func request_dns_mx_resolve(client_device_id: String, domain: String) -> String:
+	var client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
+	if not client_device:
+		return ""
+	var dns_server_ip := ""
+	if client_device is ComputerDeviceData or client_device is ServerDeviceData:
+		dns_server_ip = client_device.dns_server
+	if dns_server_ip == "" or dns_server_ip == "0.0.0.0":
+		return ""
+	var dns_server := _find_server_by_ip(dns_server_ip)
+	if not dns_server or dns_server.dns_service == ServerDeviceData.ServiceState.OFF:
+		return ""
+	return dns_server.handle_dns_mx_request(domain)
+
+
 func request_web(
 	client_device_id: String,
 	target_ip: String,

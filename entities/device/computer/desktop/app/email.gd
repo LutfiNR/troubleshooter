@@ -74,6 +74,11 @@ func _on_login_pressed() -> void:
 		login_status_label.text = "Auth Error: Format email salah."
 		return
 
+	var mx_ip = NetworkManager.request_dns_mx_resolve(target_device_id, email_parts[1])
+	if mx_ip != target_ip:
+		login_status_label.text = "DNS Error: MX Record tidak ditemukan."
+		return
+
 	var response = NetworkManager.request_mail_login(
 		target_device_id,
 		target_ip,

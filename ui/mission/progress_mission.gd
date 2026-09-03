@@ -45,8 +45,12 @@ func _update_progress() -> void:
 		return
 	var counts := get_status_counts(NetworkManager.mission_checking_result)
 	var total: int = counts.true_count + counts.false_count
-	progress_value = 1.0 if total == 0 else float(counts.true_count) / float(total)
+	if counts.false_count == 0:
+		progress_value = 1.0
+	else:
+		progress_value = floor(float(counts.true_count) / float(total) * 100.0) / 100.0
 	value = progress_value * 100.0
+	print_debug("False count: %d, Progress value: %.2f" % [counts.false_count, progress_value])
 	if counts.false_count == 0:
 		var is_mission_completed: bool = GameManager.is_mission_completed(
 			GameManager.current_mission.id
@@ -59,20 +63,20 @@ func get_status_counts(data: Dictionary) -> Dictionary:
 	var result := { "true_count": 0, "false_count": 0 }
 
 	for key in data:
-		var value = data[key]
-		if key == "status" and value is bool:
-			if value:
+		var status_value = data[key]
+		if key == "status" and status_value is bool:
+			if status_value:
 				result.true_count += 1
 			else:
 				result.false_count += 1
 
-		elif value is Dictionary:
-			var child := get_status_counts(value)
+		elif status_value is Dictionary:
+			var child := get_status_counts(status_value)
 			result.true_count += child.true_count
 			result.false_count += child.false_count
 
-		elif value is Array:
-			for item in value:
+		elif status_value is Array:
+			for item in status_value:
 				if item is Dictionary:
 					var child := get_status_counts(item)
 					result.true_count += child.true_count
