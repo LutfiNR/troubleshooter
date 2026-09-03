@@ -76,13 +76,14 @@ func handle_dhcp_request(mac: String, interface_id: String) -> Dictionary:
 
 
 func handle_dhcp_relay_request(ip_address: String) -> DHCPService:
-	if ip_address == "":
+	if dhcp_service == ServiceState.OFF or ip_address == "":
 		return null
+	var matching_pool: DHCPService = null
 	for pool in dhcp_configuration:
 		if pool != null and pool.default_gateway == ip_address:
-			return pool
-			print_debug("DHCP Relay: Found matching pool for IP " + ip_address)
-	return null
+			matching_pool = pool
+			break
+	return matching_pool
 
 
 ## Resolves a domain name using the DNS configuration on this server.
