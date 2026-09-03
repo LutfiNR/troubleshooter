@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_xdgd6"]
 [ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="2_wllqb"]
-[ext_resource type="Resource" uid="uid://b6xqx724xhou3" path="res://resources/chapter/chapter0/missions/basic_networking/incorrect_config/routers/router0/interfaces/fa0-0.tres" id="3_7tfpj"]
-[ext_resource type="Resource" uid="uid://b2a6xhmxs6fhc" path="res://resources/chapter/chapter0/missions/basic_networking/incorrect_config/routers/router0/interfaces/fa0-1.tres" id="4_gpcpi"]
-[ext_resource type="Resource" uid="uid://rerlux1fixoe" path="res://resources/chapter/chapter0/missions/basic_networking/incorrect_config/routers/router0/interfaces/fa0-3.tres" id="5_m54sm"]
-[ext_resource type="Resource" uid="uid://byjrdlkeq2lv6" path="res://resources/chapter/chapter0/missions/basic_networking/incorrect_config/routers/router0/interfaces/fa0-4.tres" id="6_u0q30"]
+[ext_resource type="Resource" uid="uid://b6xqx724xhou3" path="res://resources/chapter/chapter0/missions/basic_networking/broken_config/routers/router0/interfaces/fa0-0.tres" id="3_7tfpj"]
+[ext_resource type="Resource" uid="uid://b2a6xhmxs6fhc" path="res://resources/chapter/chapter0/missions/basic_networking/broken_config/routers/router0/interfaces/fa0-1.tres" id="4_gpcpi"]
+[ext_resource type="Resource" uid="uid://rerlux1fixoe" path="res://resources/chapter/chapter0/missions/basic_networking/broken_config/routers/router0/interfaces/fa0-3.tres" id="5_m54sm"]
+[ext_resource type="Resource" uid="uid://byjrdlkeq2lv6" path="res://resources/chapter/chapter0/missions/basic_networking/broken_config/routers/router0/interfaces/fa0-4.tres" id="6_u0q30"]
 [ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="7_lm7ey"]
 
 [resource]

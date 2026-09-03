@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ServerDeviceData" format=3 uid="uid://svda7kq48x7w"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_j3x2m"]
+[ext_resource type="Resource" uid="uid://bndl74gjbmft2" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/server0/service/dhcp/pool_1.tres" id="2_nx08v"]
+[ext_resource type="Resource" uid="uid://cso48kxtj0rtf" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/server0/service/dhcp/pool_2.tres" id="3_fu3ws"]
+[ext_resource type="Resource" uid="uid://bupa4fs4tanrq" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/server0/service/dhcp/pool_3.tres" id="4_8lo2f"]
+[ext_resource type="Resource" uid="uid://hsb64m0vvta2" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/server0/service/dhcp/pool_4.tres" id="5_djgnk"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="6_ofaa6"]
+[ext_resource type="Resource" uid="uid://cntvf8k27lcb2" path="res://resources/chapter/chapter1/correct_config/servers/server0/service/dns/dns_service.tres" id="7_nx08v"]
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="8_qwcee"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="9_2iwh7"]
+[ext_resource type="Resource" uid="uid://cjw4t6rsevewc" path="res://resources/chapter/chapter1/correct_config/servers/server0/interfaces/eth0.tres" id="10_j3x2m"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="11_ijqbd"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="12_m3c3s"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="13_nlgtt"]
+[ext_resource type="Resource" uid="uid://8737lghl00px" path="res://resources/chapter/chapter1/correct_config/servers/server0/service/remote/remote_service.tres" id="14_fu3ws"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="14_mwptc"]
+[ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="15_aih0j"]
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="16_d00r1"]
+
+[resource]
+script = ExtResource("15_aih0j")
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+installed_packages = Array[String](["isc-dhcp-server", "bind9"])
+dhcp_configuration = Array[ExtResource("1_j3x2m")]([ExtResource("2_nx08v"), ExtResource("3_fu3ws"), ExtResource("4_8lo2f"), ExtResource("5_djgnk")])
+dns_service = 1
+dns_configuration = Array[ExtResource("6_ofaa6")]([ExtResource("7_nx08v")])
+remote_service = 1
+remote_configuration = Array[ExtResource("13_nlgtt")]([ExtResource("14_fu3ws")])
+device_id = "server0"
+hostname = "Server A"
+power = 1
+interfaces = Array[ExtResource("9_2iwh7")]([ExtResource("10_j3x2m")])
+metadata/_custom_type_script = "uid://3wt8jxh6n6th"
