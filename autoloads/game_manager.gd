@@ -168,6 +168,7 @@ func _on_chapter_completed(chapter_id: String) -> void:
 		return
 	set_game_data_chapter_status(chapter_id, ProgressStatus.COMPLETED)
 	unlock_new_chapter()
+	unlock_new_mission()
 	save_game()
 
 
