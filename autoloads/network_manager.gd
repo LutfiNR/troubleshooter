@@ -22,7 +22,7 @@ func _on_mission_loaded(mission: MissionData) -> void:
 	runtime_configs.clear()
 	runtime_cables.clear()
 	for key in mission.correct_configs:
-		correct_configs[key] = load(mission.correct_configs[key])
+		correct_configs[key] = _duplicate_runtime_device(mission.correct_configs[key])
 	for key in mission.runtime_configs:
 		runtime_configs[key] = _duplicate_runtime_device(mission.runtime_configs[key])
 	for key in mission.runtime_cables:
@@ -35,7 +35,7 @@ func load_default_configuration(default_configs: Dictionary, default_cables: Dic
 	runtime_configs.clear()
 	runtime_cables.clear()
 	for key in default_configs:
-		correct_configs[key] = load(default_configs[key])
+		correct_configs[key] = _duplicate_runtime_device(default_configs[key])
 		runtime_configs[key] = _duplicate_runtime_device(default_configs[key])
 	for key in default_cables:
 		runtime_cables[key] = load(default_cables[key])
@@ -51,6 +51,7 @@ func _duplicate_runtime_device(resource_path: StringName) -> DeviceData:
 
 
 func setup_all_devices() -> void:
+	mission_checking_result.clear()
 	for key in correct_configs:
 		correct_configs[key].setup_device()
 		runtime_configs[key].setup_device()
