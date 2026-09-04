@@ -21,11 +21,21 @@ func _ready() -> void:
 		return
 
 	var interfaces = device.get_interfaces()
+	var device_cables = NetworkManager.get_cables_for_device(device)
 	for i in interfaces.size():
 		var port = ports[i]
 		var interface_data = interfaces[i]
 		port.id = interface_data.id
 		port.device_id = device_id
+		var has_cable_connection = false
+		for cable_data: CableData in device_cables:
+			if (
+				cable_data.interface_id_a == interface_data.id
+				or cable_data.interface_id_b == interface_data.id
+			):
+				has_cable_connection = true
+				break
+		port.can_accept_cable = has_cable_connection
 	NetworkManager.device_updated.connect(_on_device_updated)
 	update_ui(device)
 

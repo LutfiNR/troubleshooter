@@ -8,16 +8,20 @@ const FRAME_UP = 1
 @onready var area: Area2D = $Area
 
 var device_id: String
-var id: String 
+var id: String
 var connected_cable: CableNode = null
+var can_accept_cable: bool = false
+
 
 func _ready() -> void:
 	if area:
 		area.set_meta("port", self)
 
+
 func is_occupied() -> bool:
 	return connected_cable != null
-	
+
+
 func update_visual(interface: NetworkInterface, device_power_state: DeviceData.PowerState) -> void:
 	if sprite == null or interface == null:
 		return
