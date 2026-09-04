@@ -5,6 +5,8 @@ var mission_time: float = -1.0
 
 func _ready() -> void:
 	GameManager.mission_loaded.connect(_on_mission_loaded)
+	if GameManager.current_mission != null:
+		_on_mission_loaded(GameManager.current_mission)
 
 
 func _process(delta: float) -> void:
