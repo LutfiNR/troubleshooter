@@ -1,9 +1,6 @@
 extends Tree
 
-const COLOR: Dictionary = {
-	false: Color.CRIMSON,
-	true: Color.GREEN,
-}
+const COLOR: Dictionary = { false: Color.CRIMSON, true: Color.GREEN }
 
 
 func _ready() -> void:
@@ -11,9 +8,11 @@ func _ready() -> void:
 	populate_ui_tree()
 	NetworkManager.device_updated.connect(_on_device_updated)
 
+
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
 	clear()
 	populate_ui_tree()
+
 
 func populate_ui_tree() -> void:
 	var root = create_item()
@@ -21,8 +20,14 @@ func populate_ui_tree() -> void:
 	for dev in data.keys():
 		_populate_device(root, data[dev])
 
+
 # --- Helper Functions ---
-func _create_tree_item(parent: TreeItem, text: String, status: bool = true, collapsed: bool = false) -> TreeItem:
+func _create_tree_item(
+	parent: TreeItem,
+	text: String,
+	status: bool = true,
+	collapsed: bool = false,
+) -> TreeItem:
 	var item = create_item(parent)
 	item.set_text(0, text)
 	item.set_custom_color(0, COLOR.get(status))
@@ -96,16 +101,33 @@ func _populate_interfaces(parent: TreeItem, interfaces: Dictionary) -> void:
 
 func _populate_interface(parent: TreeItem, id: String, interface: Dictionary) -> void:
 	var i_tree = _create_tree_item(parent, id, interface["status"])
-	_create_tree_item(i_tree, "%s [%s]" % ["State", interface["state"]["correct"]], interface["state"]["status"])
+	_create_tree_item(
+		i_tree,
+		"%s [%s]" % ["State", interface["state"]["correct"]],
+		interface["state"]["status"],
+	)
 	_add_verify_item(i_tree, "MAC Address", interface["mac_address"])
 	if interface.has("ip"):
 		_add_verify_item(i_tree, "IP Address", interface["ip"])
 
 
 # --- Server Config ---
-func _populate_server_service(parent: TreeItem, service_name: String, service_result: Dictionary) -> void:
-	var service_tree = _create_tree_item(parent, "%s Service" % service_name, service_result["status"], true)
-	_create_tree_item(service_tree, "%s [%s]" % ["State", service_result["service_state"]["correct"]], service_result["service_state"]["status"])
+func _populate_server_service(
+	parent: TreeItem,
+	service_name: String,
+	service_result: Dictionary,
+) -> void:
+	var service_tree = _create_tree_item(
+		parent,
+		"%s Service" % service_name,
+		service_result["status"],
+		true,
+	)
+	_create_tree_item(
+		service_tree,
+		"%s [%s]" % ["State", service_result["service_state"]["correct"]],
+		service_result["service_state"]["status"],
+	)
 
 	var details = service_result.get("details", { })
 	match service_name:
@@ -127,7 +149,12 @@ func _populate_server_service(parent: TreeItem, service_name: String, service_re
 			_populate_mail_service_details(service_tree, details)
 
 
-func _populate_users(parent: TreeItem, users: Dictionary, show_home_directory := false, title: String = "Users") -> void:
+func _populate_users(
+	parent: TreeItem,
+	users: Dictionary,
+	show_home_directory := false,
+	title: String = "Users",
+) -> void:
 	var users_tree = create_item(parent)
 	users_tree.set_text(0, title)
 	var status := true
@@ -196,14 +223,14 @@ func _populate_dns_service_details(parent: TreeItem, records: Dictionary) -> voi
 
 
 func _populate_web_service_details(parent: TreeItem, details: Dictionary) -> void:
-	_add_verify_item(parent, "HTTP State", details.get("http_state", {}))
-	_add_verify_item(parent, "HTTPS State", details.get("https_state", {}))
+	_add_verify_item(parent, "HTTP State", details.get("http_state", { }))
+	_add_verify_item(parent, "HTTPS State", details.get("https_state", { }))
 
 	var vhost_tree = create_item(parent)
 	vhost_tree.set_text(0, "VHosts")
 	var status = true
 
-	var vhosts = details.get("virtual_hosts", {})
+	var vhosts = details.get("virtual_hosts", { })
 	for vhost in vhosts:
 		var vhost_data = vhosts[vhost]
 		var web_tree = _create_tree_item(vhost_tree, vhost, vhost_data["status"], true)
