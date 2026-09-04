@@ -2,7 +2,11 @@ extends Resource
 
 class_name DNSRecord
 
-enum RecordType { A_RECORD, CNAME, MX_RECORD }
+enum RecordType {
+	A_RECORD,
+	CNAME,
+	MX_RECORD,
+}
 
 @export var domain_name: String = "example.com"
 @export var type: RecordType = RecordType.A_RECORD
@@ -19,9 +23,9 @@ func verify_configuration(runtime_record: DNSRecord = null) -> Dictionary:
 		runtime_type = RecordType.keys()[runtime_record.type]
 		runtime_target = runtime_record.target_ip_or_name
 
-	var res_domain_name = _verify(domain_name,runtime_domain_name)
-	var res_type = _verify(RecordType.keys()[type],runtime_type)
-	var res_target = _verify(target_ip_or_name,runtime_target)
+	var res_domain_name = _verify(domain_name, runtime_domain_name)
+	var res_type = _verify(RecordType.keys()[type], runtime_type)
+	var res_target = _verify(target_ip_or_name, runtime_target)
 	var status: bool = (res_domain_name.status and res_type.status and res_target.status)
 
 	return {
@@ -30,6 +34,7 @@ func verify_configuration(runtime_record: DNSRecord = null) -> Dictionary:
 		"type": res_type,
 		"target": res_target,
 	}
+
 
 func _verify(config: Variant, runtime_config: Variant = null) -> Dictionary:
 	var has_runtime := runtime_config != null
