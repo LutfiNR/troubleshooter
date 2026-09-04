@@ -44,6 +44,8 @@ func _on_mission_loaded(mission: MissionData) -> void:
 		return
 	show_percentage = true
 	_update_progress()
+	initialized_mission_id = mission.id
+	_update_progress()
 
 
 func reset_value() -> void:
@@ -66,6 +68,7 @@ func _update_progress() -> void:
 		)
 	value = progress_value * 100.0
 	print_debug("False count: %d, Progress value: %.2f" % [counts.false_count, progress_value])
+	print_debug(initialized_mission_id)
 	var mission_is_initialized := (
 		GameManager.current_mission != null
 		and initialized_mission_id == GameManager.current_mission.id
