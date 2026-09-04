@@ -1,27 +1,27 @@
-[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://4viunoiuvu2p"]
+[gd_resource type="Resource" script_class="RouterDeviceData" format=3 uid="uid://e8uc4vaqndvf"]
 
-[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_4jn1f"]
-[ext_resource type="Resource" uid="uid://bvpl56syl77w7" path="res://resources/chapter/chapter1/correct_config/routers/router0/relays/fa0-0.tres" id="2_qn7t2"]
-[ext_resource type="Resource" uid="uid://b6p2re34sd514" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-1.tres" id="3_eb7nt"]
-[ext_resource type="Resource" uid="uid://iqye1y5lij64" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-2.tres" id="4_o84la"]
-[ext_resource type="Resource" uid="uid://cxpbb5snewd7f" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-3.tres" id="5_kbtjh"]
-[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="6_uykwr"]
-[ext_resource type="Resource" uid="uid://bvjv0qk6c50rc" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-0.tres" id="7_3jj3n"]
-[ext_resource type="Resource" uid="uid://c0t18vhqigugw" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-1.tres" id="8_6xdr6"]
-[ext_resource type="Resource" uid="uid://lgoc82ve1grd" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-2.tres" id="9_ucsqp"]
-[ext_resource type="Resource" uid="uid://yvsc3my6o4y7" path="res://resources/chapter/chapter1/correct_config/routers/router0/interfaces/fa0-3.tres" id="10_mbdm5"]
-[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="11_cghyk"]
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_qn7t2"]
+[ext_resource type="Resource" uid="uid://51qv15cnmtuw" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-0.tres" id="2_3jj3n"]
+[ext_resource type="Resource" uid="uid://eoc4cqhscfae" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-1.tres" id="3_6xdr6"]
+[ext_resource type="Resource" uid="uid://cfetblqd5d2u4" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-2.tres" id="4_ucsqp"]
+[ext_resource type="Resource" uid="uid://bcx5ck7yi273p" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/relays/fa0-3.tres" id="5_mbdm5"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="6_gak4c"]
+[ext_resource type="Resource" uid="uid://bsmnrs5l1fuua" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/interfaces/fa0-0.tres" id="7_nms6e"]
+[ext_resource type="Resource" uid="uid://bl382lv28g2n6" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/interfaces/fa0-1.tres" id="8_h0kur"]
+[ext_resource type="Resource" uid="uid://dqm5q8rghgujm" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/interfaces/fa0-2.tres" id="9_kpr6p"]
+[ext_resource type="Resource" uid="uid://drapwga5wfbe3" path="res://resources/chapter/chapter1/missions/DHCP/broken_config/router0/interfaces/fa0-3.tres" id="10_uww2g"]
+[ext_resource type="Script" uid="uid://kou14e2socyo" path="res://components/network_device/router_device/router_device.gd" id="11_fnvbv"]
 
 [resource]
-script = ExtResource("11_cghyk")
-dhcp_relays = Dictionary[String, ExtResource("1_4jn1f")]({
-"fa0/0": ExtResource("2_qn7t2"),
-"fa0/1": ExtResource("3_eb7nt"),
-"fa0/2": ExtResource("4_o84la"),
-"fa0/3": ExtResource("5_kbtjh")
+script = ExtResource("11_fnvbv")
+dhcp_relays = Dictionary[String, ExtResource("1_qn7t2")]({
+"fa0/0": ExtResource("2_3jj3n"),
+"fa0/1": ExtResource("3_6xdr6"),
+"fa0/2": ExtResource("4_ucsqp"),
+"fa0/3": ExtResource("5_mbdm5")
 })
 device_id = "router0"
 hostname = "Router"
 power = 1
-interfaces = Array[ExtResource("6_uykwr")]([ExtResource("7_3jj3n"), ExtResource("8_6xdr6"), ExtResource("9_ucsqp"), ExtResource("10_mbdm5")])
+interfaces = Array[ExtResource("6_gak4c")]([ExtResource("7_nms6e"), ExtResource("8_h0kur"), ExtResource("9_kpr6p"), ExtResource("10_uww2g")])
 metadata/_custom_type_script = "uid://kou14e2socyo"

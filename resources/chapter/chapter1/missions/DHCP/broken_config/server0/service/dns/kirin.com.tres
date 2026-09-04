@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DNSRecord" format=3 uid="uid://poopnfpg3f1u"]
+
+[ext_resource type="Script" uid="uid://bmx45o5qrto11" path="res://components/network_service/DNS/dns_record.gd" id="1_0ppvr"]
+
+[resource]
+script = ExtResource("1_0ppvr")
+domain_name = "kirin.com"
+target_ip_or_name = "192.168.1.253"
+metadata/_custom_type_script = "uid://bmx45o5qrto11"

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DHCPService" format=3 uid="uid://bupa4fs4tanrq"]
+[gd_resource type="Resource" script_class="DHCPService" format=3 uid="uid://10puf0dktybv"]
 
 [ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_b27tl"]
 

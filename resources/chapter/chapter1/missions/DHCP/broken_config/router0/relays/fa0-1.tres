@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="DHCPRelayData" format=3 uid="uid://b6p2re34sd514"]
+[gd_resource type="Resource" script_class="DHCPRelayData" format=3 uid="uid://eoc4cqhscfae"]
 
-[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_4psx5"]
+[ext_resource type="Script" uid="uid://tgvlvxloywkq" path="res://components/network_device/router_device/dhcp_relay.gd" id="1_ye5nf"]
 
 [resource]
-script = ExtResource("1_4psx5")
+script = ExtResource("1_ye5nf")
 interface_id = "fa0/1"
 export_ip_address = "192.168.1.253"
 metadata/_custom_type_script = "uid://tgvlvxloywkq"
