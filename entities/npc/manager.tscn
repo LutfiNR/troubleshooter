@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://d3arrjpfyyjv4"]
 
-[ext_resource type="Texture2D" uid="uid://dejrrkochumuy" path="res://assets/Player/riki.png" id="1_5surv"]
 [ext_resource type="Script" uid="uid://c5g12dbpuuoei" path="res://entities/npc/manager.gd" id="1_uuhqk"]
+[ext_resource type="Texture2D" uid="uid://crgfwch3g0m5t" path="res://assets/Player/manager.png" id="2_uuhqk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnbm"]
 size = Vector2(8.5, 11)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uuhqk"]
-atlas = ExtResource("1_5surv")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqyvk"]
+atlas = ExtResource("2_uuhqk")
 region = Rect2(0, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bqyvk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uuhqk")
+"texture": SubResource("AtlasTexture_bqyvk")
 }],
 "loop": true,
 "name": &"idle",
