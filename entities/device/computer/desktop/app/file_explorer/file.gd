@@ -362,10 +362,4 @@ func _show_error(msg: String) -> void:
 
 
 func _is_valid_ip(text: String) -> bool:
-	var parts = text.split(".")
-	if parts.size() != 4:
-		return false
-	for p in parts:
-		if not p.is_valid_int():
-			return false
-	return true
+	return IPAddress.is_valid_ip(text)

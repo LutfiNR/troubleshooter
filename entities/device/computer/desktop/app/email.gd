@@ -201,4 +201,4 @@ func _on_logout_pressed() -> void:
 
 
 func _is_valid_ip(ip: String) -> bool:
-	return ip.count(".") == 3 and ip.replace(".", "").is_valid_int()
+	return IPAddress.is_valid_ip(ip)

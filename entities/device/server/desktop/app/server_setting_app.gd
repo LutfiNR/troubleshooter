@@ -17,18 +17,22 @@ extends Control
 var device_id: String
 var device_data: ServerDeviceData
 
+
 func _ready() -> void:
 	call_deferred("setup")
+
 
 func setup() -> void:
 	device_data = NetworkManager.get_runtime_device_data_by_id(device_id)
 	NetworkManager.device_updated.connect(_on_device_updated)
 	populate_ui()
 
+
 func _on_device_updated(_device_id: String, _device_data: DeviceData) -> void:
 	if device_id == _device_id:
 		device_data = _device_data
 		populate_ui()
+
 
 func populate_ui() -> void:
 	id_input.text = device_data.device_id
@@ -47,6 +51,7 @@ func populate_ui() -> void:
 			network_status_label.text = "Unplugged"
 			network_status_label.add_theme_color_override("font_color", Color(0.6, 0.0, 0.0, 1.0)) # Merah
 
+
 func validate_inputs() -> bool:
 	var ip = ip_address_input.text.strip_edges()
 	var subnet = subnet_mask_input.text.strip_edges()
@@ -55,6 +60,8 @@ func validate_inputs() -> bool:
 
 	if ip != "" and not IPAddress.is_valid_ip(ip):
 		return false
+	if ip != "" and subnet != "" and not IPAddress.is_valid_host_ip(ip, subnet):
+		return false
 	if subnet != "" and not IPAddress.is_valid_mask(subnet):
 		return false
 	if gateway != "" and not IPAddress.is_valid_ip(gateway):
@@ -62,6 +69,7 @@ func validate_inputs() -> bool:
 	if dns != "" and not IPAddress.is_valid_ip(dns):
 		return false
 	return true
+
 
 func _on_save_button_pressed() -> void:
 	if not validate_inputs():

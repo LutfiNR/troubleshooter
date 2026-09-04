@@ -51,7 +51,7 @@ func _refresh_pool_list() -> void:
 	for pool in current_pools:
 		if pool:
 			pool_list.add_item(pool.pool_name if pool.pool_name != "" else DEFAULT_POOL_NAME)
-			
+
 	if current_selected_index > -1:
 		pool_list.select(current_selected_index)
 	else:
@@ -124,12 +124,14 @@ func validate_inputs() -> bool:
 	var dns = dns_server.text.strip_edges()
 	var start_ip = start_ip_address.text.strip_edges()
 	var subnet = subnet_mask.text.strip_edges()
-	
+
 	if gateway != "" and not IPAddress.is_valid_ip(gateway):
 		return false
 	if dns != "" and not IPAddress.is_valid_ip(dns):
 		return false
 	if start_ip != "" and not IPAddress.is_valid_ip(start_ip):
+		return false
+	if start_ip != "" and subnet != "" and not IPAddress.is_valid_host_ip(start_ip, subnet):
 		return false
 	if subnet != "" and not IPAddress.is_valid_mask(subnet):
 		return false
@@ -174,8 +176,11 @@ func _apply_to_server() -> void:
 	if target_device_id == "":
 		return
 
-	var device_data: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(target_device_id)
-	if not device_data: return
+	var device_data: ServerDeviceData = NetworkManager.get_runtime_device_data_by_id(
+		target_device_id
+	)
+	if not device_data:
+		return
 
 	var service_state := ServerDeviceData.ServiceState.OFF
 	if dhcp_service_state and dhcp_service_state.button_pressed:

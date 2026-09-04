@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://m0s4iki6mfx2" path="res://entities/device/router/desktop/ui_container.gd" id="2_7p7ye"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_7p7ye"]
 [ext_resource type="Script" uid="uid://oy4xrlikc5bd" path="res://entities/device/router/desktop/interfaces.gd" id="4_kbl0u"]
+[ext_resource type="PackedScene" uid="uid://c1yqpkqil2l3c" path="res://entities/device/utils/popup_panel.tscn" id="7_44riu"]
 [ext_resource type="Script" uid="uid://bk70oybies68g" path="res://entities/device/router/desktop/dhcp_relay.gd" id="7_if22v"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="7_rmj6y"]
 
@@ -260,6 +261,11 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Save"
+
+[node name="PopupPanel" parent="UIContainer" unique_id=75760130 instance=ExtResource("7_44riu")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
 
 [node name="ExitButton" type="TextureButton" parent="." unique_id=412357514]
 anchors_preset = 1

@@ -70,8 +70,11 @@ func _on_save_button_pressed() -> void:
 
 	var new_ip = ip_address.text.strip_edges()
 	var new_mask = subnet_mask.text.strip_edges()
-	
+
 	if new_ip != "" and not IPAddress.is_valid_ip(new_ip):
+		NetworkManager.error_configuration.emit("Invalid IP Address format")
+		return
+	if new_ip != "" and new_mask != "" and not IPAddress.is_valid_host_ip(new_ip, new_mask):
 		NetworkManager.error_configuration.emit("Invalid IP Address format")
 		return
 	if new_mask != "" and not IPAddress.is_valid_mask(new_mask):

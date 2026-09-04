@@ -29,6 +29,7 @@
 [ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="21_ger8l"]
 [ext_resource type="Script" uid="uid://dam0gb336c2ac" path="res://entities/device/computer/desktop/app/terminal.gd" id="22_k3k4b"]
 [ext_resource type="Script" uid="uid://c33vfpf2lj4dm" path="res://entities/device/computer/desktop/app/email.gd" id="23_jelbd"]
+[ext_resource type="PackedScene" uid="uid://c1yqpkqil2l3c" path="res://entities/device/utils/popup_panel.tscn" id="30_g83hl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgk24"]
 bg_color = Color(0.17044133, 0.17044118, 0.17044118, 0.5803922)
@@ -178,7 +179,6 @@ texture_hover = ExtResource("15_udkyp")
 stretch_mode = 5
 
 [node name="AppContainer" type="Panel" parent="UIContainer" unique_id=459273456]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1159,6 +1159,12 @@ theme_override_colors/font_color = Color(0.90588236, 0.22745098, 0.18431373, 1)
 layout_mode = 2
 theme = ExtResource("12_jelbd")
 text = "Send"
+
+[node name="PopupPanel" parent="UIContainer/AppContainer" unique_id=75760130 instance=ExtResource("30_g83hl")]
+visible = false
+layout_mode = 1
+offset_top = -211.0
+offset_bottom = 167.0
 
 [connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UIContainer/PanelDesktop/SettingButton" to="." method="_on_setting_button_pressed"]

@@ -165,6 +165,7 @@ texture_hover = ExtResource("14_srt4w")
 stretch_mode = 5
 
 [node name="AppContainer" type="Panel" parent="UIContainer" unique_id=1839547412]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -379,6 +380,7 @@ theme = ExtResource("9_fqsl8")
 text = "Save"
 
 [node name="ServiceApp" type="Control" parent="UIContainer/AppContainer" unique_id=409627036 node_paths=PackedStringArray("tabs", "tab_container")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -2594,6 +2596,8 @@ grow_vertical = 2
 [node name="PopupPanel" parent="UIContainer/AppContainer" unique_id=305657255 instance=ExtResource("11_fqsl8")]
 visible = false
 layout_mode = 1
+offset_top = -179.5
+offset_bottom = 198.5
 
 [connection signal="pressed" from="UIContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="UIContainer/PanelDesktop/ServiceButton" to="." method="_on_service_button_pressed"]
