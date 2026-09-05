@@ -15,87 +15,141 @@ guide = "[center][font_size=26][color=#1565C0][b]DHCP — Komputer Tidak Mendapa
 [color=#333333]
 Beberapa komputer di [b]Kirin Corp.[/b] mengalami masalah koneksi jaringan.
 Saat komputer dinyalakan, beberapa perangkat tidak mendapatkan [b]IP Address[/b] secara otomatis. Akibatnya, komputer tersebut tidak dapat berkomunikasi dengan jaringan perusahaan dengan baik.
-Sebagai [b]Network Administrator[/b], Anda diminta untuk memeriksa konfigurasi jaringan dan memastikan seluruh komputer yang menggunakan konfigurasi otomatis dapat memperoleh informasi jaringan melalui [b]DHCP[/b].
+Sebagai [b]Network Administrator[/b], Anda diminta untuk memeriksa konfigurasi jaringan, menemukan sumber masalah, dan memastikan komputer client dapat memperoleh konfigurasi jaringan secara otomatis melalui [b]DHCP[/b].
 [/color]
 [color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
 [color=#333333]
 • Jangan mengubah topologi jaringan.
 • Jangan menambahkan perangkat baru.
-• Periksa konfigurasi perangkat sebelum melakukan perubahan.
+• Periksa konfigurasi perangkat yang tersedia sebelum melakukan perubahan.
 • Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
-• Pastikan perubahan yang dilakukan tidak mengganggu perangkat lain.
+• Pastikan perubahan yang dilakukan tidak mengganggu jaringan atau perangkat lainnya.
+[/color]
+[hr]
+[center]
+[color=#2E7D32][font_size=18][b]Topologi Jaringan[/b][/font_size][/color]
+[img]res://assets/topology.png[/img]
+[/center]
+[hr]
+
+[color=#2E7D32][font_size=18][b]Perangkat Jaringan[/b][/font_size][/color]
+
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Device[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Service[/b][/bgcolor][/cell]
+[cell]Server A[/cell]
+[cell][color=#455A64]Server0[/color][/cell]
+[cell][color=#455A64]DHCP, DNS, Remote[/color][/cell]
+[cell]Server B[/cell]
+[cell][color=#455A64]Server1[/color][/cell]
+[cell][color=#455A64]Web, FTP, File, Database, Mail[/color][/cell]
+[cell]Router[/cell]
+[cell][color=#455A64]Router0[/color][/cell]
+[cell]-[/cell]
+[cell]Switch IT[/cell]
+[cell][color=#455A64]Switch0[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Sales[/cell]
+[cell][color=#455A64]Switch1[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Media[/cell]
+[cell][color=#455A64]Switch2[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Accounting[/cell]
+[cell][color=#455A64]Switch3[/color][/cell]
+[cell]-[/cell]
+[cell]Computer IT[/cell]
+[cell][color=#455A64]Computer0[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Sales[/cell]
+[cell][color=#455A64]Computer1 — Computer4[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Media[/cell]
+[cell][color=#455A64]Computer5 — Computer8[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Accounting[/cell]
+[cell][color=#455A64]Computer9 — Computer12[/color][/cell]
+[cell]-[/cell]
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+
+[table=2]
+[cell][bgcolor=#E8F5E9][b]Jaringan / Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+[cell][b]IT[/b][/cell]
+[cell][color=#455A64]192.168.1.0/24[/color][/cell]
+[cell][b]Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.0/24[/color][/cell]
+[cell][b]Media[/b][/cell]
+[cell][color=#455A64]192.168.3.0/24[/color][/cell]
+[cell][b]Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.0/24[/color][/cell]
+[cell][b]Server A — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+[cell][b]Server B — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.2.253[/color][/cell]
+[cell][b]Router0 — Jaringan IT[/b][/cell]
+[cell][color=#455A64]192.168.1.1[/color][/cell]
+[cell][b]Router0 — Jaringan Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.1[/color][/cell]
+[cell][b]Router0 — Jaringan Media[/b][/cell]
+[cell][color=#455A64]192.168.3.1[/color][/cell]
+[cell][b]Router0 — Jaringan Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.1[/color][/cell]
+[/table]
+[hr]
+[color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333]
+[b]1. Periksa konfigurasi komputer client[/b]
+Periksa konfigurasi jaringan pada komputer yang mengalami masalah.
+Pastikan komputer yang membutuhkan konfigurasi otomatis telah diatur untuk memperoleh informasi jaringan melalui [b]DHCP[/b].
+Perhatikan informasi jaringan yang diterima oleh komputer, seperti IP Address, Subnet Mask, Default Gateway, dan DNS Server.
+
+[b]2. Periksa DHCP Server[/b]
+Periksa [b]DHCP Service[/b] pada Server0.
+Pastikan service dan konfigurasi DHCP yang tersedia dapat memberikan informasi jaringan yang sesuai kepada client.
+Perhatikan konfigurasi pool yang digunakan untuk masing-masing jaringan client.
+
+[b]3. Periksa koneksi menuju DHCP Server[/b]
+Pastikan Server0 terhubung dengan jaringan dan interface yang digunakan berada dalam kondisi aktif.
+Periksa juga koneksi perangkat jaringan yang menjadi jalur antara client dan Server0.
+
+[b]4. Periksa konfigurasi Router[/b]
+Periksa konfigurasi interface pada Router0.
+Pastikan setiap jaringan client dapat berkomunikasi dengan jaringan tempat DHCP Server berada.
+Perhatikan konfigurasi yang memungkinkan permintaan DHCP dari jaringan client diteruskan menuju Server0.
+
+[b]5. Perbarui konfigurasi client[/b]
+Setelah melakukan perbaikan, lakukan kembali proses untuk memperoleh konfigurasi jaringan pada komputer client.
+Periksa apakah komputer telah mendapatkan informasi jaringan yang sesuai.
+
+[b]6. Uji konektivitas[/b]
+Periksa kembali IP Address yang diperoleh setiap komputer.
+Gunakan perintah [b]ping[/b] untuk menguji konektivitas dari client menuju gateway dan Server0.
+Pastikan komputer yang sebelumnya mengalami masalah telah dapat terhubung ke jaringan dengan baik.
 [/color]
 [hr]
 [color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
 [color=#333333]
 ✓ Memahami fungsi DHCP dalam jaringan.
 ✓ Memahami hubungan antara DHCP Server dan DHCP Client.
-✓ Memeriksa konfigurasi DHCP Server.
-✓ Memeriksa konfigurasi DHCP Pool.
-✓ Memastikan komputer client memperoleh konfigurasi jaringan secara otomatis.
-✓ Memverifikasi alamat IP, subnet mask, gateway, dan DNS yang diterima client.
-✓ Menguji konektivitas jaringan setelah konfigurasi diperbaiki.
-[/color]
-[hr]
-[color=#2E7D32][font_size=18][b]Panduan Troubleshooting[/b][/font_size][/color]
-[color=#333333]
-[b]1. Periksa konfigurasi komputer client[/b]
-Periksa konfigurasi jaringan pada komputer yang mengalami masalah.
-Pastikan komputer dikonfigurasi untuk memperoleh informasi jaringan secara otomatis melalui DHCP.
-Perhatikan:
-• IP Address
-• Subnet Mask
-• Default Gateway
-• DNS Server
-[/color]
-[color=#333333]
-[b]2. Periksa DHCP Server[/b]
-Buka [b]Server0[/b] dan periksa konfigurasi DHCP Service.
-Pastikan service dapat memberikan konfigurasi jaringan kepada client.
-Periksa:
-• Status DHCP Service
-• DHCP Pool
-• Network/Subnet
-• Start IP Address
-• Subnet Mask
-• Default Gateway
-• DNS Server
-• Pool Size
-[/color]
-[color=#333333]
-[b]3. Periksa koneksi Server0[/b]
-Pastikan Server0 terhubung dengan jaringan dan interface yang digunakan berada dalam kondisi aktif.
-Periksa konfigurasi IP Address dan koneksi Server0 menuju perangkat jaringan.
-[/color]
-[color=#333333]
-[b]4. Periksa jaringan antar-divisi[/b]
-Client berada ada jaringan divisi yang berbeda.
-Periksa konfigurasi perangkat jaringan yang menghubungkan jaringan client dengan jaringan Server0.
-Pastikan komunikasi antarjaringan dapat berlangsung dengan baik.
-[/color]
-[color=#333333]
-[b]5. Perbarui konfigurasi client[/b]
-Setelah melakukan perbaikan, lakukan proses pembaruan konfigurasi jaringan pada komputer client.
-Periksa kembali informasi jaringan yang diterima.
-Pastikan client memperoleh:
-• IP Address yang valid
-• Subnet Mask yang sesuai
-• Default Gateway
-• DNS Server
-[/color]
-[color=#333333]
-[b]6. Uji konektivitas[/b]
-Gunakan perintah [b]ping[/b] untuk menguji konektivitas.
-Pastikan komputer client dapat berkomunikasi dengan perangkat jaringan yang diperlukan dan Server0.
+✓ Memeriksa konfigurasi DHCP Server dan DHCP Pool.
+✓ Memahami peran Router dalam meneruskan permintaan DHCP antarjaringan.
+✓ Memeriksa konfigurasi jaringan pada komputer client.
+✓ Memastikan komputer memperoleh konfigurasi jaringan secara otomatis.
+✓ Menguji konektivitas jaringan setelah melakukan troubleshooting.
 [/color]
 [hr]
 [color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
 [color=#333333]
-✓ DHCP Service berjalan dengan baik.
-✓ DHCP Pool dapat memberikan konfigurasi kepada client.
 ✓ Komputer client memperoleh IP Address secara otomatis.
-✓ IP Address yang diperoleh berada pada jaringan yang sesuai.
-✓ Subnet Mask, Default Gateway, dan DNS Server diterima dengan benar.
+✓ IP Address yang diperoleh sesuai dengan jaringan masing-masing.
+✓ Subnet Mask yang diterima sesuai dengan konfigurasi jaringan.
+✓ Default Gateway diterima dengan benar.
+✓ DNS Server diterima dengan benar.
+✓ Permintaan DHCP dari jaringan client dapat diteruskan menuju DHCP Server.
 ✓ Komputer client dapat berkomunikasi dengan gateway.
 ✓ Komputer client dapat berkomunikasi dengan Server0.
 ✓ Tidak terdapat komputer yang menggunakan alamat APIPA atau konfigurasi IP yang tidak valid.

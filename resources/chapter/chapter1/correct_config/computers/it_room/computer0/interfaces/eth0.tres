@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://grwyoqegwcqs"]
+[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://cts2jiiiymvrv"]
 
 [ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_35war"]
 

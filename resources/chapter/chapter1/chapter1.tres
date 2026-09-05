@@ -52,7 +52,8 @@ default_cables = Dictionary[String, StringName]({
 "switch2_router0": &"uid://cqkjqpxi5mt6q",
 "switch3_router0": &"uid://ce0mltpbrsjum"
 })
-guide = "[center][font_size=26][color=#1565C0][b]Panduan Infrastruktur Jaringan[/b][/color][/font_size][/center]
+guide = "
+[center][font_size=26][color=#1565C0][b]Panduan Infrastruktur Jaringan[/b][/color][/font_size][/center]
 [color=#333333]
 Selamat datang di [b]Kirin Corp.[/b]
 Dokumen ini berisi informasi dan panduan mengenai infrastruktur jaringan yang digunakan di lingkungan perusahaan Kirin Corp.

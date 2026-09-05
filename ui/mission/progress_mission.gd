@@ -67,8 +67,6 @@ func _update_progress() -> void:
 			else floor(float(counts.true_count) / float(total) * 100.0) / 100.0
 		)
 	value = progress_value * 100.0
-	print_debug("False count: %d, Progress value: %.2f" % [counts.false_count, progress_value])
-	print_debug(initialized_mission_id)
 	var mission_is_initialized := (
 		GameManager.current_mission != null
 		and initialized_mission_id == GameManager.current_mission.id
