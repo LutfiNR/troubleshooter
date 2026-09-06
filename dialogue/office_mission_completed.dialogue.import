@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cwsw3uf4meo1f"
+path="res://.godot/imported/office_mission_completed.dialogue-1cca2070f5544ea9a031cf3667060767.tres"
+
+[deps]
+
+source_file="res://dialogue/office_mission_completed.dialogue"
+dest_files=["res://.godot/imported/office_mission_completed.dialogue-1cca2070f5544ea9a031cf3667060767.tres"]
+
+[params]
+
+defaults=true

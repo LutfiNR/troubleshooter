@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dhj3w0nkdhx58" path="res://assets/Atlas/floor.tres" id="1_nl42f"]
 [ext_resource type="PackedScene" uid="uid://tuwvtg40j5ob" path="res://entities/device/computer/pc.tscn" id="1_pavic"]
 [ext_resource type="PackedScene" uid="uid://c8bbcjv2qsdvc" path="res://entities/connection/cable/cable.tscn" id="1_w3m8c"]
+[ext_resource type="Resource" uid="uid://cwsw3uf4meo1f" path="res://dialogue/office_mission_completed.dialogue" id="2_g3noi"]
 [ext_resource type="TileSet" uid="uid://66xplyb10s63" path="res://assets/Atlas/wall.tres" id="2_ly7xn"]
 [ext_resource type="PackedScene" uid="uid://6a7sqd5akwlp" path="res://entities/player/player.tscn" id="2_w3m8c"]
 [ext_resource type="PackedScene" uid="uid://noeheffbrarg" path="res://entities/device/router/router.tscn" id="3_6fean"]
@@ -13,6 +14,7 @@
 
 [node name="Office" type="Node2D" unique_id=2034895024]
 script = ExtResource("1_ly7xn")
+mission_completed_dialogue = ExtResource("2_g3noi")
 
 [node name="Main" type="Node2D" parent="." unique_id=1084319578]
 y_sort_enabled = true
