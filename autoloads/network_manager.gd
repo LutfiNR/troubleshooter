@@ -68,7 +68,7 @@ func _initialize_dhcp_clients() -> void:
 		for iface: NetworkInterface in device.interfaces:
 			if iface.ip_allocation_mode != NetworkInterface.IPAllocationMode.DHCP:
 				continue
-			var response: Dictionary = request_dhcp(device.device_id, iface.id)
+			request_dhcp(device.device_id, iface.id)
 
 
 func update_device_data(device_id: String, device_data: Variant) -> void:
@@ -167,11 +167,11 @@ func get_reachable_devices(
 		var start_iface_id: String
 
 		if _devices_equal(cable.device_a, start):
-			peer = cable.device_b
+			peer = get_runtime_device_data_by_id(cable.device_b.device_id)
 			peer_iface_id = cable.interface_id_b
 			start_iface_id = cable.interface_id_a
 		else:
-			peer = cable.device_a
+			peer = get_runtime_device_data_by_id(cable.device_a.device_id)
 			peer_iface_id = cable.interface_id_a
 			start_iface_id = cable.interface_id_b
 
@@ -316,6 +316,14 @@ func _find_interface_in_subnet(device: DeviceData, target_ip: IPAddress) -> Netw
 	return null
 
 
+func _is_physically_reachable(start: DeviceData, target_device_id: String) -> bool:
+	for entry: Dictionary in get_reachable_devices(start):
+		var reachable_device: DeviceData = entry["device"]
+		if reachable_device.device_id == target_device_id:
+			return true
+	return false
+
+
 func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 	var client_device: DeviceData = get_runtime_device_data_by_id(client_device_id)
 	if not client_device:
@@ -353,6 +361,8 @@ func request_dhcp(client_device_id: String, interface_id: String) -> Dictionary:
 						relay_ip.ip_to_string().split("/")[0]
 					)
 					if server:
+						if not _is_physically_reachable(peer_device, server.device_id):
+							continue
 						# The router's own IP on this interface is the client's default gateway.
 						var router_iface: NetworkInterface = peer_device.get_interface(
 							peer_iface_id

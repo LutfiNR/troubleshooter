@@ -6,13 +6,15 @@ class_name RouterDeviceData
 
 
 func setup_device() -> void:
-	super.setup_device()
 	if interfaces.is_empty():
 		for i: int in range(4):
 			var iface: NetworkInterface = NetworkInterface.new()
 			iface.id = "fa0/%d" % i
 			iface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
 			interfaces[i] = iface
+	for interface in interfaces:
+		interface.layer = NetworkInterface.InterfaceLayer.THIRDLAYER
+	super.setup_device()
 	for interface in interfaces:
 		interface.initialize_ip_from_export()
 
@@ -84,9 +86,7 @@ func verify_configuration(runtime_device_configuration: DeviceData) -> Dictionar
 	is_correct = (is_correct and relay_result["status"])
 	result["status"] = is_correct
 
-	return {
-		device_id: result,
-	}
+	return { device_id: result }
 
 
 # Verify DHCP relays
@@ -105,7 +105,4 @@ func _verify_dhcp_relays(runtime_relays: Dictionary) -> Dictionary:
 		results[interface_id] = verify_result
 		if not verify_result["status"]:
 			is_correct = false
-	return {
-		"status": is_correct,
-		"results": results,
-	}
+	return { "status": is_correct, "results": results }

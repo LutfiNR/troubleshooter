@@ -80,10 +80,19 @@ func verify_config(runtime_interface_config: NetworkInterface) -> Dictionary:
 	var res_ip: Dictionary = { }
 	if layer == InterfaceLayer.THIRDLAYER:
 		if ip != null and runtime_interface_config.ip != null:
-			var ip_match = ip.ip_to_string() == runtime_interface_config.ip.ip_to_string()
+			var ip_match := false
+			if ip_allocation_mode == IPAllocationMode.DHCP:
+				var runtime_ip := runtime_interface_config.ip.ip_to_string().split("/")[0]
+				ip_match = runtime_ip != "0.0.0.0"
+			else:
+				ip_match = ip.ip_to_string() == runtime_interface_config.ip.ip_to_string()
 			res_ip = {
 				"value": runtime_interface_config.ip.ip_to_string(),
-				"correct": ip.ip_to_string(),
+				"correct": (
+					"DHCP assigned address"
+					if ip_allocation_mode == IPAllocationMode.DHCP
+					else ip.ip_to_string()
+				),
 				"status": ip_match,
 			}
 			overall_ok = overall_ok and res_ip["status"]
