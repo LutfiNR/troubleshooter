@@ -1,0 +1,248 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://ct4xwna7nhp6m"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_mk281"]
+
+[resource]
+script = ExtResource("1_mk281")
+id = "mission3"
+title = "DNS Missmatch"
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "chapter0"
+description = "Cant access the web using domain"
+guide = "[center][font_size=26][color=#1565C0][b]DNS — Nama Domain Tidak Dapat Diakses[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]
+Beberapa karyawan di [b]Kirin Corp.[/b] melaporkan bahwa mereka tidak dapat mengakses website perusahaan menggunakan nama domain.
+
+Website perusahaan seharusnya dapat diakses melalui alamat [b]kirin.com[/b], [b]www.kirin.com[/b], [b]media.kirin.com[/b], [b]accounting.kirin.com[/b]. Namun, [b]Computer Media 1[/b] dan [b]Computer Accounting 1[/b] mengalami masalah ketika mencoba mengakses website menggunakan nama domain.
+
+Menariknya, website masih dapat diakses secara langsung menggunakan alamat IP Web Server, yaitu [color=#455A64]192.168.1.253[/color].
+
+Sebagai [b]Network Administrator[/b], Anda diminta untuk melakukan pemeriksaan jaringan, menemukan penyebab masalah, dan memastikan nama domain perusahaan dapat diterjemahkan ke IP Address yang benar sehingga website dapat diakses kembali menggunakan nama domain.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+[color=#333333]
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Periksa konfigurasi perangkat yang tersedia sebelum melakukan perubahan.
+• Fokuskan pemeriksaan pada [b]Computer5[/b] dan [b]Computer9[/b] yang mengalami masalah.
+• Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
+• Pastikan perubahan yang dilakukan tidak mengganggu service lainnya.
+• Gunakan hasil pengujian untuk menentukan sumber permasalahan.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Topologi Jaringan[/b][/font_size][/color]
+[center]
+[img]res://assets/topology.png[/img]
+[/center]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Perangkat Jaringan[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Device[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Service[/b][/bgcolor][/cell]
+
+[cell]Server A[/cell]
+[cell][color=#455A64]Server0[/color][/cell]
+[cell][color=#455A64]DHCP, DNS, Remote[/color][/cell]
+
+[cell]Server B[/cell]
+[cell][color=#455A64]Server1[/color][/cell]
+[cell][color=#455A64]Web, FTP, File, Database, Mail[/color][/cell]
+
+[cell]Router[/cell]
+[cell][color=#455A64]Router0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch IT[/cell]
+[cell][color=#455A64]Switch0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Sales[/cell]
+[cell][color=#455A64]Switch1[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Media[/cell]
+[cell][color=#455A64]Switch2[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Accounting[/cell]
+[cell][color=#455A64]Switch3[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer IT[/cell]
+[cell][color=#455A64]Computer0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Sales[/cell]
+[cell][color=#455A64]Computer1 — Computer4[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Media[/cell]
+[cell][color=#455A64]Computer5 — Computer8[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Accounting[/cell]
+[cell][color=#455A64]Computer9 — Computer12[/color][/cell]
+[cell]-[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+[table=2]
+[cell][bgcolor=#E8F5E9][b]Jaringan / Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+
+[cell][b]IT[/b][/cell]
+[cell][color=#455A64]192.168.1.0/24[/color][/cell]
+
+[cell][b]Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.0/24[/color][/cell]
+
+[cell][b]Media[/b][/cell]
+[cell][color=#455A64]192.168.3.0/24[/color][/cell]
+
+[cell][b]Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.0/24[/color][/cell]
+
+[cell][b]Server0 — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+
+[cell][b]Server1 — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell][b]Router0 — Jaringan IT[/b][/cell]
+[cell][color=#455A64]192.168.1.1[/color][/cell]
+
+[cell][b]Router0 — Jaringan Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.1[/color][/cell]
+
+[cell][b]Router0 — Jaringan Media[/b][/cell]
+[cell][color=#455A64]192.168.3.1[/color][/cell]
+
+[cell][b]Router0 — Jaringan Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.1[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]DNS Record[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Name[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Type[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Value[/b][/bgcolor][/cell]
+
+[cell]kirin.com[/cell]
+[cell][color=#455A64]A[/color][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]www.kirin.com[/cell]
+[cell][color=#455A64]CNAME[/color][/cell]
+[cell][color=#455A64]kirin.com[/color][/cell]
+
+[cell]accounting.kirin.com[/cell]
+[cell][color=#455A64]A[/color][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]media.kirin.com[/cell]
+[cell][color=#455A64]A[/color][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]sales.kirin.com[/cell]
+[cell][color=#455A64]A[/color][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]kirin.com[/cell]
+[cell][color=#455A64]MX[/color][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333]
+[b]1. Periksa Computer5 dan Computer9[/b]
+Mulailah pemeriksaan pada [b]Computer5[/b] dan [b]Computer9[/b] karena kedua komputer tersebut dilaporkan mengalami masalah ketika mengakses website menggunakan nama domain.
+Periksa konfigurasi jaringan pada kedua komputer dan identifikasi perbedaan konfigurasi yang mungkin memengaruhi proses resolusi nama.
+
+[b]2. Uji konektivitas ke Web Server[/b]
+Gunakan [b]ping[/b] untuk menguji konektivitas dari [b]Computer5[/b] dan [b]Computer9[/b] menuju Web Server.
+Gunakan alamat IP Web Server sebagai tujuan pengujian dan perhatikan hasil yang diperoleh.
+
+[b]3. Bandingkan akses menggunakan IP dan nama domain[/b]
+Gunakan browser pada komputer yang bermasalah untuk mengakses website menggunakan alamat IP Web Server.
+Kemudian, coba akses website menggunakan nama domain.
+Bandingkan hasil kedua pengujian tersebut untuk menentukan apakah permasalahan berkaitan dengan konektivitas jaringan atau resolusi nama.
+
+[b]4. Periksa konfigurasi DNS pada client[/b]
+Periksa konfigurasi DNS pada [b]Computer5[/b] dan [b]Computer9[/b].
+Pastikan kedua komputer menggunakan DNS Server yang sesuai agar dapat melakukan proses penerjemahan nama domain.
+
+[b]5. Periksa DNS Service[/b]
+Periksa [b]DNS Service[/b] pada [b]Server0[/b].
+Pastikan service berjalan dengan baik dan dapat menerima permintaan DNS dari client.
+
+[b]6. Periksa DNS Record[/b]
+Periksa daftar DNS Record yang tersedia pada DNS Server.
+Bandingkan nama domain, tipe record, dan nilai record dengan informasi DNS yang diberikan.
+Pastikan setiap record memiliki konfigurasi yang sesuai dan mengarah ke tujuan yang benar.
+
+[b]7. Uji resolusi nama menggunakan nslookup[/b]
+Gunakan perintah [b]nslookup[/b] pada [b]Computer5[/b] dan [b]Computer9[/b].
+Periksa DNS Server yang digunakan serta alamat IP yang diberikan sebagai hasil resolusi.
+
+[b]8. Perbaiki konfigurasi yang bermasalah[/b]
+Setelah menemukan sumber permasalahan, lakukan perbaikan pada konfigurasi yang diperlukan.
+Hindari mengubah konfigurasi yang sudah berjalan dengan benar.
+
+[b]9. Uji kembali konektivitas dan resolusi[/b]
+Gunakan kembali [b]ping[/b] dan [b]nslookup[/b] untuk memastikan Computer5 dan Computer9 dapat melakukan konektivitas dan resolusi nama dengan benar.
+
+[b]10. Uji akses website menggunakan domain[/b]
+Gunakan browser untuk mengakses website menggunakan [b]kirin.com[/b] dan [b]www.kirin.com[/b].
+Pastikan website dapat dibuka menggunakan nama domain tanpa harus memasukkan alamat IP secara langsung.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]
+✓ Memahami fungsi DNS dalam jaringan.
+✓ Memahami proses penerjemahan nama domain menjadi IP Address.
+✓ Memahami hubungan antara DNS dan Web Server.
+✓ Memahami fungsi A Record, CNAME, dan MX Record.
+✓ Memeriksa konfigurasi DNS Server.
+✓ Memeriksa DNS Record.
+✓ Memeriksa konfigurasi DNS pada client.
+✓ Menggunakan [b]ping[/b] untuk menguji konektivitas.
+✓ Menggunakan [b]nslookup[/b] untuk memeriksa resolusi nama.
+✓ Melakukan troubleshooting DNS secara sistematis.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]
+✓ Computer5 dapat melakukan konektivitas ke Web Server.
+✓ Computer9 dapat melakukan konektivitas ke Web Server.
+✓ Computer5 dapat melakukan resolusi nama domain dengan benar.
+✓ Computer9 dapat melakukan resolusi nama domain dengan benar.
+✓ Domain [b]kirin.com[/b] dapat diterjemahkan ke IP Address [color=#455A64]192.168.1.253[/color].
+✓ [b]www.kirin.com[/b] dapat diterjemahkan melalui CNAME yang sesuai.
+✓ [b]sales.kirin.com[/b] dapat diterjemahkan ke IP Address yang sesuai.
+✓ [b]media.kirin.com[/b] dapat diterjemahkan ke IP Address yang sesuai.
+✓ [b]accounting.kirin.com[/b] dapat diterjemahkan ke IP Address yang sesuai.
+✓ MX Record untuk domain [b]kirin.com[/b] dapat ditemukan dengan benar.
+✓ Website dapat diakses menggunakan [b]kirin.com[/b].
+✓ Website dapat diakses menggunakan [b]www.kirin.com[/b].
+✓ Client dapat menggunakan nama domain untuk mengakses layanan jaringan.
+[/color]"
+metadata/_custom_type_script = "uid://yyv5xrh6852d"
