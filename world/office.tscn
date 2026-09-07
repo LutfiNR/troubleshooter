@@ -230,7 +230,7 @@ device_id = "server1"
 position = Vector2(976, 272)
 camera_limit = Dictionary[String, int]({
 "b": 432,
-"l": 208,
+"l": 128,
 "r": 1088,
 "t": -80
 })
