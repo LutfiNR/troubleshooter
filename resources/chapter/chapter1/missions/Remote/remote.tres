@@ -1,0 +1,644 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://desla8bfyffxp"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_8rxsw"]
+
+[resource]
+script = ExtResource("1_8rxsw")
+id = "mission5"
+title = "Can't Remote "
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "chapter0"
+description = "Oh nooo cant remote the server"
+guide = "[center][font_size=26][color=#1565C0][b]Remote Server — Network Administrator Tidak Dapat Terhubung ke Server[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]
+Network Administrator di Kirin Corp. menggunakan [b]Computer0[/b] di ruang IT untuk melakukan administrasi terhadap server perusahaan melalui koneksi remote.
+
+Saat ini Network Administrator mengalami masalah ketika mencoba melakukan koneksi remote ke [b]Server0[/b] dan [b]Server1[/b].
+
+Kedua server seharusnya dapat diakses menggunakan [b]SSH[/b]. Namun, terdapat konfigurasi Remote Service yang menyebabkan koneksi SSH dari Computer0 tidak dapat dilakukan.
+
+Sebagai Network Administrator, Anda diminta untuk memeriksa konfigurasi Remote Service pada kedua server, menemukan penyebab kegagalan koneksi SSH, kemudian memperbaikinya agar koneksi remote dapat dilakukan kembali.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+[color=#333333]
+• [b]Computer0[/b] merupakan workstation Network Administrator.
+• Remote access pada mission ini dilakukan menggunakan [b]SSH[/b].
+• Pada simulasi ini, SSH digunakan untuk memeriksa apakah koneksi ke server berhasil atau tidak.
+• Setelah koneksi berhasil, tidak diperlukan aktivitas administrasi lebih lanjut pada server.
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Jangan mengubah konfigurasi layanan lain yang tidak berkaitan dengan Remote Service.
+• Perhatikan bahwa Server0 dan Server1 memiliki permasalahan konfigurasi yang berbeda.
+• Periksa konfigurasi SSH sebelum melakukan perubahan.
+• Gunakan akun yang telah disediakan untuk melakukan pengujian koneksi.
+• [b]Telnet[/b] ditampilkan sebagai bagian dari konfigurasi Remote Service, tetapi tidak digunakan sebagai command pada Computer0.
+• [b]Permit Root Login[/b] ditampilkan sebagai konfigurasi keamanan server. Parameter ini tidak digunakan dalam mekanisme login root pada simulasi.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Topologi Jaringan[/b][/font_size][/color]
+[center]
+[img]res://assets/topology.png[/img]
+[/center]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Perangkat Jaringan[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Device[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Keterangan[/b][/bgcolor][/cell]
+
+[cell]Server A[/cell]
+[cell][color=#455A64]Server0[/color][/cell]
+[cell]DHCP, DNS, Remote[/cell]
+
+[cell]Server B[/cell]
+[cell][color=#455A64]Server1[/color][/cell]
+[cell]Web, FTP, File, Database, Mail, Remote[/cell]
+
+[cell]Router[/cell]
+[cell][color=#455A64]Router0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch IT[/cell]
+[cell][color=#455A64]Switch0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Sales[/cell]
+[cell][color=#455A64]Switch1[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Media[/cell]
+[cell][color=#455A64]Switch2[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Accounting[/cell]
+[cell][color=#455A64]Switch3[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer IT[/cell]
+[cell][color=#455A64]Computer0[/color][/cell]
+[cell]Workstation Network Administrator[/cell]
+
+[cell]Computer Sales[/cell]
+[cell][color=#455A64]Computer1 — Computer4[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Media[/cell]
+[cell][color=#455A64]Computer5 — Computer8[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Accounting[/cell]
+[cell][color=#455A64]Computer9 — Computer12[/color][/cell]
+[cell]-[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+[table=2]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]IP Address[/b][/bgcolor][/cell]
+
+[cell]Server0[/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+
+[cell]Server1[/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]Router0 — IT[/cell]
+[cell][color=#455A64]192.168.1.1[/color][/cell]
+
+[cell]Router0 — Sales[/cell]
+[cell][color=#455A64]192.168.2.1[/color][/cell]
+
+[cell]Router0 — Media[/cell]
+[cell][color=#455A64]192.168.3.1[/color][/cell]
+
+[cell]Router0 — Accounting[/cell]
+[cell][color=#455A64]192.168.4.1[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Konfigurasi Remote Server[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Kondisi yang Diharapkan[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Keterangan[/b][/bgcolor][/cell]
+
+[cell]Telnet[/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Tersedia pada konfigurasi server, tetapi tidak digunakan pada client mission ini.[/cell]
+
+[cell]SSH[/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Digunakan untuk remote access.[/cell]
+
+[cell]SSH Port[/cell]
+[cell][color=#455A64]2222[/color][/cell]
+[cell]Port yang digunakan untuk koneksi SSH.[/cell]
+
+[cell]Permit Root Login[/cell]
+[cell][color=#455A64]YES[/color][/cell]
+[cell]Parameter konfigurasi keamanan server.[/cell]
+
+[cell]Username[/cell]
+[cell][color=#455A64]kirin[/color][/cell]
+[cell]Akun yang digunakan untuk pengujian koneksi.[/cell]
+
+[cell]Password[/cell]
+[cell][color=#455A64]kirin123[/color][/cell]
+[cell]Password akun remote.[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Target Remote Access[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Target[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]IP Address[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Metode[/b][/bgcolor][/cell]
+
+[cell]Server0[/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+[cell]SSH[/cell]
+
+[cell]Server1[/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+[cell]SSH[/cell]
+[/table]
+
+[hr]
+
+[color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333]
+
+[b]1. Identifikasi masalah[/b]
+
+Gunakan [b]Computer0[/b] sebagai workstation Network Administrator.
+
+Cobalah melakukan koneksi SSH ke [b]Server0[/b] dan [b]Server1[/b].
+
+Perhatikan hasil yang diberikan ketika koneksi dilakukan.
+
+[b]2. Periksa Remote Service Server0[/b]
+
+Buka konfigurasi Remote Service pada [b]Server0[/b].
+
+Periksa apakah SSH Service telah aktif.
+
+Perhatikan juga port yang digunakan oleh SSH.
+
+[b]3. Periksa konfigurasi SSH Server0[/b]
+
+Bandingkan konfigurasi SSH Server0 dengan konfigurasi yang seharusnya digunakan oleh Kirin Corp.
+
+Pastikan port yang digunakan sesuai dengan konfigurasi remote server.
+
+[b]4. Periksa Remote Service Server1[/b]
+
+Buka konfigurasi Remote Service pada [b]Server1].
+
+Periksa status SSH Service.
+
+Pastikan service yang diperlukan untuk menerima koneksi SSH telah tersedia.
+
+[b]5. Periksa konfigurasi SSH Server1[/b]
+
+Periksa port SSH dan konfigurasi remote lainnya.
+
+Perhatikan bahwa permasalahan pada Server1 berbeda dengan permasalahan pada Server0.
+
+[b]6. Periksa akun remote[/b]
+
+Gunakan akun yang telah disediakan untuk melakukan pengujian koneksi.
+
+[b]Username:[/b] kirin
+
+[b]Password:[/b] kirin123
+
+Tidak perlu membuat atau mengubah akun baru.
+
+[b]7. Perbaiki konfigurasi yang bermasalah[/b]
+
+Setelah menemukan penyebab masalah, lakukan perbaikan pada konfigurasi Remote Service yang diperlukan.
+
+Pastikan SSH aktif dan menggunakan port yang sesuai.
+
+[b]8. Uji koneksi ke Server0[/b]
+
+Dari [b]Computer0[/b], lakukan koneksi SSH ke Server0 menggunakan port yang telah ditentukan.
+
+[code]ssh -p 2222 kirin@192.168.1.254[/code]
+
+Masukkan username dan password yang tersedia.
+
+Perhatikan apakah koneksi berhasil dibuat.
+
+[b]9. Uji koneksi ke Server1[/b]
+
+Lakukan koneksi SSH ke Server1 menggunakan port yang telah ditentukan.
+
+[code]ssh -p 2222 kirin@192.168.1.253[/code]
+
+Masukkan username dan password yang tersedia.
+
+Perhatikan apakah koneksi berhasil dibuat.
+
+[b]10. Pengujian akhir[/b]
+
+Pastikan Network Administrator dapat membuat koneksi SSH dari [b]Computer0[/b] ke:
+
+• [b]Server0[/b] — 192.168.1.254
+• [b]Server1[/b] — 192.168.1.253
+
+Gunakan port SSH [b]2222[/b].
+
+Pada mission ini, keberhasilan ditentukan berdasarkan apakah koneksi SSH berhasil dibuat.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]
+✓ Memahami fungsi SSH sebagai protokol remote access.
+✓ Memahami fungsi SSH Service pada server.
+✓ Memahami konsep SSH Port.
+✓ Memahami hubungan antara SSH Service, port, dan client.
+✓ Memahami konfigurasi akun untuk remote access.
+✓ Membedakan masalah SSH Service dengan masalah SSH Port.
+✓ Menggunakan command [b]ssh[/b] untuk menguji koneksi ke server.
+✓ Melakukan troubleshooting Remote Service secara sistematis.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]
+✓ SSH Service pada Server0 aktif.
+✓ SSH Service pada Server1 aktif.
+✓ SSH Server0 menggunakan port [b]2222[/b].
+✓ SSH Server1 menggunakan port [b]2222[/b].
+✓ Akun [b]kirin[/b] dapat digunakan untuk pengujian koneksi.
+✓ Computer0 berhasil membuat koneksi SSH ke Server0.
+✓ Computer0 berhasil membuat koneksi SSH ke Server1.
+✓ Koneksi SSH menggunakan port [b]2222[/b].
+✓ Tidak diperlukan aktivitas remote lebih lanjut setelah koneksi berhasil.
+✓ Konfigurasi layanan lain tidak terganggu.
+[/color]
+[center][font_size=26][color=#1565C0][b]Remote Server — Network Administrator Tidak Dapat Terhubung ke Server[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]
+Network Administrator di Kirin Corp. menggunakan [b]Computer0[/b] di ruang IT untuk melakukan administrasi terhadap server perusahaan melalui koneksi remote.
+
+Saat ini Network Administrator mengalami masalah ketika mencoba melakukan koneksi remote ke [b]Server0[/b] dan [b]Server1[/b].
+
+Kedua server seharusnya dapat diakses menggunakan [b]SSH[/b]. Namun, terdapat konfigurasi Remote Service yang menyebabkan koneksi SSH dari Computer0 tidak dapat dilakukan.
+
+Sebagai Network Administrator, Anda diminta untuk memeriksa konfigurasi Remote Service pada kedua server, menemukan penyebab kegagalan koneksi SSH, kemudian memperbaikinya agar koneksi remote dapat dilakukan kembali.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+[color=#333333]
+• [b]Computer0[/b] merupakan workstation Network Administrator.
+• Remote access pada mission ini dilakukan menggunakan [b]SSH[/b].
+• Pada simulasi ini, SSH digunakan untuk memeriksa apakah koneksi ke server berhasil atau tidak.
+• Setelah koneksi berhasil, tidak diperlukan aktivitas administrasi lebih lanjut pada server.
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Jangan mengubah konfigurasi layanan lain yang tidak berkaitan dengan Remote Service.
+• Perhatikan bahwa Server0 dan Server1 memiliki permasalahan konfigurasi yang berbeda.
+• Periksa konfigurasi SSH sebelum melakukan perubahan.
+• Gunakan akun yang telah disediakan untuk melakukan pengujian koneksi.
+• [b]Telnet[/b] ditampilkan sebagai bagian dari konfigurasi Remote Service, tetapi tidak digunakan sebagai command pada Computer0.
+• [b]Permit Root Login[/b] ditampilkan sebagai konfigurasi keamanan server. Parameter ini tidak digunakan dalam mekanisme login root pada simulasi.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Topologi Jaringan[/b][/font_size][/color]
+[center]
+[img]res://assets/topology.png[/img]
+[/center]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Perangkat Jaringan[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Device[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Keterangan[/b][/bgcolor][/cell]
+
+[cell]Server A[/cell]
+[cell][color=#455A64]Server0[/color][/cell]
+[cell]DHCP, DNS, Remote[/cell]
+
+[cell]Server B[/cell]
+[cell][color=#455A64]Server1[/color][/cell]
+[cell]Web, FTP, File, Database, Mail, Remote[/cell]
+
+[cell]Router[/cell]
+[cell][color=#455A64]Router0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch IT[/cell]
+[cell][color=#455A64]Switch0[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Sales[/cell]
+[cell][color=#455A64]Switch1[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Media[/cell]
+[cell][color=#455A64]Switch2[/color][/cell]
+[cell]-[/cell]
+
+[cell]Switch Accounting[/cell]
+[cell][color=#455A64]Switch3[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer IT[/cell]
+[cell][color=#455A64]Computer0[/color][/cell]
+[cell]Workstation Network Administrator[/cell]
+
+[cell]Computer Sales[/cell]
+[cell][color=#455A64]Computer1 — Computer4[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Media[/cell]
+[cell][color=#455A64]Computer5 — Computer8[/color][/cell]
+[cell]-[/cell]
+
+[cell]Computer Accounting[/cell]
+[cell][color=#455A64]Computer9 — Computer12[/color][/cell]
+[cell]-[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+[table=2]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]IP Address[/b][/bgcolor][/cell]
+
+[cell]Server0[/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+
+[cell]Server1[/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+
+[cell]Router0 — IT[/cell]
+[cell][color=#455A64]192.168.1.1[/color][/cell]
+
+[cell]Router0 — Sales[/cell]
+[cell][color=#455A64]192.168.2.1[/color][/cell]
+
+[cell]Router0 — Media[/cell]
+[cell][color=#455A64]192.168.3.1[/color][/cell]
+
+[cell]Router0 — Accounting[/cell]
+[cell][color=#455A64]192.168.4.1[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Konfigurasi Remote Server[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Kondisi yang Diharapkan[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Keterangan[/b][/bgcolor][/cell]
+
+[cell]Telnet[/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Tersedia pada konfigurasi server, tetapi tidak digunakan pada client mission ini.[/cell]
+
+[cell]SSH[/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Digunakan untuk remote access.[/cell]
+
+[cell]SSH Port[/cell]
+[cell][color=#455A64]2222[/color][/cell]
+[cell]Port yang digunakan untuk koneksi SSH.[/cell]
+
+[cell]Permit Root Login[/cell]
+[cell][color=#455A64]YES[/color][/cell]
+[cell]Parameter konfigurasi keamanan server.[/cell]
+
+[cell]Username[/cell]
+[cell][color=#455A64]kirin[/color][/cell]
+[cell]Akun yang digunakan untuk pengujian koneksi.[/cell]
+
+[cell]Password[/cell]
+[cell][color=#455A64]kirin123[/color][/cell]
+[cell]Password akun remote.[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Target Remote Access[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Target[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]IP Address[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Metode[/b][/bgcolor][/cell]
+
+[cell]Server0[/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+[cell]SSH[/cell]
+
+[cell]Server1[/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+[cell]SSH[/cell]
+[/table]
+
+[hr]
+
+[color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333]
+
+[b]1. Identifikasi masalah[/b]
+
+Gunakan [b]Computer0[/b] sebagai workstation Network Administrator.
+
+Cobalah melakukan koneksi SSH ke [b]Server0[/b] dan [b]Server1[/b].
+
+Perhatikan hasil yang diberikan ketika koneksi dilakukan.
+
+[b]2. Periksa Remote Service Server0[/b]
+
+Buka konfigurasi Remote Service pada [b]Server0[/b].
+
+Periksa apakah SSH Service telah aktif.
+
+Perhatikan juga port yang digunakan oleh SSH.
+
+[b]3. Periksa konfigurasi SSH Server0[/b]
+
+Bandingkan konfigurasi SSH Server0 dengan konfigurasi yang seharusnya digunakan oleh Kirin Corp.
+
+Pastikan port yang digunakan sesuai dengan konfigurasi remote server.
+
+[b]4. Periksa Remote Service Server1[/b]
+
+Buka konfigurasi Remote Service pada [b]Server1].
+
+Periksa status SSH Service.
+
+Pastikan service yang diperlukan untuk menerima koneksi SSH telah tersedia.
+
+[b]5. Periksa konfigurasi SSH Server1[/b]
+
+Periksa port SSH dan konfigurasi remote lainnya.
+
+Perhatikan bahwa permasalahan pada Server1 berbeda dengan permasalahan pada Server0.
+
+[b]6. Periksa akun remote[/b]
+
+Gunakan akun yang telah disediakan untuk melakukan pengujian koneksi.
+
+[b]Username:[/b] kirin
+
+[b]Password:[/b] kirin123
+
+Tidak perlu membuat atau mengubah akun baru.
+
+[b]7. Perbaiki konfigurasi yang bermasalah[/b]
+
+Setelah menemukan penyebab masalah, lakukan perbaikan pada konfigurasi Remote Service yang diperlukan.
+
+Pastikan SSH aktif dan menggunakan port yang sesuai.
+
+[b]8. Uji koneksi ke Server0[/b]
+
+Dari [b]Computer0[/b], lakukan koneksi SSH ke Server0 menggunakan port yang telah ditentukan.
+
+[code]ssh -p 2222 kirin@192.168.1.254[/code]
+
+Masukkan username dan password yang tersedia.
+
+Perhatikan apakah koneksi berhasil dibuat.
+
+[b]9. Uji koneksi ke Server1[/b]
+
+Lakukan koneksi SSH ke Server1 menggunakan port yang telah ditentukan.
+
+[code]ssh -p 2222 kirin@192.168.1.253[/code]
+
+Masukkan username dan password yang tersedia.
+
+Perhatikan apakah koneksi berhasil dibuat.
+
+[b]10. Pengujian akhir[/b]
+
+Pastikan Network Administrator dapat membuat koneksi SSH dari [b]Computer0[/b] ke:
+
+• [b]Server0[/b] — 192.168.1.254
+• [b]Server1[/b] — 192.168.1.253
+
+Gunakan port SSH [b]2222[/b].
+
+Pada mission ini, keberhasilan ditentukan berdasarkan apakah koneksi SSH berhasil dibuat.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]
+✓ Memahami fungsi SSH sebagai protokol remote access.
+✓ Memahami fungsi SSH Service pada server.
+✓ Memahami konsep SSH Port.
+✓ Memahami hubungan antara SSH Service, port, dan client.
+✓ Memahami konfigurasi akun untuk remote access.
+✓ Membedakan masalah SSH Service dengan masalah SSH Port.
+✓ Menggunakan command [b]ssh[/b] untuk menguji koneksi ke server.
+✓ Melakukan troubleshooting Remote Service secara sistematis.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]
+✓ SSH Service pada Server0 aktif.
+✓ SSH Service pada Server1 aktif.
+✓ SSH Server0 menggunakan port [b]2222[/b].
+✓ SSH Server1 menggunakan port [b]2222[/b].
+✓ Akun [b]kirin[/b] dapat digunakan untuk pengujian koneksi.
+✓ Computer0 berhasil membuat koneksi SSH ke Server0.
+✓ Computer0 berhasil membuat koneksi SSH ke Server1.
+✓ Koneksi SSH menggunakan port [b]2222[/b].
+✓ Tidak diperlukan aktivitas remote lebih lanjut setelah koneksi berhasil.
+✓ Konfigurasi layanan lain tidak terganggu.
+[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://ciib3q3nn40qk",
+"server1": &"uid://bhqr30a8eakgr",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

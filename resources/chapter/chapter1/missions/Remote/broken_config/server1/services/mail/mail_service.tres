@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MailService" format=3 uid="uid://cyj3jb15wh3tj"]
+
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="1_2smma"]
+[ext_resource type="Script" uid="uid://c7j25f12sehs3" path="res://components/network_service/Mail/mail_user.gd" id="2_nte17"]
+[ext_resource type="Resource" uid="uid://bju6pueyi1lcg" path="res://resources/chapter/chapter1/missions/Remote/broken_config/server1/services/mail/accounting.tres" id="3_wkiqq"]
+[ext_resource type="Resource" uid="uid://4ixe43qkfrxr" path="res://resources/chapter/chapter1/missions/Remote/broken_config/server1/services/mail/it.tres" id="4_mnymw"]
+[ext_resource type="Resource" uid="uid://g07ckn5kbdil" path="res://resources/chapter/chapter1/missions/Remote/broken_config/server1/services/mail/media.tres" id="5_pk5gr"]
+[ext_resource type="Resource" uid="uid://fxj7dck40v1r" path="res://resources/chapter/chapter1/missions/Remote/broken_config/server1/services/mail/sales.tres" id="6_wec34"]
+
+[resource]
+script = ExtResource("1_2smma")
+service_state = 1
+domain_name = "kirin.com"
+use_ssl_tls = true
+cert_file_path = "/ssl/cert"
+key_file_path = "/ssl/key"
+users = Array[ExtResource("2_nte17")]([ExtResource("3_wkiqq"), ExtResource("4_mnymw"), ExtResource("5_pk5gr"), ExtResource("6_wec34")])
+metadata/_custom_type_script = "uid://d0p2lc1igmroh"

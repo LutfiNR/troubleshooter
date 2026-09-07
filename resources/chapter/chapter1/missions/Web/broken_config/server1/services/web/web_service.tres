@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WebService" format=3 uid="uid://dust0w1hn7vkk"]
+
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="1_hvgod"]
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="2_5hmhj"]
+[ext_resource type="Resource" uid="uid://bgxiy6lns3ryw" path="res://resources/chapter/chapter1/missions/Web/broken_config/server1/services/web/kirin.com.tres" id="3_46fmt"]
+[ext_resource type="Resource" uid="uid://dt2p2nkdl4lla" path="res://resources/chapter/chapter1/missions/Web/broken_config/server1/services/web/media.kirin.com.tres" id="4_omp0u"]
+[ext_resource type="Resource" uid="uid://cu4rln63t4mw1" path="res://resources/chapter/chapter1/missions/Web/broken_config/server1/services/web/accounting.kirin.com.tres" id="6_f4jla"]
+[ext_resource type="Resource" uid="uid://c5fn22fwpr173" path="res://resources/chapter/chapter1/missions/Web/broken_config/server1/services/web/http.accounting.kirin.com.tres" id="6_hvgod"]
+
+[resource]
+script = ExtResource("1_hvgod")
+http_state = 1
+https_state = 1
+virtual_hosts = Array[ExtResource("2_5hmhj")]([ExtResource("3_46fmt"), ExtResource("4_omp0u"), ExtResource("6_f4jla"), ExtResource("6_hvgod")])
+metadata/_custom_type_script = "uid://cu5af7k6mnn4q"

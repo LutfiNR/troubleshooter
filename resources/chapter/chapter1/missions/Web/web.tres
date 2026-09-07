@@ -1,0 +1,340 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://boxvnlhf36awy"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_5ttp2"]
+
+[resource]
+script = ExtResource("1_5ttp2")
+id = "mission4"
+title = "Web Trouble"
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "chapter0"
+description = "Cant access the division's web"
+guide = "[center][font_size=26][color=#1565C0][b]Web Server — Website Divisi Bermasalah[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]
+Kirin Corp. menggunakan Web Server untuk menyediakan website utama dan website yang digunakan oleh masing-masing divisi perusahaan.
+
+Website utama perusahaan masih dapat diakses dengan normal menggunakan koneksi [b]HTTPS[/b] melalui alamat [b][https://kirin.com/b].
+
+Namun, beberapa website divisi mengalami masalah yang berbeda.
+
+[b]Sales[/b] melaporkan bahwa website mereka tidak dapat diakses sama sekali.
+
+[b]Media[/b] melaporkan bahwa website masih dapat dibuka menggunakan koneksi [b]HTTP[/b], tetapi tidak dapat diakses menggunakan [b]HTTPS[/b].
+
+Sementara itu, website [b]Accounting[/b] masih dapat diakses menggunakan HTTP maupun HTTPS.
+
+Kirin Corp. menerapkan kebijakan bahwa seluruh website perusahaan harus menggunakan [b]HTTPS[/b]. Koneksi HTTP tidak digunakan untuk mengakses website perusahaan.
+
+Sebagai [b]Network Administrator[/b], Anda diminta untuk memeriksa konfigurasi Web Server, menemukan penyebab dari masing-masing permasalahan, dan memastikan seluruh website divisi dapat digunakan dengan koneksi HTTPS sesuai kebijakan perusahaan.
+[/color]
+
+[color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
+[color=#333333]
+• Jangan mengubah topologi jaringan.
+• Jangan menambahkan perangkat baru.
+• Jangan mengubah konfigurasi DNS yang sudah tersedia.
+• Website utama [b][https://kirin.com/b] sudah berjalan dengan baik.
+• Seluruh website perusahaan harus menggunakan [b]HTTPS[/b].
+• HTTP tidak digunakan sebagai protokol akses website perusahaan.
+• Periksa konfigurasi Web Server sebelum melakukan perubahan.
+• Periksa konfigurasi HTTP, HTTPS, dan SSL/TLS pada website yang mengalami masalah.
+• Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
+• Pastikan perubahan yang dilakukan tidak mengganggu website lainnya.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Topologi Jaringan[/b][/font_size][/color]
+[center][img]res://assets/topology.png[/img][/center]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Perangkat Jaringan[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Device[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Service[/b][/bgcolor][/cell]
+[cell]Server A[/cell]
+[cell][color=#455A64]Server0[/color][/cell]
+[cell][color=#455A64]DHCP, DNS, Remote[/color][/cell]
+[cell]Server B[/cell]
+[cell][color=#455A64]Server1[/color][/cell]
+[cell][color=#455A64]Web, FTP, File, Database, Mail[/color][/cell]
+[cell]Router[/cell]
+[cell][color=#455A64]Router0[/color][/cell]
+[cell]-[/cell]
+[cell]Switch IT[/cell]
+[cell][color=#455A64]Switch0[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Sales[/cell]
+[cell][color=#455A64]Switch1[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Media[/cell]
+[cell][color=#455A64]Switch2[/color][/cell]
+[cell]-[/cell]
+[cell]Switch Accounting[/cell]
+[cell][color=#455A64]Switch3[/color][/cell]
+[cell]-[/cell]
+[cell]Computer IT[/cell]
+[cell][color=#455A64]Computer0[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Sales[/cell]
+[cell][color=#455A64]Computer1 — Computer4[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Media[/cell]
+[cell][color=#455A64]Computer5 — Computer8[/color][/cell]
+[cell]-[/cell]
+[cell]Computer Accounting[/cell]
+[cell][color=#455A64]Computer9 — Computer12[/color][/cell]
+[cell]-[/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
+[table=2]
+[cell][bgcolor=#E8F5E9][b]Jaringan / Perangkat[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+[cell][b]IT[/b][/cell]
+[cell][color=#455A64]192.168.1.0/24[/color][/cell]
+[cell][b]Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.0/24[/color][/cell]
+[cell][b]Media[/b][/cell]
+[cell][color=#455A64]192.168.3.0/24[/color][/cell]
+[cell][b]Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.0/24[/color][/cell]
+[cell][b]Server0 — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.1.254[/color][/cell]
+[cell][b]Server1 — IP Address[/b][/cell]
+[cell][color=#455A64]192.168.1.253[/color][/cell]
+[cell][b]Router0 — Jaringan IT[/b][/cell]
+[cell][color=#455A64]192.168.1.1[/color][/cell]
+[cell][b]Router0 — Jaringan Sales[/b][/cell]
+[cell][color=#455A64]192.168.2.1[/color][/cell]
+[cell][b]Router0 — Jaringan Media[/b][/cell]
+[cell][color=#455A64]192.168.3.1[/color][/cell]
+[cell][b]Router0 — Jaringan Accounting[/b][/cell]
+[cell][color=#455A64]192.168.4.1[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Website Perusahaan[/b][/font_size][/color]
+[table=4]
+[cell][bgcolor=#E8F5E9][b]Website[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Domain[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]HTTP[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]HTTPS[/b][/bgcolor][/cell]
+[cell]Website Utama[/cell]
+[cell][color=#455A64]kirin.com[/color][/cell]
+[cell][color=#455A64]OFF[/color][/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Website Sales[/cell]
+[cell][color=#455A64]sales.kirin.com[/color][/cell]
+[cell][color=#455A64]OFF[/color][/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Website Media[/cell]
+[cell][color=#455A64]media.kirin.com[/color][/cell]
+[cell][color=#455A64]OFF[/color][/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Website Accounting[/cell]
+[cell][color=#455A64]accounting.kirin.com[/color][/cell]
+[cell][color=#455A64]OFF[/color][/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[/table]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Konfigurasi HTTPS[/b][/font_size][/color]
+[table=3]
+[cell][bgcolor=#E8F5E9][b]Konfigurasi[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Kondisi yang Diharapkan[/b][/bgcolor][/cell]
+[cell][bgcolor=#E8F5E9][b]Keterangan[/b][/bgcolor][/cell]
+[cell]HTTP[/cell]
+[cell][color=#455A64]OFF[/color][/cell]
+[cell]Tidak digunakan[/cell]
+[cell]HTTPS[/cell]
+[cell][color=#455A64]ON[/color][/cell]
+[cell]Protokol website perusahaan[/cell]
+[cell]SSL/TLS[/cell]
+[cell][color=#455A64]Aktif[/color][/cell]
+[cell]Digunakan untuk koneksi HTTPS[/cell]
+[cell]SSL Certificate[/cell]
+[cell][color=#455A64]Valid[/color][/cell]
+[cell]Digunakan oleh website HTTPS[/cell]
+[/table]
+
+[hr]
+
+[color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333]
+[b]1. Identifikasi kondisi setiap website[/b]
+Gunakan [b]Web Browser[/b] untuk menguji website utama dan website setiap divisi.
+
+Perhatikan apakah website dapat diakses menggunakan HTTP dan HTTPS.
+
+[b]2. Uji menggunakan curl[/b]
+Gunakan [b]curl[/b] untuk menguji koneksi HTTP dan HTTPS pada website yang mengalami masalah.
+
+Bandingkan hasil response dari masing-masing protokol.
+
+[b]3. Periksa Web Service pada Server1[/b]
+Periksa [b]Web Service[/b] pada Server1.
+
+Pastikan service berjalan dengan baik dan dapat menerima koneksi dari client.
+
+[b]4. Periksa konfigurasi HTTP dan HTTPS[/b]
+Periksa konfigurasi protokol yang digunakan oleh masing-masing website.
+
+Pastikan website perusahaan menggunakan HTTPS dan tidak menggunakan HTTP.
+
+[b]5. Periksa konfigurasi SSL/TLS[/b]
+Periksa konfigurasi SSL/TLS pada website yang mengalami masalah HTTPS.
+
+Pastikan konfigurasi keamanan yang diperlukan untuk membangun koneksi HTTPS tersedia dan dapat digunakan.
+
+[b]6. Periksa SSL Certificate[/b]
+Periksa certificate yang digunakan oleh website HTTPS.
+
+Pastikan certificate tersedia, valid, dan sesuai dengan konfigurasi website.
+
+[b]7. Periksa konfigurasi website divisi[/b]
+Periksa konfigurasi:
+• [b]sales.kirin.com[/b]
+• [b]media.kirin.com[/b]
+• [b]accounting.kirin.com[/b]
+
+Bandingkan konfigurasi masing-masing website dengan website utama [b]kirin.com[/b].
+
+[b]8. Perbaiki konfigurasi yang bermasalah[/b]
+Setelah menemukan sumber permasalahan, lakukan perbaikan pada konfigurasi yang diperlukan.
+
+Pastikan website yang mengalami masalah dapat menggunakan HTTPS dan HTTP tidak digunakan.
+
+[b]9. Uji kembali menggunakan curl[/b]
+Gunakan [b]curl[/b] untuk menguji kembali koneksi HTTPS pada seluruh website.
+
+Pastikan setiap website memberikan response yang sesuai.
+
+[b]10. Uji menggunakan Web Browser[/b]
+Buka website berikut menggunakan HTTPS:
+• [b][https://kirin.com/b]
+• [b][https://sales.kirin.com/b]
+• [b][https://media.kirin.com/b]
+• [b][https://accounting.kirin.com/b]
+
+Pastikan seluruh website dapat dibuka dengan normal.
+
+[b]11. Pastikan HTTP tidak digunakan[/b]
+Coba akses website menggunakan HTTP.
+
+Pastikan HTTP tidak menjadi protokol yang digunakan untuk mengakses website perusahaan.
+
+[b]12. Lakukan pengujian akhir[/b]
+Pastikan seluruh website perusahaan dapat diakses menggunakan HTTPS dan konfigurasi HTTP tidak aktif.
+
+Pastikan perbaikan yang dilakukan tidak mengganggu website utama.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]
+✓ Memahami fungsi Web Server dalam jaringan.
+✓ Memahami perbedaan HTTP dan HTTPS.
+✓ Memahami fungsi SSL/TLS.
+✓ Memahami fungsi SSL Certificate.
+✓ Memahami konfigurasi HTTPS pada website.
+✓ Memahami konsep beberapa website pada satu Web Server.
+✓ Membedakan masalah Web Service dengan masalah konfigurasi website.
+✓ Menggunakan [b]curl[/b] untuk menguji HTTP dan HTTPS.
+✓ Menggunakan [b]Web Browser[/b] untuk menguji akses website.
+✓ Melakukan troubleshooting layanan Web secara sistematis.
+[/color]
+
+[hr]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]
+✓ Web Service pada Server1 berjalan dengan baik.
+✓ HTTPS aktif pada seluruh website perusahaan.
+✓ SSL/TLS dapat digunakan untuk koneksi HTTPS.
+✓ SSL Certificate tersedia dan valid.
+✓ Website utama [b][https://kirin.com/b] dapat diakses.
+✓ [b][https://sales.kirin.com/b] dapat diakses.
+✓ [b][https://media.kirin.com/b] dapat diakses.
+✓ [b][https://accounting.kirin.com/b] dapat diakses.
+✓ Seluruh website memberikan response HTTPS yang sesuai ketika diuji menggunakan [b]curl[/b].
+✓ HTTP tidak digunakan untuk mengakses website perusahaan.
+✓ Seluruh website dapat dibuka menggunakan Web Browser melalui HTTPS.
+✓ Perbaikan website divisi tidak mengganggu website utama.
+[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

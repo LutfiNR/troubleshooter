@@ -1,0 +1,198 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://cn0jor1j4qjo0"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_tjbq5"]
+
+[resource]
+script = ExtResource("1_tjbq5")
+id = "mission6"
+title = "Where's the File"
+time = 600.0
+check_progress_limit = 500
+required_progress_id = "chapter0"
+description = "Clinet cant access the file server and catn upload in private shares"
+guide = "[center][font_size=26][color=#1565C0][b]MISSION 5 — FILE SERVER[/b][/color][/font_size][/center]
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]Kirin Corp menggunakan Server1 sebagai File Server untuk menyimpan dan berbagi dokumen antar divisi. Terdapat dua shared folder dengan fungsi yang berbeda, yaitu PrivateShare dan PublicShare.[/color]
+[color=#333333]PrivateShare digunakan untuk menyimpan file yang hanya dapat diakses oleh pengguna terautentikasi. Pengguna yang memiliki akses harus dapat mengunggah dan menghapus file.[/color]
+[color=#333333]PublicShare digunakan sebagai tempat berbagi dokumen umum. Folder ini dapat diakses tanpa login, tetapi bersifat [b]read-only[/b] sehingga pengguna tidak boleh mengunggah atau menghapus file.[/color]
+[color=#EF6C00][b]Masalah dilaporkan:[/b][/color]
+[color=#333333]Pengguna melaporkan bahwa shared folder tidak dapat digunakan dengan normal. Selain itu, beberapa permission folder tidak sesuai dengan kebijakan perusahaan.[/color]
+
+[color=#2E7D32][font_size=18][b]Topologi[/b][/font_size][/color]
+[center][img]res://assets/topology.png[/img][/center]
+
+[color=#2E7D32][font_size=18][b]Perangkat yang Digunakan[/b][/font_size][/color]
+[table=3]
+Server A|Server0|DHCP, DNS, Remote
+Server B|Server1|Web, FTP, File, Database, Mail, Remote
+Router|Router0|-
+Switch IT|Switch0|-
+Switch Sales|Switch1|-
+Switch Media|Switch2|-
+Switch Accounting|Switch3|-
+Computer IT|Computer0|Workstation Network Administrator
+Computer Sales|Computer1 — Computer4|-
+Computer Media|Computer5 — Computer8|-
+Computer Accounting|Computer9 — Computer12|-
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Network[/b][/font_size][/color]
+[table=2]
+Network IT|192.168.1.0/24
+Network Sales|192.168.2.0/24
+Network Media|192.168.3.0/24
+Network Accounting|192.168.4.0/24
+Server0|192.168.1.254
+Server1|192.168.1.253
+Router0 — IT|192.168.1.1
+Router0 — Sales|192.168.2.1
+Router0 — Media|192.168.3.1
+Router0 — Accounting|192.168.4.1
+[/table]
+
+[color=#2E7D32][font_size=18][b]File Server[/b][/font_size][/color]
+[table=2]
+Service|Status
+File Service|ON
+[/table]
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]Pastikan File Service aktif sebelum melakukan pengujian terhadap shared folder. Jika service tidak berjalan, akses ke seluruh shared folder akan terganggu.[/color]
+
+[color=#2E7D32][font_size=18][b]Shared Folder[/b][/font_size][/color]
+[table=5]
+Share|Path|Akses|Writable|Security
+PrivateShare|/home/private|User|YES|user
+PublicShare|/home/public|Guest|NO|none
+[/table]
+
+[color=#2E7D32][font_size=18][b]User Account[/b][/font_size][/color]
+[table=2]
+Username|Password
+accounting|accounting123
+kirin|kirin123
+media|media123
+sales|sales123
+[/table]
+
+[color=#2E7D32][font_size=18][b]Akses File Server[/b][/font_size][/color]
+[color=#333333]Gunakan File Explorer untuk mengakses shared folder pada Server1.[/color]
+[color=#455A64][b]PrivateShare[/b][/color]
+[color=#333333]smb://192.168.1.253/PrivateShare[/color]
+[color=#455A64][b]PublicShare[/b][/color]
+[color=#333333]smb://192.168.1.253/PublicShare[/color]
+
+[color=#2E7D32][font_size=18][b]Yang Harus Diperiksa[/b][/font_size][/color]
+[color=#333333][b]1. Periksa File Service[/b][/color]
+[color=#333333]Periksa apakah File Service pada Server1 sedang aktif. Jika service tidak aktif, cari penyebab mengapa shared folder tidak dapat digunakan.[/color]
+[color=#333333][b]2. Periksa PrivateShare[/b][/color]
+[color=#333333]Akses PrivateShare menggunakan salah satu akun yang tersedia. Setelah berhasil masuk, lakukan pengujian terhadap operasi file.[/color]
+[color=#333333]• Apakah folder dapat dibuka setelah login?[/color]
+[color=#333333]• Apakah file dapat di-upload?[/color]
+[color=#333333]• Apakah file dapat di-delete?[/color]
+[color=#333333]PrivateShare seharusnya memungkinkan pengguna terautentikasi untuk melakukan Upload dan Delete.[/color]
+[color=#333333][b]3. Periksa PublicShare[/b][/color]
+[color=#333333]Akses PublicShare tanpa menggunakan akun. Periksa apakah folder dapat dibuka sebagai guest.[/color]
+[color=#333333]Kemudian lakukan pengujian terhadap operasi file.[/color]
+[color=#333333]• Apakah file dapat dibaca?[/color]
+[color=#333333]• Apakah Upload tersedia?[/color]
+[color=#333333]• Apakah Delete tersedia?[/color]
+[color=#333333]PublicShare seharusnya dapat diakses tanpa login, tetapi tidak mengizinkan Upload maupun Delete.[/color]
+[color=#333333][b]4. Periksa Konfigurasi Shared Folder[/b][/color]
+[color=#333333]Jika perilaku shared folder tidak sesuai, periksa konfigurasi pada Server1. Perhatikan Path, Writable, Guest OK, dan Security.[/color]
+[color=#333333]Bandingkan konfigurasi PrivateShare dan PublicShare dengan fungsi masing-masing folder untuk menentukan konfigurasi yang tidak sesuai.[/color]
+[color=#333333][b]5. Perbaiki Konfigurasi[/b][/color]
+[color=#333333]Lakukan perubahan pada konfigurasi yang bermasalah. Pastikan File Service aktif dan permission setiap shared folder sesuai dengan kebijakan perusahaan.[/color]
+[color=#333333][b]6. Lakukan Pengujian Ulang[/b][/color]
+[color=#333333]Setelah melakukan perbaikan, akses kembali kedua shared folder dan ulangi pengujian Upload dan Delete untuk memastikan permission telah berfungsi dengan benar.[/color]
+
+[color=#2E7D32][font_size=18][b]Kondisi yang Harus Dicapai[/b][/font_size][/color]
+[table=4]
+Share|Login|Upload|Delete
+PrivateShare|Required|Allowed|Allowed
+PublicShare|Not Required|Not Allowed|Not Allowed
+[/table]
+
+[color=#2E7D32][font_size=18][b]Tujuan Misi[/b][/font_size][/color]
+[color=#333333]• Mengidentifikasi masalah pada File Service.[/color]
+[color=#333333]• Memahami perbedaan shared folder private dan public.[/color]
+[color=#333333]• Memahami fungsi permission Writable.[/color]
+[color=#333333]• Memahami fungsi Guest Access dan Security.[/color]
+[color=#333333]• Menguji permission melalui operasi Upload dan Delete.[/color]
+[color=#333333]• Memastikan File Server dapat digunakan sesuai kebijakan perusahaan.[/color]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]✓ File Service Server1 aktif.[/color]
+[color=#333333]✓ PrivateShare dapat diakses menggunakan akun yang valid.[/color]
+[color=#333333]✓ PrivateShare mengizinkan Upload.[/color]
+[color=#333333]✓ PrivateShare mengizinkan Delete.[/color]
+[color=#333333]✓ PublicShare dapat diakses tanpa login.[/color]
+[color=#333333]✓ PublicShare dapat digunakan untuk membaca file.[/color]
+[color=#333333]✓ PublicShare tidak mengizinkan Upload.[/color]
+[color=#333333]✓ PublicShare tidak mengizinkan Delete.[/color]
+[color=#333333]✓ Kedua shared folder memiliki konfigurasi yang sesuai dengan fungsinya.[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://78yje6rgtejx",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

@@ -7,6 +7,6 @@ script = ExtResource("1_tyugr")
 username = "accounting"
 password = "accounting123"
 privileges = Dictionary[String, Array]({
-"0": ["ALL PRIVILEGES", null]
+"accounting": ["ALL PRIVILEGES"]
 })
 metadata/_custom_type_script = "uid://yo2ch62adk5w"

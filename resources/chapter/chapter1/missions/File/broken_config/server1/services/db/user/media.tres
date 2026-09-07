@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MariaDBUser" format=3 uid="uid://bse6hdxehfgkb"]
+
+[ext_resource type="Script" uid="uid://yo2ch62adk5w" path="res://components/network_service/DB/db_user.gd" id="1_fjm3d"]
+
+[resource]
+script = ExtResource("1_fjm3d")
+username = "media"
+password = "media123"
+privileges = Dictionary[String, Array]({
+"media": ["ALL PRIVILEGES"]
+})
+metadata/_custom_type_script = "uid://yo2ch62adk5w"

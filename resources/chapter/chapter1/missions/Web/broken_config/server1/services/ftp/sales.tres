@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FTPUser" format=3 uid="uid://ctm12ju2whdu3"]
+
+[ext_resource type="Script" uid="uid://b6owws0wrppwj" path="res://components/network_service/FTP/ftp_user.gd" id="1_kwsml"]
+
+[resource]
+script = ExtResource("1_kwsml")
+username = "sales"
+password = "sales123"
+home_directory = "/home/user/sales"
+metadata/_custom_type_script = "uid://b6owws0wrppwj"

@@ -9,7 +9,6 @@
 
 [resource]
 script = ExtResource("1_t74hf")
-http_state = 1
 https_state = 1
 virtual_hosts = Array[ExtResource("2_nqx7n")]([ExtResource("3_nqx7n"), ExtResource("4_py3q5"), ExtResource("5_cilt8"), ExtResource("6_i5wt2")])
 metadata/_custom_type_script = "uid://cu5af7k6mnn4q"
