@@ -34,14 +34,14 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgk24"]
 bg_color = Color(0.17044133, 0.17044118, 0.17044118, 0.5803922)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g83hl"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g83hl"]
 texture = ExtResource("3_5ieel")
 texture_margin_left = 10.0
 texture_margin_top = 38.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g83hl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3k4b"]
 content_margin_left = 8.0
@@ -390,8 +390,7 @@ grow_vertical = 0
 theme = ExtResource("12_jelbd")
 text = "Save "
 
-[node name="Web" type="Control" parent="UIContainer/AppContainer" unique_id=1079067363 node_paths=PackedStringArray("ssl_icon", "url", "web_content")]
-visible = false
+[node name="Web" type="Control" parent="UIContainer/AppContainer" unique_id=1079067363 node_paths=PackedStringArray("ssl_icon", "url", "web_content", "db_list", "login_panel", "username", "password", "login_button", "validation_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -408,6 +407,12 @@ secure_texture = ExtResource("17_j1ipk")
 unsecure_texture = ExtResource("16_1yxkk")
 url = NodePath("VBox/HBoxContainer/URL")
 web_content = NodePath("VBox/RichTextLabel")
+db_list = NodePath("VBox/Db_list")
+login_panel = NodePath("Panel")
+username = NodePath("Panel/VBoxContainer/HBoxContainer/Username")
+password = NodePath("Panel/VBoxContainer/HBoxContainer2/Password")
+login_button = NodePath("Panel/VBoxContainer/HBoxContainer3/LoginButton")
+validation_label = NodePath("Panel/VBoxContainer/HBoxContainer3/ValidationLabel")
 
 [node name="Window" type="NinePatchRect" parent="UIContainer/AppContainer/Web" unique_id=20310417]
 layout_mode = 1
@@ -489,6 +494,91 @@ theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098,
 text = "Zoogle"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Db_list" type="ItemList" parent="UIContainer/AppContainer/Web/VBox" unique_id=581250474]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UIContainer/AppContainer/Web" unique_id=1391846654]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -99.5
+offset_right = 249.5
+offset_bottom = 114.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_jelbd")
+theme_override_styles/panel = SubResource("StyleBoxTexture_g83hl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/AppContainer/Web/Panel" unique_id=996800643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 41.0
+offset_right = -15.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer" unique_id=2002901655]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer" unique_id=1700108758]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Username "
+
+[node name="Username" type="LineEdit" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer" unique_id=1741378715]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("21_ger8l")
+caret_blink = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer" unique_id=125304304]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer2" unique_id=223659098]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+text = "Password  "
+
+[node name="Password" type="LineEdit" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer2" unique_id=840396195]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.013531392, 0.02799141, 0.115619384, 1)
+theme_override_colors/font_placeholder_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_colors/caret_color = Color(0.011764706, 0.02745098, 0.11372549, 1)
+theme_override_styles/normal = ExtResource("21_ger8l")
+caret_blink = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer" unique_id=368078748]
+layout_mode = 2
+alignment = 2
+
+[node name="ValidationLabel" type="Label" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer3" unique_id=40542836]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.90588236, 0.22745098, 0.18431373, 1)
+
+[node name="CancelButton" type="Button" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer3" unique_id=962733224]
+layout_mode = 2
+text = "Cancel"
+
+[node name="LoginButton" type="Button" parent="UIContainer/AppContainer/Web/Panel/VBoxContainer/HBoxContainer3" unique_id=1212976194]
+layout_mode = 2
+text = "Login"
 
 [node name="File" type="Control" parent="UIContainer/AppContainer" unique_id=181695497 node_paths=PackedStringArray("ssl_icon", "path", "content_list", "credential_popup", "credential_username", "credential_password", "validation_label", "button_container", "upload_button", "delete_button")]
 visible = false

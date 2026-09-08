@@ -97,6 +97,10 @@ func get_correct_device_data_by_id(device_id: String) -> DeviceData:
 	return correct_configs.get(device_id)
 
 
+func get_server_by_ip(target_ip: String) -> ServerDeviceData:
+	return _find_server_by_ip(target_ip)
+
+
 func _on_device_updated(device_id: String, _device_data: DeviceData) -> void:
 	verify_configuration(device_id)
 
