@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cn0jor1j4qjo0" path="res://resources/chapter/chapter1/missions/File/file.tres" id="6_c5nei"]
 [ext_resource type="Resource" uid="uid://c163ukjnmvssf" path="res://resources/chapter/chapter1/missions/DB/db.tres" id="7_onsfq"]
 [ext_resource type="Resource" uid="uid://ptbey78oiyjv" path="res://resources/chapter/chapter1/missions/FTP/ftp.tres" id="8_5dof0"]
+[ext_resource type="Resource" uid="uid://by7pdjph82fk1" path="res://resources/chapter/chapter1/missions/Mail/mail.tres" id="9_u3105"]
 
 [resource]
 script = ExtResource("3_rppxs")
@@ -139,5 +140,5 @@ Divisi Accounting memiliki jaringan tersendiri untuk mendukung aktivitas pengelo
 • Switch : Switch3
 • Computer : Computer9 — Computer12
 [/color]"
-missions = Array[ExtResource("1_28ski")]([ExtResource("2_28ski"), ExtResource("3_4lnge"), ExtResource("4_rppxs"), ExtResource("5_ukp0j"), ExtResource("6_c5nei"), ExtResource("7_onsfq"), ExtResource("8_5dof0")])
+missions = Array[ExtResource("1_28ski")]([ExtResource("2_28ski"), ExtResource("3_4lnge"), ExtResource("4_rppxs"), ExtResource("5_ukp0j"), ExtResource("6_c5nei"), ExtResource("7_onsfq"), ExtResource("8_5dof0"), ExtResource("9_u3105")])
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"
