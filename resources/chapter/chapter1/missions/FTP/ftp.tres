@@ -1,0 +1,219 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://ptbey78oiyjv"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_bbjw6"]
+
+[resource]
+script = ExtResource("1_bbjw6")
+id = "mission8"
+title = "Broken FTP"
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "mission3"
+description = "noo fpt was broken"
+guide = "[center][font_size=26][color=#1565C0][b]MISSION 7 — FTP SERVER[/b][/color][/font_size][/center]
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]Network Administrator sedang melakukan akses ke File Server Kirin Corp melalui Computer0. Server1 menyediakan layanan FTP yang digunakan untuk mengakses dan mengelola file pada direktori masing-masing user.[/color]
+[color=#333333]FTP Server menyediakan akses menggunakan akun lokal. User yang berhasil melakukan autentikasi dapat mengakses direktori masing-masing dan melakukan operasi file sesuai dengan permission yang diberikan.[/color]
+[color=#EF6C00][b]Masalah:[/b][/color]
+[color=#333333]Saat mencoba mengakses FTP Server, akses tidak berjalan sebagaimana mestinya. Selain itu, perilaku akses dan operasi file tidak sesuai dengan konfigurasi yang seharusnya. Periksa konfigurasi FTP Server dan lakukan pengujian dari Computer0.[/color]
+
+[color=#2E7D32][font_size=18][b]Topologi[/b][/font_size][/color]
+[center][img]res://assets/topology.png[/img][/center]
+
+[color=#2E7D32][font_size=18][b]Perangkat yang Digunakan[/b][/font_size][/color]
+[table=3]
+Server A|Server0|DHCP, DNS, Remote
+Server B|Server1|Web, FTP, File, Database, Mail, Remote
+Router|Router0|-
+Switch IT|Switch0|-
+Switch Sales|Switch1|-
+Switch Media|Switch2|-
+Switch Accounting|Switch3|-
+Computer IT|Computer0|Workstation Network Administrator
+Computer Sales|Computer1 — Computer4|-
+Computer Media|Computer5 — Computer8|-
+Computer Accounting|Computer9 — Computer12|-
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Network[/b][/font_size][/color]
+[table=2]
+Network IT|192.168.1.0/24
+Network Sales|192.168.2.0/24
+Network Media|192.168.3.0/24
+Network Accounting|192.168.4.0/24
+Server0|192.168.1.254
+Server1|192.168.1.253
+Router0 — IT|192.168.1.1
+Router0 — Sales|192.168.2.1
+Router0 — Media|192.168.3.1
+Router0 — Accounting|192.168.4.1
+[/table]
+
+[color=#2E7D32][font_size=18][b]FTP Server[/b][/font_size][/color]
+[color=#333333]FTP Server berada pada Server1. Periksa konfigurasi service sebelum melakukan pengujian menggunakan File Explorer atau Terminal.[/color]
+[table=2]
+Configuration|Status
+FTP State|ON
+FTPS State|ON
+Local Enable|ON
+Anonymous Enable|OFF
+Write Enable|ON
+[/table]
+
+[color=#2E7D32][font_size=18][b]User FTP[/b][/font_size][/color]
+[table=3]
+Username|Password|Home Directory
+kirin|kirin123|/home/user/kirin
+media|media123|/home/user/media
+sales|sales123|/home/user/sales
+accounting|accounting123|/home/user/accounting
+[/table]
+
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]FTP menggunakan akun lokal untuk autentikasi. Anonymous access seharusnya tidak digunakan. User yang berhasil login harus dapat melakukan operasi file karena Write Enable aktif.[/color]
+
+[color=#2E7D32][font_size=18][b]Akses melalui File Explorer[/b][/font_size][/color]
+[color=#333333]Gunakan File Explorer pada Computer0 untuk melakukan pengujian akses FTP.[/color]
+[table=2]
+Protocol|Alamat
+FTP|ftp://kirin.com
+FTPS|ftps://kirin.com
+[/table]
+[color=#333333]Coba akses menggunakan akun FTP yang tersedia. Perhatikan apakah autentikasi berhasil dan apakah direktori user dapat diakses.[/color]
+[color=#333333]Setelah berhasil masuk, lakukan pengujian operasi file untuk memastikan permission Write berjalan sesuai konfigurasi.[/color]
+
+[color=#2E7D32][font_size=18][b]Akses melalui Terminal[/b][/font_size][/color]
+[color=#333333]Gunakan Terminal pada Computer0 untuk melakukan pengujian FTP/FTPS melalui command line.[/color]
+[color=#333333]Command yang tersedia dapat dilihat menggunakan perintah [b]help[/b] pada Terminal. Gunakan command yang tersedia untuk melakukan koneksi dan pengujian FTP Server.[/color]
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]Tidak perlu menghafalkan command. Gunakan [b]help[/b] untuk melihat command yang tersedia pada Terminal.[/color]
+
+[color=#2E7D32][font_size=18][b]Yang Harus Diperiksa[/b][/font_size][/color]
+[color=#333333][b]1. Periksa FTP Service[/b][/color]
+[color=#333333]Pastikan FTP State aktif. Jika service tidak aktif, periksa konfigurasi sebelum melakukan pengujian lainnya.[/color]
+[color=#333333][b]2. Periksa FTPS[/b][/color]
+[color=#333333]Pastikan FTPS State juga aktif sehingga akses FTP yang menggunakan koneksi aman dapat digunakan.[/color]
+[color=#333333][b]3. Periksa Local User[/b][/color]
+[color=#333333]Periksa apakah Local Enable aktif sehingga user lokal dapat melakukan autentikasi ke FTP Server.[/color]
+[color=#333333][b]4. Periksa Anonymous Access[/b][/color]
+[color=#333333]Periksa konfigurasi Anonymous Enable. FTP Server perusahaan seharusnya tidak menyediakan akses anonymous.[/color]
+[color=#333333][b]5. Periksa Write Permission[/b][/color]
+[color=#333333]Periksa Write Enable. User yang berhasil login seharusnya dapat melakukan operasi file yang membutuhkan permission tulis.[/color]
+[color=#333333][b]6. Periksa User dan Home Directory[/b][/color]
+[color=#333333]Pastikan setiap user memiliki password dan Home Directory yang sesuai. Perhatikan apakah user diarahkan ke direktori yang benar setelah berhasil login.[/color]
+[color=#333333][b]7. Uji melalui File Explorer[/b][/color]
+[color=#333333]Gunakan alamat FTP atau FTPS pada File Explorer dan lakukan login menggunakan salah satu akun yang tersedia. Periksa akses direktori dan kemampuan melakukan operasi file.[/color]
+[color=#333333][b]8. Uji melalui Terminal[/b][/color]
+[color=#333333]Gunakan [b]help[/b] pada Terminal untuk melihat command yang tersedia, kemudian gunakan command tersebut untuk melakukan pengujian koneksi FTP/FTPS.[/color]
+[color=#333333][b]9. Perbaiki Konfigurasi[/b][/color]
+[color=#333333]Perbaiki konfigurasi FTP yang tidak sesuai. Pastikan service, autentikasi lokal, anonymous access, dan permission write sesuai dengan kebutuhan perusahaan.[/color]
+[color=#333333][b]10. Lakukan Pengujian Ulang[/b][/color]
+[color=#333333]Setelah konfigurasi diperbaiki, lakukan kembali pengujian melalui File Explorer dan Terminal untuk memastikan FTP Server dapat digunakan dengan normal.[/color]
+
+[color=#2E7D32][font_size=18][b]Kondisi yang Harus Dicapai[/b][/font_size][/color]
+[table=2]
+Configuration|Kondisi
+FTP State|ON
+FTPS State|ON
+Local Enable|ON
+Anonymous Enable|OFF
+Write Enable|ON
+[/table]
+
+[color=#2E7D32][font_size=18][b]User dan Home Directory[/b][/font_size][/color]
+[table=3]
+Username|Password|Home Directory
+kirin|kirin123|/home/user/kirin
+media|media123|/home/user/media
+sales|sales123|/home/user/sales
+accounting|accounting123|/home/user/accounting
+[/table]
+
+[color=#2E7D32][font_size=18][b]Tujuan Misi[/b][/font_size][/color]
+[color=#333333]• Memahami fungsi FTP dan FTPS.[/color]
+[color=#333333]• Memahami autentikasi user lokal pada FTP Server.[/color]
+[color=#333333]• Memahami fungsi Anonymous Access.[/color]
+[color=#333333]• Memahami fungsi Write Enable pada FTP Server.[/color]
+[color=#333333]• Memeriksa Home Directory setiap user.[/color]
+[color=#333333]• Melakukan pengujian FTP melalui File Explorer dan Terminal.[/color]
+[color=#333333]• Mengidentifikasi dan memperbaiki konfigurasi FTP yang bermasalah.[/color]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]✓ FTP State aktif.[/color]
+[color=#333333]✓ FTPS State aktif.[/color]
+[color=#333333]✓ Local Enable aktif.[/color]
+[color=#333333]✓ Anonymous Enable tidak aktif.[/color]
+[color=#333333]✓ Write Enable aktif.[/color]
+[color=#333333]✓ User kirin dapat melakukan autentikasi dan diarahkan ke /home/user/kirin.[/color]
+[color=#333333]✓ User media dapat melakukan autentikasi dan diarahkan ke /home/user/media.[/color]
+[color=#333333]✓ User sales dapat melakukan autentikasi dan diarahkan ke /home/user/sales.[/color]
+[color=#333333]✓ User accounting dapat melakukan autentikasi dan diarahkan ke /home/user/accounting.[/color]
+[color=#333333]✓ FTP dapat diuji melalui File Explorer.[/color]
+[color=#333333]✓ FTP/FTPS dapat diuji melalui Terminal menggunakan command yang tersedia pada [b]help[/b].[/color]
+[color=#333333]✓ User yang berhasil login dapat melakukan operasi file sesuai dengan Write Enable.[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://isrqal3dcouf",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

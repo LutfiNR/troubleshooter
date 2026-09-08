@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SambaShare" format=3 uid="uid://bj5t54unlcsjr"]
+
+[ext_resource type="Script" uid="uid://43ucjh8escsm" path="res://components/network_service/File/share_folder.gd" id="1_6wkgt"]
+[ext_resource type="Script" uid="uid://bgicx1nx7vr6f" path="res://components/network_service/File/user.gd" id="2_3ehb8"]
+[ext_resource type="Resource" uid="uid://dlfveiu5kf2m4" path="res://resources/chapter/chapter1/missions/FTP/broken_config/server1/services/file/users/accounting.tres" id="3_lgdqj"]
+[ext_resource type="Resource" uid="uid://b38nmh6s0cm5f" path="res://resources/chapter/chapter1/missions/FTP/broken_config/server1/services/file/users/sales.tres" id="4_cmino"]
+[ext_resource type="Resource" uid="uid://bai6re54ii82u" path="res://resources/chapter/chapter1/missions/FTP/broken_config/server1/services/file/users/media.tres" id="5_0yhja"]
+[ext_resource type="Resource" uid="uid://go0eg6naj0lt" path="res://resources/chapter/chapter1/missions/FTP/broken_config/server1/services/file/users/kirin.tres" id="6_b5vsh"]
+
+[resource]
+script = ExtResource("1_6wkgt")
+share_name = "PrivateShare"
+folder_path = "/home/private"
+guest_ok = false
+security = 1
+valid_users = Array[ExtResource("2_3ehb8")]([ExtResource("3_lgdqj"), ExtResource("4_cmino"), ExtResource("5_0yhja"), ExtResource("6_b5vsh")])
+metadata/_custom_type_script = "uid://43ucjh8escsm"

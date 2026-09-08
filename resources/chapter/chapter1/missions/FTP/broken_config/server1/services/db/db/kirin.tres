@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MariaDBDatabase" format=3 uid="uid://17y6vpu48gju"]
+
+[ext_resource type="Script" uid="uid://cduenld6bakjc" path="res://components/network_service/DB/db.gd" id="1_6anvk"]
+
+[resource]
+script = ExtResource("1_6anvk")
+db_name = "kirin"
+metadata/_custom_type_script = "uid://cduenld6bakjc"

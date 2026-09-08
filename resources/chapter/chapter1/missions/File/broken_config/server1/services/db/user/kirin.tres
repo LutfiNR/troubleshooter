@@ -7,6 +7,9 @@ script = ExtResource("1_dvcwk")
 username = "kirin"
 password = "kirin123"
 privileges = Dictionary[String, Array]({
-"kirin": ["ALL PRIVILEGES"]
+"accounting": ["ALL PRIVILEGES"],
+"kirin": ["ALL PRIVILEGES"],
+"media": ["ALL PRIVILEGES"],
+"sales": ["ALL PRIVILEGES"]
 })
 metadata/_custom_type_script = "uid://yo2ch62adk5w"

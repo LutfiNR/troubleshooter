@@ -8,7 +8,7 @@ id = "mission5"
 title = "Can't Remote "
 time = 600.0
 check_progress_limit = 5
-required_progress_id = "chapter0"
+required_progress_id = "mission3"
 description = "Oh nooo cant remote the server"
 guide = "[center][font_size=26][color=#1565C0][b]Remote Server — Network Administrator Tidak Dapat Terhubung ke Server[/b][/color][/font_size][/center]
 

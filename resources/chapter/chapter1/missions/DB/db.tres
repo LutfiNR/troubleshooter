@@ -1,0 +1,207 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://c163ukjnmvssf"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_4b5vp"]
+
+[resource]
+script = ExtResource("1_4b5vp")
+id = "mission7"
+title = "Database Priv"
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "mission4"
+description = "Privileges missmatch"
+guide = "[center][font_size=26][color=#1565C0][b]MISSION 6 — DATABASE[/b][/color][/font_size][/center]
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]Network Administrator sedang melakukan pengecekan database internal Kirin Corp melalui Computer0. Saat mencoba mengakses database pada Server1, akses database tidak berjalan sebagaimana mestinya.[/color]
+[color=#333333]Database Server digunakan untuk menyimpan data dari beberapa bagian perusahaan. Setiap user memiliki hak akses yang berbeda sesuai dengan database yang menjadi tanggung jawabnya.[/color]
+[color=#EF6C00][b]Masalah:[/b][/color]
+[color=#333333]Saat melakukan akses database, Network Administrator tidak dapat menggunakan database dengan normal. Periksa konfigurasi Database Service, database, user, dan privilege untuk menemukan penyebab masalah.[/color]
+
+[color=#2E7D32][font_size=18][b]Topologi[/b][/font_size][/color]
+[center][img]res://assets/topology.png[/img][/center]
+
+[color=#2E7D32][font_size=18][b]Perangkat yang Digunakan[/b][/font_size][/color]
+[table=3]
+Server A|Server0|DHCP, DNS, Remote
+Server B|Server1|Web, FTP, File, Database, Mail, Remote
+Router|Router0|-
+Switch IT|Switch0|-
+Switch Sales|Switch1|-
+Switch Media|Switch2|-
+Switch Accounting|Switch3|-
+Computer IT|Computer0|Workstation Network Administrator
+Computer Sales|Computer1 — Computer4|-
+Computer Media|Computer5 — Computer8|-
+Computer Accounting|Computer9 — Computer12|-
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Network[/b][/font_size][/color]
+[table=2]
+Network IT|192.168.1.0/24
+Network Sales|192.168.2.0/24
+Network Media|192.168.3.0/24
+Network Accounting|192.168.4.0/24
+Server0|192.168.1.254
+Server1|192.168.1.253
+Router0 — IT|192.168.1.1
+Router0 — Sales|192.168.2.1
+Router0 — Media|192.168.3.1
+Router0 — Accounting|192.168.4.1
+[/table]
+
+[color=#2E7D32][font_size=18][b]Database Server[/b][/font_size][/color]
+[color=#333333]Database Server berada pada Server1. Periksa terlebih dahulu apakah Database Service dapat digunakan sebelum melakukan pemeriksaan terhadap database dan user.[/color]
+[table=2]
+Service|Status
+Database Service|ON
+[/table]
+
+[color=#2E7D32][font_size=18][b]Database[/b][/font_size][/color]
+[color=#333333]Database yang digunakan oleh Kirin Corp terdiri dari:[/color]
+[table=1]
+Database
+accounting
+media
+kirin
+sales
+[/table]
+
+[color=#2E7D32][font_size=18][b]User Database[/b][/font_size][/color]
+[table=3]
+Username|Password|Privilege
+accounting|accounting123|accounting
+media|media123|media
+sales|sales123|sales
+kirin|kirin123|media, kirin, sales, accounting
+[/table]
+
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]Privilege menentukan database yang dapat diakses oleh masing-masing user. Pastikan user hanya memiliki akses sesuai dengan konfigurasi yang ditentukan.[/color]
+
+[color=#2E7D32][font_size=18][b]Root Account[/b][/font_size][/color]
+[color=#333333]Root account digunakan untuk melakukan pengelolaan Database Server melalui phpMyAdmin.[/color]
+[color=#455A64][b]Root Password:[/b] kirin123[/color]
+
+[color=#2E7D32][font_size=18][b]Akses Database[/b][/font_size][/color]
+[color=#333333]Gunakan Web Browser pada Computer0 untuk mengakses phpMyAdmin pada Server1.[/color]
+[color=#333333]Akses menggunakan alamat IP atau domain yang tersedia pada jaringan.[/color]
+[table=2]
+Akses|Alamat
+IP|192.168.1.253/phpmyadmin
+Domain|kirin.com/phpmyadmin
+[/table]
+[color=#333333]Setelah halaman phpMyAdmin terbuka, lakukan login menggunakan akun database yang tersedia untuk menguji hak akses masing-masing user.[/color]
+
+[color=#2E7D32][font_size=18][b]Yang Harus Diperiksa[/b][/font_size][/color]
+[color=#333333][b]1. Periksa Database Service[/b][/color]
+[color=#333333]Pastikan Database Service pada Server1 aktif dan dapat digunakan oleh client.[/color]
+[color=#333333][b]2. Akses phpMyAdmin[/b][/color]
+[color=#333333]Gunakan Web Browser pada Computer0 dan akses phpMyAdmin menggunakan alamat IP atau domain Server1. Perhatikan apakah halaman phpMyAdmin dapat dibuka dan digunakan untuk login.[/color]
+[color=#333333][b]3. Periksa Login User[/b][/color]
+[color=#333333]Gunakan akun database yang tersedia untuk melakukan login. Periksa apakah username dan password dapat digunakan untuk masuk ke phpMyAdmin.[/color]
+[color=#333333][b]4. Periksa Database[/b][/color]
+[color=#333333]Setelah berhasil login, periksa database yang tersedia. Pastikan database accounting, media, kirin, dan sales tersedia pada Database Server.[/color]
+[color=#333333][b]5. Periksa Privilege[/b][/color]
+[color=#333333]Periksa database yang dapat diakses oleh setiap user. Pastikan privilege sesuai dengan tanggung jawab masing-masing user.[/color]
+[color=#333333][b]6. Bandingkan Akses User[/b][/color]
+[color=#333333]Lakukan login menggunakan beberapa user yang tersedia dan periksa apakah database yang dapat diakses sesuai dengan privilege masing-masing akun.[/color]
+[color=#333333][b]7. Perbaiki Konfigurasi[/b][/color]
+[color=#333333]Perbaiki konfigurasi yang tidak sesuai. Pastikan Database Service aktif, seluruh database tersedia, dan setiap user memiliki privilege yang benar.[/color]
+[color=#333333][b]8. Lakukan Pengujian Ulang[/b][/color]
+[color=#333333]Setelah melakukan perbaikan, akses kembali phpMyAdmin dari Computer0 dan lakukan pengujian login serta akses database untuk memastikan Database Server dapat digunakan dengan normal.[/color]
+
+[color=#2E7D32][font_size=18][b]Kondisi yang Harus Dicapai[/b][/font_size][/color]
+[table=3]
+Username|Password|Database yang Dapat Diakses
+accounting|accounting123|accounting
+media|media123|media
+sales|sales123|sales
+kirin|kirin123|media, kirin, sales, accounting
+[/table]
+
+[color=#2E7D32][font_size=18][b]Tujuan Misi[/b][/font_size][/color]
+[color=#333333]• Memahami fungsi Database Service.[/color]
+[color=#333333]• Mengakses Database Server melalui phpMyAdmin.[/color]
+[color=#333333]• Memahami database dan user pada Database Server.[/color]
+[color=#333333]• Memahami fungsi privilege dalam pengelolaan database.[/color]
+[color=#333333]• Mengidentifikasi konfigurasi database yang bermasalah.[/color]
+[color=#333333]• Memastikan setiap user dapat mengakses database sesuai hak aksesnya.[/color]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]✓ Database Service Server1 aktif.[/color]
+[color=#333333]✓ phpMyAdmin dapat diakses dari Computer0.[/color]
+[color=#333333]✓ Login user database dapat dilakukan dengan akun yang valid.[/color]
+[color=#333333]✓ Database accounting tersedia.[/color]
+[color=#333333]✓ Database media tersedia.[/color]
+[color=#333333]✓ Database kirin tersedia.[/color]
+[color=#333333]✓ Database sales tersedia.[/color]
+[color=#333333]✓ User accounting dapat mengakses database accounting.[/color]
+[color=#333333]✓ User media dapat mengakses database media.[/color]
+[color=#333333]✓ User sales dapat mengakses database sales.[/color]
+[color=#333333]✓ User kirin dapat mengakses database media, kirin, sales, dan accounting.[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://c1sq01a1anli4",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

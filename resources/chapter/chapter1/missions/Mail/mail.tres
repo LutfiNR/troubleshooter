@@ -1,0 +1,205 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://by7pdjph82fk1"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_ow7sj"]
+
+[resource]
+script = ExtResource("1_ow7sj")
+id = "mission9"
+title = "I can't Mail"
+time = 600.0
+check_progress_limit = 5
+required_progress_id = "mission3"
+description = "nooo employee cant send an email"
+guide = "[center][font_size=26][color=#1565C0][b]Mission 8 — Mail[/b][/color][/font_size][/center]
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]Seluruh karyawan Kirin Corp tiba-tiba tidak dapat login ke akun email perusahaan. Sebagai Network Administrator, kamu diminta untuk memeriksa Mail Server dan DNS untuk menemukan penyebab masalah tersebut.[/color]
+[color=#333333]Setelah melakukan perbaikan, lakukan pengujian menggunakan Mail App pada Computer0 untuk memastikan akun email dapat digunakan kembali.[/color]
+
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]Misi ini berfokus pada konfigurasi Mail Server, DNS, dan proses login akun email. Pengiriman dan penerimaan email tidak disimulasikan secara penuh pada misi ini.[/color]
+[color=#333333]SSL/TLS dan Maildir merupakan bagian dari konsep konfigurasi Mail Server dan bukan bagian dari konfigurasi yang dirusak pada misi ini.[/color]
+
+[center][img]res://assets/topology.png[/img][/center]
+
+[color=#2E7D32][font_size=18][b]Perangkat[/b][/font_size][/color]
+[table=3]
+Server A|Server0|DHCP, DNS, Remote
+Server B|Server1|Web, FTP, File, Database, Mail, Remote
+Router|Router0|-
+Switch IT|Switch0|-
+Switch Sales|Switch1|-
+Switch Media|Switch2|-
+Switch Accounting|Switch3|-
+Computer IT|Computer0|Workstation Network Administrator
+Computer Sales|Computer1 — Computer4|-
+Computer Media|Computer5 — Computer8|-
+Computer Accounting|Computer9 — Computer12|-
+[/table]
+
+[color=#2E7D32][font_size=18][b]Network[/b][/font_size][/color]
+[table=2]
+Network IT|192.168.1.0/24
+Network Sales|192.168.2.0/24
+Network Media|192.168.3.0/24
+Network Accounting|192.168.4.0/24
+Server0|192.168.1.254
+Server1|192.168.1.253
+Router0 — IT|192.168.1.1
+Router0 — Sales|192.168.2.1
+Router0 — Media|192.168.3.1
+Router0 — Accounting|192.168.4.1
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Email[/b][/font_size][/color]
+[color=#333333]Kirin Corp menggunakan domain [b]kirin.com[/b] untuk alamat email perusahaan.[/color]
+[table=2]
+Domain Perusahaan|kirin.com
+Mail Server|Server1
+Mail Server IP|192.168.1.253
+DNS Server|Server0
+DNS Server IP|192.168.1.254
+Protokol Akses|IMAP
+[/table]
+
+[color=#2E7D32][font_size=18][b]Akun Email[/b][/font_size][/color]
+[color=#333333]Mail Server menyediakan akun email untuk beberapa divisi perusahaan. Gunakan akun berikut untuk melakukan pengujian login.[/color]
+[table=3]
+Username|Password|Email
+it|it123|[it@kirin.com](mailto:it@kirin.com)
+accounting|accounting123|[accounting@kirin.com](mailto:accounting@kirin.com)
+sales|sales123|[sales@kirin.com](mailto:sales@kirin.com)
+media|media123|[media@kirin.com](mailto:media@kirin.com)
+[/table]
+
+[color=#2E7D32][font_size=18][b]Pengujian Login[/b][/font_size][/color]
+[color=#333333]Setelah melakukan troubleshooting, buka [b]Mail App[/b] pada Computer0 untuk menguji koneksi ke Mail Server.[/color]
+[color=#333333]Gunakan domain email perusahaan dan Mail Server yang tersedia ketika melakukan konfigurasi koneksi. Gunakan protokol [b]IMAP[/b] untuk mengakses mailbox.[/color]
+[color=#333333]Lakukan login menggunakan salah satu akun karyawan. Setelah berhasil, uji akun dari divisi lain untuk memastikan masalah telah diperbaiki secara menyeluruh.[/color]
+
+[color=#2E7D32][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333][b]1. Periksa Gejala Masalah[/b][/color]
+[color=#333333]Perhatikan bahwa seluruh karyawan mengalami masalah login. Gunakan informasi ini untuk menentukan apakah masalah kemungkinan berasal dari konfigurasi individual atau konfigurasi yang digunakan bersama.[/color]
+
+[color=#333333][b]2. Periksa Mail Service[/b][/color]
+[color=#333333]Buka Mail Service pada Server1 dan periksa apakah layanan email berjalan dengan normal.[/color]
+
+[color=#333333][b]3. Periksa Domain Mail[/b][/color]
+[color=#333333]Periksa domain yang digunakan oleh Mail Server. Pastikan domain tersebut sesuai dengan domain perusahaan yang digunakan pada alamat email karyawan.[/color]
+
+[color=#333333][b]4. Periksa Mailbox[/b][/font_size][/color]
+[color=#333333]Periksa format mailbox yang digunakan oleh Mail Server. Pastikan konfigurasi mailbox tidak mengalami perubahan.[/color]
+
+[color=#333333][b]5. Periksa SSL/TLS[/b][/font_size][/color]
+[color=#333333]Periksa status SSL/TLS serta certificate dan key yang digunakan Mail Server. Bagian ini merupakan konfigurasi keamanan dan bukan fokus kerusakan pada misi ini.[/color]
+
+[color=#333333][b]6. Periksa User Mailbox[/b][/font_size][/color]
+[color=#333333]Pastikan akun karyawan tersedia pada Mail Server dan informasi login setiap akun masih sesuai.[/color]
+
+[color=#333333][b]7. Periksa DNS[/b][/font_size][/color]
+[color=#333333]Buka DNS Server dan periksa konfigurasi domain email perusahaan. Perhatikan record yang digunakan untuk menentukan Mail Server bagi domain tersebut.[/color]
+
+[color=#333333][b]8. Periksa MX Record[/b][/font_size][/color]
+[color=#333333]Pastikan MX record untuk domain email perusahaan mengarah ke Mail Server yang digunakan oleh Kirin Corp.[/color]
+
+[color=#333333][b]9. Perbaiki Konfigurasi[/b][/font_size][/color]
+[color=#333333]Setelah menemukan konfigurasi yang bermasalah, lakukan perbaikan pada Server1 atau Server0 sesuai lokasi konfigurasi. Jangan mengubah konfigurasi yang sudah berjalan dengan benar.[/color]
+
+[color=#333333][b]10. Uji Login melalui Mail App[/b][/font_size][/color]
+[color=#333333]Buka Mail App pada Computer0 dan lakukan konfigurasi akun menggunakan Mail Server dan protokol IMAP. Gunakan salah satu akun karyawan untuk menguji login.[/color]
+
+[color=#333333][b]11. Uji Akun Lain[/b][/font_size][/color]
+[color=#333333]Setelah satu akun berhasil login, lakukan pengujian menggunakan akun dari divisi lain untuk memastikan masalah telah teratasi pada seluruh akun.[/color]
+
+[color=#EF6C00][b]Petunjuk:[/b][/color]
+[color=#333333]Karena seluruh karyawan mengalami masalah yang sama, prioritaskan pemeriksaan konfigurasi yang digunakan bersama oleh seluruh akun.[/color]
+[color=#333333]Jika Mail Server terlihat normal, periksa bagaimana DNS menentukan Mail Server untuk domain email perusahaan.[/color]
+
+[color=#2E7D32][font_size=18][b]Kondisi Misi[/b][/font_size][/color]
+[color=#333333]Seluruh akun karyawan harus dapat digunakan untuk login melalui Mail App setelah konfigurasi Mail Server dan DNS diperbaiki.[/color]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]• Memahami fungsi dasar Mail Server.[/color]
+[color=#333333]• Memahami hubungan antara domain dan akun email.[/color]
+[color=#333333]• Memahami fungsi MX record pada DNS untuk layanan email.[/color]
+[color=#333333]• Memahami konsep mailbox menggunakan Maildir.[/color]
+[color=#333333]• Memahami konsep SSL/TLS pada layanan email.[/color]
+[color=#333333]• Memahami penggunaan IMAP untuk mengakses mailbox.[/color]
+[color=#333333]• Melakukan troubleshooting Mail Server dan DNS berdasarkan gejala yang terjadi.[/color]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/center]
+[color=#333333]• Masalah Mail Server dan/atau DNS berhasil ditemukan dan diperbaiki.[/color]
+[color=#333333]• Domain email perusahaan dapat digunakan dengan benar.[/color]
+[color=#333333]• MX record domain email mengarah ke Mail Server yang sesuai.[/color]
+[color=#333333]• Mail App pada Computer0 dapat terhubung ke Mail Server menggunakan IMAP.[/color]
+[color=#333333]• Login menggunakan akun [b]it[/b] berhasil.[/color]
+[color=#333333]• Login menggunakan akun [b]accounting[/b] berhasil.[/color]
+[color=#333333]• Login menggunakan akun [b]sales[/b] berhasil.[/color]
+[color=#333333]• Login menggunakan akun [b]media[/b] berhasil.[/color]
+[color=#333333]• Pengiriman dan penerimaan email tidak menjadi bagian dari penilaian misi.[/color]
+"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://cgcxmk5m6ny0f",
+"server1": &"uid://bfuxw7j75lb75",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"

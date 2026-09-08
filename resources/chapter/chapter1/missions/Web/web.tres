@@ -8,7 +8,7 @@ id = "mission4"
 title = "Web Trouble"
 time = 600.0
 check_progress_limit = 5
-required_progress_id = "chapter0"
+required_progress_id = "mission3"
 description = "Cant access the division's web"
 guide = "[center][font_size=26][color=#1565C0][b]Web Server — Website Divisi Bermasalah[/b][/color][/font_size][/center]
 

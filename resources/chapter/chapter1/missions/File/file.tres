@@ -8,7 +8,7 @@ id = "mission6"
 title = "Where's the File"
 time = 600.0
 check_progress_limit = 500
-required_progress_id = "chapter0"
+required_progress_id = "mission3"
 description = "Clinet cant access the file server and catn upload in private shares"
 guide = "[center][font_size=26][color=#1565C0][b]MISSION 5 — FILE SERVER[/b][/color][/font_size][/center]
 [color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]

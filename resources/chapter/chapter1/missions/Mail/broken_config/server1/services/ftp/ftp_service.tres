@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FTPService" format=3 uid="uid://dev5u8old3fk8"]
+
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="1_t3k6w"]
+[ext_resource type="Script" uid="uid://b6owws0wrppwj" path="res://components/network_service/FTP/ftp_user.gd" id="2_sowqv"]
+[ext_resource type="Resource" uid="uid://o4l754fqynl8" path="res://resources/chapter/chapter1/missions/Mail/broken_config/server1/services/ftp/kirin.tres" id="3_ucdwt"]
+[ext_resource type="Resource" uid="uid://gukshpax3hhb" path="res://resources/chapter/chapter1/missions/Mail/broken_config/server1/services/ftp/media.tres" id="4_mgbgl"]
+[ext_resource type="Resource" uid="uid://c4i8mceob8fnh" path="res://resources/chapter/chapter1/missions/Mail/broken_config/server1/services/ftp/sales.tres" id="5_60hd3"]
+[ext_resource type="Resource" uid="uid://bc3i6vw4jona6" path="res://resources/chapter/chapter1/missions/Mail/broken_config/server1/services/ftp/accounting.tres" id="6_kamc7"]
+
+[resource]
+script = ExtResource("1_t3k6w")
+ftps_state = 1
+local_enable = true
+write_enable = true
+users = Array[ExtResource("2_sowqv")]([ExtResource("3_ucdwt"), ExtResource("4_mgbgl"), ExtResource("5_60hd3"), ExtResource("6_kamc7")])
+metadata/_custom_type_script = "uid://cu4n0rxocv06b"
