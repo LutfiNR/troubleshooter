@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NetworkInterface" format=3 uid="uid://cvq51hs3hliu7"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_m1ynv"]
+
+[resource]
+script = ExtResource("1_m1ynv")
+id = "fa0/7"
+mac_address = "32:bf:45:e3:81:24"
+layer = 0
+metadata/_custom_type_script = "uid://ci1x0glfens8u"

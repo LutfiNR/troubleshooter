@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MariaDBService" format=3 uid="uid://diri2tg16ivxe"]
+
+[ext_resource type="Script" uid="uid://cduenld6bakjc" path="res://components/network_service/DB/db.gd" id="1_csncg"]
+[ext_resource type="Resource" uid="uid://bxu44li3renb" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/db/kirin.tres" id="2_hr3i6"]
+[ext_resource type="Resource" uid="uid://bsjrwxe50kd3o" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/db/media.tres" id="3_v6kg7"]
+[ext_resource type="Resource" uid="uid://dbgs24204g3eh" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/db/sales.tres" id="4_0h1vx"]
+[ext_resource type="Resource" uid="uid://d3u6s2hujokkr" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/db/accounting.tres" id="5_n3p1c"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="6_8e4je"]
+[ext_resource type="Script" uid="uid://yo2ch62adk5w" path="res://components/network_service/DB/db_user.gd" id="7_4ar0b"]
+[ext_resource type="Resource" uid="uid://dny13074fr76f" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/user/accounting.tres" id="8_oon8i"]
+[ext_resource type="Resource" uid="uid://ctjshpnh7wan0" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/user/sales.tres" id="9_bfun5"]
+[ext_resource type="Resource" uid="uid://dx8qv43uktu7g" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/user/media.tres" id="10_u06bb"]
+[ext_resource type="Resource" uid="uid://c5iljekiuhycl" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/user/kirin.tres" id="11_jc8mb"]
+
+[resource]
+script = ExtResource("6_8e4je")
+service_state = 1
+root_password = "kirin123"
+databases = Array[ExtResource("1_csncg")]([ExtResource("2_hr3i6"), ExtResource("3_v6kg7"), ExtResource("4_0h1vx"), ExtResource("5_n3p1c")])
+users = Array[ExtResource("7_4ar0b")]([ExtResource("8_oon8i"), ExtResource("9_bfun5"), ExtResource("10_u06bb"), ExtResource("11_jc8mb")])
+metadata/_custom_type_script = "uid://v4wpr3xnvwy3"

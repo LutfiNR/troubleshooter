@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="ServerDeviceData" format=3 uid="uid://dhntoj4bdy1qo"]
+
+[ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_jvbo7"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="2_x8l5q"]
+[ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="3_57od7"]
+[ext_resource type="Resource" uid="uid://10wc75unfbre" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/ftp/ftp_service.tres" id="4_ae2pm"]
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="5_t4ly4"]
+[ext_resource type="Resource" uid="uid://dbgns5xilec2g" path="res://resources/chapter/chapter2/correct_config/servers/server1/interfaces/eth0.tres" id="6_7bjso"]
+[ext_resource type="Script" uid="uid://d0p2lc1igmroh" path="res://components/network_service/Mail/mail_service.gd" id="7_18wwi"]
+[ext_resource type="Resource" uid="uid://d3nsby5sl7gfg" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/mail/mail_service.tres" id="8_r5pw8"]
+[ext_resource type="Script" uid="uid://v4wpr3xnvwy3" path="res://components/network_service/DB/mariadb_service.gd" id="9_85368"]
+[ext_resource type="Resource" uid="uid://diri2tg16ivxe" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/db/database_service.tres" id="10_auvge"]
+[ext_resource type="Script" uid="uid://4e050fk3gmtl" path="res://components/network_service/Remote/remote_service.gd" id="11_f3aw6"]
+[ext_resource type="Resource" uid="uid://c3trkcexk66cl" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/remote/remote_user.tres" id="12_0uovw"]
+[ext_resource type="Script" uid="uid://blfdumormqk75" path="res://components/network_service/File/samba_service.gd" id="13_dbh5d"]
+[ext_resource type="Resource" uid="uid://c4qtqvqhomb2s" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/file/samba_service.tres" id="14_q0mg6"]
+[ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="15_k0q8f"]
+[ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="16_rjc6d"]
+[ext_resource type="Resource" uid="uid://bfpm35kiydhmv" path="res://resources/chapter/chapter2/correct_config/servers/server1/services/web/web_service.tres" id="17_5dl4g"]
+
+[resource]
+script = ExtResource("15_k0q8f")
+default_gateway = "192.168.1.1"
+dns_server = "192.168.1.254"
+installed_packages = Array[String](["apache2", "vsftpd", "openssh-server", "samba", "postfix", "mariadb-server"])
+web_service = 1
+web_configuration = Array[ExtResource("16_rjc6d")]([ExtResource("17_5dl4g")])
+ftp_service = 1
+ftp_configuration = Array[ExtResource("3_57od7")]([ExtResource("4_ae2pm")])
+remote_service = 1
+remote_configuration = Array[ExtResource("11_f3aw6")]([ExtResource("12_0uovw")])
+samba_service = 1
+samba_configuration = Array[ExtResource("13_dbh5d")]([ExtResource("14_q0mg6")])
+mariadb_service = 1
+mariadb_configuration = Array[ExtResource("9_85368")]([ExtResource("10_auvge")])
+mail_service = 1
+mail_configuration = Array[ExtResource("7_18wwi")]([ExtResource("8_r5pw8")])
+device_id = "server1"
+hostname = "Server B"
+power = 1
+interfaces = Array[ExtResource("5_t4ly4")]([ExtResource("6_7bjso")])
+metadata/_custom_type_script = "uid://3wt8jxh6n6th"

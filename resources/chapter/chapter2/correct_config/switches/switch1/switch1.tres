@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://d34g42j4diwfr"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_pih6a"]
+[ext_resource type="Resource" uid="uid://duk42sibxjabd" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-0.tres" id="2_nldet"]
+[ext_resource type="Resource" uid="uid://byahuwst3iguk" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-1.tres" id="3_3i5qc"]
+[ext_resource type="Resource" uid="uid://caqpw8iwfak3v" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-2.tres" id="4_68ymw"]
+[ext_resource type="Resource" uid="uid://1rurd0s6xcso" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-3.tres" id="5_svsm7"]
+[ext_resource type="Resource" uid="uid://c17fj3ey6r0se" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-4.tres" id="6_bgk1x"]
+[ext_resource type="Resource" uid="uid://fpkt1seuasjm" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-5.tres" id="7_0u7vo"]
+[ext_resource type="Resource" uid="uid://c1yw72qw8diod" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-6.tres" id="8_n4e4v"]
+[ext_resource type="Resource" uid="uid://c1j83ap73qk32" path="res://resources/chapter/chapter2/correct_config/switches/switch1/interfaces/fa0-7.tres" id="9_rnl2j"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="10_mp8y2"]
+
+[resource]
+script = ExtResource("10_mp8y2")
+device_id = "switch1"
+hostname = "Switch Sales"
+power = 1
+interfaces = Array[ExtResource("1_pih6a")]([ExtResource("2_nldet"), ExtResource("3_3i5qc"), ExtResource("4_68ymw"), ExtResource("5_svsm7"), ExtResource("6_bgk1x"), ExtResource("7_0u7vo"), ExtResource("8_n4e4v"), ExtResource("9_rnl2j")])
+metadata/_custom_type_script = "uid://do02stg07ha0m"

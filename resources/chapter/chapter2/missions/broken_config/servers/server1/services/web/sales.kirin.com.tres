@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WebVirtualHost" format=3 uid="uid://b6eix2uyxagqs"]
+
+[ext_resource type="Script" uid="uid://ctckbs8wmy7ox" path="res://components/network_service/Web/vhost.gd" id="1_0m7ht"]
+
+[resource]
+script = ExtResource("1_0m7ht")
+name = "sales.kirin.com"
+server_name = "sales.kirin.com"
+document_root = "/var/www/sales"
+content = "Halaman divisi sales"
+metadata/_custom_type_script = "uid://ctckbs8wmy7ox"

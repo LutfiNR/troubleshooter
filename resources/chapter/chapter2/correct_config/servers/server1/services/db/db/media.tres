@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MariaDBDatabase" format=3 uid="uid://bsjrwxe50kd3o"]
+
+[ext_resource type="Script" uid="uid://cduenld6bakjc" path="res://components/network_service/DB/db.gd" id="1_8w4dr"]
+
+[resource]
+script = ExtResource("1_8w4dr")
+db_name = "media"
+metadata/_custom_type_script = "uid://cduenld6bakjc"

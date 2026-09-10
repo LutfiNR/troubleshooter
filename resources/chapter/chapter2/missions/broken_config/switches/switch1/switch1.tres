@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SwitchDeviceData" format=3 uid="uid://mbm1bi8fwoe8"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_jrj1c"]
+[ext_resource type="Resource" uid="uid://cx5l1s50814wi" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-0.tres" id="2_jltdx"]
+[ext_resource type="Resource" uid="uid://boc05aak6ckfq" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-1.tres" id="3_4g57m"]
+[ext_resource type="Resource" uid="uid://e2ahx68tdahw" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-2.tres" id="4_ik8ay"]
+[ext_resource type="Resource" uid="uid://cyl5pr26cfpc8" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-3.tres" id="5_xo257"]
+[ext_resource type="Resource" uid="uid://vjga27evxksn" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-4.tres" id="6_e8n1v"]
+[ext_resource type="Resource" uid="uid://cm1rddchirprb" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-5.tres" id="7_deah0"]
+[ext_resource type="Resource" uid="uid://cnmxclhtux4a3" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-6.tres" id="8_dfaon"]
+[ext_resource type="Resource" uid="uid://bsd8ybocjnrx0" path="res://resources/chapter/chapter2/missions/broken_config/switches/switch1/interfaces/fa0-7.tres" id="9_c4ht3"]
+[ext_resource type="Script" uid="uid://do02stg07ha0m" path="res://components/network_device/switch_device/switch_device.gd" id="10_3tnoi"]
+
+[resource]
+script = ExtResource("10_3tnoi")
+device_id = "switch1"
+hostname = "Switch Sales"
+power = 1
+interfaces = Array[ExtResource("1_jrj1c")]([ExtResource("2_jltdx"), ExtResource("3_4g57m"), ExtResource("4_ik8ay"), ExtResource("5_xo257"), ExtResource("6_e8n1v"), ExtResource("7_deah0"), ExtResource("8_dfaon"), ExtResource("9_c4ht3")])
+metadata/_custom_type_script = "uid://do02stg07ha0m"

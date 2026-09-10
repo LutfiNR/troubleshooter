@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ComputerDeviceData" format=3 uid="uid://cemsqtfgqno1n"]
+
+[ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="1_0jbt6"]
+[ext_resource type="Resource" uid="uid://bbsdrho84pgpe" path="res://resources/chapter/chapter2/correct_config/computers/sales/computer4/interfaces/eth0.tres" id="2_ptk6d"]
+[ext_resource type="Script" uid="uid://cbyw2jp0uakaq" path="res://components/network_device/computer_device/computer_device.gd" id="3_ecyq3"]
+
+[resource]
+script = ExtResource("3_ecyq3")
+default_gateway = "192.168.2.1"
+dns_server = "192.168.1.254"
+device_id = "computer4"
+hostname = "Computer Sales 4"
+power = 1
+interfaces = Array[ExtResource("1_0jbt6")]([ExtResource("2_ptk6d")])
+metadata/_custom_type_script = "uid://cbyw2jp0uakaq"

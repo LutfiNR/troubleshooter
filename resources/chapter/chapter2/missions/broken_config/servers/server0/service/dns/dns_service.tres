@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DNSService" format=3 uid="uid://ft730ldi5g3s"]
+
+[ext_resource type="Script" uid="uid://bmx45o5qrto11" path="res://components/network_service/DNS/dns_record.gd" id="1_m3sp8"]
+[ext_resource type="Resource" uid="uid://cw6dmkkofkjmx" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/kirin.com.tres" id="2_ivrfs"]
+[ext_resource type="Resource" uid="uid://cfcrpaep7m06j" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/www.kirin.com.tres" id="3_nf1ni"]
+[ext_resource type="Resource" uid="uid://b6vlji4k4cgmj" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/mail.kirin.com.tres" id="4_654i7"]
+[ext_resource type="Resource" uid="uid://cpsyor5jvs3ag" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/media.kirin.com.tres" id="5_go02h"]
+[ext_resource type="Resource" uid="uid://cd5uikqyig780" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/sales.kirin.com.tres" id="6_mmuv3"]
+[ext_resource type="Resource" uid="uid://c1hb5cnk6xc85" path="res://resources/chapter/chapter2/missions/broken_config/servers/server0/service/dns/accounting.kirin.com.tres" id="7_lkdq3"]
+[ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="8_467oj"]
+
+[resource]
+script = ExtResource("8_467oj")
+records = Array[ExtResource("1_m3sp8")]([ExtResource("2_ivrfs"), ExtResource("3_nf1ni"), ExtResource("4_654i7"), ExtResource("5_go02h"), ExtResource("6_mmuv3"), ExtResource("7_lkdq3")])
+metadata/_custom_type_script = "uid://csbgjle1kd61r"

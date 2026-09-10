@@ -1,0 +1,457 @@
+[gd_resource type="Resource" script_class="MissionData" format=3 uid="uid://b4qwlryulptpf"]
+
+[ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_qorry"]
+
+[resource]
+script = ExtResource("1_qorry")
+id = "mission10"
+title = "The True Troubleshooter"
+time = 1500.0
+check_progress_limit = 8
+required_progress_id = "chapter1"
+description = "if you can solve this you are the true troubleshooter"
+guide = "[center][font_size=26][color=#1565C0][b]Final Mission — Network Infrastructure Chaos[/b][/color][/font_size][/center]
+
+[color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
+[color=#333333]Infrastruktur jaringan Kirin Corp mengalami gangguan besar. Berbagai divisi melaporkan masalah pada koneksi jaringan dan layanan perusahaan. Beberapa perangkat tidak dapat terhubung, komputer mengalami masalah konfigurasi jaringan, dan berbagai service pada server tidak dapat digunakan sebagaimana mestinya.[/color]
+[color=#333333]Sebagai Network Administrator, kamu harus melakukan pemeriksaan menyeluruh terhadap infrastruktur jaringan dan mengembalikan seluruh layanan agar dapat digunakan kembali.[/color]
+
+[color=#EF6C00][b]Catatan:[/b][/color]
+[color=#333333]Misi ini menggabungkan materi basic networking, DHCP, DNS, Web, Remote, File Server, Database, FTP, dan Mail. Masalah dapat berasal dari koneksi perangkat, konfigurasi jaringan, DNS, maupun service pada server.[/color]
+[color=#333333]Jangan mengubah topology atau menambahkan perangkat baru. Perbaiki hanya bagian yang bermasalah dan pertahankan konfigurasi yang sudah berjalan dengan benar.[/color]
+
+[center][img]res://assets/topology.png[/img][/center]
+
+[color=#2E7D32][font_size=18][b]Perangkat[/b][/font_size][/color]
+[table=3]
+Server A|Server0|DHCP, DNS, Remote
+Server B|Server1|Web, FTP, File, Database, Mail, Remote
+Router|Router0|-
+Switch IT|Switch0|-
+Switch Sales|Switch1|-
+Switch Media|Switch2|-
+Switch Accounting|Switch3|-
+Computer IT|Computer0|Workstation Network Administrator
+Computer Sales|Computer1 — Computer4|-
+Computer Media|Computer5 — Computer8|-
+Computer Accounting|Computer9 — Computer12|-
+[/table]
+
+[color=#2E7D32][font_size=18][b]Network[/b][/font_size][/color]
+[table=2]
+Network IT|192.168.1.0/24
+Network Sales|192.168.2.0/24
+Network Media|192.168.3.0/24
+Network Accounting|192.168.4.0/24
+Server0|192.168.1.254
+Server1|192.168.1.253
+Router0 — IT|192.168.1.1
+Router0 — Sales|192.168.2.1
+Router0 — Media|192.168.3.1
+Router0 — Accounting|192.168.4.1
+[/table]
+
+[color=#2E7D32][font_size=18][b]Layanan Perusahaan[/b][/font_size][/color]
+[table=3]
+Server|Service|Fungsi
+Server0|DHCP|Distribusi konfigurasi IP
+Server0|DNS|Resolusi domain
+Server0|Remote|Akses remote
+Server1|Web|Website perusahaan
+Server1|Remote|Akses remote
+Server1|File|File sharing
+Server1|Database|Database perusahaan
+Server1|FTP|Transfer file
+Server1|Mail|Email perusahaan
+[/table]
+
+[color=#2E7D32][font_size=18][b]Informasi Service dan Perilaku yang Diharapkan[/b][/font_size][/color]
+
+[color=#455A64][b]DHCP[/b][/color]
+[color=#333333]DHCP digunakan untuk memberikan konfigurasi jaringan secara otomatis kepada komputer client.[/color]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]Client yang menggunakan DHCP mendapatkan IP secara otomatis.
+[*]Client mendapatkan IP dari network divisinya.
+[*]Gateway yang diterima client sesuai dengan network divisinya.
+[*]Client menggunakan DNS Server perusahaan.
+[*]DHCP Server berada pada Server0.
+[*]Request DHCP dari network lain dapat diteruskan melalui DHCP Relay pada router.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]Client menggunakan Static IP ketika seharusnya DHCP.
+[*]DHCP pool memiliki parameter yang tidak sesuai.
+[*]Gateway DHCP tidak sesuai dengan network client.
+[*]DNS Server pada DHCP pool tidak sesuai.
+[*]DHCP Relay tidak bekerja.
+[*]Client tidak dapat menjangkau DHCP Server.
+[/list]
+
+[color=#455A64][b]DNS[/b][/color]
+[color=#333333]DNS Server perusahaan berada pada Server0 dengan IP 192.168.1.254.[/color]
+[color=#333333]Domain utama perusahaan adalah [b]kirin.com[/b].[/color]
+[table=2]
+Record|Fungsi
+kirin.com|Domain utama perusahaan
+[www.kirin.com|Website](http://www.kirin.com|Website) utama
+sales.kirin.com|Website Sales
+media.kirin.com|Website Media
+accounting.kirin.com|Website Accounting
+kirin.com MX|Menentukan Mail Server perusahaan
+[/table]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]Domain utama dapat ditemukan melalui DNS.
+[*]Hostname website setiap divisi dapat ditemukan.
+[*][www.kirin.com](http://www.kirin.com) mengarah ke website utama.
+[*]MX record digunakan untuk menemukan Mail Server.
+[*]Client menggunakan DNS Server perusahaan.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]DNS record mengarah ke alamat yang salah.
+[*]CNAME mengarah ke hostname yang tidak sesuai.
+[*]MX record mengarah ke server yang salah.
+[*]Client menggunakan DNS Server yang tidak sesuai.
+[*]DNS Server tidak dapat dijangkau.
+[/list]
+
+[color=#455A64][b]WEB[/b][/color]
+[color=#333333]Web Server berada pada Server1 dengan IP 192.168.1.253.[/color]
+[table=2]
+Website|Alamat
+Website utama|https://kirin.com
+Sales|https://sales.kirin.com
+Media|https://media.kirin.com
+Accounting|https://accounting.kirin.com
+[/table]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]Web Service dapat digunakan.
+[*]Website perusahaan dapat diakses melalui HTTPS.
+[*]Website setiap divisi dapat diakses menggunakan domain masing-masing.
+[*]Sertifikat SSL website valid.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]Web Service tidak tersedia.
+[*]HTTPS tidak tersedia pada website tertentu.
+[*]Sertifikat SSL tidak valid.
+[*]Salah satu website tidak dapat diakses.
+[*]Konfigurasi HTTP/HTTPS tidak sesuai dengan kebutuhan website.
+[/list]
+
+[color=#455A64][b]REMOTE / SSH[/b][/color]
+[color=#333333]Server0 dan Server1 menyediakan akses remote untuk Network Administrator.[/color]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]SSH dapat digunakan untuk melakukan koneksi remote.
+[*][b]SSH menggunakan custom port 2222.[/b]
+[*]Network Administrator dapat menggunakan akun yang disediakan.
+[*]Server dapat dijangkau melalui network.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]SSH Service tidak aktif.
+[*]Port SSH tidak sesuai.
+[*]Server menggunakan port yang salah.
+[*]Credential tidak sesuai.
+[*]Server tidak dapat dijangkau karena masalah network.
+[/list]
+[color=#333333]Pengujian SSH:[/color]
+[code]ssh -p 2222 kirin@192.168.1.254
+ssh -p 2222 kirin@192.168.1.253[/code]
+
+[color=#455A64][b]FILE / SAMBA[/b][/color]
+[color=#333333]File Server berada pada Server1.[/color]
+[table=3]
+Share|Path|Jenis Akses
+PrivateShare|/home/private|User authentication
+PublicShare|/home/public|Guest access
+[/table]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]PrivateShare membutuhkan autentikasi user.
+[*]Guest tidak dapat masuk ke PrivateShare.
+[*]PublicShare dapat diakses sebagai guest.
+[*]PublicShare bersifat read-only.
+[*]File Service dapat diakses dari client.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]File Service tidak aktif.
+[*]PrivateShare dapat diakses tanpa autentikasi.
+[*]PublicShare meminta autentikasi.
+[*]PublicShare dapat dimodifikasi ketika seharusnya read-only.
+[*]Share tidak dapat dijangkau karena masalah network.
+[/list]
+
+[color=#455A64][b]DATABASE[/b][/color]
+[color=#333333]Database Server berada pada Server1 dengan IP 192.168.1.253.[/color]
+[color=#333333]Database yang tersedia:[/color]
+[table=2]
+Database|Keterangan
+accounting|Database Accounting
+media|Database Media
+kirin|Database perusahaan
+sales|Database Sales
+[/table]
+[color=#333333]Akun database yang tersedia:[/color]
+[table=3]
+User|Password|Akses
+accounting|accounting123|Database Accounting
+media|media123|Database Media
+sales|sales123|Database Sales
+kirin|kirin123|Database Accounting, Media, Kirin, Sales
+[/table]
+[color=#333333]Untuk administrasi database tersedia root dengan password [b]kirin123[/b].[/color]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]Database Service dapat digunakan.
+[*]Database yang diperlukan tersedia.
+[*]User hanya dapat menggunakan database yang menjadi hak aksesnya.
+[*]User kirin dapat mengakses seluruh database perusahaan.
+[*]Administrator dapat menggunakan akses root untuk administrasi database.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]Database Service tidak aktif.
+[*]User memiliki privilege ke database yang salah.
+[*]User kehilangan privilege yang seharusnya dimiliki.
+[*]User tidak dapat membuka database yang menjadi hak aksesnya.
+[*]Database tidak dapat dijangkau dari Computer0.
+[/list]
+
+[color=#455A64][b]FTP[/b][/color]
+[color=#333333]FTP Server berada pada Server1 dan digunakan untuk transfer file menggunakan akun user yang terdaftar.[/color]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]User yang terdaftar dapat melakukan login.
+[*][b]Anonymous user tidak dapat login.[/b]
+[*]FTPS tersedia untuk koneksi yang aman.
+[*]Local user authentication dapat digunakan.
+[*]Setiap user memiliki home directory masing-masing.
+[*]Operasi tulis mengikuti permission yang diberikan.
+[/list]
+[color=#333333]User FTP yang tersedia:[/color]
+[table=3]
+User|Password|Home Directory
+kirin|kirin123|/home/user/kirin
+media|media123|/home/user/media
+sales|sales123|/home/user/sales
+accounting|accounting123|/home/user/accounting
+[/table]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]FTP Service tidak aktif.
+[*]FTPS tidak tersedia.
+[*]Local login tidak dapat digunakan.
+[*]Anonymous user dapat login padahal seharusnya tidak.
+[*]User tidak dapat mengakses home directory yang sesuai.
+[*]Permission write tidak sesuai.
+[/list]
+
+[color=#455A64][b]MAIL[/b][/color]
+[color=#333333]Mail Server berada pada Server1 dengan IP 192.168.1.253.[/color]
+[color=#333333]Domain email perusahaan adalah [b]kirin.com[/b].[/color]
+[color=#333333]Akun email yang tersedia:[/color]
+[table=2]
+Email|Password
+[it@kirin.com](mailto:it@kirin.com)|it123
+[accounting@kirin.com](mailto:accounting@kirin.com)|accounting123
+[sales@kirin.com](mailto:sales@kirin.com)|sales123
+[media@kirin.com](mailto:media@kirin.com)|media123
+[/table]
+[color=#333333][b]Seharusnya:[/b][/color]
+[list]
+[*]User dapat login menggunakan Mail App.
+[*]Domain email menggunakan kirin.com.
+[*]Mail Server dapat ditemukan melalui DNS MX record.
+[*]IMAP dapat digunakan untuk login.
+[*]SSL/TLS digunakan untuk koneksi mail.
+[/list]
+[color=#333333][b]Kendala yang dapat terjadi:[/b][/color]
+[list]
+[*]Domain Mail Server tidak sesuai.
+[*]MX record mengarah ke server yang salah.
+[*]Mail Service tidak dapat digunakan.
+[*]User tidak dapat login.
+[*]Client tidak dapat menemukan Mail Server.
+[*]Informasi koneksi mail tidak sesuai.
+[/list]
+[color=#EF6C00][b]Catatan:[/b] Sistem Mail pada game hanya mensimulasikan proses login. Pengiriman dan penerimaan email sebenarnya tidak disimulasikan.[/color]
+
+[color=#2E7D32][font_size=18][b]Gejala Gangguan[/b][/font_size][/color]
+[color=#333333]• Beberapa komputer tidak mendapatkan koneksi jaringan dengan normal.[/color]
+[color=#333333]• Beberapa perangkat tidak dapat berkomunikasi dengan jaringan divisinya.[/color]
+[color=#333333]• Sebagian komputer mengalami masalah dalam memperoleh konfigurasi jaringan.[/color]
+[color=#333333]• Beberapa domain perusahaan tidak dapat digunakan.[/color]
+[color=#333333]• Beberapa website perusahaan tidak dapat diakses.[/color]
+[color=#333333]• Akses remote ke server mengalami gangguan.[/color]
+[color=#333333]• File sharing tidak dapat digunakan sebagaimana mestinya.[/color]
+[color=#333333]• Database tidak dapat digunakan secara normal.[/color]
+[color=#333333]• Akses FTP mengalami gangguan.[/color]
+[color=#333333]• Karyawan tidak dapat login ke email perusahaan.[/color]
+
+[color=#EF6C00][b]Perhatian:[/b][/color]
+[color=#333333]Tidak semua konfigurasi mengalami masalah. Beberapa bagian sengaja dibiarkan benar agar kamu dapat menggunakannya sebagai pembanding saat melakukan troubleshooting.[/color]
+
+[color=#2E7D32][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
+[color=#333333][b]1. Periksa Physical dan Link[/b][/color]
+[color=#333333]Periksa koneksi antar perangkat dan status setiap interface. Pastikan tidak ada interface yang terputus atau berada dalam kondisi tidak aktif.[/color]
+
+[color=#333333][b]2. Periksa Perangkat Jaringan[/b][/color]
+[color=#333333]Periksa Router dan Switch yang menghubungkan setiap divisi. Pastikan setiap jaringan memiliki jalur komunikasi yang dapat digunakan.[/color]
+
+[color=#333333][b]3. Periksa Konfigurasi Client[/b][/color]
+[color=#333333]Periksa konfigurasi jaringan komputer yang mengalami gangguan. Perhatikan mode pengalamatan IP, DNS, dan parameter jaringan lainnya.[/color]
+
+[color=#333333][b]4. Periksa DHCP[/b][/color]
+[color=#333333]Periksa DHCP Service, pool setiap jaringan, konfigurasi client, serta mekanisme DHCP Relay pada Router.[/color]
+
+[color=#333333][b]5. Uji Konektivitas[/b][/color]
+[color=#333333]Gunakan pengujian konektivitas untuk menentukan apakah masalah berada pada client, jaringan, router, atau server. Lakukan pengujian secara bertahap agar sumber masalah dapat dipersempit.[/color]
+
+[color=#333333][b]6. Periksa DNS[/b][/color]
+[color=#333333]Periksa DNS Service dan record yang digunakan oleh layanan perusahaan. Pastikan domain dan hostname mengarah ke server yang sesuai.[/color]
+
+[color=#333333][b]7. Periksa Web Service[/b][/color]
+[color=#333333]Periksa Web Service dan konfigurasi setiap website perusahaan. Gunakan browser dan curl untuk menguji akses website.[/color]
+
+[color=#333333][b]8. Periksa Remote Service[/b][/color]
+[color=#333333]Periksa konfigurasi Remote pada Server0 dan Server1. Gunakan SSH dari Computer0 untuk menguji koneksi remote.[/color]
+
+[color=#333333][b]9. Periksa File Server[/b][/color]
+[color=#333333]Periksa File Service, share, permission, dan akses pengguna. Uji akses share dari File Explorer menggunakan komputer yang tersedia.[/color]
+
+[color=#333333][b]10. Periksa Database[/b][/color]
+[color=#333333]Periksa Database Service, database yang tersedia, user, password, dan privilege. Gunakan akses database melalui aplikasi yang tersedia pada Computer0 untuk melakukan pengujian.[/color]
+
+[color=#333333][b]11. Periksa FTP[/b][/color]
+[color=#333333]Periksa status FTP, pengaturan akses pengguna, serta konfigurasi yang memengaruhi akses dan operasi file. Gunakan File Explorer atau Terminal untuk melakukan pengujian.[/color]
+
+[color=#333333][b]12. Periksa Mail[/b][/color]
+[color=#333333]Periksa Mail Service dan konfigurasi domain email. Periksa juga DNS yang berkaitan dengan layanan email. Setelah melakukan perbaikan, gunakan Mail App pada Computer0 untuk menguji login menggunakan akun karyawan.[/color]
+
+[color=#333333][b]13. Perbaiki Secara Bertahap[/b][/color]
+[color=#333333]Jangan melakukan perubahan secara acak. Perbaiki masalah dari konektivitas dasar kemudian lanjutkan ke konfigurasi jaringan, DNS, dan service.[/color]
+
+[color=#333333][b]14. Retest[/b][/color]
+[color=#333333]Setelah setiap perbaikan, lakukan pengujian kembali. Pastikan perbaikan pada satu bagian tidak menyebabkan masalah pada bagian lain.[/color]
+
+[color=#EF6C00][b]Petunjuk:[/b][/color]
+[color=#333333]Mulailah dari masalah yang paling dasar. Jika sebuah komputer tidak memiliki koneksi jaringan, jangan langsung menyimpulkan bahwa service server bermasalah.[/color]
+[color=#333333]Gunakan perangkat dan konfigurasi yang masih berfungsi sebagai pembanding untuk menemukan perbedaan pada perangkat yang bermasalah.[/color]
+[color=#333333]Jika beberapa layanan mengalami masalah secara bersamaan, cari terlebih dahulu komponen jaringan yang digunakan bersama oleh layanan tersebut.[/color]
+
+[color=#2E7D32][font_size=18][b]Pengujian Akhir[/b][/font_size][/color]
+[table=2]
+Pengujian|Target
+Konektivitas|Computer dapat berkomunikasi dengan jaringan dan server
+DHCP|Client mendapatkan konfigurasi jaringan
+DNS|Domain perusahaan dapat di-resolve
+Web|Website perusahaan dapat diakses
+Remote|SSH dapat terhubung menggunakan port custom
+File|File share dapat diakses sesuai permission
+Database|Database dapat diakses menggunakan akun yang sesuai
+FTP|FTP dapat digunakan oleh user yang sesuai dan anonymous ditolak
+Mail|Akun email dapat login melalui Mail App
+[/table]
+
+[color=#2E7D32][font_size=18][b]Kondisi Misi[/b][/font_size][/color]
+[color=#333333]Seluruh gangguan pada infrastruktur jaringan dan layanan perusahaan harus diperbaiki. Setiap service harus dapat digunakan kembali melalui jalur akses yang sesuai.[/color]
+
+[color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
+[color=#333333]• Menerapkan konsep basic networking dalam troubleshooting jaringan.[/color]
+[color=#333333]• Mengidentifikasi hubungan antara physical connection, interface, IP configuration, dan routing.[/color]
+[color=#333333]• Melakukan troubleshooting DHCP dan DHCP Relay.[/color]
+[color=#333333]• Melakukan troubleshooting DNS dan domain perusahaan.[/color]
+[color=#333333]• Melakukan troubleshooting Web Server.[/color]
+[color=#333333]• Melakukan troubleshooting Remote/SSH.[/color]
+[color=#333333]• Melakukan troubleshooting File Server.[/color]
+[color=#333333]• Melakukan troubleshooting Database.[/color]
+[color=#333333]• Melakukan troubleshooting FTP.[/color]
+[color=#333333]• Melakukan troubleshooting Mail Server dan DNS untuk layanan email.[/color]
+[color=#333333]• Menentukan hubungan antara gejala, konfigurasi, dan penyebab masalah.[/color]
+[color=#333333]• Melakukan pengujian end-to-end setelah perbaikan.[/color]
+
+[color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
+[color=#333333]• Seluruh interface yang diperlukan dapat digunakan.[/color]
+[color=#333333]• Seluruh jaringan divisi dapat berkomunikasi dengan baik.[/color]
+[color=#333333]• Client yang menggunakan DHCP mendapatkan konfigurasi jaringan dengan benar.[/color]
+[color=#333333]• Domain perusahaan dapat digunakan untuk layanan yang tersedia.[/color]
+[color=#333333]• Website perusahaan dapat diakses.[/color]
+[color=#333333]• SSH dapat digunakan untuk koneksi remote menggunakan port custom perusahaan.[/color]
+[color=#333333]• File Server dapat diakses sesuai hak aksesnya.[/color]
+[color=#333333]• Database dapat diakses menggunakan user yang memiliki hak akses sesuai.[/color]
+[color=#333333]• FTP dapat digunakan oleh user yang sesuai dan anonymous tidak dapat login.[/color]
+[color=#333333]• Seluruh akun email karyawan dapat login melalui Mail App.[/color]
+[color=#333333]• Seluruh service yang diuji dapat berfungsi setelah troubleshooting.[/color]
+[color=#333333]• Tidak ada perangkat baru yang ditambahkan dan topology tetap dipertahankan.[/color]"
+correct_configs = Dictionary[String, StringName]({
+"computer0": &"uid://c52egd43detro",
+"computer1": &"uid://b5cp67qt1tbgw",
+"computer10": &"uid://4eslg0rrqn6w",
+"computer11": &"uid://dgr0b5wiij01n",
+"computer12": &"uid://bwrefvxqqd2f2",
+"computer2": &"uid://2pidy2a6uwov",
+"computer3": &"uid://bferpa3ccedka",
+"computer4": &"uid://dqnn26wbdvt5m",
+"computer5": &"uid://blnj6abyp0sm",
+"computer6": &"uid://3yg853yjqrs0",
+"computer7": &"uid://bwcqq5u716f5x",
+"computer8": &"uid://ba8xyt5dki0j1",
+"computer9": &"uid://cvywx8wkoah3c",
+"router0": &"uid://dthfcfx5mtjoo",
+"server0": &"uid://bc1ia3i73d6ed",
+"server1": &"uid://cahc8kqpfl10",
+"switch0": &"uid://y5cw72srbvug",
+"switch1": &"uid://m5eaxwwcnxah",
+"switch2": &"uid://6bjl83u8h3f1",
+"switch3": &"uid://dalbm2wnn77mu"
+})
+runtime_configs = Dictionary[String, StringName]({
+"computer0": &"uid://js2t3t62u7r6",
+"computer1": &"uid://ctcxcv771q0ou",
+"computer10": &"uid://c2268uned8vna",
+"computer11": &"uid://c7ctj8lpks088",
+"computer12": &"uid://fu2lrvnoeejn",
+"computer2": &"uid://udp8avh0u6fp",
+"computer3": &"uid://boj8jt054u7by",
+"computer4": &"uid://ohetohw455y0",
+"computer5": &"uid://d3gh76nv17tjd",
+"computer6": &"uid://k0qypkx3w08p",
+"computer7": &"uid://bppaks2m31hqk",
+"computer8": &"uid://bhuwhov1rhj17",
+"computer9": &"uid://ykwbjns48pt4",
+"router0": &"uid://dfnoa7r15jeg5",
+"server0": &"uid://c0wkelyqvo2u8",
+"server1": &"uid://jhrldj66gg53",
+"switch0": &"uid://d3gfh7pmsnenm",
+"switch1": &"uid://mbm1bi8fwoe8",
+"switch2": &"uid://h7hgaoj8fbfj",
+"switch3": &"uid://nc4qpcrsl828"
+})
+runtime_cables = Dictionary[String, StringName]({
+"computer0_switch0": &"uid://cde0v450oroiw",
+"computer10_switch3": &"uid://dvq1hjcw18u7e",
+"computer11_switch3": &"uid://r6ada3xyupk6",
+"computer12_switch3": &"uid://clxpsiy5v0mh",
+"computer1_switch1": &"uid://cxcq04gw1jtg",
+"computer2_switch1": &"uid://7ev1bw0xutew",
+"computer3_switch1": &"uid://byoabq23besgq",
+"computer4_switch1": &"uid://beqf8dtlkscib",
+"computer5_switch2": &"uid://db318eqdpn6ud",
+"computer6_switch2": &"uid://bbec1yulk1q7s",
+"computer7_switch2": &"uid://dj0yy53xx8ur7",
+"computer8_switch2": &"uid://fv7dw5vxfyb3",
+"computer9_switch3": &"uid://chkvio032w7p5",
+"server0_switch0": &"uid://b5e1ti24hnbb2",
+"server1_switch0": &"uid://b6exj1vu1en1u",
+"switch0_router0": &"uid://dkb5e374kie6i",
+"switch1_router0": &"uid://dsk8pea4mwefx",
+"switch2_router0": &"uid://cqkjqpxi5mt6q",
+"switch3_router0": &"uid://ce0mltpbrsjum"
+})
+metadata/_custom_type_script = "uid://yyv5xrh6852d"
