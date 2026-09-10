@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://cpjg2jnxgd4aw"]
+
+[ext_resource type="Script" uid="uid://bc26qtwink3a5" path="res://ui/credits/credits.gd" id="1_d7n5t"]
+[ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="1_ydyd3"]
+[ext_resource type="Script" uid="uid://cv7ps8kw735wi" path="res://ui/credits/rich_text_label.gd" id="2_2n5wy"]
+[ext_resource type="Texture2D" uid="uid://1qk7q10itddl" path="res://assets/UI/MainMenu/main_menu_bg_0001.png" id="2_hfqo3"]
+[ext_resource type="Texture2D" uid="uid://jaqmxgx1eytf" path="res://assets/UI/MainMenu/main_menu_bg_0006.png" id="2_nnsry"]
+[ext_resource type="Texture2D" uid="uid://ijhpt62s74vp" path="res://assets/UI/MainMenu/main_menu_bg_0002.png" id="4_pdd3v"]
+[ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="5_q8t8k"]
+[ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="6_b6jqh"]
+[ext_resource type="Texture2D" uid="uid://cjglm5dy75rjf" path="res://assets/UI/MainMenu/main_menu_bg_0005.png" id="7_borvj"]
+[ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="9_d7n5t"]
+[ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="10_llslm"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="11_borvj"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="12_d7n5t"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="13_llslm"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="14_1vb2a"]
+
+[sub_resource type="Animation" id="Animation_0nobx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hfqo3")]
+}
+
+[sub_resource type="Animation" id="Animation_iyrh0"]
+resource_name = "background"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_hfqo3"), ExtResource("4_pdd3v"), ExtResource("5_q8t8k"), ExtResource("6_b6jqh"), ExtResource("7_borvj"), ExtResource("2_nnsry"), ExtResource("9_d7n5t"), ExtResource("10_llslm")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vb2a"]
+_data = {
+&"RESET": SubResource("Animation_0nobx"),
+&"background": SubResource("Animation_iyrh0")
+}
+
+[node name="Credits" type="Control" unique_id=1028740488]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7n5t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=787725822]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ydyd3")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1142998820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = -31.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hfqo3")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=187109432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 0.9647059)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=784883736]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 688.0
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[center]
+[b][font_size=48]CREDITS[/font_size][/b]
+
+[b][font_size=24]Created by[/font_size][/b]
+
+[img width=128 height=128]res://assets/UI/player_stats/player_photo.png[/img]
+Kirin (Lutfi Nur Rohman)
+
+
+[b][font_size=24]Special Thanks[/font_size][/b]
+[i][font_size=24]Mentor[/font_size][/i]
+
+[img width=128 height=128]res://assets/afif_rahman.jpeg[/img]											[img width=128 height=128]res://assets/daniel_rinaldi.jpeg[/img]
+Dr. Afif Rahman Riyanda, M.Pd.T				Daniel Rinaldi, S.T., M.Eng.
+
+
+[i][font_size=24]Font Asset[/font_size][/i]
+Jayvee Enaguas
+[/center]"
+script = ExtResource("2_2n5wy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1405051578]
+libraries/ = SubResource("AnimationLibrary_1vb2a")
+autoplay = &"background"
+
+[node name="ExitButton" type="Button" parent="." unique_id=588717247]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -94.0
+offset_top = 44.0
+offset_right = -54.0
+offset_bottom = 84.0
+grow_horizontal = 0
+theme = ExtResource("11_borvj")
+theme_override_styles/normal = ExtResource("12_d7n5t")
+theme_override_styles/pressed = ExtResource("12_d7n5t")
+theme_override_styles/hover = ExtResource("13_llslm")
+theme_override_styles/focus = ExtResource("13_llslm")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=1648810633]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.9999924
+offset_top = 6.456093
+offset_right = -5.9999924
+offset_bottom = -4.456093
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_1vb2a")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

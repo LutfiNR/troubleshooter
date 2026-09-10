@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://b5bqi1dbfo1jj"]
+
+[ext_resource type="Script" uid="uid://djpht53y3aflh" path="res://ui/learning_objective/learning_objective.gd" id="1_ayx2c"]
+[ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_ppr8w"]
+[ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="2_0cgf1"]
+[ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="3_ayx2c"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="4_am2au"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="5_do28i"]
+[ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="6_5knlr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpq8g"]
+texture = ExtResource("2_0cgf1")
+texture_margin_left = 10.0
+texture_margin_top = 38.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[node name="LearningObjective" type="Control" unique_id=937324939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ayx2c")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1217321673]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ppr8w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1144796248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -494.0
+offset_top = -231.0
+offset_right = 494.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="Panel" type="Panel" parent="HBoxContainer" unique_id=1550329054]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_qpq8g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel" unique_id=587863261]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 39.0
+offset_right = -24.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+bbcode_enabled = true
+text = "[center]
+[b][font_size=24]Capaian Pembelajaran[/font_size][/b]
+
+Peserta didik mampu menginstalasi, mengkonfigurasi, merawat, dan mengamankan [b]sistem operasi jaringan[/b] (Layanan Jaringan/Server), baik berbasis teks maupun GUI, serta mengatur [b]hak akses pengguna[/b] dan [b]layanan server[/b] 
+([i]DHCP, DNS, FTP, Web Server, Mail Server, dan remote server[/i]).
+[/center]"
+
+[node name="Panel2" type="Panel" parent="HBoxContainer" unique_id=999734939]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_qpq8g")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel2" unique_id=1543429355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 39.0
+offset_right = -26.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+bbcode_enabled = true
+text = "[center]
+[b][font_size=24]Tujuan Pembelajaran[/font_size][/b][/center]
+
+[center][b]Administrasi Server[/b]
+5.1 Menerapkan instalasi, konfigurasi, dan pengujian layanan server ([i]remote, DHCP, DNS, FTP, file, web, database server[/i]).
+
+[b]Instalasi dan Konfigurasi Server Hosting[/b]
+5.2 Menerapkan instalasi, konfigurasi, dan pengujian layanan server ([i]Control Panel Hosting, Share Hosting Server, Dedicated Hosting Server, Virtual Private Server, VPN server, sistem kontrol, dan monitoring[/i]).
+[/center]"
+
+[node name="ExitButton" type="Button" parent="." unique_id=171783876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 557.0
+offset_top = -316.0
+offset_right = 597.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ayx2c")
+theme_override_styles/normal = ExtResource("4_am2au")
+theme_override_styles/pressed = ExtResource("4_am2au")
+theme_override_styles/hover = ExtResource("5_do28i")
+theme_override_styles/focus = ExtResource("5_do28i")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton" unique_id=936313918]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.9999924
+offset_top = 6.456093
+offset_right = -5.9999924
+offset_bottom = -4.456093
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_5knlr")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
