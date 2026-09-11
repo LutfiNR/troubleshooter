@@ -44,6 +44,24 @@ func _on_movement_stopped(last_direction: Vector2):
 	elif last_direction.y < 0:
 		sprite.frame = 12
 
-
 #func _on_cable_tool_toggled(toggled_on: bool) -> void:
-	#ConnectionManager.cable_tool_toggled.emit(toggled_on)
+#ConnectionManager.cable_tool_toggled.emit(toggled_on)
+
+
+func _on_setting_button_pressed() -> void:
+	var existing := get_node_or_null("SettingsPopup")
+	if existing != null:
+		existing.visible = true
+		if existing.get_parent() != null:
+			existing.get_parent().move_child(existing, existing.get_parent().get_child_count() - 1)
+		return
+
+	var settings_scene := preload("res://ui/settings/setting.tscn").instantiate()
+	settings_scene.name = "SettingsPopup"
+	settings_scene.layer = 100
+	add_child(settings_scene)
+	if settings_scene.get_parent() != null:
+		settings_scene.get_parent().move_child(
+			settings_scene,
+			settings_scene.get_parent().get_child_count() - 1,
+		)

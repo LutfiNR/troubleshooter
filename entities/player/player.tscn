@@ -19,6 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://clwj1o3f64lu5" path="res://assets/UI/Button/check_mission_button/check_mission_button.png" id="17_we0b7"]
 [ext_resource type="Texture2D" uid="uid://cw7ksjj24wtlu" path="res://assets/UI/Button/check_mission_button/check_mission_button_1.png" id="18_mtric"]
 [ext_resource type="Texture2D" uid="uid://cc5p53shcvdr8" path="res://assets/UI/Button/check_mission_button/check_mission_button_disabled.png" id="19_we0b7"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="20_221hk"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="21_ghoj8"]
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="22_t1t22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qb0yx"]
 size = Vector2(10, 14)
@@ -299,6 +302,36 @@ theme_override_font_sizes/font_size = 16
 text = "10/10"
 vertical_alignment = 1
 
+[node name="SettingButton" type="Button" parent="CanvasLayer" unique_id=1229015285]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_top = 18.0
+offset_right = -23.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme = ExtResource("7_26q78")
+theme_override_styles/normal = ExtResource("20_221hk")
+theme_override_styles/pressed = ExtResource("20_221hk")
+theme_override_styles/hover = ExtResource("21_ghoj8")
+theme_override_styles/focus = ExtResource("21_ghoj8")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/SettingButton" unique_id=154598150]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("22_t1t22")
+
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/RoadmapButton" to="CanvasLayer/ButtonContainer" method="_on_roadmap_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/MissionButton" to="CanvasLayer/ButtonContainer" method="_on_mission_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/CheckProgressButton" to="CanvasLayer/ButtonContainer" method="_on_check_progress_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SettingButton" to="." method="_on_setting_button_pressed"]

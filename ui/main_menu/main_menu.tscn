@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="7_bgtsx"]
 [ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="8_kaxbk"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_arv2f"]
+[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="14_u2jyo"]
+[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="15_bpbph"]
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="16_qewnw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2jyo"]
 texture = ExtResource("5_qao3l")
@@ -190,7 +193,38 @@ clip_text = true
 libraries/ = SubResource("AnimationLibrary_8jgmr")
 autoplay = &"background"
 
+[node name="SettingButton" type="Button" parent="." unique_id=1011897308]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 54.0
+offset_right = -62.0
+offset_bottom = 88.0
+grow_horizontal = 0
+theme = ExtResource("9_arv2f")
+theme_override_styles/normal = ExtResource("14_u2jyo")
+theme_override_styles/pressed = ExtResource("14_u2jyo")
+theme_override_styles/hover = ExtResource("15_bpbph")
+theme_override_styles/focus = ExtResource("15_bpbph")
+
+[node name="TextureRect" type="TextureRect" parent="SettingButton" unique_id=36332610]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_qewnw")
+
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="button_up" from="VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/LOButton" to="." method="_on_lo_button_button_up"]
 [connection signal="button_up" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_button_up"]
+[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]

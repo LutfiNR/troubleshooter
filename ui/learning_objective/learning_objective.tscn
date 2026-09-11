@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="4_am2au"]
 [ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="5_do28i"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="6_5knlr"]
+[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="8_am2au"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpq8g"]
 texture = ExtResource("2_0cgf1")
@@ -140,4 +141,35 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_5knlr")
 
+[node name="SettingButton" type="Button" parent="." unique_id=923650880]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -129.0
+offset_top = 44.0
+offset_right = -89.0
+offset_bottom = 84.0
+grow_horizontal = 0
+theme = ExtResource("3_ayx2c")
+theme_override_styles/normal = ExtResource("4_am2au")
+theme_override_styles/pressed = ExtResource("4_am2au")
+theme_override_styles/hover = ExtResource("5_do28i")
+theme_override_styles/focus = ExtResource("5_do28i")
+
+[node name="TextureRect" type="TextureRect" parent="SettingButton" unique_id=723524419]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_am2au")
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]

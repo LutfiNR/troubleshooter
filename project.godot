@@ -21,6 +21,10 @@ boot_splash/image="uid://c4qb0anmktll7"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=5
 
+[audio]
+
+buses/default_bus_layout=""
+
 [autoload]
 
 NetworkManager="*uid://1e06str50ofw"
@@ -28,6 +32,7 @@ GameManager="*uid://xintuoqlpcv6"
 OverlaySystem="*uid://uulstm30ngbi"
 SceneLoader="*uid://dcuba4c084c6k"
 DialogueManager="*uid://c3rodes2l3gxb"
+SoundManager="*res://autoloads/sound_manager.gd"
 
 [display]
 
