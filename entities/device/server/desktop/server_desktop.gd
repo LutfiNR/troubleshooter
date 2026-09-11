@@ -54,4 +54,10 @@ func _close_all_apps() -> void:
 func _on_service_button_pressed() -> void: open_app(service_app)
 func _on_app_exit_button_pressed() -> void: _close_all_apps()
 func _on_setting_button_pressed() -> void: open_app(setting_app)
-func _on_exit_button_pressed() -> void: queue_free()
+func _on_exit_button_pressed() -> void:
+	_play_cancel_click_sfx()
+	queue_free()
+
+func _play_cancel_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("cancel_button_click")

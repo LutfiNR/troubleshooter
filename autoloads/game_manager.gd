@@ -158,6 +158,9 @@ func _on_mission_completed(mission_id: String) -> void:
 	current_mission = null
 	game_data.current_mission = ""
 	save_game()
+	if mission_id != "mission0" and mission_id != "mission1":
+		SoundManager.stop_music()
+		SceneLoader.load_scene("uid://c1tyfy1sioyxb")
 	NetworkManager.load_default_configuration(
 		current_chapter.default_configs,
 		current_chapter.default_cables,

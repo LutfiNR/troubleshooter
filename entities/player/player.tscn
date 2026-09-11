@@ -303,14 +303,10 @@ text = "10/10"
 vertical_alignment = 1
 
 [node name="SettingButton" type="Button" parent="CanvasLayer" unique_id=1229015285]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -61.0
-offset_top = 18.0
-offset_right = -23.0
-offset_bottom = 56.0
-grow_horizontal = 0
+offset_left = 284.0
+offset_top = 21.0
+offset_right = 322.0
+offset_bottom = 59.0
 theme = ExtResource("7_26q78")
 theme_override_styles/normal = ExtResource("20_221hk")
 theme_override_styles/pressed = ExtResource("20_221hk")

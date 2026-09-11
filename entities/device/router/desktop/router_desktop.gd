@@ -33,4 +33,9 @@ func _update_visual() -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	_play_cancel_click_sfx()
 	queue_free()
+
+func _play_cancel_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("cancel_button_click")

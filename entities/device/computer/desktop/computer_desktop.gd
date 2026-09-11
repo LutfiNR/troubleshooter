@@ -69,4 +69,10 @@ func _on_file_button_pressed() -> void: open_app(file_app)
 func _on_browser_button_pressed() -> void: open_app(browser_app)
 func _on_email_button_pressed() -> void: open_app(email_app)
 func _on_app_exit_button_pressed() -> void: _close_all_apps()
-func _on_exit_button_pressed() -> void: queue_free()
+func _on_exit_button_pressed() -> void:
+	_play_cancel_click_sfx()
+	queue_free()
+
+func _play_cancel_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("cancel_button_click")

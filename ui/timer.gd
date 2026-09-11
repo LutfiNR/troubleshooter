@@ -16,6 +16,8 @@ func _process(delta: float) -> void:
 	mission_time -= delta
 	text = _format_time(mission_time)
 	if mission_time <= 0:
+		SoundManager.stop_music()
+		SoundManager.play_sfx("mission_failed")
 		SceneLoader.load_scene("uid://huymfpmo6da0")
 
 

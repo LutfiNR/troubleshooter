@@ -71,6 +71,10 @@ func update_ui(target_device: DeviceData) -> void:
 			cable.visible = has_cable_connection
 			cable.force_state_from_data(port, interface_data.is_up())
 
-
 func _on_exit_button_pressed() -> void:
+	_play_cancel_click_sfx()
 	queue_free()
+
+func _play_cancel_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("cancel_button_click")

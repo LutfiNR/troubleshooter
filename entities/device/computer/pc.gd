@@ -27,6 +27,7 @@ func interact() -> void:
 		return
 
 	if action_popup:
+		_play_click_sfx()
 		if action_popup.is_open():
 			await action_popup.close()
 		else:
@@ -90,4 +91,4 @@ func _on_desktop_button_pressed() -> void:
 
 func _play_click_sfx() -> void:
 	if is_instance_valid(SoundManager):
-		SoundManager.play_sfx("button_click")
+		SoundManager.play_sfx("mouse_click")
