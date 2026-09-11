@@ -44,11 +44,9 @@ func _on_movement_stopped(last_direction: Vector2):
 	elif last_direction.y < 0:
 		sprite.frame = 12
 
-#func _on_cable_tool_toggled(toggled_on: bool) -> void:
-#ConnectionManager.cable_tool_toggled.emit(toggled_on)
-
 
 func _on_setting_button_pressed() -> void:
+	_play_click_sfx()
 	var existing := get_node_or_null("SettingsPopup")
 	if existing != null:
 		existing.visible = true
@@ -65,3 +63,8 @@ func _on_setting_button_pressed() -> void:
 			settings_scene,
 			settings_scene.get_parent().get_child_count() - 1,
 		)
+
+
+func _play_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("button_click")

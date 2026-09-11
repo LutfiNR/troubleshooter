@@ -12,20 +12,29 @@ func _ready() -> void:
 		SoundManager.play_music("main_menu")
 
 
+func _play_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("button_click")
+
+
 func _on_lo_button_button_up() -> void:
+	_play_click_sfx()
 	SceneLoader.load_scene(learning_objective_scene)
 
 
 func _on_credits_button_button_up() -> void:
+	_play_click_sfx()
 	SceneLoader.load_scene(credits_scene)
 
 
 func _on_new_game_button_pressed() -> void:
+	_play_click_sfx()
 	GameManager.new_game()
 	SceneLoader.load_scene(start_new_game_scene)
 
 
 func _on_load_game_button_button_up() -> void:
+	_play_click_sfx()
 	GameManager.load_game()
 	if GameManager.current_chapter == null:
 		return
@@ -36,6 +45,7 @@ func _on_load_game_button_button_up() -> void:
 
 
 func _on_setting_button_pressed() -> void:
+	_play_click_sfx()
 	var existing := get_node_or_null("SettingsPopup")
 	if existing != null:
 		existing.visible = true

@@ -74,7 +74,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 24
 theme_override_constants/v_separation = 24
-columns = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/NinePatchRect/GridContainer" unique_id=1056667706]
 layout_mode = 2
@@ -83,26 +82,9 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="Panel/NinePatchRect/GridContainer/VBoxContainer" unique_id=2004013670]
 layout_mode = 2
 theme = ExtResource("3_a8hax")
-text = "Master Volume"
+text = "Volume"
 
 [node name="HSlider" type="HSlider" parent="Panel/NinePatchRect/GridContainer/VBoxContainer" unique_id=1882559612]
-layout_mode = 2
-theme_override_icons/grabber = ExtResource("4_mjqqf")
-theme_override_icons/grabber_highlight = ExtResource("5_u4mgy")
-theme_override_styles/slider = SubResource("StyleBoxTexture_hc3p6")
-theme_override_styles/grabber_area = SubResource("StyleBoxTexture_j52qw")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_j52qw")
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/NinePatchRect/GridContainer" unique_id=167039741]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Panel/NinePatchRect/GridContainer/VBoxContainer2" unique_id=1921835743]
-layout_mode = 2
-theme = ExtResource("3_a8hax")
-text = "Music Volume"
-
-[node name="HSlider" type="HSlider" parent="Panel/NinePatchRect/GridContainer/VBoxContainer2" unique_id=2033620907]
 layout_mode = 2
 theme_override_icons/grabber = ExtResource("4_mjqqf")
 theme_override_icons/grabber_highlight = ExtResource("5_u4mgy")

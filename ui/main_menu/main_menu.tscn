@@ -91,7 +91,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_t7e0r")
-stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1849254953]
 layout_mode = 1
@@ -200,8 +199,8 @@ anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -96.0
 offset_top = 54.0
-offset_right = -62.0
-offset_bottom = 88.0
+offset_right = -51.0
+offset_bottom = 99.0
 grow_horizontal = 0
 theme = ExtResource("9_arv2f")
 theme_override_styles/normal = ExtResource("14_u2jyo")

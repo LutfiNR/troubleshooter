@@ -68,6 +68,7 @@ func has_same_popup(scene: PackedScene) -> bool:
 
 
 func _on_roadmap_button_pressed() -> void:
+	_play_click_sfx()
 	if has_same_popup(roadmap_popup_scene):
 		hide_popup()
 	else:
@@ -80,6 +81,7 @@ func _on_roadmap_button_pressed() -> void:
 
 
 func _on_mission_button_pressed() -> void:
+	_play_click_sfx()
 	if has_same_popup(mission_popup_scene):
 		hide_popup()
 	else:
@@ -90,6 +92,7 @@ func _on_mission_button_pressed() -> void:
 
 
 func _on_check_progress_button_pressed() -> void:
+	_play_click_sfx()
 	if has_same_popup(check_popup_scene):
 		hide_popup()
 		return
@@ -114,3 +117,8 @@ func update_ui() -> void:
 	check_progress_button.get_node("Label").text = str(check_open_count) + "/" + str(
 		check_open_limit
 	)
+
+
+func _play_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("button_click")

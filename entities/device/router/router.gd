@@ -68,6 +68,7 @@ func _on_interact_area_input_event(_viewport: Node, event: InputEvent, _shape_id
 
 
 func _on_power_button_toggled(_toggled_on: bool) -> void:
+	_play_click_sfx()
 	if device_data.power == DeviceData.PowerState.OFF:
 		device_data.power = DeviceData.PowerState.ON
 	else:
@@ -76,8 +77,15 @@ func _on_power_button_toggled(_toggled_on: bool) -> void:
 
 
 func _on_physical_button_pressed() -> void:
+	_play_click_sfx()
 	OverlaySystem.open_overlay(physical_scene, device_id)
 
 
 func _on_desktop_button_pressed() -> void:
+	_play_click_sfx()
 	OverlaySystem.open_overlay(desktop_scene, device_id)
+
+
+func _play_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("button_click")

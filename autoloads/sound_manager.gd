@@ -1,7 +1,5 @@
 extends Node
 
-@onready var sfx_bank: Dictionary = { }
-
 const SHARED_CREDITS_MUSIC := preload("uid://bfyojtswpuby5")
 const IDLE_1_MUSIC := preload("uid://bi1wi3nupbru1")
 const IDLE_2_MUSIC := preload("uid://boyisu3l2k7k3")
@@ -21,6 +19,14 @@ const MISSION_3_MUSIC := preload("uid://blnnpjfbsll7f")
 	"mission3": MISSION_3_MUSIC,
 }
 
+@onready var sfx_bank: Dictionary = {
+	"cancel_button_click": preload("uid://dr1j3x44sgymr"),
+	"button_click": preload("uid://ccq2x14vtdf1d"),
+	"mission_complete": preload("uid://ckia6qr5myo2c"),
+	"mission_failed": preload("uid://cvblpg0d3a1q"),
+	"plugin_cable": preload("uid://cr3tpg5t7u78v"),
+}
+
 const IDLE_MUSIC_KEYS: Array[String] = ["idle1", "idle2"]
 const MISSION_MUSIC_KEYS: Array[String] = ["mission1", "mission2", "mission3"]
 
@@ -34,6 +40,9 @@ var current_music_mode: String = "idle"
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	GameManager.chapter_loaded.connect(_on_chapter_loaded)
+	GameManager.mission_completed.connect(_on_mission_completed)
+	GameManager.mission_loaded.connect(_on_mission_loaded)
 
 	var music_bus_index := AudioServer.get_bus_index("Music")
 	if music_bus_index == -1:

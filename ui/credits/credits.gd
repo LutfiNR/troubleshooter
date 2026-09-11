@@ -7,10 +7,12 @@ func _ready() -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	_play_cancel_click_sfx()
 	SceneLoader.load_scene("uid://ndgyeswawkpj")
 
 
 func _on_setting_button_pressed() -> void:
+	_play_click_sfx()
 	var existing := get_node_or_null("SettingsPopup")
 	if existing != null:
 		existing.visible = true
@@ -27,3 +29,13 @@ func _on_setting_button_pressed() -> void:
 			settings_scene,
 			settings_scene.get_parent().get_child_count() - 1,
 		)
+
+
+func _play_cancel_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("cancel_button_click")
+
+
+func _play_click_sfx() -> void:
+	if is_instance_valid(SoundManager):
+		SoundManager.play_sfx("button_click")
