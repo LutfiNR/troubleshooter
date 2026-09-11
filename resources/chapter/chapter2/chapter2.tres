@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="ChapterData" format=3 uid="uid://cxasrqu3jmre6"]
 
 [ext_resource type="Script" uid="uid://yyv5xrh6852d" path="res://components/mission_data/mission_data.gd" id="1_52k2t"]
+[ext_resource type="Resource" uid="uid://b4qwlryulptpf" path="res://resources/chapter/chapter2/missions/final.tres" id="2_4e5cr"]
 [ext_resource type="Script" uid="uid://dpqdj2oj21f3w" path="res://components/chapter_data/chapter_data.gd" id="2_6avbe"]
 
 [resource]
@@ -132,4 +133,5 @@ Divisi Accounting memiliki jaringan tersendiri untuk mendukung aktivitas pengelo
 • Switch : Switch3
 • Computer : Computer9 — Computer12
 [/color]"
+missions = Array[ExtResource("1_52k2t")]([ExtResource("2_4e5cr")])
 metadata/_custom_type_script = "uid://dpqdj2oj21f3w"

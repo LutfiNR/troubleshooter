@@ -18,6 +18,7 @@ const SAVE_PATH := "./save_game.dat"
 var chapter_datas: Array[ChapterData] = [
 	preload("uid://c1w13xwer3lvj"),
 	preload("uid://c6v81yrcson83"),
+	preload("uid://cxasrqu3jmre6"),
 ]
 
 var game_data: Dictionary = {
