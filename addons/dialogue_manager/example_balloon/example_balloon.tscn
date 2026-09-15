@@ -163,6 +163,16 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 polygon = PackedVector2Array(0, 0, 10, 10, 20, 0)
 
+[node name="Label" type="Label" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control/Progress" unique_id=2137219618]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -23.0
+offset_right = 25.0
+grow_vertical = 0
+text = "Klik"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Control" unique_id=452325722]
 libraries/ = SubResource("AnimationLibrary_1337t")
 autoplay = &"progress"

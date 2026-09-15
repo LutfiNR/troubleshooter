@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var dialogue: DialogueResource
 @onready var animation_player: AnimationPlayer = $Panel/TalkIndicator/AnimationPlayer
+@onready var panel: Panel = $Panel
 
 var has_introducing: bool = false
 var tutorial_completed: bool = false
@@ -15,11 +16,13 @@ func _on_chapter_completed(id: String)-> void:
 		tutorial_completed = true
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	panel.show()
 	if body.is_in_group("player"):
 		player_in_range = true
 		animation_player.play("talk")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	panel.hide()
 	if body.is_in_group("player"):
 		player_in_range = false
 		animation_player.play_backwards("talk")
