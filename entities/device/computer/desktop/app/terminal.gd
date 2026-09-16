@@ -34,7 +34,7 @@ func _ready() -> void:
 		input_line.text_submitted.connect(_on_text_submitted)
 	if prompt_label:
 		prompt_label.text = prompt_string
-	_print_line("Simulator Command Prompt [Version 1.0]\n")
+	_print_line("Simulator Command Prompt [Version 1.0]\n help: Menampilkan daftar perintah.\n")
 
 
 func setup(device_id: String) -> void:
