@@ -16,7 +16,10 @@
 [ext_resource type="Resource" uid="uid://btbt3t63k53gq" path="res://dialogue/tutorial/tutorial.dialogue" id="11_kda5k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oy5c4"]
-size = Vector2(80, 70)
+size = Vector2(80, 147)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4j8i"]
+size = Vector2(323, 80)
 
 [node name="TrainingRoom" type="Node2D" unique_id=1750261536]
 script = ExtResource("1_i4j8i")
@@ -115,7 +118,12 @@ position = Vector2(211, -25)
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Main/TutorialTrigger/DeviceTrigger" unique_id=866712076]
+position = Vector2(0, 38.5)
 shape = SubResource("RectangleShape2D_oy5c4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Main/TutorialTrigger/DeviceTrigger" unique_id=1817488837]
+position = Vector2(-200.5, 73)
+shape = SubResource("RectangleShape2D_i4j8i")
 
 [node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("1_mxsk6")]
 position = Vector2(-192, -80)
