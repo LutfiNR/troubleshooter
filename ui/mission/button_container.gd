@@ -32,7 +32,9 @@ func _on_mission_completed_ui(_mission_id: String) -> void:
 	hide_popup()
 	check_progress_button.hide()
 	roadmap_button.texture_normal = load("uid://cpwvb08juo4rl")
+	roadmap_button.texture_pressed = load("uid://cpwvb08juo4rl")
 	roadmap_button.texture_hover = load("uid://bfoslpav2vde3")
+	roadmap_button.texture_focused = load("uid://bfoslpav2vde3")
 
 
 func _on_mission_loaded(mission: MissionData) -> void:
@@ -77,6 +79,7 @@ func _on_roadmap_button_pressed() -> void:
 		show_popup(roadmap_popup_scene)
 		if not GameManager.game_data.tutorial_completed.has("roadmap"):
 			DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "roadmap")
+			await DialogueManager.dialogue_ended
 			GameManager.tutorial_completed.emit("roadmap")
 
 
@@ -88,6 +91,7 @@ func _on_mission_button_pressed() -> void:
 		show_popup(mission_popup_scene)
 		if not GameManager.game_data.tutorial_completed.has("mission"):
 			DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "mission")
+			await DialogueManager.dialogue_ended
 			GameManager.tutorial_completed.emit("mission")
 
 
@@ -108,6 +112,7 @@ func _on_check_progress_button_pressed() -> void:
 	show_popup(check_popup_scene)
 	if not GameManager.game_data.tutorial_completed.has("check"):
 		DialogueManager.show_dialogue_balloon(load("uid://btbt3t63k53gq"), "check")
+		await DialogueManager.dialogue_ended
 		GameManager.tutorial_completed.emit("check")
 
 

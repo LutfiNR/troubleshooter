@@ -13,9 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://baux3tf0nj6vh" path="res://assets/UI/MainMenu/main_menu_bg_0007.png" id="7_bgtsx"]
 [ext_resource type="Texture2D" uid="uid://sx5xlnnnxc0c" path="res://assets/UI/MainMenu/main_menu_bg_0008.png" id="8_kaxbk"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="9_arv2f"]
-[ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="14_u2jyo"]
-[ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="15_bpbph"]
-[ext_resource type="Texture2D" uid="uid://hb5y60bykw0k" path="res://assets/UI/Icon/setting_icon.png" id="16_qewnw"]
+[ext_resource type="StyleBox" uid="uid://c6i2xc1qtfq0m" path="res://assets/Theme/button_outlined_primary/normal_button_outlined_primary.tres" id="14_u2jyo"]
+[ext_resource type="StyleBox" uid="uid://coeldy3vvgbuu" path="res://assets/Theme/button_outlined_primary/hover_button_outlined_primary.tres" id="15_bpbph"]
+[ext_resource type="Texture2D" uid="uid://e8t7rij6m3tu" path="res://assets/UI/Icon/pause_icon.png" id="16_u2jyo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u2jyo"]
 texture = ExtResource("5_qao3l")
@@ -220,7 +220,7 @@ offset_right = -4.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("16_qewnw")
+texture = ExtResource("16_u2jyo")
 
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="button_up" from="VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_button_up"]

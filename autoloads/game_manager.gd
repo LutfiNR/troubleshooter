@@ -12,6 +12,7 @@ signal mission_loaded(mission: MissionData)
 signal chapter_completed(id: String)
 signal mission_completed(id: String)
 signal tutorial_completed(id: String)
+signal mission_failed(mission_id: String)
 
 const SAVE_PATH := "./save_game.dat"
 
@@ -36,6 +37,7 @@ func _ready() -> void:
 	chapter_completed.connect(_on_chapter_completed)
 	mission_completed.connect(_on_mission_completed)
 	tutorial_completed.connect(_on_tutorial_completed)
+	mission_failed.connect(_on_mission_failed)
 
 	if FileAccess.file_exists(SAVE_PATH):
 		load_game()
@@ -180,6 +182,13 @@ func _on_tutorial_completed(tutorial_id: String) -> void:
 	game_data.tutorial_completed.append(tutorial_id)
 	save_game()
 
+func _on_mission_failed(mission_id: String)-> void:
+	SoundManager.stop_music()
+	SoundManager.play_sfx("mission_failed")
+	game_data.current_mission = ""
+	current_mission = null
+	set_game_data_mission_status(current_chapter.id, mission_id, ProgressStatus.UNLOCKED)
+	SceneLoader.load_scene("uid://huymfpmo6da0")
 
 func unlock_new_mission() -> void:
 	for chapter_data in chapter_datas:

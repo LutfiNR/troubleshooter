@@ -13,21 +13,23 @@ func _on_exit_button_pressed() -> void:
 
 func _on_setting_button_pressed() -> void:
 	_play_click_sfx()
-	var existing := get_node_or_null("SettingsPopup")
+	get_tree().paused = true
+	var existing := get_node_or_null("PauseMenu")
 	if existing != null:
 		existing.visible = true
 		if existing.get_parent() != null:
 			existing.get_parent().move_child(existing, existing.get_parent().get_child_count() - 1)
 		return
 
-	var settings_scene := preload("res://ui/settings/setting.tscn").instantiate()
-	settings_scene.name = "SettingsPopup"
-	settings_scene.layer = 100
-	add_child(settings_scene)
-	if settings_scene.get_parent() != null:
-		settings_scene.get_parent().move_child(
-			settings_scene,
-			settings_scene.get_parent().get_child_count() - 1,
+	var pause_scene := preload("res://ui/pause_menu/pause_menu.tscn").instantiate()
+	pause_scene.name = "PauseMenu"
+	pause_scene.layer = 100
+	pause_scene.in_game = false
+	add_child(pause_scene)
+	if pause_scene.get_parent() != null:
+		pause_scene.get_parent().move_child(
+			pause_scene,
+			pause_scene.get_parent().get_child_count() - 1,
 		)
 
 
