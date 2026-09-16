@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c5g12dbpuuoei" path="res://entities/npc/manager.gd" id="1_uuhqk"]
 [ext_resource type="Texture2D" uid="uid://crgfwch3g0m5t" path="res://assets/Player/manager.png" id="2_uuhqk"]
+[ext_resource type="Texture2D" uid="uid://dwbk0omvpg7dr" path="res://assets/Player/manager_sign.png" id="3_bqyvk"]
+[ext_resource type="Texture2D" uid="uid://x7mkexywlj6n" path="res://assets/UI/bubble/bubble.png" id="3_dgscp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgnbm"]
 size = Vector2(8.5, 11)
@@ -28,13 +30,8 @@ size = Vector2(19, 19.5)
 radius = 7.0
 height = 27.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuhqk"]
-bg_color = Color(0.83889705, 0.83889705, 0.8388969, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p5g81"]
+texture = ExtResource("3_dgscp")
 
 [sub_resource type="Animation" id="Animation_uuhqk"]
 length = 0.001
@@ -112,7 +109,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.53588665, 0.39229205),
 "update": 0,
-"values": [Vector2(-8, -28), Vector2(-8, -32)]
+"values": [Vector2(8, -16), Vector2(8, -24)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dgscp"]
@@ -154,7 +151,7 @@ z_index = 2
 offset_top = -28.0
 offset_right = 17.0
 offset_bottom = -19.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_uuhqk")
+theme_override_styles/panel = SubResource("StyleBoxTexture_p5g81")
 
 [node name="TalkIndicator" type="Label" parent="Panel" unique_id=763815342]
 layout_mode = 1
@@ -164,9 +161,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -5.0
-offset_top = -8.25
+offset_top = -9.25
 offset_right = 15.0
-offset_bottom = 14.75
+offset_bottom = 13.75
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
@@ -178,14 +175,15 @@ clip_text = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/TalkIndicator" unique_id=1415968602]
 libraries/ = SubResource("AnimationLibrary_dgscp")
 
-[node name="Label" type="Label" parent="." unique_id=758355505]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=200456311]
 z_index = 2
-offset_left = -17.5
-offset_top = -42.0
-offset_right = 18.5
-offset_bottom = -30.0
-theme_override_font_sizes/font_size = 8
-text = "Manager"
+offset_left = -7.5
+offset_top = -26.5
+offset_right = 34.5
+offset_bottom = -17.5
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_bqyvk")
+stretch_mode = 2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
