@@ -2,13 +2,16 @@
 
 [ext_resource type="StyleBox" uid="uid://bm8nwuyx3mv01" path="res://assets/UI/Input/input_styles.tres" id="1_dlunq"]
 [ext_resource type="StyleBox" uid="uid://co48oojlikso0" path="res://assets/Theme/button_filled_primary/normal_button_filled_primary.tres" id="1_i5ob3"]
+[ext_resource type="FontFile" uid="uid://cb7ts27d4xuqr" path="res://assets/Font/pixel_operator/PixelOperator.ttf" id="1_nge8h"]
 [ext_resource type="StyleBox" uid="uid://bt3c5jbeb624e" path="res://assets/Theme/button_filled_primary/hover_button_filled_primary.tres" id="1_roo7c"]
 [ext_resource type="Texture2D" uid="uid://byygs72i1lsjl" path="res://assets/UI/Input/input_0002.png" id="2_n1r02"]
 [ext_resource type="Texture2D" uid="uid://d3eixc28qtqcb" path="res://assets/UI/Input/check_button1.png" id="3_iuutd"]
 [ext_resource type="Texture2D" uid="uid://fi7a7oxd0svy" path="res://assets/UI/Input/check_button2.png" id="4_d66b8"]
 [ext_resource type="Texture2D" uid="uid://orvqomlh03sl" path="res://assets/UI/Input/check_button3.png" id="5_hbwbd"]
 [ext_resource type="Texture2D" uid="uid://b7bdf8alhw4j2" path="res://assets/UI/Input/check_button4.png" id="6_nge8h"]
+[ext_resource type="FontFile" uid="uid://d1qvunlaefagr" path="res://assets/Font/pixel_operator/PixelOperator-Bold.ttf" id="10_76y0q"]
 [ext_resource type="StyleBox" uid="uid://by2jbbhtyvclo" path="res://assets/Theme/tab_bar/tab_selected.tres" id="11_hbwbd"]
+[ext_resource type="FontFile" uid="uid://dp2c85jk7yaep" path="res://assets/Font/pixel_operator/PixelOperatorMono.ttf" id="11_m8e7w"]
 [ext_resource type="StyleBox" uid="uid://col4ixxr0kfwd" path="res://assets/Theme/tab_bar/tab_unselected.tres" id="12_nge8h"]
 [ext_resource type="StyleBox" uid="uid://c0y7netmnp8or" path="res://assets/Theme/tab_bar/tab_bar_panel.tres" id="13_nge8h"]
 [ext_resource type="StyleBox" uid="uid://c2fqw078pegec" path="res://assets/Theme/tab_bar/tab_bar_bg.tres" id="14_nwk38"]
@@ -66,7 +69,7 @@ texture_margin_bottom = 4.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 
-[sub_resource type="Image" id="Image_hbwbd"]
+[sub_resource type="Image" id="Image_76y0q"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -76,7 +79,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_wms38"]
-image = SubResource("Image_hbwbd")
+image = SubResource("Image_76y0q")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcf2e"]
 content_margin_left = 0.0
@@ -193,6 +196,7 @@ bg_color = Color(0.078431375, 0.13725491, 0.22745098, 0.48235294)
 
 [resource]
 Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_nge8h")
 Button/styles/focus = ExtResource("1_roo7c")
 Button/styles/hover = ExtResource("1_roo7c")
 Button/styles/normal = ExtResource("1_i5ob3")
@@ -225,6 +229,7 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_nge8h")
 Label/styles/focus = SubResource("StyleBoxFlat_0d2s3")
 Label/styles/normal = SubResource("StyleBoxEmpty_fqsl8")
 LineEdit/colors/caret_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
@@ -240,10 +245,12 @@ LineEdit/constants/caret_width = 1
 LineEdit/constants/minimum_character_width = 4
 LineEdit/constants/outline_size = 0
 LineEdit/font_sizes/font_size = 24
+LineEdit/fonts/font = ExtResource("1_nge8h")
 LineEdit/icons/clear = SubResource("DPITexture_wl1kw")
 LineEdit/styles/focus = ExtResource("1_dlunq")
 LineEdit/styles/normal = ExtResource("1_dlunq")
 LineEdit/styles/read_only = SubResource("StyleBoxTexture_i5ob3")
+ProgressBar/fonts/font = ExtResource("1_nge8h")
 RichTextLabel/constants/line_separation = 0
 RichTextLabel/constants/outline_size = 0
 RichTextLabel/constants/paragraph_separation = 0
@@ -261,6 +268,9 @@ RichTextLabel/font_sizes/bold_italics_font_size = 24
 RichTextLabel/font_sizes/italics_font_size = 24
 RichTextLabel/font_sizes/mono_font_size = 24
 RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/bold_font = ExtResource("10_76y0q")
+RichTextLabel/fonts/mono_font = ExtResource("11_m8e7w")
+RichTextLabel/fonts/normal_font = ExtResource("1_nge8h")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_wms38")
 RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_bcf2e")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_bcf2e")
@@ -279,6 +289,7 @@ TabBar/constants/hover_switch_wait_msec = 500
 TabBar/constants/icon_max_width = 0
 TabBar/constants/outline_size = 0
 TabBar/font_sizes/font_size = 24
+TabBar/fonts/font = ExtResource("1_nge8h")
 TabBar/icons/close = SubResource("DPITexture_lu33j")
 TabBar/icons/decrement = SubResource("DPITexture_wycmq")
 TabBar/icons/decrement_highlight = SubResource("DPITexture_x2pqw")
@@ -301,4 +312,6 @@ TabContainer/styles/tabbar_background = ExtResource("14_nwk38")
 TextEdit/styles/focus = ExtResource("1_dlunq")
 TextEdit/styles/normal = ExtResource("1_dlunq")
 TextEdit/styles/read_only = null
+Tree/fonts/font = ExtResource("1_nge8h")
+Tree/fonts/title_button_font = ExtResource("1_nge8h")
 Tree/styles/panel = SubResource("StyleBoxFlat_sc6al")

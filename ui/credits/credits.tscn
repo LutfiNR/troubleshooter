@@ -114,53 +114,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16078432, 0.16078432, 0.16078432, 0.9647059)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=784883736]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 1248.0
-offset_bottom = 688.0
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "[center]
-[b][font_size=48]CREDITS[/font_size][/b]
-
-[b][font_size=24]Created by[/font_size][/b]
-
-[img width=128 height=128]res://assets/UI/player_stats/player_photo.png[/img]
-Kirin (Lutfi Nur Rohman)
-
-
-[b][font_size=24]Special Thanks[/font_size][/b]
-[i][font_size=24]Mentor[/font_size][/i]
-
-[img width=128 height=128]res://assets/afif_rahman.jpeg[/img]											[img width=128 height=128]res://assets/daniel_rinaldi.jpeg[/img]
-Dr. Afif Rahman Riyanda, M.Pd.T				Daniel Rinaldi, S.T., M.Eng.
-
-
-[i][font_size=24]Font Asset[/font_size][/i]
-Jayvee Enaguas
-[/center]
-
-[center]
-[b]Music (via Pixabay)[/b]
-MondaMusic
-Nikita Kondrashev
-Cyberwave Orchestra
-ido berg
-Gaston A-P
-Alex
-
-
-[b]Sound Effects (via Pixabay)[/b]
-Tuomas_Data
-freesound_community
-Emiliano Dleon
-DRAGON-STUDIO
-Universfield
-[/center]"
-script = ExtResource("2_2n5wy")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1405051578]
 libraries/ = SubResource("AnimationLibrary_1vb2a")
 autoplay = &"background"
@@ -224,6 +177,54 @@ offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("18_p3mgq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=784883736]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 688.0
+size_flags_vertical = 3
+theme = ExtResource("11_borvj")
+bbcode_enabled = true
+text = "[center]
+[b][font_size=48]CREDITS[/font_size][/b]
+
+[b][font_size=24]Created by[/font_size][/b]
+
+[img width=128 height=128]res://assets/UI/player_stats/player_photo.png[/img]
+Kirin (Lutfi Nur Rohman)
+
+
+[b][font_size=24]Special Thanks[/font_size][/b]
+[font_size=24]Mentor[/font_size]
+
+[img width=128 height=128]res://assets/afif_rahman.jpeg[/img]											[img width=128 height=128]res://assets/daniel_rinaldi.jpeg[/img]
+Dr. Afif Rahman Riyanda, M.Pd.T				Daniel Rinaldi, S.T., M.Eng.
+
+
+[font_size=24]Font Asset[/font_size]
+Jayvee Enaguas
+[/center]
+
+[center]
+[b]Music (via Pixabay)[/b]
+MondaMusic
+Nikita Kondrashev
+Cyberwave Orchestra
+ido berg
+Gaston A-P
+Alex
+
+
+[b]Sound Effects (via Pixabay)[/b]
+Tuomas_Data
+freesound_community
+Emiliano Dleon
+DRAGON-STUDIO
+Universfield
+[/center]"
+script = ExtResource("2_2n5wy")
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="SettingButton" to="." method="_on_setting_button_pressed"]

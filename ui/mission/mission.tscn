@@ -3,6 +3,8 @@
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="1_8savo"]
 [ext_resource type="Script" uid="uid://nvkm8iq3towb" path="res://ui/mission/mission.gd" id="1_sfccj"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="2_nk8a1"]
+[ext_resource type="FontFile" uid="uid://d1qvunlaefagr" path="res://assets/Font/pixel_operator/PixelOperator-Bold.ttf" id="4_5bne5"]
+[ext_resource type="FontFile" uid="uid://cb7ts27d4xuqr" path="res://assets/Font/pixel_operator/PixelOperator.ttf" id="5_j3gu7"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5bne5"]
 texture = ExtResource("2_nk8a1")
@@ -36,10 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_8savo")
 theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
-theme_override_font_sizes/normal_font_size = 16
-theme_override_font_sizes/bold_font_size = 16
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
+theme_override_fonts/bold_italics_font = ExtResource("4_5bne5")
+theme_override_fonts/italics_font = ExtResource("5_j3gu7")
 bbcode_enabled = true
 text = "erewrefsffd"

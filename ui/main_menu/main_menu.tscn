@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cehw4eo62toaf" path="res://assets/Font/pixel_operator/PixelOperator8-Bold.ttf" id="3_5klac"]
 [ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="3_arv2f"]
 [ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="4_5klac"]
+[ext_resource type="FontFile" uid="uid://jn4vi2ytw8l4" path="res://assets/Font/pixel_operator/PixelOperator8.ttf" id="4_bpbph"]
 [ext_resource type="Texture2D" uid="uid://4unbv7m2u1q4" path="res://assets/UI/Button/button_0002.png" id="4_tf5ef"]
 [ext_resource type="Texture2D" uid="uid://cjglm5dy75rjf" path="res://assets/UI/MainMenu/main_menu_bg_0005.png" id="5_lsdqh"]
 [ext_resource type="Texture2D" uid="uid://b8o06lg31tk2" path="res://assets/UI/Button/button_0004.png" id="5_qao3l"]
@@ -116,6 +117,7 @@ theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.098039
 theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("4_bpbph")
 theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
@@ -130,6 +132,7 @@ theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.098039
 theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("4_bpbph")
 theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
@@ -144,6 +147,7 @@ theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.098039
 theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("4_bpbph")
 theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")
@@ -158,6 +162,7 @@ theme_override_colors/font_focus_color = Color(0.007843138, 0.05490196, 0.098039
 theme_override_colors/font_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.007843138, 0.05490196, 0.09803922, 1)
+theme_override_fonts/font = ExtResource("4_bpbph")
 theme_override_styles/normal = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u2jyo")
 theme_override_styles/hover = SubResource("StyleBoxTexture_lknku")

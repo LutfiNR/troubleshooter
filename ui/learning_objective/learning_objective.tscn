@@ -49,10 +49,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -494.0
-offset_top = -231.0
-offset_right = 494.0
-offset_bottom = 231.0
+offset_left = -503.0
+offset_top = -272.0
+offset_right = 503.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
@@ -64,50 +64,39 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_qpq8g")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel" unique_id=587863261]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = 39.0
-offset_right = -24.0
-offset_bottom = -10.0
+offset_left = 27.0
+offset_top = 55.0
+offset_right = -27.0
+offset_bottom = 173.0
 grow_horizontal = 2
-grow_vertical = 2
+theme = ExtResource("3_ayx2c")
 theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 bbcode_enabled = true
-text = "[center]
-[b][font_size=24]Capaian Pembelajaran[/font_size][/b]
+text = "[center] [b][font_size=24]Capaian Pembelajaran[/font_size][/b]
 
-Peserta didik mampu menginstalasi, mengkonfigurasi, merawat, dan mengamankan [b]sistem operasi jaringan[/b] (Layanan Jaringan/Server), baik berbasis teks maupun GUI, serta mengatur [b]hak akses pengguna[/b] dan [b]layanan server[/b] 
-([i]DHCP, DNS, FTP, Web Server, Mail Server, dan remote server[/i]).
-[/center]"
+Pada akhir fase F, peserta didik mampu memahami meliputi konfigurasi dan pengujian konfigurasi TCP/IP, remote server, DHCP, DNS, FTP, file server, web server, database server. [/center]"
 
-[node name="Panel2" type="Panel" parent="HBoxContainer" unique_id=999734939]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_qpq8g")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Panel2" unique_id=1543429355]
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/Panel" unique_id=1543429355]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 39.0
-offset_right = -26.0
-offset_bottom = -10.0
+offset_left = 19.0
+offset_top = 197.0
+offset_right = -19.0
+offset_bottom = 510.0
 grow_horizontal = 2
-grow_vertical = 2
+theme = ExtResource("3_ayx2c")
 theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 bbcode_enabled = true
-text = "[center]
-[b][font_size=24]Tujuan Pembelajaran[/font_size][/b][/center]
+text = "[center] [b][font_size=24]Tujuan Pembelajaran[/font_size][/b][/center]
 
-[center][b]Administrasi Server[/b]
-5.1 Menerapkan instalasi, konfigurasi, dan pengujian layanan server ([i]remote, DHCP, DNS, FTP, file, web, database server[/i]).
+[center]Menganalisis dan mendiagnosis permasalahan jaringan pada infrastruktur dasar dan layanan aplikasi, meliputi TCP/IP, remote server, DHCP, DNS, FTP, file server, web server, dan database server.
 
-[b]Instalasi dan Konfigurasi Server Hosting[/b]
-5.2 Menerapkan instalasi, konfigurasi, dan pengujian layanan server ([i]Control Panel Hosting, Share Hosting Server, Dedicated Hosting Server, Virtual Private Server, VPN server, sistem kontrol, dan monitoring[/i]).
+Menguji dan memvalidasi hasil konfigurasi seluruh layanan server dari sisi klien untuk memastikan jaringan telah berfungsi kembali dengan normal.
+
+Menerapkan tahapan pemecahan masalah (problem solving) secara logis dan sistematis dalam setiap proses troubleshooting, mulai dari perumusan hipotesis hingga evaluasi hasil akhir.
 [/center]"
 
 [node name="ExitButton" type="Button" parent="." unique_id=171783876]

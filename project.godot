@@ -50,6 +50,10 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 player=""
 
+[gui]
+
+theme/custom_font="uid://cb7ts27d4xuqr"
+
 [input]
 
 move_up={

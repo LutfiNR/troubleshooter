@@ -179,7 +179,6 @@ texture_hover = ExtResource("15_udkyp")
 stretch_mode = 5
 
 [node name="AppContainer" type="Panel" parent="UIContainer" unique_id=459273456]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -583,7 +582,6 @@ layout_mode = 2
 text = "Login"
 
 [node name="File" type="Control" parent="UIContainer/AppContainer" unique_id=181695497 node_paths=PackedStringArray("ssl_icon", "path", "content_list", "credential_popup", "credential_username", "credential_password", "validation_label", "button_container", "upload_button", "delete_button")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,9 +687,11 @@ theme_override_colors/font_color = Color(0.060530387, 0.060530342, 0.060530342, 
 theme_override_colors/font_hovered_color = Color(0.16086814, 0.16086817, 0.1608682, 1)
 theme_override_colors/font_hovered_selected_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 theme_override_colors/font_selected_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+theme_override_font_sizes/font_size = 24
 theme_override_styles/panel = SubResource("StyleBoxEmpty_g83hl")
 max_columns = 3
 same_column_width = true
+icon_scale = 2.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UIContainer/AppContainer/File/VBox" unique_id=2037086765]
 layout_mode = 2
