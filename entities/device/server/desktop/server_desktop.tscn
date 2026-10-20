@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="1_xx8oc"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="3_ldhip"]
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="3_xpotj"]
+[ext_resource type="Texture2D" uid="uid://yyjtlftgf4qq" path="res://assets/PC/bg.png" id="4_fbk0g"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="5_0d2s3"]
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_ovbx6"]
 [ext_resource type="StyleBox" uid="uid://3ytyo1q5cxc" path="res://assets/Theme/button_outlined_danger/hover_button_outlined_danger.tres" id="6_fbk0g"]
@@ -81,6 +82,21 @@ sprite_on = ExtResource("1_xx8oc")
 sprite_off = ExtResource("3_xpotj")
 service_app = NodePath("UIContainer/AppContainer/ServiceApp")
 setting_app = NodePath("UIContainer/AppContainer/SettingApp")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2001184559]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("4_fbk0g")
 
 [node name="Desktop" type="Sprite2D" parent="." unique_id=679797629]
 position = Vector2(0, 58)

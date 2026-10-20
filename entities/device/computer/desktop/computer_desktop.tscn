@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="2_cgk24"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="3_5ieel"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_cgk24"]
+[ext_resource type="Texture2D" uid="uid://yyjtlftgf4qq" path="res://assets/PC/bg.png" id="4_llneo"]
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="5_g83hl"]
 [ext_resource type="Texture2D" uid="uid://cvyi5a3iw8sly" path="res://assets/UI/Input/input_0001.png" id="5_j2re7"]
 [ext_resource type="Script" uid="uid://c2pqf8bdubnfu" path="res://entities/device/computer/desktop/app/pc_setting_app.gd" id="6_cgk24"]
@@ -69,6 +70,21 @@ browser_app = NodePath("UIContainer/AppContainer/Web")
 file_app = NodePath("UIContainer/AppContainer/File")
 cmd_app = NodePath("UIContainer/AppContainer/Terminal")
 email_app = NodePath("UIContainer/AppContainer/Email")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=872762977]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("4_llneo")
 
 [node name="Desktop" type="Sprite2D" parent="." unique_id=140871609]
 position = Vector2(0, 36)

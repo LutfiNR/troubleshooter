@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b57poe0x2yr5r" path="res://entities/device/router/desktop/router_desktop.gd" id="1_04prg"]
 [ext_resource type="Texture2D" uid="uid://cqux8wovqx4" path="res://assets/UI/app_window.png" id="1_fw4vx"]
 [ext_resource type="Script" uid="uid://m0s4iki6mfx2" path="res://entities/device/router/desktop/ui_container.gd" id="2_7p7ye"]
+[ext_resource type="Texture2D" uid="uid://yyjtlftgf4qq" path="res://assets/PC/bg.png" id="2_rmj6y"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_7p7ye"]
 [ext_resource type="Script" uid="uid://oy4xrlikc5bd" path="res://entities/device/router/desktop/interfaces.gd" id="4_kbl0u"]
 [ext_resource type="PackedScene" uid="uid://c1yqpkqil2l3c" path="res://entities/device/utils/popup_panel.tscn" id="7_44riu"]
@@ -12,6 +13,21 @@
 [node name="RouterDesktop" type="Node2D" unique_id=531429823 node_paths=PackedStringArray("ui_container")]
 script = ExtResource("1_04prg")
 ui_container = NodePath("UIContainer")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1308679034]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("2_rmj6y")
 
 [node name="UIContainer" type="Control" parent="." unique_id=1309312213 node_paths=PackedStringArray("interface_tab", "dhcp_relay_tab")]
 layout_mode = 3

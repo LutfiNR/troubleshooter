@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bqgjoogblxqj2" path="res://entities/connection/port/port.tscn" id="1_nviyo"]
 [ext_resource type="PackedScene" uid="uid://b2yr5qmqc7qdd" path="res://entities/connection/cable/cable_node.tscn" id="2_go5gm"]
 [ext_resource type="Texture2D" uid="uid://csfj0t55d47cr" path="res://assets/Router/router_physical.png" id="2_ixqxy"]
+[ext_resource type="Texture2D" uid="uid://uehh3dh0ln4c" path="res://assets/Router/bg.png" id="2_wmsn0"]
 [ext_resource type="Texture2D" uid="uid://divfvqdw8qnre" path="res://assets/UI/Button/x_button_0002.png" id="4_2bmjf"]
 [ext_resource type="Theme" uid="uid://dd5ntn00ugsv" path="res://assets/Theme/theme.tres" id="5_uk5tc"]
 [ext_resource type="StyleBox" uid="uid://dty41lht0xmku" path="res://assets/Theme/button_outlined_danger/normal_button_outlined_danger.tres" id="6_wmsn0"]
@@ -13,6 +14,21 @@
 script = ExtResource("1_2bmjf")
 ports = [NodePath("Port"), NodePath("Port2"), NodePath("Port3"), NodePath("Port4")]
 cables = [NodePath("CableNode"), NodePath("CableNode2"), NodePath("CableNode3"), NodePath("CableNode4")]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=427848531]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -513.0
+offset_right = 960.0
+offset_bottom = 567.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+texture = ExtResource("2_wmsn0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=319776639]
 position = Vector2(36, -15)

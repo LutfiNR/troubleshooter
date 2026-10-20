@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cpjg2jnxgd4aw"]
 
 [ext_resource type="Script" uid="uid://bc26qtwink3a5" path="res://ui/credits/credits.gd" id="1_d7n5t"]
-[ext_resource type="Texture2D" uid="uid://dmhu75sgoceuu" path="res://assets/PC/desktop_off.png" id="1_ydyd3"]
 [ext_resource type="Script" uid="uid://cv7ps8kw735wi" path="res://ui/credits/rich_text_label.gd" id="2_2n5wy"]
 [ext_resource type="Texture2D" uid="uid://1qk7q10itddl" path="res://assets/UI/MainMenu/main_menu_bg_0001.png" id="2_hfqo3"]
 [ext_resource type="Texture2D" uid="uid://jaqmxgx1eytf" path="res://assets/UI/MainMenu/main_menu_bg_0006.png" id="2_nnsry"]
+[ext_resource type="Texture2D" uid="uid://b8hq58trhrw4" path="res://assets/PC/desktop.png" id="2_p3mgq"]
 [ext_resource type="Texture2D" uid="uid://ijhpt62s74vp" path="res://assets/UI/MainMenu/main_menu_bg_0002.png" id="4_pdd3v"]
 [ext_resource type="Texture2D" uid="uid://dyth5xvq4w635" path="res://assets/UI/MainMenu/main_menu_bg_0003.png" id="5_q8t8k"]
 [ext_resource type="Texture2D" uid="uid://balfqnx3honmr" path="res://assets/UI/MainMenu/main_menu_bg_0004.png" id="6_b6jqh"]
@@ -30,7 +30,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [ExtResource("2_hfqo3")]
 }
 
@@ -47,7 +47,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [ExtResource("2_hfqo3"), ExtResource("4_pdd3v"), ExtResource("5_q8t8k"), ExtResource("6_b6jqh"), ExtResource("7_borvj"), ExtResource("2_nnsry"), ExtResource("9_d7n5t"), ExtResource("10_llslm")]
 }
 
@@ -85,7 +85,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ydyd3")
+texture = ExtResource("2_p3mgq")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1142998820]
 layout_mode = 1
@@ -103,16 +103,14 @@ expand_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=187109432]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = -32.0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 1248.0
 offset_bottom = -32.0
-grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.16078432, 0.16078432, 0.16078432, 0.9647059)
+color = Color(0.8901961, 0.8901961, 0.8901961, 0.8352941)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1405051578]
 libraries/ = SubResource("AnimationLibrary_1vb2a")
@@ -179,13 +177,19 @@ grow_vertical = 2
 texture = ExtResource("18_p3mgq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=784883736]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 1248.0
-offset_bottom = 688.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_top = 31.0
+offset_right = -35.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme = ExtResource("11_borvj")
+theme_override_colors/default_color = Color(0.078431375, 0.13725491, 0.22745098, 1)
 bbcode_enabled = true
 text = "[center]
 [b][font_size=48]CREDITS[/font_size][/b]
@@ -203,7 +207,7 @@ Kirin (Lutfi Nur Rohman)
 Dr. Afif Rahman Riyanda, M.Pd.T				Daniel Rinaldi, S.T., M.Eng.
 
 
-[font_size=24]Font Asset[/font_size]
+[b][font_size=24]Font Asset[/font_size][/b]
 Jayvee Enaguas
 [/center]
 
