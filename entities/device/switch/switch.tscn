@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ltpg38702vte" path="res://entities/device/switch/physical/switch_physical.tscn" id="2_tsfvs"]
 [ext_resource type="Script" uid="uid://bpkewho0tjmf" path="res://entities/device/switch/switch.gd" id="2_uk7y1"]
 [ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://assets/PopupActionDevice/popupobject_0003.png" id="4_uoypf"]
+[ext_resource type="Texture2D" uid="uid://bvo0x00xu5sax" path="res://assets/UI/device_sign.png" id="7_7isqn"]
+[ext_resource type="Script" uid="uid://c2nmsxswh2wjd" path="res://entities/device/utils/sign.gd" id="8_3rakr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk7y1"]
 size = Vector2(28, 10)
@@ -36,13 +38,14 @@ _data = {
 &"RESET": SubResource("Animation_yhewp")
 }
 
-[node name="Switch" type="StaticBody2D" unique_id=1625809566 node_paths=PackedStringArray("sprite", "action_popup")]
+[node name="Switch" type="StaticBody2D" unique_id=1625809566 node_paths=PackedStringArray("sprite", "action_popup", "device_sign")]
 y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("2_uk7y1")
 sprite = NodePath("Sprite2D")
 action_popup = NodePath("ActionContainer")
 physical_scene = ExtResource("2_tsfvs")
+device_sign = NodePath("Sign")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
 position = Vector2(0, 1)
@@ -95,6 +98,18 @@ texture_normal = ExtResource("2_jgohr")
 [node name="PhysicalButton" type="TextureButton" parent="ActionContainer" unique_id=1535277635]
 layout_mode = 2
 texture_normal = ExtResource("4_uoypf")
+
+[node name="Sign" type="NinePatchRect" parent="." unique_id=2111185425]
+visible = false
+z_index = 2
+offset_left = -14.0
+offset_top = -23.5
+offset_right = 14.0
+offset_bottom = -11.5
+pivot_offset = Vector2(14, 12)
+texture = ExtResource("7_7isqn")
+region_rect = Rect2(68, 0, 28, 12)
+script = ExtResource("8_3rakr")
 
 [connection signal="input_event" from="InteractArea" to="." method="_on_interact_area_input_event"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

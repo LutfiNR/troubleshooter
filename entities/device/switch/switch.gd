@@ -11,6 +11,7 @@ const FRAME_ON_HOVER = 3
 @export var action_popup: VBoxContainer
 @export var physical_scene: PackedScene
 @export var desktop_scene: PackedScene
+@export var device_sign: DeviceSign
 
 var player_in_range: bool = false
 var device_data: SwitchDeviceData = null
@@ -42,8 +43,10 @@ func _update_visual() -> void:
 
 	if player_in_range:
 		sprite.frame = FRAME_ON_HOVER if is_on else FRAME_OFF_HOVER
+		device_sign.open()
 	else:
 		sprite.frame = FRAME_ON_IDLE if is_on else FRAME_OFF_IDLE
+		device_sign.close()
 
 
 func _on_device_updated(updated_device_id: String, _device_data: DeviceData) -> void:

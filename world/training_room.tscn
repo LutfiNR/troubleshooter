@@ -19,7 +19,7 @@
 size = Vector2(80, 147)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4j8i"]
-size = Vector2(323, 80)
+size = Vector2(151, 80)
 
 [node name="TrainingRoom" type="Node2D" unique_id=1750261536]
 script = ExtResource("1_i4j8i")
@@ -82,7 +82,7 @@ position = Vector2(128, 48)
 device_id = "switch0"
 
 [node name="Switch2" parent="Main/Switchs" unique_id=394667521 instance=ExtResource("5_woc7e")]
-position = Vector2(-32, 48)
+position = Vector2(-68, 163)
 device_id = "switch1"
 
 [node name="Computers" type="Node2D" parent="Main" unique_id=214902261]
@@ -100,7 +100,7 @@ device_id = "computer1"
 y_sort_enabled = true
 
 [node name="Server" parent="Main/Servers" unique_id=2022845858 instance=ExtResource("7_i4j8i")]
-position = Vector2(-112, 48)
+position = Vector2(-148, 163)
 device_id = "server0"
 
 [node name="TutorialTrigger" type="Node2D" parent="Main" unique_id=871440655]
@@ -122,7 +122,7 @@ position = Vector2(0, 38.5)
 shape = SubResource("RectangleShape2D_oy5c4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Main/TutorialTrigger/DeviceTrigger" unique_id=1817488837]
-position = Vector2(-200.5, 73)
+position = Vector2(-114.5, 73)
 shape = SubResource("RectangleShape2D_i4j8i")
 
 [node name="Player" parent="Main" unique_id=196673383 instance=ExtResource("1_mxsk6")]

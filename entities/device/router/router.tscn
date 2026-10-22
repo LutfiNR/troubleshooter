@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://kbe3xcqc12xo" path="res://entities/device/router/desktop/router_desktop.tscn" id="3_pndaw"]
 [ext_resource type="Texture2D" uid="uid://o0a73wefbihk" path="res://assets/PopupActionDevice/popupobject_0002.png" id="3_y0sel"]
 [ext_resource type="Texture2D" uid="uid://brk1c22ex38kp" path="res://assets/PopupActionDevice/popupobject_0003.png" id="4_41528"]
+[ext_resource type="Texture2D" uid="uid://bvo0x00xu5sax" path="res://assets/UI/device_sign.png" id="9_51i4t"]
+[ext_resource type="Script" uid="uid://c2nmsxswh2wjd" path="res://entities/device/utils/sign.gd" id="10_7vp8y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_obbad"]
 size = Vector2(12, 4)
@@ -38,7 +40,7 @@ _data = {
 &"RESET": SubResource("Animation_yhewp")
 }
 
-[node name="Router" type="StaticBody2D" unique_id=1828844198 node_paths=PackedStringArray("sprite", "action_popup")]
+[node name="Router" type="StaticBody2D" unique_id=1828844198 node_paths=PackedStringArray("sprite", "action_popup", "device_sign")]
 y_sort_enabled = true
 scale = Vector2(2, 2)
 script = ExtResource("2_obbad")
@@ -46,6 +48,7 @@ sprite = NodePath("Sprite2D")
 action_popup = NodePath("ActionContainer")
 physical_scene = ExtResource("2_u2xbe")
 desktop_scene = ExtResource("3_pndaw")
+device_sign = NodePath("Sign")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1370478908]
 position = Vector2(0, -3)
@@ -103,6 +106,18 @@ texture_normal = ExtResource("3_y0sel")
 [node name="PhysicalButton" type="TextureButton" parent="ActionContainer" unique_id=1535277635]
 layout_mode = 2
 texture_normal = ExtResource("4_41528")
+
+[node name="Sign" type="NinePatchRect" parent="." unique_id=2136326965]
+visible = false
+z_index = 2
+offset_left = -14.0
+offset_top = -25.5
+offset_right = 14.0
+offset_bottom = -13.5
+pivot_offset = Vector2(14, 12)
+texture = ExtResource("9_51i4t")
+region_rect = Rect2(40, 0, 28, 12)
+script = ExtResource("10_7vp8y")
 
 [connection signal="input_event" from="InteractArea" to="." method="_on_interact_area_input_event"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
