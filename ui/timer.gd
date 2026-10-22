@@ -1,7 +1,7 @@
 extends Label
 
 var mission_time: float = -1.0
-
+var mission_id: String
 
 func _ready() -> void:
 	GameManager.mission_loaded.connect(_on_mission_loaded)
@@ -16,9 +16,10 @@ func _process(delta: float) -> void:
 	mission_time -= delta
 	text = _format_time(mission_time)
 	if mission_time <= 0:
-		GameManager.mission_failed.emit()
+		GameManager.mission_failed.emit(mission_id)
 
 func _on_mission_loaded(mission: MissionData) -> void:
+	mission_id=mission.id
 	mission_time = mission.time
 
 
