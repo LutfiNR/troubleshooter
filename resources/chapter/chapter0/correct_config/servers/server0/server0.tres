@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://0ql8hefurn4" path="res://components/network_service/DHCP/dhcp_service.gd" id="1_gjbks"]
 [ext_resource type="Script" uid="uid://csbgjle1kd61r" path="res://components/network_service/DNS/dns_service.gd" id="2_euuc8"]
+[ext_resource type="Script" uid="uid://bmx45o5qrto11" path="res://components/network_service/DNS/dns_record.gd" id="3_68oa0"]
 [ext_resource type="Script" uid="uid://cu4n0rxocv06b" path="res://components/network_service/FTP/ftp_service.gd" id="3_up8jj"]
 [ext_resource type="Script" uid="uid://ci1x0glfens8u" path="res://components/network_interface/network_interface.gd" id="4_7oh28"]
 [ext_resource type="Resource" uid="uid://da2whtvbx087m" path="res://resources/chapter/chapter0/correct_config/servers/server0/interfaces/eth0.tres" id="5_dib73"]
@@ -12,10 +13,24 @@
 [ext_resource type="Script" uid="uid://3wt8jxh6n6th" path="res://components/network_device/server_device/server_device.gd" id="10_055w5"]
 [ext_resource type="Script" uid="uid://cu5af7k6mnn4q" path="res://components/network_service/Web/web_service.gd" id="11_xklci"]
 
+[sub_resource type="Resource" id="Resource_cs0pt"]
+script = ExtResource("3_68oa0")
+domain_name = "google.com"
+target_ip_or_name = "192.168.1.254"
+metadata/_custom_type_script = "uid://bmx45o5qrto11"
+
+[sub_resource type="Resource" id="Resource_7k2lq"]
+script = ExtResource("2_euuc8")
+records = Array[ExtResource("3_68oa0")]([SubResource("Resource_cs0pt")])
+metadata/_custom_type_script = "uid://csbgjle1kd61r"
+
 [resource]
 script = ExtResource("10_055w5")
 default_gateway = "192.168.1.1"
 dns_server = "192.168.1.254"
+installed_packages = Array[String](["bind9"])
+dns_service = 1
+dns_configuration = Array[ExtResource("2_euuc8")]([SubResource("Resource_7k2lq")])
 device_id = "server0"
 hostname = "Server"
 power = 1

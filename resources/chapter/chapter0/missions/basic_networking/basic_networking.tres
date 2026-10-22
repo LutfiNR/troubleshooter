@@ -14,15 +14,16 @@ guide = "[center][font_size=26][color=#1565C0][b]Basic Networking[/b][/color][/f
 [color=#2E7D32][font_size=18][b]Deskripsi[/b][/font_size][/color]
 [color=#333333]
 Selamat datang pada tahap [b]Tes Praktik Program Magang[/b].
-Pada misi ini, Anda akan mempelajari dasar konektivitas jaringan dengan melakukan troubleshooting pada sebuah jaringan sederhana.
-Terdapat beberapa kesalahan konfigurasi yang menyebabkan [b]Computer A[/b] dan [b]Computer B[/b] tidak dapat berkomunikasi dengan [b]Server[/b].
-Tugas Anda adalah memeriksa konfigurasi perangkat, menemukan permasalahan, dan memperbaikinya agar seluruh perangkat dapat berkomunikasi dengan baik.
+Pada misi ini, Anda akan mempelajari dasar konektivitas jaringan dengan melakukan troubleshooting pada jaringan di ruang training.
+Terdapat beberapa kesalahan konfigurasi pada perangkat jaringan yang menyebabkan [b]Computer A[/b] dan [b]Computer B[/b] tidak dapat terhubung ke jaringan luar.
+Tugas Anda adalah memeriksa konfigurasi perangkat, menemukan permasalahan, dan memperbaikinya agar kedua komputer dapat terhubung dengan baik.
 [/color]
 [color=#EF6C00][font_size=18][b]Catatan[/b][/font_size][/color]
 [color=#333333]
 • Jangan mengubah topologi jaringan.
 • Jangan menambahkan perangkat baru.
-• Periksa konfigurasi perangkat yang tersedia sebelum melakukan perubahan.
+• Fokuskan pemeriksaan pada perangkat yang tersedia di ruang training.
+• Periksa konfigurasi perangkat sebelum melakukan perubahan.
 • Lakukan perbaikan hanya pada konfigurasi yang diperlukan.
 [/color]
 [hr]
@@ -36,62 +37,61 @@ Tugas Anda adalah memeriksa konfigurasi perangkat, menemukan permasalahan, dan m
 • Device : [color=#455A64]Switch0[/color]
 [b]Router[/b]
 • Device : [color=#455A64]Router0[/color]
-[b]Switch B[/b]
-• Device : [color=#455A64]Switch1[/color]
-[b]Server[/b]
-• Device : [color=#455A64]Server0[/color]
 [/color]
 [hr]
 [color=#2E7D32][font_size=18][b]Informasi Jaringan[/b][/font_size][/color]
 [color=#333333]
-[b]Server0[/b]
-• IP Address  : [color=#455A64]192.168.1.254[/color]
+[b]Computer A — Computer0[/b]
+• IP Address : [color=#455A64]192.168.2.2[/color]
 • Subnet Mask : [color=#455A64]255.255.255.0[/color]
+• Default Gateway : [color=#455A64]192.168.2.1[/color]
+[b]Computer B — Computer1[/b]
+• IP Address : [color=#455A64]192.168.2.3[/color]
+• Subnet Mask : [color=#455A64]255.255.255.0[/color]
+• Default Gateway : [color=#455A64]192.168.2.1[/color]
 [b]Router0[/b]
 • FastEthernet0/0 : [color=#455A64]192.168.1.1[/color]
 • FastEthernet0/1 : [color=#455A64]192.168.2.1[/color]
-[b]Computer A — Computer0[/b]
-• IP Address : [color=#455A64]192.168.2.2[/color]
-[b]Computer B — Computer1[/b]
-• IP Address : [color=#455A64]192.168.2.3[/color]
 [/color]
 [hr]
 [color=#1565C0][font_size=18][b]Langkah Troubleshooting[/b][/font_size][/color]
 [color=#333333]
 [b]1. Periksa koneksi perangkat[/b]
-Pastikan koneksi antarperangkat sesuai dengan topologi yang tersedia dan tidak terdapat perangkat yang terputus.
+Pastikan Computer A, Computer B, Switch A, dan Router terhubung sesuai dengan topologi yang tersedia. Periksa apakah terdapat perangkat atau koneksi yang terputus.
 [b]2. Periksa status interface[/b]
-Periksa setiap interface yang digunakan dan pastikan interface berada dalam kondisi aktif.
+Periksa interface yang digunakan pada perangkat jaringan dan pastikan interface berada dalam kondisi aktif.
 [b]3. Periksa konfigurasi IP[/b]
-Periksa alamat IP dan subnet mask pada Computer A, Computer B, dan Server0. Pastikan konfigurasi sesuai dengan informasi jaringan yang diberikan.
+Periksa alamat IP dan subnet mask pada Computer A dan Computer B. Pastikan konfigurasi sesuai dengan jaringan yang digunakan.
 [b]4. Periksa konfigurasi Router[/b]
 Periksa konfigurasi interface pada Router0. Pastikan setiap interface memiliki konfigurasi yang sesuai dengan jaringan yang terhubung.
 [b]5. Periksa Default Gateway[/b]
-Pastikan perangkat yang berada pada jaringan berbeda memiliki default gateway yang sesuai agar dapat berkomunikasi melalui Router0.
-[b]6. Uji koneksi lokal[/b]
-Gunakan perintah [b]ping[/b] untuk menguji konektivitas dari komputer menuju gateway atau perangkat pada jaringan yang sama.
-[b]7. Uji konektivitas ke Server[/b]
-Setelah konfigurasi diperiksa dan diperbaiki, lakukan pengujian dari Computer A dan Computer B menuju Server0 menggunakan perintah [b]ping[/b].
+Pastikan Computer A dan Computer B menggunakan default gateway [b]192.168.2.1[/b] agar dapat terhubung ke jaringan luar melalui Router0.
+[b]6. Uji koneksi ke Gateway[/b]
+Gunakan perintah [b]ping[/b] dari Computer A dan Computer B untuk menguji konektivitas menuju Router0 dengan alamat [b]192.168.2.1[/b].
+[b]7. Uji konektivitas[/b]
+Setelah konfigurasi diperiksa dan diperbaiki, gunakan perintah [b]ping google.com[/b] dari Computer A dan Computer B untuk menguji konektivitas.
 [b]8. Pastikan konektivitas berhasil[/b]
-Pastikan tidak terdapat packet loss dan kedua komputer dapat berkomunikasi dengan Server0.
+Pastikan [b]ping google.com[/b] berhasil tanpa packet loss dan kedua komputer dapat terhubung dengan baik.
 [/color]
 [hr]
 [color=#2E7D32][font_size=18][b]Tujuan[/b][/font_size][/color]
 [color=#333333]
-✓ Memahami hubungan dasar antara komputer, switch, router, dan server.
-✓ Memahami proses troubleshooting jaringan secara sistematis.
+✓ Memahami hubungan dasar antara komputer, switch, dan router.
+✓ Memahami fungsi router dalam menghubungkan jaringan yang berbeda.
+✓ Memahami fungsi default gateway.
 ✓ Memeriksa konfigurasi perangkat jaringan.
-✓ Mengidentifikasi kesalahan konfigurasi yang menyebabkan kegagalan komunikasi.
+✓ Mengidentifikasi kesalahan konfigurasi yang menyebabkan kegagalan konektivitas.
 ✓ Memperbaiki konfigurasi jaringan yang diperlukan.
 ✓ Menguji konektivitas menggunakan perintah [b]ping[/b].
 [/color]
 [hr]
 [color=#2E7D32][font_size=18][b]Kriteria Keberhasilan[/b][/font_size][/color]
 [color=#333333]
-✓ Computer A berhasil melakukan ping ke Server0.
-✓ Computer B berhasil melakukan ping ke Server0.
-✓ Computer A dan Computer B dapat berkomunikasi dengan jaringan server.
-✓ Seluruh perangkat yang diperlukan dapat berkomunikasi sesuai dengan topologi yang telah disediakan.
+✓ Computer A berhasil melakukan ping ke Router0 ([b]192.168.2.1[/b]).
+✓ Computer B berhasil melakukan ping ke Router0 ([b]192.168.2.1[/b]).
+✓ Computer A berhasil melakukan [b]ping google.com[/b].
+✓ Computer B berhasil melakukan [b]ping google.com[/b].
+✓ Tidak terdapat packet loss pada pengujian konektivitas.
 [/color]"
 correct_configs = Dictionary[String, StringName]({
 "computer0": &"uid://c38a2ba0t6ng5",
@@ -103,11 +103,11 @@ correct_configs = Dictionary[String, StringName]({
 })
 runtime_configs = Dictionary[String, StringName]({
 "computer0": &"uid://bf5vrvh44imfu",
-"computer1": &"uid://bqp1b0l75ufli",
+"computer1": &"uid://cx8l127wb7nrr",
 "router0": &"uid://yd7usv1y1i3u",
-"server0": &"uid://y53knfq3hmw4",
-"switch0": &"uid://bd0irlvh4n4ag",
-"switch1": &"uid://d4vgicxpoj4r"
+"server0": &"uid://dcjwkhf7ren4a",
+"switch0": &"uid://rqldeqvmka5s",
+"switch1": &"uid://d3i2kdknm7b6v"
 })
 runtime_cables = Dictionary[String, StringName]({
 "computer0_switch0": &"uid://db5ckn3yps3lq",
